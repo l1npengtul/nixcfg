@@ -1,0 +1,19 @@
+{
+    imports = [
+        ./bitwig.nix
+        ./blender.nix
+        ./kdeconnect.nix
+        ./kdenlive.nix
+        ./kicad.nix
+        ./firefox.nix
+        ./obs.nix
+        ./rustrover.nix
+        ./vlc.nix
+        ./dorion.nix
+        ./krita.nix
+        ./bottles.nix
+        ./minecraft.nix
+        ./protonmail.nix
+        ./vscode.nix
+    ];
+}
