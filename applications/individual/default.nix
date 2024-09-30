@@ -5,6 +5,7 @@
         ./kdeconnect.nix
         ./kdenlive.nix
         ./kicad.nix
+        ./direnv.nix
         ./firefox.nix
         ./obs.nix
         ./rustrover.nix
