@@ -1,6 +1,7 @@
 {
     imports = [
         ./audacious.nix
+        ./audiotube.nix
         ./bitwig.nix
         ./blender.nix
         ./kdeconnect.nix
