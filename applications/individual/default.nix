@@ -1,5 +1,6 @@
 {
     imports = [
+        ./audacious.nix
         ./bitwig.nix
         ./blender.nix
         ./kdeconnect.nix
@@ -16,5 +17,6 @@
         ./minecraft.nix
         ./protonmail.nix
         ./vscode.nix
+        ./ytdlp.nix
     ];
 }
