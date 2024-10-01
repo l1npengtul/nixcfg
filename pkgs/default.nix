@@ -10,5 +10,6 @@
         ./fcitx5
         ./fonts
         ./steam.nix
+        ./libvirtd.nix
     ];
 }
