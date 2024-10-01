@@ -58,6 +58,7 @@
 
   hardware.graphics.enable = true;
   hardware.sensor.iio.enable = true;
+  hardware.ipu6.enable = true;
 
   networking.hostName = "oldhome"; # Define your hostname.
 
