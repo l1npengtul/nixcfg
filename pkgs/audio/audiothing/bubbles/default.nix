@@ -4,7 +4,7 @@
   lib,
 }:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "audiothing-things-bubbles";
   version = "1.1";
 

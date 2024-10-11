@@ -4,7 +4,7 @@
   lib,
 }:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "airwindows";
   version = "0.1";
 

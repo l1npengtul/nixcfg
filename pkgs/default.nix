@@ -1,5 +1,6 @@
 {
     imports = [
+        ./archives.nix
         ./java.nix
         ./nil.nix
         ./python3.nix
@@ -11,5 +12,6 @@
         ./fonts
         ./steam.nix
         ./libvirtd.nix
+        ./protonvpn.nix
     ];
 }

@@ -4,7 +4,7 @@
   lib,
 }:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "audiothing-moon-echo";
   version = "1.0";
 

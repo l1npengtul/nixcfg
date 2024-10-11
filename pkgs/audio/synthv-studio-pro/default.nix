@@ -19,9 +19,9 @@ stdenv.mkDerivation rec {
     sha256 = "1il9gmbsg4zvbjkqi6cry4ldzpxkkgrffgz1lj07hx3l6s07igmk";
   };
 
-  nativeBuildInputs = [ autoPatchelfHook ];
-
   buildInputs = [ alsaLib freetype curl libGL libgcc stdenv.cc.cc.lib ];
+
+  nativeBuildInputs = [ autoPatchelfHook ];
 
   installPhase = ''
 
@@ -31,7 +31,7 @@ stdenv.mkDerivation rec {
     mv * $out/opt/SynthesizerVStudioPro
 
     mkdir -p $out/bin
-    ln -s $out/opt/SynthesizerVStudioPro/synthv-studio $out/bin
+    ln -s $out/opt/SynthesizerVStudioPro/synthv-studio $out/bin/synthv-studio
 
     runHook postInstall
 
@@ -40,6 +40,6 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Synthesizer V Studio Pro";
     homepage = "https://dreamtonics.com/synthesizerv/";
-    platforms = platforms.x86_64;
+    platforms = [ "x86_64-linux" ];
   };
 }

@@ -31,6 +31,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    erosanix.url = "github:emmanuelrosa/erosanix";
+
+    gradle2nix = {
+      url = "github:tadfisher/gradle2nix/v2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
   outputs =
     inputs@{
@@ -43,12 +50,13 @@
       musnix,
       nixos-hardware,
       audio,
+      erosanix,
+      gradle2nix,
       ...
     }:
     let
-
       username = "l1npengtul";
-      system = "x64_64-linux";
+      system = "x86_64-linux";
       lib = nixpkgs.lib // home-manager.lib;
     in
     {
@@ -85,6 +93,8 @@
             auto-cpufreq.nixosModules.default
 
             musnix.nixosModules.musnix
+
+            erosanix.nixosModules.protonvpn
           ];
         };
       };

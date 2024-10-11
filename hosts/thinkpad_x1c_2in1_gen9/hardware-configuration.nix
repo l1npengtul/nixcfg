@@ -50,6 +50,10 @@
     { device = "/dev/disk/by-uuid/898605a1-2f15-4a44-8274-4131f8333c0d"; }
   ];
 
+  environment.variables = rec {
+    NIX_SWITCH_BUILD_SYSTEM_CFG_PENGPENGPENG = "thinkpad_x1c_2in1_gen9";
+  };
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction

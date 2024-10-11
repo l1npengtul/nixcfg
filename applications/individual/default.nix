@@ -9,6 +9,8 @@
         ./kicad.nix
         ./direnv.nix
         ./firefox.nix
+        ./ktorrent.nix
+        ./libreoffice.nix
         ./obs.nix
         ./rustrover.nix
         ./vlc.nix
