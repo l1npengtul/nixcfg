@@ -38,65 +38,64 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
+    alejandra.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs =
-    inputs@{
-      nixpkgs,
-      home-manager,
-      systems,
-      plasma-manager,
-      nix-flatpak,
-      auto-cpufreq,
-      musnix,
-      nixos-hardware,
-      audio,
-      erosanix,
-      gradle2nix,
-      ...
-    }:
-    let
-      username = "l1npengtul";
-      system = "x86_64-linux";
-      lib = nixpkgs.lib // home-manager.lib;
-    in
-    {
-      inherit lib;
+  outputs = inputs @ {
+    nixpkgs,
+    home-manager,
+    systems,
+    plasma-manager,
+    nix-flatpak,
+    auto-cpufreq,
+    musnix,
+    nixos-hardware,
+    audio,
+    erosanix,
+    gradle2nix,
+    ...
+  }: let
+    username = "l1npengtul";
+    system = "x86_64-linux";
+    lib = nixpkgs.lib // home-manager.lib;
+  in {
+    inherit lib;
 
-      nixosConfigurations = {
-        thinkpad_x1c_2in1_gen9 = lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
+    nixosConfigurations = {
+      thinkpad_x1c_2in1_gen9 = lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs;};
 
+        modules = [
+          ./configuration.nix
+          ./hosts/thinkpad_x1c_2in1_gen9
+          ./pkgs
+          nixos-hardware.nixosModules.common-cpu-intel
+          nixos-hardware.nixosModules.common-gpu-intel
+          nixos-hardware.nixosModules.common-gpu-amd
+          nixos-hardware.nixosModules.common-pc-ssd
+          nixos-hardware.nixosModules.common-hidpi
+          nixos-hardware.nixosModules.lenovo-thinkpad
 
-          modules = [
-            ./configuration.nix
-            ./hosts/thinkpad_x1c_2in1_gen9
-            ./pkgs
-            nixos-hardware.nixosModules.common-cpu-intel
-            nixos-hardware.nixosModules.common-gpu-intel
-            nixos-hardware.nixosModules.common-pc-ssd
-            nixos-hardware.nixosModules.common-hidpi
-            nixos-hardware.nixosModules.lenovo-thinkpad
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
+            home-manager.users."${username}".imports = [
+              nix-flatpak.homeManagerModules.nix-flatpak
+              ./home.nix
+              ./applications
+            ];
+          }
 
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
-              home-manager.users."${username}".imports = [
-                nix-flatpak.homeManagerModules.nix-flatpak
-                ./home.nix
-                ./applications
-              ];
-            }
+          auto-cpufreq.nixosModules.default
 
-            auto-cpufreq.nixosModules.default
+          musnix.nixosModules.musnix
 
-            musnix.nixosModules.musnix
-
-            erosanix.nixosModules.protonvpn
-          ];
-        };
+          erosanix.nixosModules.protonvpn
+        ];
       };
     };
+  };
 }

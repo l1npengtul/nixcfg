@@ -1,4 +1,3 @@
-{ pkgs, ... }:
-{
-    environment.systemPackages = [ pkgs.kdePackages.ark pkgs.p7zip pkgs.unar ];
+{pkgs, ...}: {
+  environment.systemPackages = [pkgs.kdePackages.ark pkgs.p7zip pkgs.unar];
 }

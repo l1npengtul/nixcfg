@@ -3,7 +3,6 @@
   fetchzip,
   lib,
 }:
-
 stdenv.mkDerivation rec {
   pname = "airwindows";
   version = "0.1";

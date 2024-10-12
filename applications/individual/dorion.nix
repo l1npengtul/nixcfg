@@ -1,11 +1,9 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home = {
     packages = with pkgs; [
-        dorion
-        armcord
-        discord
+      dorion
+      armcord
+      discord
     ];
   };
 }

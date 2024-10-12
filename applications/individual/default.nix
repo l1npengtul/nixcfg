@@ -1,25 +1,25 @@
 {
-    imports = [
-        ./audacious.nix
-        ./audiotube.nix
-        ./bitwig.nix
-        ./blender.nix
-        ./kdeconnect.nix
-        ./kdenlive.nix
-        ./kicad.nix
-        ./direnv.nix
-        ./firefox.nix
-        ./ktorrent.nix
-        ./libreoffice.nix
-        ./obs.nix
-        ./rustrover.nix
-        ./vlc.nix
-        ./dorion.nix
-        ./krita.nix
-        ./bottles.nix
-        ./minecraft.nix
-        ./protonmail.nix
-        ./vscode.nix
-        ./ytdlp.nix
-    ];
+  imports = [
+    ./audacious.nix
+    ./audiotube.nix
+    ./bitwig.nix
+    ./blender.nix
+    ./kdeconnect.nix
+    ./kdenlive.nix
+    ./kicad.nix
+    ./direnv.nix
+    ./firefox.nix
+    ./ktorrent.nix
+    ./libreoffice.nix
+    ./obs.nix
+    ./rustrover.nix
+    ./vlc.nix
+    ./dorion.nix
+    ./krita.nix
+    ./bottles.nix
+    ./minecraft.nix
+    ./protonmail.nix
+    ./vscode.nix
+    ./ytdlp.nix
+  ];
 }

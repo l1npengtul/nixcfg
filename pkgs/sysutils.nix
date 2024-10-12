@@ -1,4 +1,3 @@
-{ pkgs, ... }:
-{
-    environment.systemPackages = [ pkgs.patchelf pkgs.dpkg ];
+{pkgs, ...}: {
+  environment.systemPackages = [pkgs.patchelf pkgs.dpkg];
 }

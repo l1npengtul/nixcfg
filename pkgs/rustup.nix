@@ -1,4 +1,3 @@
-{ pkgs, ... }:
-{
-    environment.systemPackages = [ pkgs.rustup ];
+{pkgs, ...}: {
+  environment.systemPackages = [pkgs.rustup];
 }

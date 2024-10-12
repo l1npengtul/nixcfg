@@ -2,7 +2,7 @@
   stdenv,
   fetchzip,
   lib,
-  pkgs
+  pkgs,
 }:
 stdenv.mkDerivation {
   pname = "rainyhearts-ttf";
@@ -24,7 +24,7 @@ stdenv.mkDerivation {
     find . -name '*.ttf' -exec install -m444 -Dt $out/share/fonts/rainyhearts/ {} \;
 
     runHook postInstall
-    '';
+  '';
 
   meta = with lib; {
     description = "Rainy Hearts";

@@ -1,9 +1,11 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home = {
     packages = with pkgs; [
-      bitwig-studio yabridgectl yabridge wineWowPackages.staging dxvk_2
+      bitwig-studio
+      yabridgectl
+      yabridge
+      wineWowPackages.staging
+      dxvk_2
     ];
   };
 }

@@ -6,9 +6,7 @@
   lib,
   modulesPath,
   ...
-}:
-
-{
+}: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -24,8 +22,8 @@
     "dm-snapshot"
     "cryptd"
   ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = ["kvm-intel"];
+  boot.extraModulePackages = [];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/db56d625-d218-49ac-9400-054621f7d442";
@@ -47,12 +45,8 @@
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/898605a1-2f15-4a44-8274-4131f8333c0d"; }
+    {device = "/dev/disk/by-uuid/898605a1-2f15-4a44-8274-4131f8333c0d";}
   ];
-
-  environment.variables = rec {
-    NIX_SWITCH_BUILD_SYSTEM_CFG_PENGPENGPENG = "thinkpad_x1c_2in1_gen9";
-  };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

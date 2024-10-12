@@ -1,11 +1,9 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home = {
     packages = with pkgs; [
-        thunderbird
-        protonmail-bridge
-        birdtray
+      thunderbird
+      protonmail-bridge
+      birdtray
     ];
   };
   # Protonmail-Bridge service
@@ -23,7 +21,7 @@
       Restart = "always";
     };
 
-    Install.WantedBy = [ "default.target" ];
+    Install.WantedBy = ["default.target"];
   };
 
   xdg.configFile."protonmail/bridge-v3/keychain.json".text = ''

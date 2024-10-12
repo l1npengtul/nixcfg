@@ -1,6 +1,6 @@
 {
-    imports = [
-        ./flatpak.nix
-        ./individual
-    ];
+  imports = [
+    ./flatpak.nix
+    ./individual
+  ];
 }

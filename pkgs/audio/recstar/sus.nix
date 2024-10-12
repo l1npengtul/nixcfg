@@ -11,10 +11,10 @@ buildGradlePackage rec {
   pname = "recstar";
   version = "1.1.2";
   src = fetchFromGitHub {
-      owner = "sdercolin";
-      repo = "recstar";
-      rev = "9f966c51f09e8bcd7bae722fbb3744fb71ea6baf";
-      hash = "sha256-Sm/N1gbd8fpgPgEMK8fcbdizhTcarNxYsz8DZLuoVjo=";
+    owner = "sdercolin";
+    repo = "recstar";
+    rev = "9f966c51f09e8bcd7bae722fbb3744fb71ea6baf";
+    hash = "sha256-Sm/N1gbd8fpgPgEMK8fcbdizhTcarNxYsz8DZLuoVjo=";
   };
 
   preBuild = ''
@@ -26,7 +26,7 @@ buildGradlePackage rec {
     ":desktopApp:createReleaseDistributable"
   ];
 
-  buildInputs = [ pkgs.libGL stdenv.cc.cc.lib pkgs.kotlin pkgs.makeWrapper ];
+  buildInputs = [pkgs.libGL stdenv.cc.cc.lib pkgs.kotlin pkgs.makeWrapper];
 
   nativeBuildInputs = [
     autoPatchelfHook
@@ -48,7 +48,7 @@ buildGradlePackage rec {
 
   installPhase = ''
     makeWrapper desktopApp/build/compose/binaries/main/app/RecStar/bin/RecStar \
-      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ pkgs.libGL ]}"
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [pkgs.libGL]}"
 
     mkdir -p $out/opt/recstar/lib
     mkdir -p $out/opt/recstar/bin

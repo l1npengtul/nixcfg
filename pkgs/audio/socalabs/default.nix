@@ -3,7 +3,6 @@
   fetchzip,
   lib,
 }:
-
 stdenv.mkDerivation rec {
   pname = "socalabs";
   version = "0.1";

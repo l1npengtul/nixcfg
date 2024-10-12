@@ -1,13 +1,8 @@
-{
-  pkgs,
-  ...
-}:
-let
-  rainyhearts-ttf = pkgs.callPackage ./custom/rainyhearts { inherit pkgs; };
-  dalmoori-ttf = pkgs.callPackage ./custom/dalmoori { };
-  pixelmplus-ttf = pkgs.callPackage ./custom/pixelmplus { };
-in
-{
+{pkgs, ...}: let
+  rainyhearts-ttf = pkgs.callPackage ./custom/rainyhearts {inherit pkgs;};
+  dalmoori-ttf = pkgs.callPackage ./custom/dalmoori {};
+  pixelmplus-ttf = pkgs.callPackage ./custom/pixelmplus {};
+in {
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk
@@ -28,8 +23,8 @@ in
 
   fonts.fontconfig = {
     defaultFonts = {
-       sansSerif = [ "rainyhearts" "dalmoori" "PixelMplus12" "Noto Sans CJK JA" ];
-       monospace = [ "ComicShannsMono Nerd Font Mono" "Noto Sans Mono CJK KR" "Noto Sans Mono CJK JA" ];
+      sansSerif = ["rainyhearts" "dalmoori" "PixelMplus12" "Noto Sans CJK JA"];
+      monospace = ["ComicShannsMono Nerd Font Mono" "Noto Sans Mono CJK KR" "Noto Sans Mono CJK JA"];
     };
   };
 }

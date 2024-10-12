@@ -1,25 +1,29 @@
-{ config, lib, pkgs, ... }:
 {
-    environment.systemPackages = with pkgs; [
-        auto-cpufreq
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  environment.systemPackages = with pkgs; [
+    auto-cpufreq
+  ];
 
-    powerManagement = {
-        powertop.enable = true;
+  powerManagement = {
+    powertop.enable = true;
+  };
+
+  services.power-profiles-daemon.enable = false;
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
     };
-
-    services.power-profiles-daemon.enable = false;
-    services.auto-cpufreq.enable = true;
-    services.auto-cpufreq.settings = {
-        battery = {
-            governor = "powersave";
-            turbo = "never";
-        };
-        charger = {
-            governor = "performance";
-            turbo = "auto";
-        };
+    charger = {
+      governor = "performance";
+      turbo = "auto";
     };
+  };
 
-    boot.backlistedKernelModules = [ "intel_pstate" ];
+  boot.backlistedKernelModules = ["intel_pstate"];
 }

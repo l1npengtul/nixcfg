@@ -1,4 +1,3 @@
-{ pkgs, ... }:
-{
-    environment.systemPackages = [ pkgs.wireguard-tools pkgs.protonvpn-gui ];
+{pkgs, ...}: {
+  environment.systemPackages = [pkgs.wireguard-tools pkgs.protonvpn-gui];
 }
