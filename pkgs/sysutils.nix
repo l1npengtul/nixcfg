@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  environment.systemPackages = [pkgs.patchelf pkgs.dpkg];
+  environment.systemPackages = [pkgs.dpkg pkgs.binutils-wrapper];
 }

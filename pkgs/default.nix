@@ -3,6 +3,7 @@
     ./archives.nix
     ./java.nix
     ./nix-utils.nix
+    ./sysutils.nix
     ./python3.nix
     ./rustup.nix
     ./shells.nix

@@ -12,6 +12,7 @@
     ./ktorrent.nix
     ./libreoffice.nix
     ./obs.nix
+    ./openutau.nix
     ./rustrover.nix
     ./vlc.nix
     ./dorion.nix
