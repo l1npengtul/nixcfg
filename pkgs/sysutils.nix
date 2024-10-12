@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  environment.systemPackages = [pkgs.dpkg pkgs.binutils];
+  environment.systemPackages = [pkgs.dpkg pkgs.binutils pkgs.upx];
 }
