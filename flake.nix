@@ -38,6 +38,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -53,6 +56,7 @@
     audio,
     erosanix,
     gradle2nix,
+    nix-index-database,
     ...
   }: let
     username = "l1npengtul";
@@ -88,6 +92,8 @@
               ./applications
             ];
           }
+
+          nix-index-database.nixosModules.nix-index
 
           auto-cpufreq.nixosModules.default
 
