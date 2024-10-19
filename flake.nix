@@ -88,7 +88,7 @@
             home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
             home-manager.users."${username}".imports = [
               nix-flatpak.homeManagerModules.nix-flatpak
-              ./home.nix
+              ./users/l1npengtul.nix
               ./applications
             ];
           }

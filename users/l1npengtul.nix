@@ -133,7 +133,7 @@
       "kwin"."KrohnkiteStackedLayout" = ",none,Krohnkite: Stacked Layout";
       "kwin"."KrohnkiteStairLayout" = ",none,Krohnkite: Stair Layout";
       "kwin"."KrohnkiteTileLayout" = ",none,Krohnkite: Tile Layout";
-      "kwin"."KrohnkiteToggleFloat" = ",none,Krohnkite: Toggle Float";
+      "kwin"."KrohnkiteToggleFloat" = ",Meta+F,Krohnkite: Toggle Float";
       "kwin"."KrohnkiteTreeColumnLayout" = ",none,Krohnkite: Tree Column Layout";
       "kwin"."KrohnkitegrowWidth" = ",none,Krohnkite: Grow Width";
       "kwin"."Move Tablet to Next Output" = [];

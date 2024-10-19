@@ -10,6 +10,27 @@
     NIX_SWITCH_BUILD_SYSTEM_CFG_PENGPENGPENG = "thinkpad_x1c_2in1_gen9";
   };
 
+  time.timeZone = "Asia/Tokyo";
+
+  users.users.l1npengtul = {
+    isNormalUser = true;
+    createHome = true;
+    shell = pkgs.nushell;
+    extraGroups = [
+      "wheel"
+      "audio"
+      "networkmanager"
+      "libvirtd"
+    ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs; [
+      tree
+    ];
+  };
+
+  nix.extraOptions = ''
+    trusted-users = root l1npengtul
+  '';
+
   boot.kernelParams = ["mem_sleep_default=deep" "intel_pstate=disable"];
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/MAGPIE_SIGNAL";
 

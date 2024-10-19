@@ -12,7 +12,6 @@
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
-  time.timeZone = "Asia/Tokyo";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -62,20 +61,6 @@
   services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.l1npengtul = {
-    isNormalUser = true;
-    createHome = true;
-    shell = pkgs.nushell;
-    extraGroups = [
-      "wheel"
-      "audio"
-      "networkmanager"
-      "libvirtd"
-    ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      tree
-    ];
-  };
 
   programs.dconf.enable = true;
   programs.ssh.startAgent = true;
@@ -146,7 +131,7 @@
   ];
 
   nix.extraOptions = ''
-    trusted-users = root l1npengtul
+    trusted-users = root
   '';
 
   #   nixenvironment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
