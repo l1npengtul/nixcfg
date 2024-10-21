@@ -102,7 +102,6 @@
             home-manager.useUserPackages = true;
             home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
             home-manager.users."${username}".imports = [
-              inputs
               nix-flatpak.homeManagerModules.nix-flatpak
               ./users/l1npengtul.nix
               ./applications
