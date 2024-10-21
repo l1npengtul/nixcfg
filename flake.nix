@@ -45,6 +45,14 @@
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
 
     vhs-decode-nur-packages.url = "github:JuniorIsAJitterbug/nur-packages";
+    nix-matlab = {
+      # nix-matlab's Nixpkgs input follows Nixpkgs' nixos-unstable branch. However
+      # your Nixpkgs revision might not follow the same branch. You'd want to
+      # match your Nixpkgs and nix-matlab to ensure fontconfig related
+      # compatibility.
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "gitlab:doronbehar/nix-matlab";
+    };
   };
   outputs = inputs @ {
     nixpkgs,
@@ -59,12 +67,19 @@
     erosanix,
     gradle2nix,
     nix-index-database,
+<<<<<<< HEAD
     vhs-decode-nur-packages,
+=======
+    nix-matlab,
+>>>>>>> 0c67c37 (Mon Oct 21 16:00:46 JST 2024 -)
     ...
   }: let
     username = "l1npengtul";
     system = "x86_64-linux";
     lib = nixpkgs.lib // home-manager.lib;
+    flake-overlays = [
+      nix-matlab.overlay
+    ];
   in {
     inherit lib;
 

@@ -22,5 +22,6 @@
     ./protonmail.nix
     ./vscode.nix
     ./ytdlp.nix
+    ./matlab.nix
   ];
 }
