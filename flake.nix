@@ -77,9 +77,6 @@
     username = "l1npengtul";
     system = "x86_64-linux";
     lib = nixpkgs.lib // home-manager.lib;
-    flake-overlays = [
-      nix-matlab.overlay
-    ];
   in {
     inherit lib;
 
@@ -105,6 +102,7 @@
             home-manager.useUserPackages = true;
             home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
             home-manager.users."${username}".imports = [
+              inputs
               nix-flatpak.homeManagerModules.nix-flatpak
               ./users/l1npengtul.nix
               ./applications
