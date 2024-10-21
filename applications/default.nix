@@ -1,4 +1,4 @@
-{
+{...}: {
   imports = [
     ./flatpak.nix
     ./individual

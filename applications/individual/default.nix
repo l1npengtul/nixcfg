@@ -1,4 +1,4 @@
-{
+{...}: {
   imports = [
     ./audacious.nix
     ./audiotube.nix
