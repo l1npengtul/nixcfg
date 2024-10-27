@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd ~/pengcfg
+cd ~/nixcfg
 
 alejandra .
 

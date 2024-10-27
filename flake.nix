@@ -43,6 +43,8 @@
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
+
+    vhs-decode-nur-packages.url = "github:JuniorIsAJitterbug/nur-packages";
   };
   outputs = inputs @ {
     nixpkgs,
@@ -57,6 +59,7 @@
     erosanix,
     gradle2nix,
     nix-index-database,
+    vhs-decode-nur-packages,
     ...
   }: let
     username = "l1npengtul";
@@ -100,6 +103,33 @@
           musnix.nixosModules.musnix
 
           erosanix.nixosModules.protonvpn
+        ];
+      };
+      peng_tokyo_server = lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs;};
+
+        modules = [
+          ./configuration.nix
+          ./hosts/peng_tokyo_server
+          ./pkgs/default_server.nix
+
+          nixos-hardware.nixosModules.common-cpu-intel
+          nixos-hardware.nixosModules.common-gpu-intel
+          nixos-hardware.nixosModules.common-pc-ssd
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
+            home-manager.users.pengsrv.imports = [
+              ./users/pengsrv.nix
+              ./applications/individual/default_server.nix
+            ];
+          }
+
+          nix-index-database.nixosModules.nix-index
         ];
       };
     };

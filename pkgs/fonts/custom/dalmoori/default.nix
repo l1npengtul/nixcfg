@@ -3,7 +3,7 @@
   lib,
   fetchzip,
 }:
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "dalmoori-ttf";
   version = "0.200";
 

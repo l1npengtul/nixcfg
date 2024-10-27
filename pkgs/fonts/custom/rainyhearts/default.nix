@@ -1,10 +1,9 @@
 {
   stdenv,
-  fetchzip,
   lib,
   pkgs,
 }:
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "rainyhearts-ttf";
   version = "0.1";
   src = ./rainyhearts.zip;

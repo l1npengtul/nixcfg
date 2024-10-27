@@ -3,7 +3,7 @@
   lib,
   fetchzip,
 }:
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "pixelmplus-ttf";
   version = "0.1";
   src = fetchzip {

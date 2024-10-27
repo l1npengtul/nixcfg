@@ -348,6 +348,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1725432240,
+        "narHash": "sha256-+yj+xgsfZaErbfYM3T+QvEE2hU7UuE+Jf0fJCJ8uPS0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ad416d066ca1222956472ab7d0555a6946746a80",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "plasma-manager": {
       "inputs": {
         "home-manager": [
@@ -385,7 +401,8 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "plasma-manager": "plasma-manager",
-        "systems": "systems_2"
+        "systems": "systems_2",
+        "vhs-decode-nur-packages": "vhs-decode-nur-packages"
       }
     },
     "rust-analyzer-src": {
@@ -432,6 +449,24 @@
       "original": {
         "id": "systems",
         "type": "indirect"
+      }
+    },
+    "vhs-decode-nur-packages": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "lastModified": 1725801651,
+        "narHash": "sha256-BZmCpogphlIgB4IwWP5IXXs/VOmiTkOv4hEXUnFIlyU=",
+        "owner": "JuniorIsAJitterbug",
+        "repo": "nur-packages",
+        "rev": "68c7962352086e3a282e09d67bf7ca4f4065536e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JuniorIsAJitterbug",
+        "repo": "nur-packages",
+        "type": "github"
       }
     }
   },
