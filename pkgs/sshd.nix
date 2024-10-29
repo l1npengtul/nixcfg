@@ -12,7 +12,7 @@
     };
   };
 
-  users.user."pengsrv".openssh.authorizedKeys.keys = [
+  users.users."pengsrv".openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHmy492dN8mCQIP/f/ecxu9DIBHbhQF5Yte28CJZ1hgf l1npengtul@protonmail.com"
   ];
 
