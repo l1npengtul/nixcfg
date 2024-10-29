@@ -67,11 +67,8 @@
     erosanix,
     gradle2nix,
     nix-index-database,
-<<<<<<< HEAD
     vhs-decode-nur-packages,
-=======
     nix-matlab,
->>>>>>> 0c67c37 (Mon Oct 21 16:00:46 JST 2024 -)
     ...
   }: let
     username = "l1npengtul";
