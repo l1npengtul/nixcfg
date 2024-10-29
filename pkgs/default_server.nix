@@ -6,10 +6,10 @@
     ./sysutils.nix
     ./python3.nix
     ./rustup.nix
-    ./shells.nix
     ./libvirtd.nix
     ./sshd.nix
     ./cockpit.nix
     ./vhs-decode
+    ./tailscale-host.nix
   ];
 }

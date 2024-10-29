@@ -58,7 +58,7 @@
 
   hardware.graphics.enable = true;
 
-  networking.hostName = "pengtokyoserver"; # Define your hostname.
+  networking.hostName = "peng_tokyo_server"; # Define your hostname.
   networking.firewall.enable = true;
 
   system.stateVersion = "24.05";
