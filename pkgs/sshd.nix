@@ -3,8 +3,8 @@
     enable = true;
     ports = [2222];
     settings = {
-      settings.PasswordAuthentication = false;
-      settings.KbdInteractiveAuthentication = false;
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
       AllowUsers = ["pengsrv"]; # Allows all users by default. Can be [ "user1" "user2" ]
       UseDns = true;
       X11Forwarding = false;
