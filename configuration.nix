@@ -98,6 +98,7 @@
     "/share/kxmlgui5"
     "/share/systemd"
     "/share/thumbnailers"
+    "/sys"
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
