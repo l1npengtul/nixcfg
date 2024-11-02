@@ -2,6 +2,8 @@
   stdenv,
   fetchzip,
   lib,
+  autoPatchelfHook,
+  pkgs,
 }:
 stdenv.mkDerivation rec {
   pname = "audiothing-minibit";
@@ -11,6 +13,10 @@ stdenv.mkDerivation rec {
     url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/miniBit-1.6.5.tar.xz";
     sha256 = "0bqd6718909szw7ah0rnnw1qlxvmxbiwfwb6r3z5wchcjv3avi0l";
   };
+
+  buildInputs = [stdenv.cc.cc.lib pkgs.libatomic_ops pkgs.alsa-lib pkgs.freetype pkgs.libGL pkgs.curl];
+
+  nativeBuildInputs = [autoPatchelfHook];
 
   installPhase = ''
 

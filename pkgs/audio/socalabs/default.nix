@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
     stripRoot = false;
   };
 
-  buildInputs = [stdenv.cc.cc.lib pkgs.libatomic_ops pkgs.alsa-lib pkgs.freetype pkgs.libGL];
+  buildInputs = [stdenv.cc.cc.lib pkgs.libatomic_ops pkgs.alsa-lib pkgs.freetype pkgs.libGL pkgs.curl];
 
   nativeBuildInputs = [autoPatchelfHook];
 

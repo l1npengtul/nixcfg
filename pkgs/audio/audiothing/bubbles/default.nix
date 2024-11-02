@@ -2,6 +2,8 @@
   stdenv,
   fetchzip,
   lib,
+  autoPatchelfHook,
+  pkgs,
 }:
 stdenv.mkDerivation rec {
   pname = "audiothing-things-bubbles";
@@ -11,6 +13,10 @@ stdenv.mkDerivation rec {
     url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/ThingsBubbles-1.1.tar.xz";
     sha256 = "1xlfz92254ymzcwy9kywi3mkfzz43npq30n64jvycdykanf2kp1c";
   };
+
+  buildInputs = [stdenv.cc.cc.lib pkgs.libatomic_ops pkgs.alsa-lib pkgs.freetype pkgs.libGL pkgs.curl];
+
+  nativeBuildInputs = [autoPatchelfHook];
 
   installPhase = ''
 

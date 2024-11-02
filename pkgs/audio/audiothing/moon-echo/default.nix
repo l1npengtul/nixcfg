@@ -2,6 +2,8 @@
   stdenv,
   fetchzip,
   lib,
+  autoPatchelfHook,
+  pkgs,
 }:
 stdenv.mkDerivation rec {
   pname = "audiothing-moon-echo";
@@ -11,6 +13,10 @@ stdenv.mkDerivation rec {
     url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/MoonEcho-1.0.tar.xz";
     sha256 = "0jx8lvcc1lry62fkgy498nb41i39xjffjsm4jqaa5c88z63b15m8";
   };
+
+  buildInputs = [stdenv.cc.cc.lib pkgs.libatomic_ops pkgs.alsa-lib pkgs.freetype pkgs.libGL pkgs.curl];
+
+  nativeBuildInputs = [autoPatchelfHook];
 
   installPhase = ''
 

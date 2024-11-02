@@ -2,6 +2,8 @@
   stdenv,
   fetchzip,
   lib,
+  autoPatchelfHook,
+  pkgs,
 }:
 stdenv.mkDerivation rec {
   pname = "audiothing-things-texture";
@@ -11,6 +13,10 @@ stdenv.mkDerivation rec {
     url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/ThingsTexture-1.1.1.tar.xz";
     sha256 = "0nm51yc9j6jfk5bczjq1brwg83x07jz6jkd7dpg5ypskp68y29bp";
   };
+
+  buildInputs = [stdenv.cc.cc.lib pkgs.libatomic_ops pkgs.alsa-lib pkgs.freetype pkgs.libGL pkgs.curl];
+
+  nativeBuildInputs = [autoPatchelfHook];
 
   installPhase = ''
 
