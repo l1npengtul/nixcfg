@@ -6,11 +6,11 @@
 }:
 stdenv.mkDerivation rec {
   pname = "airwindows";
-  version = "0.1";
+  version = "0.2";
 
   src = fetchzip {
     url = "https://www.airwindows.com/wp-content/uploads/LinuxVSTs.zip";
-    sha256 = "0in4mxlbfryjqjfv2wrq7h25fnhxxj57wxb9pyxxzwvgwira6b7b";
+    sha256 = "71mLXAqja8U4D69f8a4WDREosyrFxTDvrogbJR6cf/M=";
     stripRoot = false;
   };
 
