@@ -52,6 +52,7 @@
     pulse.enable = true;
   };
   hardware.pulseaudio.enable = false;
+  hardware.alsa.enablePersistence = true;
   security.rtkit.enable = true;
 
   services.displayManager.defaultSession = "plasma";

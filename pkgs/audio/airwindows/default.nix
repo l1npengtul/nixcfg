@@ -2,6 +2,7 @@
   stdenv,
   fetchzip,
   lib,
+  autoPatchelfHook,
 }:
 stdenv.mkDerivation rec {
   pname = "airwindows";
@@ -12,6 +13,10 @@ stdenv.mkDerivation rec {
     sha256 = "0in4mxlbfryjqjfv2wrq7h25fnhxxj57wxb9pyxxzwvgwira6b7b";
     stripRoot = false;
   };
+
+  buildInputs = [stdenv.cc.cc.lib];
+
+  nativeBuildInputs = [autoPatchelfHook];
 
   installPhase = ''
 

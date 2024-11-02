@@ -2,6 +2,8 @@
   stdenv,
   fetchzip,
   lib,
+  autoPatchelfHook,
+  pkgs,
 }:
 stdenv.mkDerivation rec {
   pname = "socalabs";
@@ -12,6 +14,10 @@ stdenv.mkDerivation rec {
     sha256 = "091vsrfxs6ywd5nkhzca1kc8iiraqswxllbp1ldcxafv44qhnps7";
     stripRoot = false;
   };
+
+  buildInputs = [stdenv.cc.cc.lib pkgs.libatomic_ops pkgs.alsa-lib pkgs.freetype pkgs.libGL];
+
+  nativeBuildInputs = [autoPatchelfHook];
 
   installPhase = ''
 
