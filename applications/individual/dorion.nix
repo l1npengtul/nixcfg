@@ -2,7 +2,7 @@
   home = {
     packages = with pkgs; [
       dorion
-      armcord
+      legcord
       discord
     ];
   };
