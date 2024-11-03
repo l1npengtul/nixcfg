@@ -5,5 +5,5 @@
     withRav1e = true;
   };
 in {
-  environment.systemPackages = [pkgs.pv pkgs.sox pkgs.flac ffmpeg];
+  environment.systemPackages = [pkgs.pv pkgs.sox pkgs.flac ffmpeg pkgs.handbrake pkgs.alsa-utils];
 }
