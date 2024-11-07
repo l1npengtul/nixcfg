@@ -15,5 +15,6 @@
     ./protonvpn.nix
     ./matlab.nix
     ./tailscale-client.nix
+    ./input.nix
   ];
 }

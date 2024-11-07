@@ -1,6 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
+    inputs.musnix.nixosModules.musnix
   ];
   environment.systemPackages = with pkgs; [
     auto-cpufreq
@@ -21,6 +26,7 @@
       "audio"
       "networkmanager"
       "libvirtd"
+      "jackaudio"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
@@ -107,6 +113,10 @@
       services.xserver.videoDrivers = ["modesetting" "amdgpu"];
     };
   };
+
+  musnix.enable = true;
+  musnix.rtcqs.enable = true;
+  musnix.ffado.enable = true;
 
   system.stateVersion = "24.05";
 }

@@ -83,9 +83,6 @@
         specialArgs = {inherit inputs;};
 
         modules = [
-          ./configuration.nix
-          ./hosts/thinkpad_x1c_2in1_gen9
-          ./pkgs
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-gpu-intel
           nixos-hardware.nixosModules.common-gpu-amd
@@ -112,6 +109,10 @@
           musnix.nixosModules.musnix
 
           erosanix.nixosModules.protonvpn
+
+          ./configuration.nix
+          ./hosts/thinkpad_x1c_2in1_gen9
+          ./pkgs
         ];
       };
       peng_tokyo_server = lib.nixosSystem {

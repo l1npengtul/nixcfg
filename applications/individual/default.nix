@@ -23,5 +23,6 @@
     ./vscode.nix
     ./ytdlp.nix
     ./okteta.nix
+    ./reaper.nix
   ];
 }

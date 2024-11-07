@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   src = fetchzip {
     url = "https://github.com/RanolP/dalmoori-font/releases/download/v0.200/dalmoori-font.zip";
     sha256 = "1f989h8z004z4mmlbmjnr8vj6pq8l472dj6vx0bl3ph5dapg0pc3";
-    stripRoot=false;
+    stripRoot = false;
   };
 
   installPhase = ''
