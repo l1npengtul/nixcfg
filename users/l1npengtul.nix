@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  import = [
+  imports = [
     ./plasma.nix
   ];
 
