@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  import = [
+    ./plasma.nix
+  ];
+
   programs = {
     git = {
       enable = true;
