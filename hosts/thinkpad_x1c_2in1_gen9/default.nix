@@ -87,7 +87,7 @@
   hardware.sensor.iio.enable = true;
   hardware.ipu6.enable = true;
   hardware.ipu6.platform = "ipu6epmtl";
-  hardware.graphics.extraPackages = ["vpl-gpu-rt"];
+  hardware.graphics.extraPackages = [pkgs.vpl-gpu-rt];
 
   networking.hostName = "oldhome"; # Define your hostname.
 
