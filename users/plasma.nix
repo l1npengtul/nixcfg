@@ -132,9 +132,9 @@
       "kwin"."Switch to Desktop 7" = "none,,Switch to Desktop 7";
       "kwin"."Switch to Desktop 8" = "none,,Switch to Desktop 8";
       "kwin"."Switch to Desktop 9" = "none,,Switch to Desktop 9";
-      "kwin"."Switch to Next Desktop" = "Ctrl+Alt+Right,,Switch to Next Desktop";
+      "kwin"."Switch to Next Desktop" = "Ctrl+Alt+Right";
       "kwin"."Switch to Next Screen" = "Meta+Shift+Right,,Switch to Next Screen";
-      "kwin"."Switch to Previous Desktop" = "Ctrl+Alt+Left,,Switch to Previous Desktop";
+      "kwin"."Switch to Previous Desktop" = "Ctrl+Alt+Left";
       "kwin"."Switch to Previous Screen" = "Meta+Shift+Left,,Switch to Previous Screen";
       "kwin"."Switch to Screen 0" = "none,,Switch to Screen 0";
       "kwin"."Switch to Screen 1" = "none,,Switch to Screen 1";
