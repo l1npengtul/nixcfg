@@ -22,6 +22,7 @@ in {
     vital
     airwindows
     #     synthv-studio-pro # fuck you dreamtonics
+    plugdata
     recstar
     inputs.audio.packages.${pkgs.system}.vital
     inputs.audio.packages.${pkgs.system}.paulxstretch
