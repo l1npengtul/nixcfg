@@ -15,6 +15,7 @@
     ./openutau.nix
     ./rustrover.nix
     ./vlc.nix
+    ./gimp.nix
     ./dorion.nix
     ./krita.nix
     ./bottles.nix
