@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
 
     runHook preInstall
 
-    ls $src
+    ls $src/Plugins
 
     mkdir -p $out/lib64/vst3/audiothing
     cp -r $src/Plugins/Noises.vst3 $out/lib64/vst3/audiothing
