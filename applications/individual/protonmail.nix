@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   home = {
     packages = with pkgs; [
       thunderbird
@@ -33,5 +29,4 @@
       "Helper": "secret-service-dbus"
     }
   '';
-  config.services.protonmail-bridge.enable = true;
 }

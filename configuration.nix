@@ -147,6 +147,7 @@
     ];
     allowedUDPPortRanges = allowedTCPPortRanges;
   };
+  services.protonmail-bridge.enable = true;
   boot.tmp.useTmpfs = true;
   boot.tmp.cleanOnBoot = true;
   # This option defines the first version of NixOS you have installed on this particular machine,
