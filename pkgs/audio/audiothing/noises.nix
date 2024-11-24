@@ -11,7 +11,7 @@ stdenv.mkDerivation rec {
 
   src = fetchzip {
     url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/38042111/Noises-1.2.1.tar.xz";
-    sha256 = "02jk158wiryy9j5v6xyq0yg8kv7h0jk6gkbf375v45gidrlc0izc";
+    sha256 = "r7M3N0ru2lBxgZcKP5w+3P3foNc8Hzr4IGeQImDjUkM=";
   };
 
   buildInputs = [stdenv.cc.cc.lib pkgs.libatomic_ops pkgs.alsa-lib pkgs.freetype pkgs.libGL pkgs.curl];
