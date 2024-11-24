@@ -99,9 +99,6 @@
   networking.hostName = "oldhome"; # Define your hostname.
 
   specialisation = {
-    imports = [
-    ];
-
     egpu.configuration = {
       hardware.graphics.enable = true;
       hardware.amdgpu.initrd.enable = true;
