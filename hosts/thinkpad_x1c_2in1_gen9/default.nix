@@ -81,8 +81,6 @@
   #         };
   #     };
 
-  boot.blacklistedKernelModules = ["intel_pstate"];
-
   hardware.sensor.iio.enable = true;
   hardware.ipu6.enable = true;
   hardware.ipu6.platform = "ipu6epmtl";
@@ -99,6 +97,9 @@
   networking.hostName = "oldhome"; # Define your hostname.
 
   specialisation = {
+    imports = [
+    ];
+
     egpu.configuration = {
       hardware.graphics.enable = true;
       hardware.amdgpu.initrd.enable = true;
@@ -108,20 +109,13 @@
       boot = {
         # Ensure module for external graphics is loaded
         initrd.kernelModules = ["amdgpu"];
-
-        blacklistedKernelModules = ["intel_pstate"];
-
         # Disable the integrated graphics module
         kernelParams = [
           "amdgpu.pcie_gen_cap=0x40000" # Force AMD GPU to use full width (optional)
         ];
       };
-
-      # Use external graphics
-      services.xserver.videoDrivers = ["modesetting" "amdgpu"];
     };
   };
-
   musnix.enable = true;
   musnix.rtcqs.enable = true;
 
