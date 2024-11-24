@@ -36,7 +36,7 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "audiothing things texture plugin";
+    description = "audiothing lines plugin";
     homepage = "https://audiothings.com/";
     platforms = platforms.x86_64;
   };
