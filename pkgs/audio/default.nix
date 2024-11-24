@@ -9,6 +9,10 @@
   #   synthv-studio-pro = pkgs.callPackage ./synthv-studio-pro {};
   recstar = pkgs.callPackage ./recstar {};
 in {
+  imports = [
+    ./audiothing
+  ];
+
   environment.systemPackages = with pkgs; [
     odin2
     surge-XT

@@ -6,7 +6,7 @@
   pkgs,
 }:
 stdenv.mkDerivation rec {
-  pname = "audiothing-moon-echo";
+  pname = "audiothing-moonecho";
   version = "1.0";
 
   src = fetchzip {

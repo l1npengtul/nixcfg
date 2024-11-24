@@ -1,7 +1,7 @@
 {pkgs, ...}: let
   bubbles = pkgs.callPackage ./bubbles.nix {};
   minibit = pkgs.callPackage ./minibit.nix {};
-  moon-echo = pkgs.callPackage ./moon-echo.nix {};
+  moonecho = pkgs.callPackage ./moonecho.nix {};
   textures = pkgs.callPackage ./textures.nix {};
   lines = pkgs.callPackage ./lines.nix {};
   noises = pkgs.callPackage ./noises.nix {};
@@ -9,7 +9,7 @@ in {
   environment.systemPackages = [
     bubbles
     minibit
-    moon-echo
+    moonecho
     textures
     lines
     noises
