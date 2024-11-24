@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
 
   src = fetchzip {
     url = "https://www.airwindows.com/wp-content/uploads/LinuxVSTs.zip";
-    sha256 = "71mLXAqja8U4D69f8a4WDREosyrFxTDvrogbJR6cf/M=";
+    sha256 = "sha256-UYYmfvLzT26hpHFzHxktlGitkvdRhBTo+ILDTmPW3Fk=/M=";
     stripRoot = false;
   };
 
