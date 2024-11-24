@@ -39,9 +39,6 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  services.hardware.bolt.enable = true;
-
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR

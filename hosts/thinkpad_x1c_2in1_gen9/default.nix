@@ -37,12 +37,14 @@
     trusted-users = root l1npengtul
   '';
 
-  boot.kernelParams = ["mem_sleep_default=deep" "intel_pstate=disable"];
+  boot.kernelParams = ["mem_sleep_default=deep"];
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/MAGPIE_SIGNAL";
 
   powerManagement = {
     powertop.enable = true;
   };
+
+  services.hardware.bolt.enable = true;
 
   services.power-profiles-daemon.enable = false;
   services.tlp.enable = false;
