@@ -29,4 +29,6 @@
       "Helper": "secret-service-dbus"
     }
   '';
+
+  services.protonmail-bridge.enable = true;
 }

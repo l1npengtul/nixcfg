@@ -138,18 +138,8 @@
   hardware.enableAllFirmware = true;
 
   # kdeconnect
-  networking.firewall = rec {
-    allowedTCPPortRanges = [
-      {
-        from = 1714;
-        to = 1764;
-      }
-    ];
-    allowedUDPPortRanges = allowedTCPPortRanges;
-  };
-
-  services.protonmail-bridge.enable = true;
-
+  boot.tmp.useTmpfs = true;
+  boot.tmp.cleanOnBoot = true;
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #
