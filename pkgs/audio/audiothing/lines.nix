@@ -11,7 +11,7 @@ stdenv.mkDerivation rec {
 
   src = fetchzip {
     url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/Lines-1.1.tar.xz";
-    sha256 = "0nm51yc9j6jfk5bczjq1brwg83x07jz6jkd7dpg5ypskp68y29bp";
+    sha256 = "vySWnkZRbVfL6zQdx3lt5LtNPwhAPsR0CK/ho49sfA0=";
   };
 
   buildInputs = [stdenv.cc.cc.lib pkgs.libatomic_ops pkgs.alsa-lib pkgs.freetype pkgs.libGL pkgs.curl];
