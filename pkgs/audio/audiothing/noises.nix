@@ -22,8 +22,8 @@ stdenv.mkDerivation rec {
 
     runHook preInstall
 
-    mkdir -p $out/lib64/vst3/audiothing
-    cp -r $src/Plugins/Noises.vst3 $out/lib64/vst3/audiothing
+    #mkdir -p $out/lib64/vst3/audiothing
+    #cp -r $src/Plugins/Noises.vst3 $out/lib64/vst3/audiothing
 
     mkdir -p $out/lib64/vst/audiothing
     cp -r $src/Plugins/Noises.so $out/lib64/vst/audiothing
