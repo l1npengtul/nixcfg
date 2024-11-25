@@ -14,3 +14,5 @@ sudo nixos-rebuild switch --show-trace --flake .#$NIX_SWITCH_BUILD_SYSTEM_CFG_PE
 nix-env --delete-generations 7d
 
 nix-store --gc
+
+nix-collect-garbage --delete-older-than 7d
