@@ -100,23 +100,6 @@
 
   networking.hostName = "oldhome"; # Define your hostname.
 
-  specialisation = {
-    egpu.configuration = {
-      hardware.graphics.enable = true;
-      hardware.amdgpu.initrd.enable = true;
-      hardware.enableAllFirmware = true;
-      system.nixos.tags = ["egpu"];
-
-      boot = {
-        # Ensure module for external graphics is loaded
-        initrd.kernelModules = ["amdgpu"];
-        # Disable the integrated graphics module
-        kernelParams = [
-          "amdgpu.pcie_gen_cap=0x40000" # Force AMD GPU to use full width (optional)
-        ];
-      };
-    };
-  };
   musnix.enable = true;
   musnix.rtcqs.enable = true;
 

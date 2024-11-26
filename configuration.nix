@@ -76,6 +76,7 @@
     nix-index
     pciutils
     usbutils
+    nmap
   ];
 
   environment.pathsToLink = [
