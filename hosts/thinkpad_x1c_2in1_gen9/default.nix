@@ -86,7 +86,7 @@
 
   hardware.sensor.iio.enable = true;
   hardware.ipu6 = {
-    enable = "true";
+    enable = true;
     platform = "ipu6epmtl";
   };
   hardware.graphics = {
