@@ -25,6 +25,6 @@
     ./ytdlp.nix
     ./okteta.nix
     ./reaper.nix
-    ./vial
+    ./keyboard.nix
   ];
 }
