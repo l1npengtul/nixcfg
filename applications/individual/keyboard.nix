@@ -1,3 +1,7 @@
 {pkgs, ...}: {
-  environment.systemPackages = [pkgs.vial];
+  home = {
+    packages = with pkgs; [
+      vial
+    ];
+  };
 }
