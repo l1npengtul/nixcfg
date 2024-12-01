@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./anki.nix
     ./audacious.nix
     ./audiotube.nix
     ./bitwig.nix
