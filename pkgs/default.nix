@@ -17,5 +17,6 @@
     ./tailscale-client.nix
     ./input.nix
     ./diskmgmt.nix
+    ./podman.nix
   ];
 }
