@@ -10,7 +10,9 @@ in {
     fira-code
     fira-code-symbols
     proggyfonts
-    nerdfonts
+    nerd-fonts.comic-shanns-mono
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only
     rainyhearts-ttf
     dalmoori-ttf
     pixelmplus-ttf
@@ -23,7 +25,7 @@ in {
 
   fonts.fontconfig = {
     defaultFonts = {
-      sansSerif = ["rainyhearts" "dalmoori" "PixelMplus12" "Noto Sans CJK JA"];
+      sansSerif = ["rainyhearts" "Noto Sans CJK JA" "Noto Sans CJK KR"];
       monospace = ["ComicShannsMono Nerd Font Mono" "Noto Sans Mono CJK KR" "Noto Sans Mono CJK JA"];
     };
   };
