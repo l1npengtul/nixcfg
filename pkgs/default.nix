@@ -16,5 +16,6 @@
     ./matlab.nix
     ./tailscale-client.nix
     ./input.nix
+    ./diskmgmt.nix
   ];
 }
