@@ -39,6 +39,7 @@
 
   boot.kernelParams = ["mem_sleep_default=deep"];
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/MAGPIE_SIGNAL";
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   powerManagement = {
     powertop.enable = true;
