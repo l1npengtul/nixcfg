@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  environment.packages = with pkgs; [util-linux gptfdisk gparted];
+  environment.systemPackages = with pkgs; [util-linux gptfdisk gparted];
 }
