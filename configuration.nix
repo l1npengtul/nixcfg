@@ -124,6 +124,8 @@
   # system.copySystemConfiguration = true;
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs-stable.config.allowUnfree = true;
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
