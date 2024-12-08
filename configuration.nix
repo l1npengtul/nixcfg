@@ -128,7 +128,6 @@
   # system.copySystemConfiguration = true;
 
   nixpkgs.config.allowUnfree = true;
-  pkgs-stable.config.allowUnfree = true;
 
   nix.settings.experimental-features = [
     "nix-command"

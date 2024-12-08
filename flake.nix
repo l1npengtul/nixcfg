@@ -76,7 +76,12 @@
     username = "l1npengtul";
     system = "x86_64-linux";
     lib = nixpkgs.lib // home-manager.lib;
-    pkgs-stable = nixpkgs-stable.legacyPackages.${system};
+    commonArgs = {
+      inherit system;
+      config.allowUnfree = true;
+    };
+    pkgs = import nixpkgs commonArgs;
+    pkgs-stable = import nixpkgs-stable commonArgs;
   in {
     inherit lib;
 
@@ -85,6 +90,7 @@
         inherit system;
         specialArgs = {
           inherit inputs;
+          inherit pkgs;
           inherit pkgs-stable;
         };
 
