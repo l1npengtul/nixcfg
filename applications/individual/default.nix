@@ -3,7 +3,6 @@
     ./anki.nix
     ./audacious.nix
     ./audiotube.nix
-    ./bitwig.nix
     ./blender.nix
     ./kdeconnect.nix
     ./kdenlive.nix
