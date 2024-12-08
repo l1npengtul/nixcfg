@@ -2,6 +2,7 @@
   description = "sakana fish nixos real";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     home-manager = {
@@ -69,18 +70,23 @@
     nix-index-database,
     vhs-decode-nur-packages,
     nix-matlab,
+    nixpkgs-stable,
     ...
   }: let
     username = "l1npengtul";
     system = "x86_64-linux";
     lib = nixpkgs.lib // home-manager.lib;
+    pkgs-stable = nixpkgs-stable.legacyPackages.${system};
   in {
     inherit lib;
 
     nixosConfigurations = {
       thinkpad_x1c_2in1_gen9 = lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+          inherit inputs;
+          inherit pkgs-stable;
+        };
 
         modules = [
           nixos-hardware.nixosModules.common-cpu-intel

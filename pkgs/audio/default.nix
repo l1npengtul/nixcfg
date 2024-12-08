@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  pkgs-stable,
   ...
 }: let
   #     buildGradlePackage = inputs.gradle2nix.builders.x86_64-linux.buildGradlePackage;
@@ -55,7 +56,7 @@ in {
     #     synthv-studio-pro # fuck you dreamtonics
     plugdata
     alsa-utils
-    bitwig-studio
+    pkgs-stable.bitwig-studio
     yabridgectl
     yabridge
     wine
