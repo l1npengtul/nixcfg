@@ -85,10 +85,12 @@
   #     };
 
   hardware.sensor.iio.enable = true;
-  hardware.ipu6 = {
-    enable = true;
-    platform = "ipu6epmtl";
-  };
+  #hardware.ipu6 = {
+  #  enable = true;
+  #  platform = "ipu6epmtl";
+  #};
+  hardware.ipu6.enable = false;
+
   hardware.graphics = {
     # hardware.opengl in 24.05
     enable = true;
