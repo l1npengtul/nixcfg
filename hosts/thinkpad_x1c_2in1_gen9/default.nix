@@ -90,7 +90,7 @@
   #  platform = "ipu6epmtl";
   #};
   hardware.ipu6.enable = false;
-
+  boot.blacklistedKernelModules = ["intel_ipu6" "intel_ipu6_isys" "intel_ipu6_isys.isys"]; # not sure if all of them are required
   hardware.graphics = {
     # hardware.opengl in 24.05
     enable = true;
