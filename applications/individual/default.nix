@@ -26,5 +26,6 @@
     ./okteta.nix
     ./reaper.nix
     ./keyboard.nix
+    ./irc.nix
   ];
 }
