@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  pkgs-stable,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -58,7 +62,7 @@
   };
 
   hardware.graphics.enable = true;
-  boot.kernelPackages = pkgs.linuxPackages_6_11;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
   networking.hostName = "peng_tokyo_server"; # Define your hostname.
   networking.firewall.enable = true;
 
