@@ -136,7 +136,11 @@
       };
       peng_tokyo_server = lib.nixosSystem {
         inherit system;
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+          inherit inputs;
+          inherit pkgs;
+          inherit pkgs-stable;
+        };
 
         modules = [
           ./configuration.nix

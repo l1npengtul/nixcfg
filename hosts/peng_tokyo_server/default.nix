@@ -62,7 +62,7 @@
   };
 
   hardware.graphics.enable = true;
-  boot.kernelPackages = pkgs.linuxPackages_6_12;
+  boot.kernelPackages = pkgs-stable.linuxPackages_6_6;
   networking.hostName = "peng_tokyo_server"; # Define your hostname.
   networking.firewall.enable = true;
 
