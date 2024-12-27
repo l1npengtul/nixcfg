@@ -11,5 +11,7 @@
     ./cockpit.nix
     ./vhs-decode
     ./tailscale-host.nix
+    ./podman.nix
+    ./diskmgmt.nix
   ];
 }
