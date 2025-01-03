@@ -52,7 +52,7 @@ stdenv.mkDerivation {
   ];
 
   buildPhase = ''
-    cmake --build ignore/daw-plugin --target awcons-products
+    cmake --build $src/ignore/daw-plugin --target awcons-products
   '';
 
   installPhase = ''
