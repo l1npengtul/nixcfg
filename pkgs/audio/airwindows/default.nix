@@ -51,8 +51,6 @@ stdenv.mkDerivation {
     (lib.cmakeBool "USE_JUCE_PROGRAMS" true)
   ];
 
-  strictDeps = true;
-
   buildPhase = ''
     cmake --build ignore/daw-plugin --target awcons-products
   '';
