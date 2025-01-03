@@ -49,8 +49,6 @@ stdenv.mkDerivation rec {
     (lib.cmakeBool "USE_JUCE_PROGRAMS" true)
   ];
 
-  cmakeBuildDir = "ignore/daw-plugin";
-
   strictDeps = true;
 
   buildPhase = ''
