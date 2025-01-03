@@ -1,37 +1,72 @@
 {
   stdenv,
-  fetchzip,
+  fetchFromGitHub,
   lib,
-  autoPatchelfHook,
+  cmake,
+  pkg-config,
+  gcc12,
+  alsa-lib,
+  xorg,
+  freetype,
+  libGLU,
+  libjack2,
 }:
 stdenv.mkDerivation rec {
-  pname = "airwindows";
-  version = "0.2";
+  pname = "airwin2rack-juce";
+  version = "2.13.0";
 
-  src = fetchzip {
-    url = "https://www.airwindows.com/wp-content/uploads/LinuxVSTs.zip";
-    sha256 = "sha256-NewMzxGJR3bwrLVzi0F9HLjipJ6FqNu6jzbXcYTLcME=";
-    stripRoot = false;
+  src = fetchFromGitHub {
+    owner = "baconpaul";
+    repo = "airwin2rack";
+    rev = "db56d13f853831ab94a5e1713282e4e518f50d5c";
+    hash = "";
   };
 
-  buildInputs = [stdenv.cc.cc.lib];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    gcc12
+  ];
 
-  nativeBuildInputs = [autoPatchelfHook];
+  buildInputs = [
+    gcc12
+    alsa-lib
+    xorg.libX11
+    xorg.libXcomposite
+    xorg.libXcursor
+    xorg.libXext
+    xorg.libXinerama
+    xorg.xrandr
+    xorg.libXrender
+    libGLU
+    libjack2
+    freetype
+  ];
 
-  installPhase = ''
+  cmakeFlags = [
+    (lib.cmakeFeature "CMAKE_BUILD_TYPE" "Release")
+    (lib.cmakeBool "BUILD_JUCE_PLUGIN" true)
+    (lib.cmakeBool "USE_JUCE_PROGRAMS" true)
+  ];
 
-    runHook preInstall
+  cmakeBuildDir = "ignore/daw-plugin";
 
-    mkdir -p $out/lib/vst/airwindows
-    find . -name \*.so -exec cp {} $out/lib/vst/airwindows \;
+  strictDeps = true;
 
-    runHook postInstall
-
+  buildPhase = ''
+    cmake --build ignore/daw-plugin --target awcons-products
   '';
 
-  meta = with lib; {
-    description = "airwindows plugins";
+  installPhase = ''
+    ls -l $src/build/installer
+    exit 1
+  '';
+
+  meta = {
+    description = "JUCE Plugin Version of Airwindows Consolidated";
     homepage = "https://airwindows.com/";
-    platforms = platforms.x86_64;
+    platforms = ["x86_64-linux"];
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [l1npengtul];
   };
 }
