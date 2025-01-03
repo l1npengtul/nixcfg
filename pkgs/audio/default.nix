@@ -5,8 +5,8 @@
   ...
 }: let
   #     buildGradlePackage = inputs.gradle2nix.builders.x86_64-linux.buildGradlePackage;
-  #socalabs = pkgs.callPackage ./socalabs {};
-  airwindows = pkgs.callPackage ./airwindows {};
+  socalabs = pkgs.callPackage ./socalabs {};
+  #airwindows = pkgs.callPackage ./airwindows {};
   #   synthv-studio-pro = pkgs.callPackage ./synthv-studio-pro {};
   recstar = pkgs.callPackage ./recstar {};
   wine = pkgs.wineWowPackages.staging.override {
