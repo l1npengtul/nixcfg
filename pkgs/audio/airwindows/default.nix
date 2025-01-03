@@ -10,8 +10,9 @@
   freetype,
   libGLU,
   libjack2,
+  cpm-cmake,
 }:
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
   pname = "airwin2rack-juce";
   version = "2.13.0";
 
@@ -24,6 +25,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     cmake
+    cpm-cmake
     pkg-config
     gcc12
   ];
