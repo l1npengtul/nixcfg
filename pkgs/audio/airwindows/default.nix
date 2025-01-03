@@ -16,12 +16,34 @@ stdenv.mkDerivation {
   pname = "airwin2rack-juce";
   version = "2.13.0";
 
-  src = fetchFromGitHub {
-    owner = "baconpaul";
-    repo = "airwin2rack";
-    rev = "db56d13f853831ab94a5e1713282e4e518f50d5c";
-    hash = "sha256-D+Lw+3i/ME2BPwGr2S2CwonVhe+rTiVONcz4+htj+7w=";
-  };
+  srcs = [
+    (fetchFromGitHub {
+      owner = "baconpaul";
+      repo = "airwin2rack";
+      rev = "db56d13f853831ab94a5e1713282e4e518f50d5c";
+      hash = "sha256-D+Lw+3i/ME2BPwGr2S2CwonVhe+rTiVONcz4+htj+7w=";
+      fetchSubmodules = true;
+      name = "src";
+    })
+    (fetchFromGitHub {
+      owner = "juce-framework";
+      repo = "JUCE";
+      rev = "51d11a2be6d5c97ccf12b4e5e827006e19f0555a";
+      hash = "";
+      fetchSubmodules = true;
+      name = "juce";
+    })
+    (fetchFromGitHub {
+      owner = "free-audio";
+      repo = "clap-juce-extensions";
+      rev = "4f33b4930b6af806018c009f0f24b3a50808af99";
+      hash = "";
+      fetchSubmodules = true;
+      name = "clap";
+    })
+  ];
+
+  sourceRoot = "src";
 
   nativeBuildInputs = [
     cmake
@@ -46,10 +68,15 @@ stdenv.mkDerivation {
   ];
 
   cmakeFlags = [
-    (lib.cmakeFeature "CMAKE_BUILD_TYPE" "Release")
     (lib.cmakeBool "BUILD_JUCE_PLUGIN" true)
     (lib.cmakeBool "USE_JUCE_PROGRAMS" true)
   ];
+
+  cmakeBuildType = "Release";
+
+  unpackPhase = ''
+
+  '';
 
   buildPhase = ''
     cmake --build $src/ignore/daw-plugin --target awcons-products
@@ -59,6 +86,16 @@ stdenv.mkDerivation {
     ls -l $src/build/installer
     exit 1
   '';
+
+  NIX_LDFLAGS = (
+    toString [
+      "-lX11"
+      "-lXext"
+      "-lXcursor"
+      "-lXinerama"
+      "-lXrandr"
+    ]
+  );
 
   meta = {
     description = "JUCE Plugin Version of Airwindows Consolidated";

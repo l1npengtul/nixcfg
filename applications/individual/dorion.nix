@@ -4,6 +4,7 @@
       dorion
       legcord
       discord
+      discordchatexporter-desktop
     ];
   };
 }
