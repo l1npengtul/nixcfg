@@ -73,6 +73,7 @@ in
     buildPhase = ''
       ln -s $src/CMakePresets.json /build/source/build/
       ln -s $src/modules /build/source/build/modules
+      ln -s /build/source/Builds /build/source/build/Builds
       ls /build/source/build/
       cmake --build /build/source/Builds/ninja-gcc --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
     '';
