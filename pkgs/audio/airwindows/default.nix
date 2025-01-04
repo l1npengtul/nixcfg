@@ -11,13 +11,10 @@
   libGLU,
   libjack2,
   cpm-cmake,
+  juce,
 }: let
-  juce = fetchFromGitHub {
-    owner = "juce-framework";
-    repo = "JUCE";
-    rev = "51d11a2be6d5c97ccf12b4e5e827006e19f0555a";
-    hash = "sha256-iAueT+yHwUUHOzqfK5zXEZQ0GgOKJ9q9TyRrVfWdewc=";
-    fetchSubmodules = true;
+  juce' = juce.overrideAttrs rec {
+    version = "8.0.4";
   };
   clap = fetchFromGitHub {
     owner = "free-audio";
@@ -75,8 +72,8 @@ in
     preConfigure = ''
       mkdir -p src-juce/modules/juce
       mkdir -p src-juce/modules/clap
-      ln -s ${juce.source} src-juce/modules/juce
-      ln -s ${clap.source} src-juce/modules/clap
+      ln -s ${juce'.src} src-juce/modules/juce
+      ln -s ${clap}/ src-juce/modules/clap
       ls src-juce/modules/juce
       ls src-juce/modules/clap
     '';
