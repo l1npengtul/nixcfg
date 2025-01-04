@@ -65,13 +65,12 @@ in
     ];
 
     cmakeFlags = [
-      "--preset ninja-gcc"
     ];
 
     cmakeBuildType = "Release";
 
     buildPhase = ''
-      cmake --build --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
+      cmake --build  --config Release --parallel $NIX_BUILD_CORES
     '';
 
     installPhase = ''
