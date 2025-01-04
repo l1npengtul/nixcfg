@@ -64,6 +64,8 @@ in
     cmakeFlags = [
       (lib.cmakeBool "BUILD_JUCE_PLUGIN" true)
       (lib.cmakeBool "USE_JUCE_PROGRAMS" true)
+      "JUCE_DIR=${juce}"
+      "CLAP_DIR=${clap}"
     ];
 
     cmakeBuildType = "Release";
@@ -71,12 +73,6 @@ in
     patches = [
       ./0000-juce-clap-juce-extensions-src-juce-cmakelists.patch
     ];
-
-    preConfigure = ''
-      mkdir -p $src/src-juce/modules
-      mv ${juce} $src/src-juce/modules
-      mv ${clap} $src/src-juce/modules
-    '';
 
     buildPhase = ''
       cmake --build $src/ignore/daw-plugin --target awcons-products
