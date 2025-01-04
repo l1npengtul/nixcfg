@@ -72,15 +72,16 @@ in
     cmakeFlags = [
       (lib.cmakeBool "BUILD_EXTRAS" true)
       (lib.cmakeBool "BUILD_TESTING" false)
-      "-D CMAKE_CXX_COMPILER=g++"
-      "-D CMAKE_C_COMPILER=gcc"
-      "-D BUILD_EXTRAS=OFF"
-      "-D JUCE_COPY_PLUGIN_AFTER_BUILD=ON"
+      "-DCMAKE_CXX_COMPILER=g++"
+      "-DCMAKE_C_COMPILER=gcc"
+      "-DBUILD_EXTRAS=OFF"
+      "-DJUCE_COPY_PLUGIN_AFTER_BUILD=ON"
     ];
 
     cmakeBuildType = "Release";
 
     buildPhase = ''
+      ls -l /build/source/build
       export FONTCONFIG_FILE=${fontsConf}
       ninja -j$NIX_BUILD_CORES
     '';
