@@ -1,7 +1,6 @@
 {
   stdenv,
   fetchFromGitHub,
-  makeFontsConf,
   lib,
   cmake,
   pkg-config,
@@ -65,17 +64,14 @@ in
       webkitgtk
     ];
 
-    fontsConf = makeFontsConf {
-      fontDirectories = [];
-    };
-
     cmakeFlags = [
+      "--preset ninja-gcc"
     ];
 
     cmakeBuildType = "Release";
 
     buildPhase = ''
-      cmake --build . --config Release --parallel $NIX_BUILD_CORES
+      cmake --build . --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
     '';
 
     installPhase = ''
