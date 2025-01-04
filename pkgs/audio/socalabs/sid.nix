@@ -29,7 +29,7 @@ in
           owner = "FigBug";
           repo = plname;
           rev = "bb826fdea39da0804c53d81d35bea29aeff4436d";
-          hash = "";
+          hash = "sha256-6IStysItOS7EltTCqdyo9vrsnSA1YYoN4y8Bjv1fhNk=";
           fetchSubmodules = true;
         })
       .overrideAttrs (_: {

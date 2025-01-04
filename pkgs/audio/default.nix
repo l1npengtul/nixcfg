@@ -60,15 +60,7 @@ in {
     musescore
     paulstretch
 
-    organ
-    papu
-    piano
-    rp2a03
     sid
-    slplugins
-    sn76489
-    voc
-    wavetable
 
     vital
     airwindows
