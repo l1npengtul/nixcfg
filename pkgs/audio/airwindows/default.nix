@@ -83,7 +83,7 @@ in
 
     installPhase = ''
       mkdir -p temp
-      unzip installer/AirwindowsConsolidated-1980-01-01-unknownhash-Linux.zip temp
+      unzip installer/AirwindowsConsolidated-1980-01-01-unknownhash-Linux.zip -d temp
       ls -l temp
     '';
 
