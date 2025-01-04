@@ -74,7 +74,7 @@ in
       ln -s $src/CMakePresets.json /build/source/build/
       ln -s $src/modules /build/source/build/modules
       ls /build/source/build/
-      cmake --build --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
+      cmake --build /build/source/Builds/ninja-gcc --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
     '';
 
     installPhase = ''
