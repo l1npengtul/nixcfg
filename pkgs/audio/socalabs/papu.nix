@@ -22,14 +22,14 @@ stdenv.mkDerivation rec {
   version = "1.1.0";
 
   src =
-    fetchFromGitHub
-    {
-      owner = "FigBug";
-      repo = "PAPU";
-      rev = "e7c42c7d9056f21ec5bbdcb101908969effe9db0";
-      hash = "";
-      fetchSubmodules = true;
-    }
+    (fetchFromGitHub
+      {
+        owner = "FigBug";
+        repo = "PAPU";
+        rev = "e7c42c7d9056f21ec5bbdcb101908969effe9db0";
+        hash = "";
+        fetchSubmodules = true;
+      })
     .overrideAttrs (_: {
       GIT_CONFIG_COUNT = 1;
       GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
