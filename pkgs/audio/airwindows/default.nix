@@ -71,8 +71,6 @@ in
     ];
 
     preConfigure = ''
-      mkdir -p src-juce/juce
-      mkdir -p src-juce/clap-juce-extensions
       ln -s ${juce'.src} src-juce/juce
       ln -s ${clap-juce-extensions} src-juce/clap-juce-extensions
       ls -l src-juce/juce
