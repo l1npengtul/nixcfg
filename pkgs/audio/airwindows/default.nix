@@ -82,11 +82,11 @@ in
     '';
 
     buildPhase = ''
-      cmake --build $src/ignore/daw-plugin --target awcons-products
+      cmake --build ignore/daw-plugin --target awcons-products
     '';
 
     installPhase = ''
-      ls -l $src/build/installer
+      ls -l build/installer
       exit 1
     '';
 
