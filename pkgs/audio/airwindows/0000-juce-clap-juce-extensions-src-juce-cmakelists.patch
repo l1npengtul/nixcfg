@@ -1,8 +1,8 @@
 diff --git a/src-juce/CMakeLists.txt b/src-juce/CMakeLists.txt
-index 1f41088..d496f6e 100644
+index 1f41088..0780a31 100644
 --- a/src-juce/CMakeLists.txt
 +++ b/src-juce/CMakeLists.txt
-@@ -1,28 +1,10 @@
+@@ -1,28 +1,8 @@
  # vi:set sw=2 et:
  project(airwin-consolidated VERSION ${CMAKE_PROJECT_VERSION})
  
@@ -28,8 +28,6 @@ index 1f41088..d496f6e 100644
 -        GIT_TAG main
 -        SUBMODULE_RECURSIVE ON
 -)
-+set(JUCE_DIR "JUCE Directory" "")
-+set(CLAP_DIR "CLAP Extension Directory" "")
 +add_subdirectory(${JUCE_DIR})
 +add_subdirectory(${CLAP_DIR})
  
