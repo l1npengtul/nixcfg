@@ -76,7 +76,7 @@ in
     '';
 
     buildPhase = ''
-      cmake --build ./build --config Release --target awcons-installer
+      cmake --build . --config Release --target awcons-installer
     '';
 
     installPhase = ''
