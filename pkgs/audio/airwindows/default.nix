@@ -73,10 +73,7 @@ in
     ];
 
     preConfigure = ''
-      ln -s ${juce'
-        xorg
-        .libXcomposite
-        .src} src-juce/juce
+      ln -s ${juce'.src} src-juce/juce
       ln -s ${clap-juce-extensions} src-juce/clap-juce-extensions
     '';
 
