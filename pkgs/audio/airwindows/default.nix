@@ -77,7 +77,7 @@ in
       ln -s ${clap} src-juce/modules/clap
       ls -l src-juce/modules/juce
       ls -l src-juce/modules/clap
-      ls ${juce'}
+      ls ${juce'.src}
       ls ${clap}
     '';
 
