@@ -9,4 +9,4 @@ git add .
 
 git commit  --allow-empty -m "$(whoami): $(date) - $@"
 
-nixos-rebuild build --fast --show-trace --flake --verbost -L --print-build-logs .#$NIX_SWITCH_BUILD_SYSTEM_CFG_PENGPENGPENG
+nixos-rebuild build --fast --show-trace --verbose --print-build-logs --flake .#$NIX_SWITCH_BUILD_SYSTEM_CFG_PENGPENGPENG
