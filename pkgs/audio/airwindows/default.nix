@@ -73,13 +73,10 @@ in
     preConfigure = ''
       ln -s ${juce'.src} src-juce/juce
       ln -s ${clap-juce-extensions} src-juce/clap-juce-extensions
-      ls -l src-juce/juce
-      ls -l src-juce/clap-juce-extensions
-      ls src-juce/juce
-      ls src-juce/clap-juce-extensions
     '';
 
     buildPhase = ''
+      ls -l
       cmake --build ignore/daw-plugin --target awcons-products
     '';
 
