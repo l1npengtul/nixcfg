@@ -16,7 +16,7 @@
   juce' = juce.overrideAttrs rec {
     version = "8.0.4";
   };
-  clap = fetchFromGitHub {
+  clap-juce-extensions = fetchFromGitHub {
     owner = "free-audio";
     repo = "clap-juce-extensions";
     rev = "4f33b4930b6af806018c009f0f24b3a50808af99";
@@ -71,14 +71,14 @@ in
     ];
 
     preConfigure = ''
-      mkdir -p src-juce/modules/juce
-      mkdir -p src-juce/modules/clap
-      ln -s ${juce'.src} src-juce/modules/juce
-      ln -s ${clap} src-juce/modules/clap
-      ls -l src-juce/modules/juce
-      ls -l src-juce/modules/clap
+      mkdir -p src-juce/juce
+      mkdir -p src-juce/clap-juce-extensions
+      ln -s ${juce'.src} src-juce/juce
+      ln -s ${clap-juce-extensions} src-juce/clap-juce-extensions
+      ls -l src-juce/juce
+      ls -l src-juce/clap-juce-extensions
       ls ${juce'.src}
-      ls ${clap}
+      ls ${clap-juce-extensions}
     '';
 
     buildPhase = ''
