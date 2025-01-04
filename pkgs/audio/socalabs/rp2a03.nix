@@ -77,7 +77,7 @@ in
     installPhase = ''
       runHook preInstall
 
-      mkdir -p $out/lib64/vst3 $out/lib64/vst $out/lib64/lv2
+      mkdir -p $out/lib/vst3 $out/lib/vst $out/lib/lv2
 
         cp -R Builds/ninja-gcc/${plname}_artefacts/Release/LV2/${plname}.lv2 $out/lib/lv2
         cp -R Builds/ninja-gcc/${plname}_artefacts/Release/VST/lib${plname}.so $out/lib/vst
