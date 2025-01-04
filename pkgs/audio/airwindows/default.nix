@@ -79,6 +79,8 @@ in
       ls -l ${juce}
       ls -l .
       ls -l $src
+      echo $src
+      echo $pwd
     '';
 
     buildPhase = ''
