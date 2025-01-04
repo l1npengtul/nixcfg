@@ -95,6 +95,8 @@ in
 
       install -Dm755 "temp/awcons-products/Airwindows Consolidated" $out/bin/Airwindows\ Consolidated
 
+      ln -s $out/bin/Airwindows\ Consolidated $out/bin/airwindows-consolidated
+
       runHook postInstall
     '';
 
@@ -113,6 +115,7 @@ in
       homepage = "https://airwindows.com/";
       platforms = ["x86_64-linux"];
       license = lib.licenses.mit;
+      mainProgram = "airwindows-consolidated";
       maintainers = with lib.maintainers; [l1npengtul];
     };
   }
