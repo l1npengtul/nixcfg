@@ -17,7 +17,6 @@
   juce,
   gcc12,
   makeFontsCache,
-  ghostscript,
 }: let
   plname = "SID";
 in
@@ -27,7 +26,6 @@ in
 
     fontsConf = makeFontsCache {
       fontDirectories = [
-        "${ghostscript}/share/ghostscript/fonts"
       ];
     };
 
@@ -72,6 +70,8 @@ in
     ];
 
     cmakeFlags = [
+      (lib.cmakeBool "BUILD_EXTRAS" true)
+      (lib.cmakeBool "BUILD_TESTING" false)
       "-D CMAKE_CXX_COMPILER=g++"
       "-D CMAKE_C_COMPILER=gcc"
       "-D BUILD_EXTRAS=OFF"
@@ -82,7 +82,7 @@ in
 
     buildPhase = ''
       export FONTCONFIG_FILE=${fontsConf}
-      cmake --build . --config Release --parallel $NIX_BUILD_CORES
+      ninja -j$NIX_BUILD_CORES
     '';
 
     installPhase = ''
