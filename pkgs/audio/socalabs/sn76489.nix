@@ -16,89 +16,91 @@
   mesa,
   webkitgtk,
   juce,
-}:
-stdenv.mkDerivation rec {
-  pname = "socalabs-sn76489";
-  version = "1.1.0";
+}: let
+  plname = "SN76489";
+in
+  stdenv.mkDerivation rec {
+    pname = "socalabs-sn76489";
+    version = "1.1.0";
 
-  src =
-    (fetchFromGitHub
-      {
-        owner = "FigBug";
-        repo = "SN76489";
-        rev = "210e0c799727be07cb7f9559af40616e17f20302";
-        hash = "";
-        fetchSubmodules = true;
-      })
-    .overrideAttrs (_: {
-      GIT_CONFIG_COUNT = 1;
-      GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
-      GIT_CONFIG_VALUE_0 = "git@github.com:";
-    });
+    src =
+      (fetchFromGitHub
+        {
+          owner = "FigBug";
+          repo = plname;
+          rev = "210e0c799727be07cb7f9559af40616e17f20302";
+          hash = "";
+          fetchSubmodules = true;
+        })
+      .overrideAttrs (_: {
+        GIT_CONFIG_COUNT = 1;
+        GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
+        GIT_CONFIG_VALUE_0 = "git@github.com:";
+      });
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    ninja
-    juce
-    gcc12
-  ];
+    nativeBuildInputs = [
+      cmake
+      pkg-config
+      ninja
+      juce
+      gcc12
+    ];
 
-  buildInputs = [
-    gcc12
-    alsa-lib
-    xorg.libX11
-    xorg.libXcomposite
-    xorg.libXcursor
-    xorg.libXinerama
-    xorg.libXrandr
-    xorg.xvfb
-    libGLU
-    libjack2
-    freetype
-    ladspa-sdk
-    curl
-    mesa
-    webkitgtk
-  ];
+    buildInputs = [
+      gcc12
+      alsa-lib
+      xorg.libX11
+      xorg.libXcomposite
+      xorg.libXcursor
+      xorg.libXinerama
+      xorg.libXrandr
+      xorg.xvfb
+      libGLU
+      libjack2
+      freetype
+      ladspa-sdk
+      curl
+      mesa
+      webkitgtk
+    ];
 
-  cmakeFlags = [
-    "--preset ninja-gcc"
-  ];
+    cmakeFlags = [
+      "--preset ninja-gcc"
+    ];
 
-  cmakeBuildType = "Release";
+    cmakeBuildType = "Release";
 
-  buildPhase = ''
-    cmake --build --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
-  '';
+    buildPhase = ''
+      cmake --build --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
+    '';
 
-  installPhase = ''
-    runHook preInstall
+    installPhase = ''
+      runHook preInstall
 
-    mkdir -p $out/lib64/vst3 $out/lib64/vst $out/lib64/lv2
+      mkdir -p $out/lib64/vst3 $out/lib64/vst $out/lib64/lv2
 
-      cp -R Builds/ninja-gcc/${src.repo}_artefacts/Release/LV2/${src.repo}.lv2 $out/lib/lv2
-      cp -R Builds/ninja-gcc/${src.repo}_artefacts/Release/VST/lib${src.repo}.so $out/lib/vst
-      cp -R Builds/ninja-gcc/${src.repo}_artefacts/Release/VST3/${src.repo}.vst3 $out/lib/vst3
+        cp -R Builds/ninja-gcc/${src.repo}_artefacts/Release/LV2/${src.repo}.lv2 $out/lib/lv2
+        cp -R Builds/ninja-gcc/${src.repo}_artefacts/Release/VST/lib${src.repo}.so $out/lib/vst
+        cp -R Builds/ninja-gcc/${src.repo}_artefacts/Release/VST3/${src.repo}.vst3 $out/lib/vst3
 
-    runHook postInstall
-  '';
+      runHook postInstall
+    '';
 
-  NIX_LDFLAGS = (
-    toString [
-      "-lX11"
-      "-lXcomposite"
-      "-lXcursor"
-      "-lXinerama"
-      "-lXrandr"
-    ]
-  );
+    NIX_LDFLAGS = (
+      toString [
+        "-lX11"
+        "-lXcomposite"
+        "-lXcursor"
+        "-lXinerama"
+        "-lXrandr"
+      ]
+    );
 
-  meta = {
-    description = "Socalabs Texas Instruments SN76489 from Sega Master System Emulation Plugin";
-    homepage = "https://socalabs.com/synths/sn76489/";
-    platforms = ["x86_64-linux"];
-    license = lib.licenses.gpl3;
-    maintainers = with lib.maintainers; [l1npengtul];
-  };
-}
+    meta = {
+      description = "Socalabs Texas Instruments SN76489 from Sega Master System Emulation Plugin";
+      homepage = "https://socalabs.com/synths/sn76489/";
+      platforms = ["x86_64-linux"];
+      license = lib.licenses.gpl3;
+      maintainers = with lib.maintainers; [l1npengtul];
+    };
+  }

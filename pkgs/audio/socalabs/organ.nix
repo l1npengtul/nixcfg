@@ -16,89 +16,91 @@
   mesa,
   webkitgtk,
   juce,
-}:
-stdenv.mkDerivation rec {
-  pname = "socalabs-organ";
-  version = "1.0.0";
+}: let
+  plname = "Organ";
+in
+  stdenv.mkDerivation rec {
+    pname = "socalabs-organ";
+    version = "1.0.0";
 
-  src =
-    (fetchFromGitHub
-      {
-        owner = "FigBug";
-        repo = "Organ";
-        rev = "17f884126bb76d2d3c95e12224aab8f38ef8c96d";
-        hash = "";
-        fetchSubmodules = true;
-      })
-    .overrideAttrs (_: {
-      GIT_CONFIG_COUNT = 1;
-      GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
-      GIT_CONFIG_VALUE_0 = "git@github.com:";
-    });
+    src =
+      (fetchFromGitHub
+        {
+          owner = "FigBug";
+          repo = plname;
+          rev = "17f884126bb76d2d3c95e12224aab8f38ef8c96d";
+          hash = "";
+          fetchSubmodules = true;
+        })
+      .overrideAttrs (_: {
+        GIT_CONFIG_COUNT = 1;
+        GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
+        GIT_CONFIG_VALUE_0 = "git@github.com:";
+      });
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    ninja
-    juce
-    gcc12
-  ];
+    nativeBuildInputs = [
+      cmake
+      pkg-config
+      ninja
+      juce
+      gcc12
+    ];
 
-  buildInputs = [
-    gcc12
-    alsa-lib
-    xorg.libX11
-    xorg.libXcomposite
-    xorg.libXcursor
-    xorg.libXinerama
-    xorg.libXrandr
-    xorg.xvfb
-    libGLU
-    libjack2
-    freetype
-    ladspa-sdk
-    curl
-    mesa
-    webkitgtk
-  ];
+    buildInputs = [
+      gcc12
+      alsa-lib
+      xorg.libX11
+      xorg.libXcomposite
+      xorg.libXcursor
+      xorg.libXinerama
+      xorg.libXrandr
+      xorg.xvfb
+      libGLU
+      libjack2
+      freetype
+      ladspa-sdk
+      curl
+      mesa
+      webkitgtk
+    ];
 
-  cmakeFlags = [
-    "--preset ninja-gcc"
-  ];
+    cmakeFlags = [
+      "--preset ninja-gcc"
+    ];
 
-  cmakeBuildType = "Release";
+    cmakeBuildType = "Release";
 
-  buildPhase = ''
-    cmake --build --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
-  '';
+    buildPhase = ''
+      cmake --build --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
+    '';
 
-  installPhase = ''
-    runHook preInstall
+    installPhase = ''
+      runHook preInstall
 
-    mkdir -p $out/lib64/vst3 $out/lib64/vst $out/lib64/lv2
+      mkdir -p $out/lib64/vst3 $out/lib64/vst $out/lib64/lv2
 
-      cp -R Builds/ninja-gcc/${src.repo}_artefacts/Release/LV2/${src.repo}.lv2 $out/lib/lv2
-      cp -R Builds/ninja-gcc/${src.repo}_artefacts/Release/VST/lib${src.repo}.so $out/lib/vst
-      cp -R Builds/ninja-gcc/${src.repo}_artefacts/Release/VST3/${src.repo}.vst3 $out/lib/vst3
+        cp -R Builds/ninja-gcc/${plname}_artefacts/Release/LV2/${plname}.lv2 $out/lib/lv2
+        cp -R Builds/ninja-gcc/${plname}_artefacts/Release/VST/lib${plname}.so $out/lib/vst
+        cp -R Builds/ninja-gcc/${plname}_artefacts/Release/VST3/${plname}.vst3 $out/lib/vst3
 
-    runHook postInstall
-  '';
+      runHook postInstall
+    '';
 
-  NIX_LDFLAGS = (
-    toString [
-      "-lX11"
-      "-lXcomposite"
-      "-lXcursor"
-      "-lXinerama"
-      "-lXrandr"
-    ]
-  );
+    NIX_LDFLAGS = (
+      toString [
+        "-lX11"
+        "-lXcomposite"
+        "-lXcursor"
+        "-lXinerama"
+        "-lXrandr"
+      ]
+    );
 
-  meta = {
-    description = "Socalabs Electric Organ Emulation Plugin";
-    homepage = "https://socalabs.com/synths/organ/";
-    platforms = ["x86_64-linux"];
-    license = lib.licenses.gpl3;
-    maintainers = with lib.maintainers; [l1npengtul];
-  };
-}
+    meta = {
+      description = "Socalabs Electric Organ Emulation Plugin";
+      homepage = "https://socalabs.com/synths/organ/";
+      platforms = ["x86_64-linux"];
+      license = lib.licenses.gpl3;
+      maintainers = with lib.maintainers; [l1npengtul];
+    };
+  }
