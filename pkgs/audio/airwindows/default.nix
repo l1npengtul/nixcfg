@@ -77,6 +77,7 @@ in
 
     buildPhase = ''
       ls -l
+      ls -l /build/source/build
       cmake --build ignore/daw-plugin --target awcons-products
     '';
 
