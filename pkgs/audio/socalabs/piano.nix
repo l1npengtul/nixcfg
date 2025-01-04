@@ -21,13 +21,20 @@ stdenv.mkDerivation rec {
   pname = "socalabs-piano";
   version = "1.0.0";
 
-  src = fetchFromGitHub {
-    owner = "FigBug";
-    repo = "Piano";
-    rev = "3a5229a78a8441f9331c267cc5a9ae22f0cae016";
-    hash = "";
-    fetchSubmodules = true;
-  };
+  src =
+    fetchFromGitHub
+    {
+      owner = "FigBug";
+      repo = "Piano";
+      rev = "3a5229a78a8441f9331c267cc5a9ae22f0cae016";
+      hash = "";
+      fetchSubmodules = true;
+    }
+    .overrideAttrs (_: {
+      GIT_CONFIG_COUNT = 1;
+      GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
+      GIT_CONFIG_VALUE_0 = "git@github.com:";
+    });
 
   nativeBuildInputs = [
     cmake

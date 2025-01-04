@@ -21,13 +21,20 @@ stdenv.mkDerivation rec {
   pname = "socalabs-wavetable";
   version = "1.0.22";
 
-  src = fetchFromGitHub {
-    owner = "FigBug";
-    repo = "Wavetable";
-    rev = "397a6f3736ca85ad3dd93972ba52ee263c9fd83b";
-    hash = "";
-    fetchSubmodules = true;
-  };
+  src =
+    fetchFromGitHub
+    {
+      owner = "FigBug";
+      repo = "Wavetable";
+      rev = "397a6f3736ca85ad3dd93972ba52ee263c9fd83b";
+      hash = "";
+      fetchSubmodules = true;
+    }
+    .overrideAttrs (_: {
+      GIT_CONFIG_COUNT = 1;
+      GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
+      GIT_CONFIG_VALUE_0 = "git@github.com:";
+    });
 
   nativeBuildInputs = [
     cmake

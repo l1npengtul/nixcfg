@@ -21,13 +21,20 @@ stdenv.mkDerivation rec {
   pname = "socalabs-rp2a03";
   version = "1.1.0";
 
-  src = fetchFromGitHub {
-    owner = "FigBug";
-    repo = "RP2A03";
-    rev = "383b677226a1a686599041fb5f5fcdb81c96db7a";
-    hash = "";
-    fetchSubmodules = true;
-  };
+  src =
+    fetchFromGitHub
+    {
+      owner = "FigBug";
+      repo = "RP2A03";
+      rev = "383b677226a1a686599041fb5f5fcdb81c96db7a";
+      hash = "";
+      fetchSubmodules = true;
+    }
+    .overrideAttrs (_: {
+      GIT_CONFIG_COUNT = 1;
+      GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
+      GIT_CONFIG_VALUE_0 = "git@github.com:";
+    });
 
   nativeBuildInputs = [
     cmake

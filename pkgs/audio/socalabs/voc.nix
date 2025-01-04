@@ -21,13 +21,20 @@ stdenv.mkDerivation rec {
   pname = "socalabs-voc-vocal-synth";
   version = "1.1.0";
 
-  src = fetchFromGitHub {
-    owner = "FigBug";
-    repo = "Voc";
-    rev = "fc155519b1583e8ab08e36567596ab22ee75716c";
-    hash = "";
-    fetchSubmodules = true;
-  };
+  src =
+    fetchFromGitHub
+    {
+      owner = "FigBug";
+      repo = "Voc";
+      rev = "fc155519b1583e8ab08e36567596ab22ee75716c";
+      hash = "";
+      fetchSubmodules = true;
+    }
+    .overrideAttrs (_: {
+      GIT_CONFIG_COUNT = 1;
+      GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
+      GIT_CONFIG_VALUE_0 = "git@github.com:";
+    });
 
   nativeBuildInputs = [
     cmake

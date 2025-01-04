@@ -21,13 +21,20 @@ stdenv.mkDerivation rec {
   pname = "socalabs-slplugins";
   version = "1.1.0";
 
-  src = fetchFromGitHub {
-    owner = "FigBug";
-    repo = "slPlugins";
-    rev = "fcaec26cdd8391e19bcf1d9b21ab1e2c31d587ed";
-    hash = "";
-    fetchSubmodules = true;
-  };
+  src =
+    fetchFromGitHub
+    {
+      owner = "FigBug";
+      repo = "slPlugins";
+      rev = "fcaec26cdd8391e19bcf1d9b21ab1e2c31d587ed";
+      hash = "";
+      fetchSubmodules = true;
+    }
+    .overrideAttrs (_: {
+      GIT_CONFIG_COUNT = 1;
+      GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
+      GIT_CONFIG_VALUE_0 = "git@github.com:";
+    });
 
   nativeBuildInputs = [
     cmake
