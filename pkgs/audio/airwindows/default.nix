@@ -77,6 +77,8 @@ in
     preConfigure = ''
       ls -l ${clap}
       ls -l ${juce}
+      ls -l .
+      ls -l $src
     '';
 
     buildPhase = ''
