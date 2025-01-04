@@ -79,9 +79,9 @@ in
 
       mkdir -p $out/lib/vst3 $out/lib/vst $out/lib/lv2
 
-        cp -R Builds/ninja-gcc/${src.repo}_artefacts/Release/LV2/${src.repo}.lv2 $out/lib/lv2
-        cp -R Builds/ninja-gcc/${src.repo}_artefacts/Release/VST/lib${src.repo}.so $out/lib/vst
-        cp -R Builds/ninja-gcc/${src.repo}_artefacts/Release/VST3/${src.repo}.vst3 $out/lib/vst3
+        cp -R Builds/ninja-gcc/${plname}_artefacts/Release/LV2/${plname}.lv2 $out/lib/lv2
+        cp -R Builds/ninja-gcc/${plname}_artefacts/Release/VST/lib${plname}.so $out/lib/vst
+        cp -R Builds/ninja-gcc/${plname}_artefacts/Release/VST3/${plname}.vst3 $out/lib/vst3
 
       runHook postInstall
     '';
