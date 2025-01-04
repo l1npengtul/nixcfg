@@ -75,10 +75,10 @@ in
     preConfigure = ''
       mkdir -p src-juce/modules/juce
       mkdir -p src-juce/modules/clap
-      ls ${juce}
-      ls ${clap}
       ln -s ${juce} src-juce/modules/juce
       ln -s ${clap} src-juce/modules/clap
+      ls src-juce/modules/juce
+      ls src-juce/modules/clap
     '';
 
     buildPhase = ''
