@@ -73,7 +73,8 @@ in
     ];
 
     preConfigure = ''
-      mkdir -p src-juce/modules
+      mkdir -p src-juce/modules/juce
+      mkdir -p src-juce/modules/clap
       cp -r ${juce}/* src-juce/modules/juce
       cp -r ${clap}/* src-juce/modules/clap
     '';
