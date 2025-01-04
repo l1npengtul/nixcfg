@@ -35,7 +35,7 @@ in
       owner = "baconpaul";
       repo = "airwin2rack";
       rev = "db56d13f853831ab94a5e1713282e4e518f50d5c";
-      hash = "sha256-D+Lw+3i/ME2BPwGr2S2CwonVhe+rTiVONcz4+htj+7w=";
+      hash = "sha256-utqDmQgnYUtUv0E0xhO5rGx+9RXTAn8kKhTzkyXjcbE=";
       fetchSubmodules = true;
     };
 
