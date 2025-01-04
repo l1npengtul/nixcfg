@@ -70,7 +70,7 @@ in
     cmakeBuildType = "Release";
 
     buildPhase = ''
-      cmake --build  --config Release --parallel $NIX_BUILD_CORES
+      cmake --build . --config Release --parallel $NIX_BUILD_CORES
     '';
 
     installPhase = ''
