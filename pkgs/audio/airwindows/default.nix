@@ -74,9 +74,11 @@ in
       mkdir -p src-juce/modules/juce
       mkdir -p src-juce/modules/clap
       ln -s ${juce'.src} src-juce/modules/juce
-      ln -s ${clap}/ src-juce/modules/clap
+      ln -s ${clap} src-juce/modules/clap
       ls -l src-juce/modules/juce
       ls -l src-juce/modules/clap
+      ls ${juce'}
+      ls ${clap}
     '';
 
     buildPhase = ''
