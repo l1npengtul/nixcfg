@@ -73,7 +73,10 @@ in
     ];
 
     preConfigure = ''
-      ln -s ${juce'.src} src-juce/juce
+      ln -s ${juce'
+        xorg
+        .libXcomposite
+        .src} src-juce/juce
       ln -s ${clap-juce-extensions} src-juce/clap-juce-extensions
     '';
 
@@ -103,9 +106,11 @@ in
       toString [
         "-lX11"
         "-lXext"
+        "-lXcomposite"
         "-lXcursor"
         "-lXinerama"
         "-lXrandr"
+        "-lXrender"
       ]
     );
 
