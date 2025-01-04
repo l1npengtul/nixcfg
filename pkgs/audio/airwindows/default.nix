@@ -74,8 +74,8 @@ in
 
     preConfigure = ''
       mkdir -p src-juce/modules
-      cp -r ${juce} src-juce/modules
-      cp -r ${clap} src-juce/modules
+      cp -r ${juce}/* src-juce/modules
+      cp -r ${clap}/* src-juce/modules
     '';
 
     buildPhase = ''
