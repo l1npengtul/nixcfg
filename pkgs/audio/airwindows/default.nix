@@ -10,7 +10,6 @@
   freetype,
   libGLU,
   libjack2,
-  cpm-cmake,
   juce,
   unzip,
 }: let
@@ -39,7 +38,6 @@ in
 
     nativeBuildInputs = [
       cmake
-      cpm-cmake
       pkg-config
       gcc12
       unzip

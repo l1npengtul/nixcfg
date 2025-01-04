@@ -5,7 +5,16 @@
   ...
 }: let
   #     buildGradlePackage = inputs.gradle2nix.builders.x86_64-linux.buildGradlePackage;
-  socalabs = pkgs.callPackage ./socalabs {};
+  organ = pkgs.callPackage ./socalabs/organ.nix {};
+  papu = pkgs.callPackage ./socalabs/papu.nix {};
+  piano = pkgs.callPackage ./socalabs/piano.nix {};
+  rp2a03 = pkgs.callPackage ./socalabs/rp2a03.nix {};
+  sid = pkgs.callPackage ./socalabs/sid.nix {};
+  slplugins = pkgs.callPackage ./socalabs/slplugins.nix {};
+  sn76489 = pkgs.callPackage ./socalabs/sn76489.nix {};
+  voc = pkgs.callPackage ./socalabs/voc.nix {};
+  wavetable = pkgs.callPackage ./socalabs/wavetable.nix {};
+
   airwindows = pkgs.callPackage ./airwindows {};
   #   synthv-studio-pro = pkgs.callPackage ./synthv-studio-pro {};
   recstar = pkgs.callPackage ./recstar {};
@@ -50,7 +59,17 @@ in {
     audacity
     musescore
     paulstretch
-    socalabs
+
+    organ
+    papu
+    piano
+    rp2a03
+    sid
+    slplugins
+    sn76489
+    voc
+    wavetable
+
     vital
     airwindows
     #     synthv-studio-pro # fuck you dreamtonics
