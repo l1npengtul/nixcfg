@@ -87,14 +87,13 @@ in
       mkdir -p temp
       unzip installer/AirwindowsConsolidated-1980-01-01-unknownhash-Linux.zip -d temp
 
-      install -Dm644 "temp/awcons-products/Airwindows Consolidated.vst3" -t $out/lib64/vst3
+      mkdir -p $out/lib64/vst3 $out/lib64/lv2 $out/lib64/clap $out/bin
 
-      install -Dm644 "temp/awcons-products/Airwindows Consolidated.lv2" -t $out/lib64/lv2
-
+      cp -r "temp/awcons-products/Airwindows Consolidated.vst3" $out/lib64/vst3
+      cp -r "temp/awcons-products/Airwindows Consolidated.lv2" $out/lib64/lv2
       install -Dm644 "temp/awcons-products/Airwindows Consolidated.clap" -t $out/lib64/clap
 
       install -Dm755 "temp/awcons-products/Airwindows Consolidated" $out/bin/Airwindows\ Consolidated
-
       ln -s $out/bin/Airwindows\ Consolidated $out/bin/airwindows-consolidated
 
       runHook postInstall
