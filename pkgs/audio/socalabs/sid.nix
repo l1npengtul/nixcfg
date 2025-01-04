@@ -71,7 +71,8 @@ in
     cmakeBuildType = "Release";
 
     buildPhase = ''
-      cmake --build . --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
+      ls -l
+      cmake --build --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
     '';
 
     installPhase = ''
