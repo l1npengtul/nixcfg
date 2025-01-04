@@ -64,8 +64,6 @@ in
     cmakeFlags = [
       (lib.cmakeBool "BUILD_JUCE_PLUGIN" true)
       (lib.cmakeBool "USE_JUCE_PROGRAMS" true)
-      "-DJUCE_DIR=${juce}"
-      "-DCLAP_DIR=${clap}"
     ];
 
     cmakeBuildType = "Release";
@@ -75,12 +73,9 @@ in
     ];
 
     preConfigure = ''
-      ls -l ${clap}
-      ls -l ${juce}
-      ls -l .
-      ls -l $src
-      echo $src
-      echo $pwd
+      mkdir -p src-juce/modules
+      cp -r ${juce} src-juce/modules
+      cp -r ${clap} src-juce/modules
     '';
 
     buildPhase = ''

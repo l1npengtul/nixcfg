@@ -1,13 +1,13 @@
 diff --git a/src-juce/CMakeLists.txt b/src-juce/CMakeLists.txt
-index 1f41088..b8190e4 100644
+index 1f41088..6e07abe 100644
 --- a/src-juce/CMakeLists.txt
 +++ b/src-juce/CMakeLists.txt
-@@ -1,28 +1,11 @@
+@@ -1,28 +1,7 @@
  # vi:set sw=2 et:
  project(airwin-consolidated VERSION ${CMAKE_PROJECT_VERSION})
  
 -include ("../cmake/CPM.cmake")
- 
+-
 -
 -if (DEFINED AWCO_ONJUCE7)
 -  set(AWCO_JUCETAG 7.0.12)
@@ -28,10 +28,7 @@ index 1f41088..b8190e4 100644
 -        GIT_TAG main
 -        SUBMODULE_RECURSIVE ON
 -)
-+message(JUCE_DIR="${JUCE_DIR}")
-+message(CLAP_DIR="${CLAP_DIR}")
-+add_subdirectory(${JUCE_DIR})
-+add_subdirectory(${CLAP_DIR})
++add_subdirectory(modules)
  
  if (NOT DEFINED AWCO_ARM64EC)
    list(APPEND AWCO_FORMATS VST3)
