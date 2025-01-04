@@ -83,6 +83,8 @@ in
     cmakeBuildType = "Release";
 
     buildPhase = ''
+      ln -s $src/CMakePresets.json /build/source/build
+      ln -s $src/modules /build/source/build
       ls -l /build/source/build
       export FONTCONFIG_FILE=${fontsConf}
       cmake --build --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
