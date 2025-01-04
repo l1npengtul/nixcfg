@@ -76,6 +76,7 @@ in
       "-DCMAKE_C_COMPILER=gcc"
       "-DBUILD_EXTRAS=OFF"
       "-DJUCE_COPY_PLUGIN_AFTER_BUILD=ON"
+      "-GNinja"
     ];
 
     cmakeBuildType = "Release";
