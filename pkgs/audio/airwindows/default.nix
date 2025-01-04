@@ -11,97 +11,97 @@
   libGLU,
   libjack2,
   cpm-cmake,
-}:
-stdenv.mkDerivation {
-  pname = "airwin2rack-juce";
-  version = "2.13.0";
+}: let
+  juce = fetchFromGitHub {
+    owner = "juce-framework";
+    repo = "JUCE";
+    rev = "51d11a2be6d5c97ccf12b4e5e827006e19f0555a";
+    hash = "";
+    fetchSubmodules = true;
+  };
+  clap = fetchFromGitHub {
+    owner = "free-audio";
+    repo = "clap-juce-extensions";
+    rev = "4f33b4930b6af806018c009f0f24b3a50808af99";
+    hash = "";
+    fetchSubmodules = true;
+  };
+in
+  stdenv.mkDerivation {
+    pname = "airwin2rack-juce";
+    version = "2.13.0";
 
-  srcs = [
-    (fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "baconpaul";
       repo = "airwin2rack";
       rev = "db56d13f853831ab94a5e1713282e4e518f50d5c";
       hash = "sha256-D+Lw+3i/ME2BPwGr2S2CwonVhe+rTiVONcz4+htj+7w=";
       fetchSubmodules = true;
-      name = "src";
-    })
-    (fetchFromGitHub {
-      owner = "juce-framework";
-      repo = "JUCE";
-      rev = "51d11a2be6d5c97ccf12b4e5e827006e19f0555a";
-      hash = "";
-      fetchSubmodules = true;
-      name = "juce";
-    })
-    (fetchFromGitHub {
-      owner = "free-audio";
-      repo = "clap-juce-extensions";
-      rev = "4f33b4930b6af806018c009f0f24b3a50808af99";
-      hash = "";
-      fetchSubmodules = true;
-      name = "clap";
-    })
-  ];
+    };
 
-  sourceRoot = "src";
+    nativeBuildInputs = [
+      cmake
+      cpm-cmake
+      pkg-config
+      gcc12
+    ];
 
-  nativeBuildInputs = [
-    cmake
-    cpm-cmake
-    pkg-config
-    gcc12
-  ];
+    buildInputs = [
+      gcc12
+      alsa-lib
+      xorg.libX11
+      xorg.libXcomposite
+      xorg.libXcursor
+      xorg.libXext
+      xorg.libXinerama
+      xorg.xrandr
+      xorg.libXrender
+      libGLU
+      libjack2
+      freetype
+    ];
 
-  buildInputs = [
-    gcc12
-    alsa-lib
-    xorg.libX11
-    xorg.libXcomposite
-    xorg.libXcursor
-    xorg.libXext
-    xorg.libXinerama
-    xorg.xrandr
-    xorg.libXrender
-    libGLU
-    libjack2
-    freetype
-  ];
+    cmakeFlags = [
+      (lib.cmakeBool "BUILD_JUCE_PLUGIN" true)
+      (lib.cmakeBool "USE_JUCE_PROGRAMS" true)
+    ];
 
-  cmakeFlags = [
-    (lib.cmakeBool "BUILD_JUCE_PLUGIN" true)
-    (lib.cmakeBool "USE_JUCE_PROGRAMS" true)
-  ];
+    cmakeBuildType = "Release";
 
-  cmakeBuildType = "Release";
+    patches = [
+      ./0000-juce-clap-juce-extensions-src-juce-cmakelists.patch
+    ];
 
-  unpackPhase = ''
+    preConfigure = ''
+      mkdir -p $src/src-juce/modules
+      mv ${juce} $src/src-juce/modules
+      mv ${clap} $src/src-juce/modules
+    '';
 
-  '';
+    buildPhase = ''
+      cmake --build $src/ignore/daw-plugin --target awcons-products
+    '';
 
-  buildPhase = ''
-    cmake --build $src/ignore/daw-plugin --target awcons-products
-  '';
+    installPhase = ''
+      ls -l $src/build/installer
+      exit 1
+    '';
 
-  installPhase = ''
-    ls -l $src/build/installer
-    exit 1
-  '';
+    NIX_LDFLAGS = (
+      toString [
+        "-lX11"
+        "-lXext"
+        "-lXcursor"
+        "-lXinerama"
+        "-lXrandr"
+      ]
+    );
 
-  NIX_LDFLAGS = (
-    toString [
-      "-lX11"
-      "-lXext"
-      "-lXcursor"
-      "-lXinerama"
-      "-lXrandr"
-    ]
-  );
-
-  meta = {
-    description = "JUCE Plugin Version of Airwindows Consolidated";
-    homepage = "https://airwindows.com/";
-    platforms = ["x86_64-linux"];
-    license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [l1npengtul];
-  };
-}
+    meta = {
+      description = "JUCE Plugin Version of Airwindows Consolidated";
+      homepage = "https://airwindows.com/";
+      platforms = ["x86_64-linux"];
+      license = lib.licenses.mit;
+      maintainers = with lib.maintainers; [l1npengtul];
+    };
+  }
