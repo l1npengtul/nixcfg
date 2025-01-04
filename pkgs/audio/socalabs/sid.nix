@@ -76,7 +76,6 @@ in
       "-DCMAKE_C_COMPILER=gcc"
       "-DBUILD_EXTRAS=OFF"
       "-DJUCE_COPY_PLUGIN_AFTER_BUILD=ON"
-      "-GNinja"
     ];
 
     cmakeBuildType = "Release";
@@ -84,7 +83,7 @@ in
     buildPhase = ''
       ls -l /build/source/build
       export FONTCONFIG_FILE=${fontsConf}
-      ninja -j$NIX_BUILD_CORES
+      cmake --build . --config Release --parallel $NIX_BUILD_CORES
     '';
 
     installPhase = ''
