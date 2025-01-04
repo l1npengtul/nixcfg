@@ -72,10 +72,7 @@ in
 
     buildPhase = ''
       echo "turtle"
-      ls -l
-      ls -l /build/source/build
-      ls -l /build/source/Builds/ninja-gcc
-      cmake --build --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
+      cmake --build /build/source/Builds/ninja-gcc --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
     '';
 
     installPhase = ''
