@@ -64,7 +64,6 @@ in
     ];
 
     cmakeFlags = [
-      "--preset ninja-gcc"
       "-D CMAKE_CXX_COMPILER=g++"
       "-D CMAKE_C_COMPILER=gcc"
       "-D BUILD_EXTRAS=OFF"
@@ -74,11 +73,7 @@ in
     cmakeBuildType = "Release";
 
     buildPhase = ''
-      ln -s $src/CMakePresets.json /build/source/build/
-      ln -s $src/modules /build/source/build/modules
-      ln -s /build/source/Builds /build/source/build/Builds
-      ls /build/source/build/
-      cmake --build /build/source/Builds/ninja-gcc --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
+      cmake --build . --config Release --parallel $NIX_BUILD_CORES
     '';
 
     installPhase = ''
