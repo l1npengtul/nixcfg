@@ -76,9 +76,7 @@ in
     '';
 
     buildPhase = ''
-      ls -l
-      ls -l /build/source/build
-      cmake --build ignore/daw-plugin --target awcons-products
+      cmake --build ./build --config Release --target awcons-installer
     '';
 
     installPhase = ''
