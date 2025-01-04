@@ -84,6 +84,7 @@ in
       ls -l /build/source/build
       export FONTCONFIG_FILE=${fontsConf}
       cmake --build . --config Release --parallel $NIX_BUILD_CORES
+      echo "turtle"
     '';
 
     installPhase = ''
