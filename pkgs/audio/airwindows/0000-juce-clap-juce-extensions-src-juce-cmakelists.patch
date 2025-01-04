@@ -1,5 +1,5 @@
 diff --git a/src-juce/CMakeLists.txt b/src-juce/CMakeLists.txt
-index 1f41088..1dd691e 100644
+index 1f41088..10bdbb4 100644
 --- a/src-juce/CMakeLists.txt
 +++ b/src-juce/CMakeLists.txt
 @@ -1,28 +1,8 @@
@@ -28,8 +28,9 @@ index 1f41088..1dd691e 100644
 -        GIT_TAG main
 -        SUBMODULE_RECURSIVE ON
 -)
-+add_subdirectory(modules/juce)
-+add_subdirectory(modules/clap)
++add_subdirectory(juce)
++add_subdirectory(clap-juce-extensions)
  
  if (NOT DEFINED AWCO_ARM64EC)
    list(APPEND AWCO_FORMATS VST3)
+
