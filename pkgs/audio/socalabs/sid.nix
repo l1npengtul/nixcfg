@@ -71,12 +71,10 @@ in
     cmakeBuildType = "Release";
 
     buildPhase = ''
-      echo "turtle"
       ln -s $src/CMakePresets.json /build/source/build/
-      mkdir -p /build/source/build/modules/gin/ci/
       ln -s $src/modules/gin/ci/toolchains /build/source/build/modules/gin/ci/toolchains
-      ls /build/source/build
-      cmake --build /build/source/Builds/ninja-gcc --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
+      ls /build/source/build/
+      cmake --build --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
     '';
 
     installPhase = ''
