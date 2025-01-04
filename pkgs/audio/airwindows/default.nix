@@ -56,6 +56,7 @@ in
       libGLU
       libjack2
       freetype
+      juce'
     ];
 
     cmakeFlags = [
@@ -74,8 +75,8 @@ in
       mkdir -p src-juce/modules/clap
       ln -s ${juce'.src} src-juce/modules/juce
       ln -s ${clap}/ src-juce/modules/clap
-      ls src-juce/modules/juce
-      ls src-juce/modules/clap
+      ls -l src-juce/modules/juce
+      ls -l src-juce/modules/clap
     '';
 
     buildPhase = ''
