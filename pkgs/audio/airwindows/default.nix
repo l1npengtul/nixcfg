@@ -74,6 +74,11 @@ in
       ./0000-juce-clap-juce-extensions-src-juce-cmakelists.patch
     ];
 
+    preConfigure = ''
+      ls -l ${clap}
+      ls -l ${juce}
+    '';
+
     buildPhase = ''
       cmake --build $src/ignore/daw-plugin --target awcons-products
     '';
