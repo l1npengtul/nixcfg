@@ -76,6 +76,8 @@ in
       "-DCMAKE_CXX_COMPILER=g++"
       "-DCMAKE_C_COMPILER=gcc"
       "-DBUILD_EXTRAS=OFF"
+      "-GNinja"
+      "--preset ninja-gcc"
     ];
 
     cmakeBuildType = "Release";
@@ -83,7 +85,7 @@ in
     buildPhase = ''
       ls -l /build/source/build
       export FONTCONFIG_FILE=${fontsConf}
-      cmake --build . --config Release --parallel $NIX_BUILD_CORES
+      cmake --build --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
       echo "turtle"
     '';
 
