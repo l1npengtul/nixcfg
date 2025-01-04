@@ -16,12 +16,20 @@
   webkitgtk,
   juce,
   gcc12,
+  makeFontsCache,
+  ghostscript,
 }: let
   plname = "SID";
 in
   stdenv.mkDerivation rec {
     pname = "socalabs-sid";
     version = "1.1.0";
+
+    fontsConf = makeFontsCache {
+      fontDirectories = [
+        "${ghostscript}/share/ghostscript/fonts"
+      ];
+    };
 
     src =
       (fetchFromGitHub
@@ -73,6 +81,7 @@ in
     cmakeBuildType = "Release";
 
     buildPhase = ''
+      export FONTCONFIG_FILE=${fontsConf}
       cmake --build . --config Release --parallel $NIX_BUILD_CORES
     '';
 
