@@ -82,9 +82,20 @@ in
     '';
 
     installPhase = ''
+      runHook preInstall
+
       mkdir -p temp
       unzip installer/AirwindowsConsolidated-1980-01-01-unknownhash-Linux.zip -d temp
-      ls -l temp
+
+      install -Dm644 "temp/awcons-products/Airwindows Consolidated.vst3" -t $out/lib64/vst3
+
+      install -Dm644 "temp/awcons-products/Airwindows Consolidated.lv2" -t $out/lib64/lv2
+
+      install -Dm644 "temp/awcons-products/Airwindows Consolidated.clap" -t $out/lib64/clap
+
+      install -Dm755 "temp/awcons-products/Airwindows Consolidated" $out/bin/Airwindows\ Consolidated
+
+      runHook postInstall
     '';
 
     NIX_LDFLAGS = (
