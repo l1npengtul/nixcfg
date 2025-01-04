@@ -4,7 +4,6 @@
   lib,
   cmake,
   pkg-config,
-  gcc12,
   alsa-lib,
   xorg,
   freetype,
@@ -16,6 +15,7 @@
   mesa,
   webkitgtk,
   juce,
+  gcc12,
 }: let
   plname = "SID";
 in
@@ -39,15 +39,14 @@ in
       });
 
     nativeBuildInputs = [
+      gcc12
       cmake
       pkg-config
       ninja
       juce
-      gcc12
     ];
 
     buildInputs = [
-      gcc12
       alsa-lib
       xorg.libX11
       xorg.libXcomposite
@@ -66,6 +65,10 @@ in
 
     cmakeFlags = [
       "--preset ninja-gcc"
+      "-D CMAKE_CXX_COMPILER=g++"
+      "-D CMAKE_C_COMPILER=gcc"
+      "-D BUILD_EXTRAS=OFF"
+      "-D JUCE_COPY_PLUGIN_AFTER_BUILD=ON"
     ];
 
     cmakeBuildType = "Release";
