@@ -54,7 +54,7 @@ in
       xorg.libXcursor
       xorg.libXext
       xorg.libXinerama
-      xorg.xrandr
+      xorg.libXrandr
       xorg.libXrender
       libGLU
       libjack2
