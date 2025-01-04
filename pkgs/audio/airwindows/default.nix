@@ -12,6 +12,7 @@
   libjack2,
   cpm-cmake,
   juce,
+  unzip,
 }: let
   juce' = juce.overrideAttrs rec {
     version = "8.0.4";
@@ -41,6 +42,7 @@ in
       cpm-cmake
       pkg-config
       gcc12
+      unzip
     ];
 
     buildInputs = [
@@ -76,12 +78,13 @@ in
     '';
 
     buildPhase = ''
-      cmake --build . --config Release --target awcons-installer
+      cmake --build . --config Release --target awcons-installer --parallel $NIX_BUILD_CORES
     '';
 
     installPhase = ''
-      ls -l build/installer
-      exit 1
+      mkdir -p temp
+      unzip installer/AirwindowsConsolidated-1980-01-01-unknownhash-Linux.zip temp
+      ls -l temp
     '';
 
     NIX_LDFLAGS = (
