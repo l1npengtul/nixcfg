@@ -23,7 +23,7 @@
     owner = "free-audio";
     repo = "clap-juce-extensions";
     rev = "4f33b4930b6af806018c009f0f24b3a50808af99";
-    hash = "";
+    hash = "sha256-M+T7ll3Ap6VIP5ub+kfEKwT2RW2IxxY4wUPRQKFIotk=";
     fetchSubmodules = true;
   };
 in
