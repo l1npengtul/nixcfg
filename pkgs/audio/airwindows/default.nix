@@ -77,8 +77,8 @@ in
       ln -s ${clap-juce-extensions} src-juce/clap-juce-extensions
       ls -l src-juce/juce
       ls -l src-juce/clap-juce-extensions
-      ls ${juce'.src}
-      ls ${clap-juce-extensions}
+      ls src-juce/juce
+      ls src-juce/clap-juce-extensions
     '';
 
     buildPhase = ''
