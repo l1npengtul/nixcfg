@@ -64,8 +64,8 @@ in
     cmakeFlags = [
       (lib.cmakeBool "BUILD_JUCE_PLUGIN" true)
       (lib.cmakeBool "USE_JUCE_PROGRAMS" true)
-      "JUCE_DIR=${juce}"
-      "CLAP_DIR=${clap}"
+      "-DJUCE_DIR=${juce}"
+      "-DCLAP_DIR=${clap}"
     ];
 
     cmakeBuildType = "Release";
