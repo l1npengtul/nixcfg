@@ -21,12 +21,6 @@
   plname = "SID";
   juce' = juce.overrideAttrs rec {
     version = "8.0.4";
-    src = fetchFromGitHub {
-      owner = "juce-framework";
-      repo = "JUCE";
-      rev = "51d11a2be6d5c97ccf12b4e5e827006e19f0555a";
-      hash = "sha256-iAueT+yHwUUHOzqfK5zXEZQ0GgOKJ9q9TyRrVfWdewc=";
-    };
   };
   gin = fetchFromGitHub {
     owner = "FigBug";
@@ -95,6 +89,8 @@ in
     ];
 
     cmakeBuildType = "Release";
+
+    strictDeps = true;
 
     preConfigure = ''
       rm -rf modules/juce
