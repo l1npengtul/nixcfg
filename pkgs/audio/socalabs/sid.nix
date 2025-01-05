@@ -16,25 +16,8 @@
   webkitgtk,
   gcc12,
   makeFontsCache,
-  juce,
 }: let
   plname = "SID";
-  juce' = juce.overrideAttrs rec {
-    version = "8.0.3";
-    src = fetchFromGitHub {
-      owner = "juce-framework";
-      repo = "JUCE";
-      rev = "5179f4e720d8406ebd1b5401c86aea8da6cc83c9";
-      hash = "sha256-faD1iI9cQ2v3YisbMDtk2lRELR7eDTz3JP0K0p1vmEU=";
-    };
-  };
-  gin = fetchFromGitHub {
-    owner = "FigBug";
-    repo = "Gin";
-    rev = "1ab0c9faa146dfb30afaa21125d411a9e1ec9e2b";
-    hash = "sha256-J3WilKaE+oioKDgdw6brNMMq/DvoTrtA5L1CUWsh67U=";
-    fetchSubmodules = true;
-  };
 in
   stdenv.mkDerivation rec {
     pname = "socalabs-sid";
@@ -82,7 +65,6 @@ in
       curl
       mesa
       webkitgtk
-      juce'
     ];
 
     cmakeFlags = [
@@ -92,26 +74,13 @@ in
       "-DCMAKE_CXX_COMPILER=g++"
       "-DCMAKE_C_COMPILER=gcc"
       "-DBUILD_EXTRAS=OFF"
-      #"-GNinja"
     ];
 
     cmakeBuildType = "Release";
 
-    preConfigure = ''
-      rm -rf modules/juce
-      rm -rf modules/gin
-      ln -s ${juce'.src} modules/juce
-      ln -s ${gin} modules/gin
-    '';
-
     buildPhase = ''
-      #ln -s $src/CMakePresets.json /build/source/build
-      #ln -s $src/modules /build/source/build
-      #ln -s /build/source/Builds /build/source/build
-      ls -l /build/source/build
       export FONTCONFIG_FILE=${fontsConf}
       cmake --build . --config Release --parallel $NIX_BUILD_CORES
-      #ninja -j$NIX_BUILD_CORES
       echo "turtle"
     '';
 
