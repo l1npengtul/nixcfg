@@ -68,12 +68,12 @@ in
     ];
 
     cmakeFlags = [
-      (lib.cmakeBool "BUILD_EXTRAS" false)
-      (lib.cmakeBool "BUILD_TESTING" false)
+      (lib.cmakeBool "BUILD_EXTRAS" true)
+      (lib.cmakeBool "BUILD_TESTING" true)
       (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
       "-DCMAKE_CXX_COMPILER=g++"
       "-DCMAKE_C_COMPILER=gcc"
-      "-DBUILD_EXTRAS=OFF"
+      "-DCMAKE_Fortran_COMPILER=gfortran"
       "--preset ninja-gcc"
     ];
 
@@ -82,11 +82,12 @@ in
     strictDeps = true;
 
     buildPhase = ''
-      ln -s $src/CMakePresets.json /build/source/build/
-      ln -s $src/modules  /build/source/build/modules
-      ln -s /build/source/Builds /build/source/build/Builds
+      #ln -s $src/CMakePresets.json /build/source/build/
+      #ln -s $src/modules  /build/source/build/modules
+      #ln -s /build/source/Builds /build/source/build/Builds
+      cd /build/source/Builds/ninja-gcc
       export FONTCONFIG_FILE=${fontsConf}
-      cmake --build --preset ninja-gcc --config Release
+      ninja -v -j $NIX_BUILD_CORES -f build-Release.ninja
       echo "turtle"
     '';
 
