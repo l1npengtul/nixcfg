@@ -77,7 +77,6 @@ in
       "-DCMAKE_C_COMPILER=gcc"
       "-DBUILD_EXTRAS=OFF"
       "-GNinja"
-      "--preset ninja-gcc"
     ];
 
     cmakeBuildType = "Release";
