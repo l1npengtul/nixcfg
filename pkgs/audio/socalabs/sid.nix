@@ -27,6 +27,7 @@
   libsoup_2_4,
   lerc,
   glib,
+  sqlite,
   makeFontsCache,
 }: let
   plname = "SID";
@@ -91,6 +92,7 @@ in
       webkitgtk
       pcre2
       util-linux
+      sqlite
     ];
 
     cmakeFlags = [
