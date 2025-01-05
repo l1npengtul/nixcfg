@@ -98,7 +98,7 @@ in
       "-DCMAKE_CXX_COMPILER=g++"
       "-DCMAKE_C_COMPILER=gcc"
       "-DCMAKE_Fortran_COMPILER=gfortran"
-      "--preset ninja-gcc"
+      #"--preset ninja-gcc"
     ];
 
     cmakeBuildType = "Release";
@@ -111,7 +111,8 @@ in
       #ln -s /build/source/Builds /build/source/build/Builds
       cd /build/source/Builds/ninja-gcc
       #export FONTCONFIG_FILE=${fontsConf}
-      cmake --build --preset ninja-clang --config Release
+      #cmake --build --preset ninja-clang --config Release
+      cmake --build . --config Release
       echo "turtle"
     '';
 
