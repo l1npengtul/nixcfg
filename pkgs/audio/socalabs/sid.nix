@@ -82,6 +82,9 @@ in
     strictDeps = true;
 
     buildPhase = ''
+      ln -s $src/CMakePresets.json /build/source/build/
+      ln -s $src/modules  /build/source/build/modules
+      ln -s /build/source/Builds /build/source/build/Builds
       export FONTCONFIG_FILE=${fontsConf}
       cmake --build --preset ninja-gcc --config Release
       echo "turtle"
