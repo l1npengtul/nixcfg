@@ -20,7 +20,16 @@
 }: let
   plname = "SID";
   juce' = juce.overrideAttrs rec {
-    version = "8.0.4";
+    version = "8.0.3";
+    src = fetchFromGitHub {
+      owner = "juce-framework";
+      repo = "JUCE";
+      rev = "5179f4e720d8406ebd1b5401c86aea8da6cc83c9";
+      hash = "";
+    };
+    patches = [
+      ./juceutils.patch
+    ];
   };
   gin = fetchFromGitHub {
     owner = "FigBug";
