@@ -35,10 +35,10 @@ in
     pname = "socalabs-sid";
     version = "1.1.0";
 
-    fontsConf = makeFontsCache {
-      fontDirectories = [
-      ];
-    };
+    #     fontsConf = makeFontsCache {
+    #       fontDirectories = [
+    #       ];
+    #     };
 
     src =
       (fetchFromGitHub
@@ -112,8 +112,8 @@ in
       #ln -s $src/modules  /build/source/build/modules
       #ln -s /build/source/Builds /build/source/build/Builds
       cd /build/source/Builds/ninja-gcc
-      export FONTCONFIG_FILE=${fontsConf}
-      ninja -v -j $NIX_BUILD_CORES -f build-Release.ninja
+      #export FONTCONFIG_FILE=${fontsConf}
+      cmake --build --preset ninja-clang --config Release
       echo "turtle"
     '';
 
