@@ -23,6 +23,7 @@
   libthai,
   libxkbcommon,
   libdatrie,
+  libepoxy,
   lerc,
   glib,
   makeFontsCache,
@@ -78,6 +79,7 @@ in
       libthai
       libxkbcommon
       libdatrie
+      libepoxy
       lerc
       glib
       freetype
