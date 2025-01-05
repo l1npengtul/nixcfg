@@ -16,8 +16,25 @@
   webkitgtk,
   gcc12,
   makeFontsCache,
+  juce,
 }: let
   plname = "SID";
+  juce' = juce.overrideAttrs rec {
+    version = "8.0.4";
+    src = fetchFromGitHub {
+      owner = "juce-framework";
+      repo = "JUCE";
+      rev = "51d11a2be6d5c97ccf12b4e5e827006e19f0555a";
+      hash = "";
+    };
+  };
+  gin = fetchFromGitHub {
+    owner = "FigBug";
+    repo = "Gin";
+    rev = "1ab0c9faa146dfb30afaa21125d411a9e1ec9e2b";
+    hash = "sha256-J3WilKaE+oioKDgdw6brNMMq/DvoTrtA5L1CUWsh67U=";
+    fetchSubmodules = true;
+  };
 in
   stdenv.mkDerivation rec {
     pname = "socalabs-sid";
@@ -65,6 +82,7 @@ in
       curl
       mesa
       webkitgtk
+      juce'
     ];
 
     cmakeFlags = [
@@ -77,6 +95,13 @@ in
     ];
 
     cmakeBuildType = "Release";
+
+    preConfigure = ''
+      rm -rf modules/juce
+      rm -rf modules/gin
+      ln -s ${juce'.src} modules/juce
+      ln -s ${gin} modules/gin
+    '';
 
     buildPhase = ''
       export FONTCONFIG_FILE=${fontsConf}
