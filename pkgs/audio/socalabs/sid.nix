@@ -22,7 +22,7 @@
     owner = "juce-framework";
     repo = "JUCE";
     rev = "4ada2e1f4db082f5dd803f249f37b3bf9c5f55ef";
-    hash = "";
+    hash = "sha256-yiXd8/mIe2heyLCm3dhg2TfAS3g2kk2hz5nuyzaK7QU=";
     fetchSubmodules = true;
   };
   gin = fetchFromGitHub {
