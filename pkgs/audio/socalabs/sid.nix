@@ -35,11 +35,6 @@ in
     pname = "socalabs-sid";
     version = "1.1.0";
 
-    #     fontsConf = makeFontsCache {
-    #       fontDirectories = [
-    #       ];
-    #     };
-
     src =
       (fetchFromGitHub
         {
@@ -92,7 +87,10 @@ in
       util-linux
       sqlite
     ];
-
+    fontsConf = makeFontsCache {
+      fontDirectories = [
+      ];
+    };
     cmakeFlags = [
       (lib.cmakeBool "BUILD_EXTRAS" true)
       (lib.cmakeBool "BUILD_TESTING" true)
