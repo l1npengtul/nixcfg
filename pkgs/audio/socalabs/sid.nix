@@ -22,14 +22,11 @@
   juce' = juce.overrideAttrs rec {
     version = "8.0.3";
     src = fetchFromGitHub {
-      owner = "juce-framework";
+      owner = "l1npengtul";
       repo = "JUCE";
-      rev = "5179f4e720d8406ebd1b5401c86aea8da6cc83c9";
-      hash = "sha256-faD1iI9cQ2v3YisbMDtk2lRELR7eDTz3JP0K0p1vmEU=";
+      rev = "f545152f9dcb9c78b1cf669fa500b67db3a20a6e";
+      hash = "";
     };
-    patches = [
-      ./juceutils.patch
-    ];
   };
   gin = fetchFromGitHub {
     owner = "FigBug";
