@@ -20,7 +20,7 @@
 }: let
   plname = "SID";
   juce' = juce.overrideAttrs rec {
-    version = "8.0.4";
+    version = "8.0.1";
   };
 in
   stdenv.mkDerivation rec {
