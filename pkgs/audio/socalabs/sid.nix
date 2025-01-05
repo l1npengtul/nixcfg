@@ -15,6 +15,7 @@
   mesa,
   webkitgtk,
   libsysprof-capture,
+  pcre2,
   gcc12,
   makeFontsCache,
 }: let
@@ -67,6 +68,7 @@ in
       curl
       mesa
       webkitgtk
+      pcre2
     ];
 
     cmakeFlags = [
