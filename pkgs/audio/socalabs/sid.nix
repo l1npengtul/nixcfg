@@ -82,6 +82,7 @@ in
       curl
       mesa
       webkitgtk
+      juce'
     ];
 
     cmakeFlags = [
