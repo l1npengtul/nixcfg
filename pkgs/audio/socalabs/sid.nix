@@ -26,7 +26,7 @@
     owner = "FigBug";
     repo = "Gin";
     rev = "1ab0c9faa146dfb30afaa21125d411a9e1ec9e2b";
-    hash = "";
+    hash = "sha256-J3WilKaE+oioKDgdw6brNMMq/DvoTrtA5L1CUWsh67U=";
     fetchSubmodules = true;
   };
 in
