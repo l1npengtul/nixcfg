@@ -73,6 +73,7 @@ in
       (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
       "-DCMAKE_CXX_COMPILER=g++"
       "-DCMAKE_C_COMPILER=gcc"
+      "-DJUCE_BUILD_EXTRAS=OFF"
       #"-GNinja"
     ];
 
