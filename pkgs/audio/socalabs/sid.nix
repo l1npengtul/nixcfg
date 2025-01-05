@@ -17,6 +17,7 @@
   libsysprof-capture,
   pcre2,
   gcc12,
+  util-linux,
   makeFontsCache,
 }: let
   plname = "SID";
@@ -69,6 +70,7 @@ in
       mesa
       webkitgtk
       pcre2
+      util-linux
     ];
 
     cmakeFlags = [
