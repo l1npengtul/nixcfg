@@ -16,19 +16,8 @@
   webkitgtk,
   gcc12,
   makeFontsCache,
-  juce,
 }: let
   plname = "SID";
-  juce' = juce.overrideAttrs rec {
-    version = "8.0.4";
-  };
-  gin = fetchFromGitHub {
-    owner = "FigBug";
-    repo = "Gin";
-    rev = "1ab0c9faa146dfb30afaa21125d411a9e1ec9e2b";
-    hash = "sha256-J3WilKaE+oioKDgdw6brNMMq/DvoTrtA5L1CUWsh67U=";
-    fetchSubmodules = true;
-  };
 in
   stdenv.mkDerivation rec {
     pname = "socalabs-sid";
@@ -89,13 +78,6 @@ in
     ];
 
     cmakeBuildType = "Release";
-
-    preConfigure = ''
-      rm -rf modules/juce
-      rm -rf modules/gin
-      ln -s ${juce'.src} modules/juce
-      ln -s ${gin} modules/gin
-    '';
 
     buildPhase = ''
       #ln -s $src/CMakePresets.json /build/source/build
