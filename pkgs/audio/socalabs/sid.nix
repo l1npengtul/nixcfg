@@ -14,6 +14,7 @@
   curl,
   mesa,
   webkitgtk,
+  libsysprof-capture,
   gcc12,
   makeFontsCache,
 }: let
@@ -60,6 +61,7 @@ in
       xorg.xvfb
       libGLU
       libjack2
+      libsysprof-capture
       freetype
       ladspa-sdk
       curl
