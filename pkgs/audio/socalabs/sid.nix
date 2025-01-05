@@ -16,14 +16,17 @@
   webkitgtk,
   gcc12,
   makeFontsCache,
+  juce,
 }: let
   plname = "SID";
-  juce = fetchFromGitHub {
-    owner = "juce-framework";
-    repo = "JUCE";
-    rev = "4ada2e1f4db082f5dd803f249f37b3bf9c5f55ef";
-    hash = "sha256-yiXd8/mIe2heyLCm3dhg2TfAS3g2kk2hz5nuyzaK7QU=";
-    fetchSubmodules = true;
+  juce' = juce.overrideAttrs rec {
+    version = "8.0.3";
+    src = fetchFromGitHub {
+      owner = "juce-framework";
+      repo = "JUCE";
+      rev = "5179f4e720d8406ebd1b5401c86aea8da6cc83c9";
+      hash = "";
+    };
   };
   gin = fetchFromGitHub {
     owner = "FigBug";
