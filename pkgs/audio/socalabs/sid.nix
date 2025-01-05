@@ -18,6 +18,13 @@
   pcre2,
   gcc12,
   util-linux,
+  libselinux,
+  libsepol,
+  libthai,
+  libxkbcommon,
+  libdatrie,
+  lerc,
+  glib,
   makeFontsCache,
 }: let
   plname = "SID";
@@ -60,10 +67,19 @@ in
       xorg.libXcursor
       xorg.libXinerama
       xorg.libXrandr
+      xorg.libXtst
+      xorg.libXdmcp
       xorg.xvfb
       libGLU
       libjack2
       libsysprof-capture
+      libselinux
+      libsepol
+      libthai
+      libxkbcommon
+      libdatrie
+      lerc
+      glib
       freetype
       ladspa-sdk
       curl
