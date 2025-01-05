@@ -18,6 +18,20 @@
   makeFontsCache,
 }: let
   plname = "SID";
+  juce = fetchFromGitHub {
+    owner = "juce-framework";
+    repo = "JUCE";
+    rev = "4ada2e1f4db082f5dd803f249f37b3bf9c5f55ef";
+    hash = "";
+    fetchSubmodules = true;
+  };
+  gin = fetchFromGitHub {
+    owner = "FigBug";
+    repo = "Gin";
+    rev = "1ab0c9faa146dfb30afaa21125d411a9e1ec9e2b";
+    hash = "sha256-J3WilKaE+oioKDgdw6brNMMq/DvoTrtA5L1CUWsh67U=";
+    fetchSubmodules = true;
+  };
 in
   stdenv.mkDerivation rec {
     pname = "socalabs-sid";
@@ -68,16 +82,23 @@ in
     ];
 
     cmakeFlags = [
-      (lib.cmakeBool "BUILD_EXTRAS" false)
+      (lib.cmakeBool "BUILD_EXTRAS" true)
       (lib.cmakeBool "BUILD_TESTING" false)
       (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
       "-DCMAKE_CXX_COMPILER=g++"
       "-DCMAKE_C_COMPILER=gcc"
-      "-DJUCE_BUILD_EXTRAS=OFF"
+      "-DBUILD_EXTRAS=OFF"
       #"-GNinja"
     ];
 
     cmakeBuildType = "Release";
+
+    preConfigure = ''
+      rm -rf modules/juce
+      rm -rf modules/gin
+      ln -s ${juce.src} modules/juce
+      ln -s ${gin} modules/gin
+    '';
 
     buildPhase = ''
       #ln -s $src/CMakePresets.json /build/source/build
