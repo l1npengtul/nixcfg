@@ -16,7 +16,6 @@
   webkitgtk,
   libsysprof-capture,
   pcre2,
-  gcc12,
   util-linux,
   libselinux,
   libsepol,
@@ -57,7 +56,6 @@ in
       });
 
     nativeBuildInputs = [
-      gcc12
       cmake
       pkg-config
       ninja
