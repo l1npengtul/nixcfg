@@ -24,6 +24,7 @@
   libxkbcommon,
   libdatrie,
   libepoxy,
+  libsoup_2_4,
   lerc,
   glib,
   makeFontsCache,
@@ -80,6 +81,7 @@ in
       libxkbcommon
       libdatrie
       libepoxy
+      libsoup_2_4
       lerc
       glib
       freetype
