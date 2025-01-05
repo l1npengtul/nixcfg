@@ -96,7 +96,7 @@ in
     preConfigure = ''
       rm -rf modules/juce
       rm -rf modules/gin
-      ln -s ${juce.src} modules/juce
+      ln -s ${juce} modules/juce
       ln -s ${gin} modules/gin
     '';
 
