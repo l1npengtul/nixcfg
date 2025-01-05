@@ -68,12 +68,11 @@ in
     ];
 
     cmakeFlags = [
-      (lib.cmakeBool "BUILD_EXTRAS" true)
+      (lib.cmakeBool "BUILD_EXTRAS" false)
       (lib.cmakeBool "BUILD_TESTING" false)
       (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
       "-DCMAKE_CXX_COMPILER=g++"
       "-DCMAKE_C_COMPILER=gcc"
-      "-DBUILD_EXTRAS=OFF"
       #"-GNinja"
     ];
 
