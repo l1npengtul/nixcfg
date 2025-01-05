@@ -14,11 +14,14 @@
   curl,
   mesa,
   webkitgtk,
-  juce,
   gcc12,
   makeFontsCache,
+  juce,
 }: let
   plname = "SID";
+  juce' = juce.overrideAttrs rec {
+    version = "8.0.4";
+  };
 in
   stdenv.mkDerivation rec {
     pname = "socalabs-sid";
@@ -49,7 +52,6 @@ in
       cmake
       pkg-config
       ninja
-      juce
     ];
 
     buildInputs = [
@@ -73,13 +75,18 @@ in
       (lib.cmakeBool "BUILD_EXTRAS" true)
       (lib.cmakeBool "BUILD_TESTING" false)
       (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
-      #"-DCMAKE_CXX_COMPILER=g++"
-      #"-DCMAKE_C_COMPILER=gcc"
+      "-DCMAKE_CXX_COMPILER=g++"
+      "-DCMAKE_C_COMPILER=gcc"
       "-DBUILD_EXTRAS=OFF"
       #"-GNinja"
     ];
 
     cmakeBuildType = "Release";
+
+    preConfigure = ''
+      rm -rf modules/juce
+      ln -s ${juce'.src} modules/juce
+    '';
 
     buildPhase = ''
       #ln -s $src/CMakePresets.json /build/source/build
