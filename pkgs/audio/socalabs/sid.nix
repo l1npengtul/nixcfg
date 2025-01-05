@@ -25,7 +25,7 @@
       owner = "l1npengtul";
       repo = "JUCE";
       rev = "f545152f9dcb9c78b1cf669fa500b67db3a20a6e";
-      hash = "";
+      hash = "sha256-zKxN0kxF+pzKNFFbLo8Q+CSKFDzIUL60t64eJaGgsXs=";
     };
   };
   gin = fetchFromGitHub {
