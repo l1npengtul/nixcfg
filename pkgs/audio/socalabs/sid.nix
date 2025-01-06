@@ -109,7 +109,7 @@ in
       #ln -s $src/CMakePresets.json /build/source/build/
       #ln -s $src/modules  /build/source/build/modules
       #ln -s /build/source/Builds /build/source/build/Builds
-      cd /build/source/Builds/ninja-gcc
+      #cd /build/source/Builds/ninja-gcc
       #export FONTCONFIG_FILE=${fontsConf}
       #cmake --build --preset ninja-clang --config Release
       cmake --build . --config Release

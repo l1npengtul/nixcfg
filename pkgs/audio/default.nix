@@ -60,7 +60,7 @@ in {
     musescore
     paulstretch
 
-    sid
+    #sid
 
     vital
     airwindows
