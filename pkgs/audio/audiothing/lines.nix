@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   version = "1.1";
 
   src = fetchzip {
-    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/Lines-{version}.tar.xz";
+    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/Lines-${version}.tar.xz";
     sha256 = "vySWnkZRbVfL6zQdx3lt5LtNPwhAPsR0CK/ho49sfA0=";
   };
 
@@ -22,14 +22,14 @@ stdenv.mkDerivation rec {
 
     runHook preInstall
 
-    mkdir -p $out/lib64/vst3/audiothing
-    cp -r $src/Plugins/Lines.vst3 $out/lib64/vst3/audiothing
+    mkdir -p $out/lib/vst3/audiothing
+    cp -r $src/Plugins/Lines.vst3 $out/lib/vst3/audiothing
 
-    mkdir -p $out/lib64/vst/audiothing
-    cp -r $src/Plugins/Lines.so $out/lib64/vst/audiothing
+    mkdir -p $out/lib/vst/audiothing
+    cp -r $src/Plugins/Lines.so $out/lib/vst/audiothing
 
-    mkdir -p $out/lib64/clap/audiothing
-    cp -r $src/Plugins/Lines.clap $out/lib64/clap/audiothing
+    mkdir -p $out/lib/clap/audiothing
+    cp -r $src/Plugins/Lines.clap $out/lib/clap/audiothing
 
     runHook postInstall
 

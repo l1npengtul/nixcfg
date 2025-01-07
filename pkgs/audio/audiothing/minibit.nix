@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   version = "1.7.0";
 
   src = fetchzip {
-    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/miniBit-{version}.tar.xz";
+    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/miniBit-${version}.tar.xz";
     sha256 = "130x9rlmprkvfz5b653qz8bj7b8sgibaji8cc4y92qj7sp73vzd8";
   };
 
@@ -22,14 +22,14 @@ stdenv.mkDerivation rec {
 
     runHook preInstall
 
-    mkdir -p $out/lib64/vst3/audiothing
-    cp -r $src/Plugins/miniBit.vst3 $out/lib64/vst3/audiothing
+    mkdir -p $out/lib/vst3/audiothing
+    cp -r $src/Plugins/miniBit.vst3 $out/lib/vst3/audiothing
 
-    mkdir -p $out/lib64/vst/audiothing
-    cp -r $src/Plugins/miniBit.so $out/lib64/vst/audiothing
+    mkdir -p $out/lib/vst/audiothing
+    cp -r $src/Plugins/miniBit.so $out/lib/vst/audiothing
 
-    mkdir -p $out/lib64/clap/audiothing
-    cp -r $src/Plugins/miniBit.clap $out/lib64/clap/audiothing
+    mkdir -p $out/lib/clap/audiothing
+    cp -r $src/Plugins/miniBit.clap $out/lib/clap/audiothing
 
     runHook postInstall
 

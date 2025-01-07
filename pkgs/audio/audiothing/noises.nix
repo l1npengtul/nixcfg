@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   version = "1.2.1";
 
   src = fetchzip {
-    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/38042111/Noises-1.2.1.tar.xz";
+    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/38042111/Noises-${version}.tar.xz";
     sha256 = "0hsjwdh2543743w3l7rwsyhdzzfw7sf3y2lph5qm1npf98vkgcxg";
   };
 
@@ -24,14 +24,14 @@ stdenv.mkDerivation rec {
 
     ls $src/Plugins
 
-    mkdir -p $out/lib64/vst3/audiothing
-    cp -r $src/Plugins/Noises.vst3 $out/lib64/vst3/audiothing
+    mkdir -p $out/lib/vst3/audiothing
+    cp -r $src/Plugins/Noises.vst3 $out/lib/vst3/audiothing
 
-    mkdir -p $out/lib64/vst/audiothing
-    cp -r $src/Plugins/Noises.so $out/lib64/vst/audiothing
+    mkdir -p $out/lib/vst/audiothing
+    cp -r $src/Plugins/Noises.so $out/lib/vst/audiothing
 
-    mkdir -p $out/lib64/clap/audiothing
-    cp -r $src/Plugins/Noises.clap $out/lib64/clap/audiothing
+    mkdir -p $out/lib/clap/audiothing
+    cp -r $src/Plugins/Noises.clap $out/lib/clap/audiothing
 
     runHook postInstall
 
