@@ -5,6 +5,7 @@
       legcord
       discord
       discordchatexporter-desktop
+      element-desktop
     ];
   };
 }
