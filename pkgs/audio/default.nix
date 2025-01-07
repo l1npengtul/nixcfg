@@ -59,21 +59,27 @@ in {
     audacity
     musescore
     paulstretch
-
-    #sid
-    #test
-    vital
-    #airwindows
-    #     synthv-studio-pro # fuck you dreamtonics
+    bespokesynth-with-vst2
+    oxefmsynth
+    ninjas2
+    zam-plugins
+    chow-tape-model
+    vcv-rack
+    cardinal
+    carla
     plugdata
     alsa-utils
+    vital
+    distrho-ports
+    airwindows-lv2
+
+    #     synthv-studio-pro # fuck you dreamtonics
     pkgs-stable.bitwig-studio
     yabridgectl
     yabridge
     wine
     dxvk_2
     recstar
-    inputs.audio.packages.${pkgs.system}.vital
     inputs.audio.packages.${pkgs.system}.paulxstretch
     inputs.audio.packages.${pkgs.system}.grainbow
     inputs.audio.packages.${pkgs.system}.neuralnote

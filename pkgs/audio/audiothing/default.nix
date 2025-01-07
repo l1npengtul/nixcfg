@@ -5,6 +5,8 @@
   textures = pkgs.callPackage ./textures.nix {};
   lines = pkgs.callPackage ./lines.nix {};
   noises = pkgs.callPackage ./noises.nix {};
+  speakers = pkgs.callPackage ./speakers.nix {};
+  fog = pkgs.callPackage ./fog.nix {};
 in {
   environment.systemPackages = [
     bubbles
@@ -13,5 +15,7 @@ in {
     textures
     lines
     noises
+    speakers
+    fog
   ];
 }
