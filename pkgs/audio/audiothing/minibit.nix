@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   version = "1.7.0";
 
   src = fetchzip {
-    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/miniBit-${version}.tar.xz";
+    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/miniBit-1.7.tar.xz";
     sha256 = "130x9rlmprkvfz5b653qz8bj7b8sgibaji8cc4y92qj7sp73vzd8";
   };
 
