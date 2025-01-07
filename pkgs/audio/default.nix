@@ -18,33 +18,6 @@
   airwindows = pkgs.callPackage ./airwindows {};
   #   synthv-studio-pro = pkgs.callPackage ./synthv-studio-pro {};
   recstar = pkgs.callPackage ./recstar {};
-  wine = pkgs.wineWowPackages.staging.override {
-    cupsSupport = true;
-    gettextSupport = true;
-    dbusSupport = true;
-    cairoSupport = true;
-    odbcSupport = true;
-    netapiSupport = true;
-    cursesSupport = true;
-    vaSupport = true;
-    pcapSupport = true;
-    v4lSupport = true;
-    saneSupport = true;
-    gphoto2Support = true;
-    krb5Support = true;
-    fontconfigSupport = true;
-    alsaSupport = true;
-    pulseaudioSupport = true;
-    udevSupport = true;
-    vulkanSupport = true;
-    sdlSupport = true;
-    usbSupport = true;
-    gstreamerSupport = true;
-    gtkSupport = true;
-    openclSupport = true;
-    tlsSupport = true;
-    waylandSupport = true;
-  };
 in {
   imports = [
     ./audiothing
@@ -66,20 +39,19 @@ in {
     chow-tape-model
     vcv-rack
     cardinal
-    carla
+    #carla
     plugdata
     alsa-utils
     vital
     distrho-ports
     airwindows-lv2
-
-    #     synthv-studio-pro # fuck you dreamtonics
     pkgs-stable.bitwig-studio
     yabridgectl
     yabridge
-    wine
+    wineWowPackages.stagingFull
     dxvk_2
     recstar
+
     inputs.audio.packages.${pkgs.system}.paulxstretch
     inputs.audio.packages.${pkgs.system}.grainbow
     inputs.audio.packages.${pkgs.system}.neuralnote
