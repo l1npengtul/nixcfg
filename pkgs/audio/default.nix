@@ -14,7 +14,7 @@
   sn76489 = pkgs.callPackage ./socalabs/sn76489.nix {};
   voc = pkgs.callPackage ./socalabs/voc.nix {};
   wavetable = pkgs.callPackage ./socalabs/wavetable.nix {};
-  wsjtz = pkgs.callPackage ./test.nix {};
+  test = pkgs.callPackage ./test.nix {};
   airwindows = pkgs.callPackage ./airwindows {};
   #   synthv-studio-pro = pkgs.callPackage ./synthv-studio-pro {};
   recstar = pkgs.callPackage ./recstar {};
@@ -61,7 +61,7 @@ in {
     paulstretch
 
     #sid
-    wsjtz
+    #test
     vital
     #airwindows
     #     synthv-studio-pro # fuck you dreamtonics
