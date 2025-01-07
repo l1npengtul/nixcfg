@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   version = "1.1";
 
   src = fetchzip {
-    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/ThingsBubbles-1.1.tar.xz";
+    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/ThingsBubbles-{version}.tar.xz";
     sha256 = "1xlfz92254ymzcwy9kywi3mkfzz43npq30n64jvycdykanf2kp1c";
   };
 

@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   version = "1.1.1";
 
   src = fetchzip {
-    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/ThingsTexture-1.1.1.tar.xz";
+    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/ThingsTexture-{version}.tar.xz";
     sha256 = "0nm51yc9j6jfk5bczjq1brwg83x07jz6jkd7dpg5ypskp68y29bp";
   };
 

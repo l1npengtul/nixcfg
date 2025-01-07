@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   version = "1.0";
 
   src = fetchzip {
-    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/MoonEcho-1.0.tar.xz";
+    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/MoonEcho-{version}.tar.xz";
     sha256 = "0jx8lvcc1lry62fkgy498nb41i39xjffjsm4jqaa5c88z63b15m8";
   };
 

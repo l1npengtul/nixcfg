@@ -7,11 +7,11 @@
 }:
 stdenv.mkDerivation rec {
   pname = "audiothing-minibit";
-  version = "1.6.5";
+  version = "1.7.0";
 
   src = fetchzip {
-    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/miniBit-1.6.5.tar.xz";
-    sha256 = "0bqd6718909szw7ah0rnnw1qlxvmxbiwfwb6r3z5wchcjv3avi0l";
+    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/miniBit-{version}.tar.xz";
+    sha256 = "130x9rlmprkvfz5b653qz8bj7b8sgibaji8cc4y92qj7sp73vzd8";
   };
 
   buildInputs = [stdenv.cc.cc.lib pkgs.libatomic_ops pkgs.alsa-lib pkgs.freetype pkgs.libGL pkgs.curl];

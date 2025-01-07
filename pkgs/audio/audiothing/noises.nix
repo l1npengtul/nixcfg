@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   version = "1.2.1";
 
   src = fetchzip {
-    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/38042111/Noises-1.2.1.tar.xz";
+    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/38042111/Noises-{version}.tar.xz";
     sha256 = "r7M3N0ru2lBxgZcKP5w+3P3foNc8Hzr4IGeQImDjUkM=";
   };
 

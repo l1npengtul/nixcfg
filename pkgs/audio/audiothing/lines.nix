@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   version = "1.1";
 
   src = fetchzip {
-    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/Lines-1.1.tar.xz";
+    url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/Lines-{version}.tar.xz";
     sha256 = "vySWnkZRbVfL6zQdx3lt5LtNPwhAPsR0CK/ho49sfA0=";
   };
 
