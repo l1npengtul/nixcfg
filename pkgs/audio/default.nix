@@ -63,7 +63,7 @@ in {
     #sid
 
     vital
-    airwindows
+    #airwindows
     #     synthv-studio-pro # fuck you dreamtonics
     plugdata
     alsa-utils

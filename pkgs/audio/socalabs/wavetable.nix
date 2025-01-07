@@ -28,7 +28,7 @@ in
         {
           owner = "FigBug";
           repo = plname;
-          rev = "397a6f3736ca85ad3dd93972ba52ee263c9fd83b";
+          rev = "nm";
           hash = "";
           fetchSubmodules = true;
         })
