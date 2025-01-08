@@ -79,20 +79,20 @@
     username = "l1npengtul";
     system = "x86_64-linux";
     lib = nixpkgs.lib // home-manager.lib;
-    commonArgs = {
-      inherit system;
-      config.allowUnfree = true;
-    };
     pkgs = import nixpkgs commonArgs;
     pkgs-stable = import nixpkgs-stable commonArgs;
+    commonArgs = {
+      inherit system;
+      inherit pkgs;
+      inherit pkgs-stable;
+      config.allowUnfree = true;
+    };
   in {
     inherit lib;
 
     nixosConfigurations = {
       thinkpad_x1c_2in1_gen9 = lib.nixosSystem {
         inherit system;
-        inherit pkgs;
-        inherit pkgs-stable;
         specialArgs = {
           inherit inputs;
         };
