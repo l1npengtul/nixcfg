@@ -91,6 +91,8 @@
     nixosConfigurations = {
       thinkpad_x1c_2in1_gen9 = lib.nixosSystem {
         inherit system;
+        inherit pkgs;
+        inherit pkgs-stable;
         specialArgs = {
           inherit inputs;
         };
