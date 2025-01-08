@@ -84,7 +84,6 @@
     commonArgs = {
       inherit system;
       inherit pkgs;
-      inherit pkgs-stable;
       config.allowUnfree = true;
     };
   in {
@@ -95,6 +94,7 @@
         inherit system;
         specialArgs = {
           inherit inputs;
+          inherit pkgs-stable;
         };
 
         modules = [
