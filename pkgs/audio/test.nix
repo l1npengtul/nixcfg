@@ -144,7 +144,7 @@ in
     cmakeBuildType = "Release";
 
     patches = [
-      ./juce-clap-juce-extensions-src-juce-cmakelists.patch
+      ./test.patch
     ];
 
     prePatch = ''
