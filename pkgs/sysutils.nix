@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  environment.systemPackages = [pkgs.dpkg pkgs.binutils pkgs.upx pkgs.tmux];
+  environment.systemPackages = [pkgs.dpkg pkgs.binutils pkgs.upx pkgs.tmux pkgs.popsicle];
 }
