@@ -49,8 +49,8 @@ in {
     distrho-ports
     airwindows-lv2
     pkgs-stable.bitwig-studio
-    yabridgectl
-    yabridge
+    pkgs-stable.yabridgectl
+    pkgs-stable.yabridge
     pkgs-stable.wineWowPackages.stagingFull
     dxvk_2
     recstar
