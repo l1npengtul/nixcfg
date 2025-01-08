@@ -23,13 +23,13 @@ stdenv.mkDerivation rec {
     runHook preInstall
 
     mkdir -p $out/lib/vst3/audiothing
-    cp -r $src/Plugins/ThingsTexture.vst3 $out/lib/vst3/audiothing
+    cp -r "$src/Things Texture ${version}/Plugins/ThingsTexture.vst3" $out/lib/vst3/audiothing
 
     mkdir -p $out/lib/vst/audiothing
-    cp -r $src/Plugins/ThingsTexture.so $out/lib/vst/audiothing
+    cp -r "$src/Things Texture ${version}/Plugins/ThingsTexture.so" $out/lib/vst/audiothing
 
     mkdir -p $out/lib/clap/audiothing
-    cp -r $src/Plugins/ThingsTexture.clap $out/lib/clap/audiothing
+    cp -r "$src/Things Texture ${version}/Plugins/ThingsTexture.clap" $out/lib/clap/audiothing
 
     runHook postInstall
 

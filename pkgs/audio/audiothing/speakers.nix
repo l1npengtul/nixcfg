@@ -23,13 +23,13 @@ stdenv.mkDerivation rec {
     runHook preInstall
 
     mkdir -p $out/lib/vst3/audiothing
-    cp -r $src/Plugins/Speakers.vst3 $out/lib/vst3/audiothing
+    cp -r "$src/Speakers ${version}/Plugins/Speakers.vst3" $out/lib/vst3/audiothing
 
     mkdir -p $out/lib/vst/audiothing
-    cp -r $src/Plugins/Speakers.so $out/lib/vst/audiothing
+    cp -r "$src/Speakers ${version}/Plugins/Speakers.so" $out/lib/vst/audiothing
 
     mkdir -p $out/lib/clap/audiothing
-    cp -r $src/Plugins/Speakers.clap $out/lib/clap/audiothing
+    cp -r "$src/Speakers ${version}/Plugins/Speakers.clap" $out/lib/clap/audiothing
 
     runHook postInstall
 

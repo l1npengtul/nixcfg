@@ -23,13 +23,13 @@ stdenv.mkDerivation rec {
     runHook preInstall
 
     mkdir -p $out/lib/vst3/audiothing
-    cp -r $src/Plugins/ThingsBubbles.vst3 $out/lib/vst3/audiothing
+    cp -r "$src/Things Bubbles ${version}/Plugins/ThingsBubbles.vst3" $out/lib/vst3/audiothing
 
     mkdir -p $out/lib/vst/audiothing
-    cp -r $src/Plugins/ThingsBubbles.so $out/lib/vst/audiothing
+    cp -r "$src/Things Bubbles ${version}/Plugins/ThingsBubbles.so" $out/lib/vst/audiothing
 
     mkdir -p $out/lib/clap/audiothing
-    cp -r $src/Plugins/ThingsBubbles.clap $out/lib/clap/audiothing
+    cp -r "$src/Things Bubbles ${version}/Plugins/ThingsBubbles.clap" $out/lib/clap/audiothing
 
     runHook postInstall
 
