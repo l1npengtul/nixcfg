@@ -41,7 +41,7 @@ in {
     chow-tape-model
     vcv-rack
     cardinal
-    carla
+    pkgs-stable.carla
     plugdata
     alsa-utils
     vital
