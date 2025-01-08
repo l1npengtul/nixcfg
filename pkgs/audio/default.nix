@@ -41,7 +41,7 @@ in {
     chow-tape-model
     vcv-rack
     cardinal
-    #carla
+    carla
     plugdata
     alsa-utils
     vital
@@ -53,6 +53,8 @@ in {
     wineWowPackages.stagingFull
     dxvk_2
     recstar
+
+    test
 
     inputs.audio.packages.${pkgs.system}.paulxstretch
     inputs.audio.packages.${pkgs.system}.grainbow
