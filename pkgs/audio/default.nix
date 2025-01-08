@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   pkgs-stable,
+  pkgs-master,
   ...
 }: let
   #     buildGradlePackage = inputs.gradle2nix.builders.x86_64-linux.buildGradlePackage;
@@ -41,7 +42,7 @@ in {
     chow-tape-model
     vcv-rack
     cardinal
-    pkgs-stable.carla
+    pkgs-master.carla
     plugdata
     alsa-utils
     vital

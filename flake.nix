@@ -2,6 +2,7 @@
   description = "sakana fish nixos real";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
@@ -74,6 +75,7 @@
     vhs-decode-nur-packages,
     nix-matlab,
     nixpkgs-stable,
+    nixpkgs-master,
     ...
   }: let
     username = "l1npengtul";
@@ -81,6 +83,7 @@
     lib = nixpkgs.lib // home-manager.lib;
     pkgs = import nixpkgs commonArgs;
     pkgs-stable = import nixpkgs-stable commonArgs;
+    pkgs-master = import nixpkgs-master commonArgs;
     commonArgs = {
       inherit system;
       inherit pkgs;
@@ -95,6 +98,7 @@
         specialArgs = {
           inherit inputs;
           inherit pkgs-stable;
+          inherit pkgs-master;
         };
 
         modules = [
