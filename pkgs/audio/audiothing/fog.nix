@@ -22,6 +22,7 @@ stdenv.mkDerivation rec {
 
     runHook preInstall
 
+    ls $src
     mkdir -p $out/lib/vst3/audiothing
     cp -r "$src/Fog Convolver ${version}/Plugins/FogConvolver2.vst3" $out/lib/vst3/audiothing
 
