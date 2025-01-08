@@ -29,6 +29,8 @@ in {
     lsp-plugins
     qpwgraph
     dexed
+    setbfree
+    zynaddsubfx
     audacity
     musescore
     paulstretch
