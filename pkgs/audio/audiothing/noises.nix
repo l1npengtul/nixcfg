@@ -25,13 +25,13 @@ stdenv.mkDerivation rec {
     ls $src/Plugins
 
     mkdir -p $out/lib/vst3/audiothing
-    cp -r "$src/Noises ${version}/Plugins/Noises.vst3" $out/lib/vst3/audiothing
+    cp -r "$src/Plugins/Noises.vst3" $out/lib/vst3/audiothing
 
     mkdir -p $out/lib/vst/audiothing
-    cp -r "$src/Noises ${version}/Plugins/Noises.so" $out/lib/vst/audiothing
+    cp -r "$src/Plugins/Noises.so" $out/lib/vst/audiothing
 
     mkdir -p $out/lib/clap/audiothing
-    cp -r "$src/Noises ${version}/Plugins/Noises.clap" $out/lib/clap/audiothing
+    cp -r "$src/Plugins/Noises.clap" $out/lib/clap/audiothing
 
     runHook postInstall
 

@@ -93,8 +93,6 @@
         inherit system;
         specialArgs = {
           inherit inputs;
-          inherit pkgs;
-          inherit pkgs-stable;
         };
 
         modules = [

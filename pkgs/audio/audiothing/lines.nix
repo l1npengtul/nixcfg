@@ -23,13 +23,13 @@ stdenv.mkDerivation rec {
     runHook preInstall
 
     mkdir -p $out/lib/vst3/audiothing
-    cp -r "$src/Lines ${version}/Plugins/Lines.vst3" $out/lib/vst3/audiothing
+    cp -r "$src/Plugins/Lines.vst3" $out/lib/vst3/audiothing
 
     mkdir -p $out/lib/vst/audiothing
-    cp -r "$src/Lines ${version}/Plugins/Lines.so" $out/lib/vst/audiothing
+    cp -r "$src/Plugins/Lines.so" $out/lib/vst/audiothing
 
     mkdir -p $out/lib/clap/audiothing
-    cp -r "$src/Lines ${version}/Plugins/Lines.clap" $out/lib/clap/audiothing
+    cp -r "$src/Plugins/Lines.clap" $out/lib/clap/audiothing
 
     runHook postInstall
 

@@ -23,13 +23,13 @@ stdenv.mkDerivation rec {
     runHook preInstall
 
     mkdir -p $out/lib/vst3/audiothing
-    cp -r "$src/Moon Echo ${version}/Plugins/MoonEcho.vst3" $out/lib/vst3/audiothing
+    cp -r "$src/Plugins/MoonEcho.vst3" $out/lib/vst3/audiothing
 
     mkdir -p $out/lib/vst/audiothing
-    cp -r "$src/Moon Echo ${version}/Plugins/MoonEcho.so" $out/lib/vst/audiothing
+    cp -r "$src/Plugins/MoonEcho.so" $out/lib/vst/audiothing
 
     mkdir -p $out/lib/clap/audiothing
-    cp -r "$src/Moon Echo ${version}/Plugins/MoonEcho.clap" $out/lib/clap/audiothing
+    cp -r "$src/Plugins/MoonEcho.clap" $out/lib/clap/audiothing
 
     runHook postInstall
 

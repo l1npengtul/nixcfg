@@ -23,13 +23,13 @@ stdenv.mkDerivation rec {
     runHook preInstall
 
     mkdir -p $out/lib/vst3/audiothing
-    cp -r "$src/miniBit ${version}/Plugins/miniBit.vst3" $out/lib/vst3/audiothing
+    cp -r "$src/Plugins/miniBit.vst3" $out/lib/vst3/audiothing
 
     mkdir -p $out/lib/vst/audiothing
-    cp -r "$src/miniBit ${version}/Plugins/miniBit.so" $out/lib/vst/audiothing
+    cp -r "$src/Plugins/miniBit.so" $out/lib/vst/audiothing
 
     mkdir -p $out/lib/clap/audiothing
-    cp -r "$src/miniBit ${version}/Plugins/miniBit.clap" $out/lib/clap/audiothing
+    cp -r "$src/Plugins/miniBit.clap" $out/lib/clap/audiothing
 
     runHook postInstall
 
