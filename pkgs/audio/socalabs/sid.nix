@@ -33,7 +33,7 @@
     owner = "FigBug";
     repo = "gin";
     rev = "f5c6bbcc82fd63ebc5c08f2edb20f5f3a0ba0128";
-    hash = "";
+    hash = "sha256-YX/DiTWBrcn57hR1vPNajQ3TeXzvBtH622xbNN1x00U=";
   };
 in
   stdenv.mkDerivation {
