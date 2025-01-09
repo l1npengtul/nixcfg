@@ -48,7 +48,7 @@ in {
     vital
     distrho-ports
     airwindows-lv2
-    pkgs-stable.bitwig-studio
+    bitwig-studio
     pkgs-stable.yabridgectl
     pkgs-stable.yabridge
     pkgs-stable.wineWowPackages.stagingFull

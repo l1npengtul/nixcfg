@@ -7,6 +7,7 @@
   alsa-lib,
   copyDesktopItems,
   makeDesktopItem,
+  ninja,
   xorg,
   freetype,
   expat,
@@ -66,6 +67,7 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     cmake
     pkg-config
+    ninja
     copyDesktopItems
   ];
 
@@ -105,6 +107,7 @@ stdenv.mkDerivation {
     "-DCMAKE_AR=${stdenv.cc.cc}/bin/gcc-ar"
     "-DCMAKE_RANLIB=${stdenv.cc.cc}/bin/gcc-ranlib"
     "-DCMAKE_NM=${stdenv.cc.cc}/bin/gcc-nm"
+    "--preset ninja-gcc"
   ];
 
   # enable LTO flags. disable at your peril! (too long didnt run - makes the linking process take 10 years)
