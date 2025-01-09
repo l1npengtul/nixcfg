@@ -25,6 +25,8 @@
   libdatrie,
   libepoxy,
   libsoup_2_4,
+  libGL,
+  lerc,
   makeWrapper,
 }: let
   version = "0.9.1";
@@ -67,6 +69,7 @@ in
       libsysprof-capture
       pcre2
       util-linux
+      libGL
       libselinux
       libsepol
       libthai
@@ -74,6 +77,7 @@ in
       libdatrie
       libepoxy
       libsoup_2_4
+      lerc
     ];
 
     desktopItems = [
