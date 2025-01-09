@@ -121,10 +121,6 @@ stdenv.mkDerivation {
     # TODO: remove when juce updates :D
     substituteInPlace modules/juce/modules/juce_audio_devices/native/juce_Midi_linux.cpp \
     --replace-fail "port = client.createPort (portName, forInput, false);" "port = client.createPort (portName, forInput, true);"
-
-    # avoid touching HOME, see https://github.com/NixOS/nixpkgs/pull/149487#issuecomment-991747333
-    # (the PR comment is for surge but SID is also a JUCE plugin like surge so it works.)
-    export XDG_DOCUMENTS_DIR=$(mktemp -d)
   '';
 
   cmakeBuildType = "Release";
