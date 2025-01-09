@@ -28,6 +28,7 @@
   sqlite,
   juce,
   srcOnly,
+  ninja,
   # Disable VST building by default, since NixOS doesn't have a VST license
   enableVST2 ? false,
 }: let
@@ -79,6 +80,7 @@ in
       cmake
       pkg-config
       copyDesktopItems
+      ninja
     ];
 
     buildInputs = [
@@ -117,6 +119,7 @@ in
       "-DCMAKE_AR=${stdenv.cc.cc}/bin/gcc-ar"
       "-DCMAKE_RANLIB=${stdenv.cc.cc}/bin/gcc-ranlib"
       "-DCMAKE_NM=${stdenv.cc.cc}/bin/gcc-nm"
+      "--preset ninja-gcc"
     ];
 
     # enable LTO flags. disable at your peril! (too long didnt run - makes the linking process take 10 years)
@@ -125,15 +128,15 @@ in
       sed -i '159i juce::juce_recommended_lto_flags' CMakeLists.txt
       substituteInPlace CMakeLists.txt \
       --replace-fail 'FORMATS Standalone VST VST3 AU LV2' 'FORMATS Standalone ${lib.optionalString enableVST2 "VST"} VST3 LV2'
-      substituteInPlace plugin/Source/PluginProcessor.h \
-      --replace-fail 'class SIDAudioProcessor : public gin::Processor' 'class SIDAudioProcessor : public gin::Processor, public gin::Synthesiser'
+      #substituteInPlace plugin/Source/PluginProcessor.h \
+      #--replace-fail 'class SIDAudioProcessor : public gin::Processor' 'class SIDAudioProcessor : public gin::Processor, public gin::Synthesiser'
 
       # patch gin to latest
-      rm -rf modules/gin
-      ln -s ${gin} modules/gin
+      #rm -rf modules/gin
+      #ln -s ${gin} modules/gin
       # patch JUCE to latest
-      rm -rf modules/juce
-      ln -s ${srcOnly juce} modules/juce
+      #rm -rf modules/juce
+      #ln -s ${srcOnly juce} modules/juce
     '';
 
     cmakeBuildType = "Release";
