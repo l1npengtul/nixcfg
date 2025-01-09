@@ -164,6 +164,10 @@ stdenv.mkDerivation {
     ]
   );
 
+  # enable parallel LTO
+  NIX_CFLAGS_COMPILE = "-flto=auto";
+  NIX_LDFLAGS_COMPILE = "-flto=auto";
+
   meta = {
     description = "Socalabs Commodore 64 SID Emulation Plugin";
     homepage = "https://socalabs.com/synths/commodore-64-sid/";
