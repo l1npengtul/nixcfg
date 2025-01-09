@@ -84,6 +84,7 @@ in
       lerc
       libjack2
       expat
+      sqlite
     ];
 
     desktopItems = [
