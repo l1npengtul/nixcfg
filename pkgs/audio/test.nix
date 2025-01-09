@@ -27,7 +27,7 @@ in
       owner = "plugdata-team";
       repo = "plugdata";
       rev = "v${version}";
-      hash = "";
+      hash = "sha256-dcggq455lZiwl1lps11fuKX6sx0A8UtFwFoiBJWtwFQ=";
       fetchSubmodules = true;
     };
 
@@ -59,7 +59,7 @@ in
         name = "PlugData";
         desktopName = "PlugData";
         exec = "plugdata";
-        icon = "plugdata_logo.png";
+        icon = "plugdata_logo";
         comment = "Pure Data as a plugin, with a new GUI";
         type = "Application";
         categories = [
