@@ -99,8 +99,6 @@ stdenv.mkDerivation {
   ];
 
   cmakeFlags = [
-    (lib.cmakeBool "BUILD_EXTRAS" false)
-    (lib.cmakeBool "BUILD_TESTING" false)
     (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
     "-DCMAKE_AR=${stdenv.cc.cc}/bin/gcc-ar"
     "-DCMAKE_RANLIB=${stdenv.cc.cc}/bin/gcc-ranlib"
@@ -112,7 +110,7 @@ stdenv.mkDerivation {
   patchPhase = ''
     sed -i '159i juce::juce_recommended_lto_flags' CMakeLists.txt
     substituteInPlace CMakeLists.txt \
-    --replace-fail 'FORMATS Standalone VST VST3 AU LV2' 'FORMATS Standalone LV2 VST3 ${lib.optionalString enableVST2 "VST"}'
+    --replace-fail 'FORMATS Standalone VST VST3 AU LV2' 'FORMATS Standalone ${lib.optionalString enableVST2 "VST"} VST3 LV2'
   '';
 
   cmakeBuildType = "Release";
@@ -147,6 +145,7 @@ stdenv.mkDerivation {
   NIX_LDFLAGS = (
     toString [
       "-lX11"
+      "-lXext"
       "-lXcomposite"
       "-lXcursor"
       "-lXinerama"
