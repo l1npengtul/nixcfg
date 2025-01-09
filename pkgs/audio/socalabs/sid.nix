@@ -26,6 +26,8 @@
   libsoup_2_4,
   lerc,
   sqlite,
+  juce,
+  srcOnly,
   # Disable VST building by default, since NixOS doesn't have a VST license
   enableVST2 ? false,
 }: let
@@ -85,6 +87,7 @@ in
       xorg.libXrandr
       xorg.libXtst
       xorg.libXdmcp
+      xorg.xvfb
       libGL
       libjack2
       libsysprof-capture
@@ -103,6 +106,7 @@ in
       util-linux
       sqlite
       expat
+      juce
     ];
 
     cmakeFlags = [
@@ -122,6 +126,9 @@ in
       # patch gin to latest
       rm -rf modules/gin
       ln -s ${gin} modules/gin
+      # patch JUCE to latest
+      rm -rf modules/juce
+      ln -s ${srcOnly juce} modules/gin
     '';
 
     cmakeBuildType = "Release";
