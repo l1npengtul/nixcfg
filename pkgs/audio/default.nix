@@ -59,7 +59,7 @@ in {
     test
 
     sid
-    sn76489
+    #sn76489
 
     inputs.audio.packages.${pkgs.system}.paulxstretch
     inputs.audio.packages.${pkgs.system}.grainbow
