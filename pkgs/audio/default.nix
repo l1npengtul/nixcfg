@@ -17,6 +17,7 @@
   wavetable = pkgs.callPackage ./socalabs/wavetable.nix {};
   test = pkgs.callPackage ./test.nix {};
   airwindows = pkgs.callPackage ./airwindows {};
+  socalabsall = pkgs.callPackage ./socalabs/all.nix {};
   #   synthv-studio-pro = pkgs.callPackage ./synthv-studio-pro {};
   recstar = pkgs.callPackage ./recstar {};
 in {
@@ -60,6 +61,7 @@ in {
 
     sid
     sn76489
+    socalabsall
 
     inputs.audio.packages.${pkgs.system}.paulxstretch
     inputs.audio.packages.${pkgs.system}.grainbow
