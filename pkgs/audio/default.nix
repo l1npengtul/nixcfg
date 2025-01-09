@@ -49,6 +49,7 @@ in {
     distrho-ports
     airwindows-lv2
     bitwig-studio
+    ardour
     pkgs-stable.yabridgectl
     pkgs-stable.yabridge
     pkgs-stable.wineWowPackages.stagingFull

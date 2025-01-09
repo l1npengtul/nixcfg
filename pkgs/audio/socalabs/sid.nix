@@ -7,7 +7,6 @@
   alsa-lib,
   copyDesktopItems,
   makeDesktopItem,
-  ninja,
   xorg,
   freetype,
   expat,
@@ -67,7 +66,6 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     cmake
     pkg-config
-    ninja
     copyDesktopItems
   ];
 
