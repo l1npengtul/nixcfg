@@ -128,7 +128,7 @@ in
       ln -s ${gin} modules/gin
       # patch JUCE to latest
       rm -rf modules/juce
-      ln -s ${srcOnly juce} modules/gin
+      ln -s ${srcOnly juce} modules/juce
     '';
 
     cmakeBuildType = "Release";
