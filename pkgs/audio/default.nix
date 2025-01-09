@@ -44,7 +44,6 @@ in {
     vcv-rack
     cardinal
     pkgs-master.carla
-    plugdata
     alsa-utils
     vital
     distrho-ports
