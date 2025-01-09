@@ -62,6 +62,8 @@ in
       xorg.libXinerama
       xorg.libXrender
       xorg.libXrandr
+      xorg.libXdmcp
+      xorg.xvfb
       libsysprof-capture
       pcre2
       util-linux
