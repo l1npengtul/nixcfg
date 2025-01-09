@@ -65,6 +65,7 @@ in
       xorg.libXrender
       xorg.libXrandr
       xorg.libXdmcp
+      xorg.libXtst
       xorg.xvfb
       libsysprof-capture
       pcre2
@@ -99,10 +100,12 @@ in
       toString [
         "-lX11"
         "-lXext"
+        "-lXcomposite"
         "-lXcursor"
         "-lXinerama"
         "-lXrandr"
-        "-lXrender"
+        "-lXtst"
+        "-lXdmcp"
       ]
     );
 
