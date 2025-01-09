@@ -26,7 +26,10 @@
   libepoxy,
   libsoup_2_4,
   libGL,
+  libjack2,
   lerc,
+  sqlite,
+  expat,
   makeWrapper,
 }: let
   version = "0.9.1";
@@ -79,6 +82,8 @@ in
       libepoxy
       libsoup_2_4
       lerc
+      libjack2
+      expat
     ];
 
     desktopItems = [
