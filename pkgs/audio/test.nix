@@ -15,6 +15,16 @@
   curl,
   xorg,
   python3,
+  libsysprof-capture,
+  pcre2,
+  util-linux,
+  libselinux,
+  libsepol,
+  libthai,
+  libxkbcommon,
+  libdatrie,
+  libepoxy,
+  libsoup_2_4,
   makeWrapper,
 }: let
   version = "0.9.1";
@@ -52,6 +62,16 @@ in
       xorg.libXinerama
       xorg.libXrender
       xorg.libXrandr
+      libsysprof-capture
+      pcre2
+      util-linux
+      libselinux
+      libsepol
+      libthai
+      libxkbcommon
+      libdatrie
+      libepoxy
+      libsoup_2_4
     ];
 
     desktopItems = [
