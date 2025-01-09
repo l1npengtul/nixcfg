@@ -10,7 +10,7 @@
   papu = pkgs.callPackage ./socalabs/papu.nix {};
   piano = pkgs.callPackage ./socalabs/piano.nix {};
   rp2a03 = pkgs.callPackage ./socalabs/rp2a03.nix {};
-  sid = pkgs.callPackage ./socalabs/sid.nix {};
+  sid = pkgs.callPackage ./socalabs/sid.nix {enableVST2 = true;};
   slplugins = pkgs.callPackage ./socalabs/slplugins.nix {};
   sn76489 = pkgs.callPackage ./socalabs/sn76489.nix {};
   voc = pkgs.callPackage ./socalabs/voc.nix {};
