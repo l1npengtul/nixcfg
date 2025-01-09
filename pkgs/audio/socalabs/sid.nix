@@ -129,7 +129,7 @@ stdenv.mkDerivation {
 
     ${lib.optionalString enableVST2 ''
       mkdir -p $out/lib/vst
-      cp -r SID_artefacts/Release/VST/libSID.vst $out/lib/vst
+      cp -r SID_artefacts/Release/VST/libSID.so $out/lib/vst
     ''}
 
     cp -r SID_artefacts/Release/LV2/SID.lv2 $out/lib/lv2
