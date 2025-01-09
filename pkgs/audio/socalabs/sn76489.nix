@@ -155,7 +155,7 @@ in
 
       install -Dm755 SN76489_artefacts/Release/Standalone/SN76489 $out/bin
 
-      install -Dm444 $src/plugin/Resources/icon.png $out/share/pixmaps/SN76489.png
+      install -Dm444 $src/plugin/Resources/logo.png $out/share/pixmaps/SN76489.png
 
       runHook postInstall
     '';
