@@ -119,7 +119,7 @@ in
     # enable LTO flags. disable at your peril! (too long didnt run - makes the linking process take 10 years)
 
     patchPhase = ''
-      sed -i '159i juce::juce_recommended_lto_flags' CMakeLists.txt
+      sed -i '141i juce::juce_recommended_lto_flags' CMakeLists.txt
       substituteInPlace CMakeLists.txt \
       --replace-fail 'FORMATS Standalone VST VST3 AU LV2' 'FORMATS Standalone ${lib.optionalString enableVST2 "VST"} VST3 LV2'
 
