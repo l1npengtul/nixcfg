@@ -128,6 +128,8 @@ stdenv.mkDerivation {
   strictDeps = true;
 
   preBuild = ''
+    HOME=(mktemp -d)
+
     cd ../Builds/ninja-gcc
   '';
 
