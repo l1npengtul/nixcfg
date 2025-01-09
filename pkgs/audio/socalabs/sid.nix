@@ -42,6 +42,9 @@ in
     pname = "socalabs-sid";
     version = "1.1.0";
 
+    dontStrip = true;
+    dontPatchELF = true;
+
     src =
       (fetchFromGitHub {
         owner = "FigBug";
