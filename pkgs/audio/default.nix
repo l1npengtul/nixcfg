@@ -57,6 +57,8 @@ in {
 
     test
 
+    sid
+
     inputs.audio.packages.${pkgs.system}.paulxstretch
     inputs.audio.packages.${pkgs.system}.grainbow
     inputs.audio.packages.${pkgs.system}.neuralnote

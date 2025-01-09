@@ -5,15 +5,15 @@
   cmake,
   pkg-config,
   alsa-lib,
+  copyDesktopItems,
+  makeDesktopItem,
   xorg,
   freetype,
-  libGLU,
+  expat,
+  libGL,
   libjack2,
-  ninja,
-  ladspa-sdk,
   curl,
-  mesa,
-  webkitgtk,
+  webkitgtk_4_0,
   libsysprof-capture,
   pcre2,
   util-linux,
@@ -25,124 +25,143 @@
   libepoxy,
   libsoup_2_4,
   lerc,
-  glib,
   sqlite,
-  makeFontsCache,
-}: let
-  plname = "SID";
-in
-  stdenv.mkDerivation rec {
-    pname = "socalabs-sid";
-    version = "1.1.0";
+  # Disable VST building by default, since NixOS doesn't have a VST license
+  enableVST2 ? false,
+}:
+stdenv.mkDerivation {
+  pname = "socalabs-sid";
+  version = "1.1.0";
 
-    src =
-      (fetchFromGitHub
-        {
-          owner = "FigBug";
-          repo = plname;
-          rev = "bb826fdea39da0804c53d81d35bea29aeff4436d";
-          hash = "sha256-6IStysItOS7EltTCqdyo9vrsnSA1YYoN4y8Bjv1fhNk=";
-          fetchSubmodules = true;
-        })
-      .overrideAttrs (_: {
-        GIT_CONFIG_COUNT = 1;
-        GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
-        GIT_CONFIG_VALUE_0 = "git@github.com:";
-      });
+  src =
+    (fetchFromGitHub {
+      owner = "FigBug";
+      repo = "SID";
+      rev = "bb826fdea39da0804c53d81d35bea29aeff4436d";
+      hash = "sha256-6IStysItOS7EltTCqdyo9vrsnSA1YYoN4y8Bjv1fhNk=";
+      fetchSubmodules = true;
+    })
+    .overrideAttrs
+    (_: {
+      GIT_CONFIG_COUNT = 1;
+      GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
+      GIT_CONFIG_VALUE_0 = "git@github.com:";
+    });
 
-    nativeBuildInputs = [
-      cmake
-      pkg-config
-      ninja
-    ];
-
-    buildInputs = [
-      alsa-lib
-      xorg.libX11
-      xorg.libXcomposite
-      xorg.libXcursor
-      xorg.libXinerama
-      xorg.libXrandr
-      xorg.libXtst
-      xorg.libXdmcp
-      xorg.xvfb
-      libGLU
-      libjack2
-      libsysprof-capture
-      libselinux
-      libsepol
-      libthai
-      libxkbcommon
-      libdatrie
-      libepoxy
-      libsoup_2_4
-      lerc
-      glib
-      freetype
-      ladspa-sdk
-      curl
-      mesa
-      webkitgtk
-      pcre2
-      util-linux
-      sqlite
-    ];
-    fontsConf = makeFontsCache {
-      fontDirectories = [
+  desktopItems = [
+    (makeDesktopItem {
+      type = "Application";
+      name = "socalabs-sid";
+      desktopName = "Socalabs SID";
+      comment = "Socalabs Commodore 64 SID Emulation Plugin (Standalone)";
+      icon = "SID";
+      exec = "SID";
+      categories = [
+        "Audio"
+        "AudioVideo"
       ];
-    };
-    cmakeFlags = [
-      (lib.cmakeBool "BUILD_EXTRAS" true)
-      (lib.cmakeBool "BUILD_TESTING" true)
-      (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
-      "-DCMAKE_CXX_COMPILER=g++"
-      "-DCMAKE_C_COMPILER=gcc"
-      "-DCMAKE_Fortran_COMPILER=gfortran"
-      #"--preset ninja-gcc"
-    ];
+    })
+  ];
 
-    cmakeBuildType = "Release";
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    copyDesktopItems
+  ];
 
-    strictDeps = true;
+  buildInputs = [
+    alsa-lib
+    xorg.libX11
+    xorg.libXcomposite
+    xorg.libXcursor
+    xorg.libXinerama
+    xorg.libXrandr
+    xorg.libXtst
+    xorg.libXdmcp
+    libGL
+    libjack2
+    libsysprof-capture
+    libselinux
+    libsepol
+    libthai
+    libxkbcommon
+    libdatrie
+    libepoxy
+    libsoup_2_4
+    lerc
+    freetype
+    curl
+    webkitgtk_4_0
+    pcre2
+    util-linux
+    sqlite
+    expat
+  ];
 
-    buildPhase = ''
-      #ln -s $src/CMakePresets.json /build/source/build/
-      #ln -s $src/modules  /build/source/build/modules
-      #ln -s /build/source/Builds /build/source/build/Builds
-      #cd /build/source/Builds/ninja-gcc
-      #export FONTCONFIG_FILE=${fontsConf}
-      #cmake --build --preset ninja-clang --config Release
-      cmake --build . --config Release
-      echo "turtle"
-    '';
+  cmakeFlags = [
+    (lib.cmakeBool "BUILD_EXTRAS" false)
+    (lib.cmakeBool "BUILD_TESTING" false)
+    (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
+    "-DCMAKE_AR=${stdenv.cc.cc}/bin/gcc-ar"
+    "-DCMAKE_RANLIB=${stdenv.cc.cc}/bin/gcc-ranlib"
+    "-DCMAKE_NM=${stdenv.cc.cc}/bin/gcc-nm"
+  ];
 
-    installPhase = ''
-      runHook preInstall
+  # enable LTO flags. disable at your peril! (too long didnt run - makes the linking process take 10 years)
 
-      mkdir -p $out/lib/vst3 $out/lib/vst $out/lib/lv2
+  patchPhase = ''
+    sed -i '159i juce::juce_recommended_lto_flags' CMakeLists.txt
+    substituteInPlace CMakeLists.txt \
+    --replace-fail 'FORMATS Standalone VST VST3 AU LV2' 'FORMATS Standalone LV2 VST3 ${lib.optionalString enableVST2 "VST"}'
+  '';
 
-      cp -R Builds/ninja-gcc/${plname}_artefacts/Release/LV2/${plname}.lv2 $out/lib/lv2
-      cp -R Builds/ninja-gcc/${plname}_artefacts/Release/VST/lib${plname}.so $out/lib/vst
-      cp -R Builds/ninja-gcc/${plname}_artefacts/Release/VST3/${plname}.vst3 $out/lib/vst3
+  cmakeBuildType = "Release";
 
-      runHook postInstall
-    '';
+  strictDeps = true;
 
-    NIX_LDFLAGS = (
-      toString [
-        "-lX11"
-        "-lXcomposite"
-        "-lXcursor"
-        "-lXinerama"
-        "-lXrandr"
-      ]
-    );
+  preBuild = ''
+    export HOME=$(pwd)/home
+    mkdir -p $HOME
+  '';
 
-    meta = {
-      description = "Socalabs Commodore 64 SID Emulation Plugin";
-      homepage = "https://socalabs.com/synths/commodore-64-sid/";
-      platforms = ["x86_64-linux"];
-      license = lib.licenses.gpl3;
-      maintainers = with lib.maintainers; [l1npengtul];
-    };
-  }
+  installPhase = ''
+    runHook preInstall
+
+    mkdir -p $out/lib/vst3 $out/lib/lv2 $out/bin
+
+    ${lib.optionalString enableVST2 ''
+      mkdir -p $out/lib/vst
+      cp -r SID_artefacts/Release/VST/libSID.vst $out/lib/vst
+    ''}
+
+    cp -r SID_artefacts/Release/LV2/SID.lv2 $out/lib/lv2
+    cp -r SID_artefacts/Release/VST3/SID.vst3 $out/lib/vst3
+
+    install -Dm755 SID_artefacts/Release/Standalone/SID $out/bin
+
+    install -Dm444 $src/plugin/Resources/icon.png $out/share/pixmaps/SID.png
+
+    runHook postInstall
+  '';
+
+  NIX_LDFLAGS = (
+    toString [
+      "-lX11"
+      "-lXcomposite"
+      "-lXcursor"
+      "-lXinerama"
+      "-lXrandr"
+      "-lXtst"
+      "-lXdmcp"
+    ]
+  );
+
+  meta = {
+    description = "Socalabs Commodore 64 SID Emulation Plugin";
+    homepage = "https://socalabs.com/synths/commodore-64-sid/";
+    platforms = lib.platforms.linux;
+    mainProgram = "SID";
+    license = [lib.licenses.gpl3] ++ lib.optional enableVST2 lib.licenses.unfree;
+    maintainers = with lib.maintainers; [l1npengtul];
+  };
+}
