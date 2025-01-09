@@ -109,10 +109,10 @@ stdenv.mkDerivation {
     "--preset ninja-gcc"
   ];
 
-  # enable LTO flags. disable at your peril! (too long didnt run - makes the linking process take 10 years)
-
   patchPhase = ''
+    # enable LTO flags. disable at your peril! (too long didnt run - makes the linking process take 10 years)
     sed -i '159i juce::juce_recommended_lto_flags' CMakeLists.txt
+
     substituteInPlace CMakeLists.txt \
     --replace-fail 'FORMATS Standalone VST VST3 AU LV2' 'FORMATS Standalone ${lib.optionalString enableVST2 "VST"} VST3 LV2'
 
@@ -121,6 +121,10 @@ stdenv.mkDerivation {
     # TODO: remove when juce updates :D
     substituteInPlace modules/juce/modules/juce_audio_devices/native/juce_Midi_linux.cpp \
     --replace-fail "port = client.createPort (portName, forInput, false);" "port = client.createPort (portName, forInput, true);"
+
+    # avoid touching HOME, see https://github.com/NixOS/nixpkgs/pull/149487#issuecomment-991747333
+    # (the PR comment is for surge but SID is also a JUCE plugin like surge so it works.)
+    export XDG_DOCUMENTS_DIR=$(mktemp -d)
   '';
 
   cmakeBuildType = "Release";
@@ -128,9 +132,6 @@ stdenv.mkDerivation {
   strictDeps = true;
 
   preBuild = ''
-    export HOME=$(pwd)/home
-    mkdir -p $HOME
-
     cd ../Builds/ninja-gcc
   '';
 
@@ -170,9 +171,9 @@ stdenv.mkDerivation {
   meta = {
     description = "Socalabs Commodore 64 SID Emulation Plugin";
     homepage = "https://socalabs.com/synths/commodore-64-sid/";
-    platforms = lib.platforms.linux;
     mainProgram = "SID";
+    platforms = lib.platforms.linux;
     license = [lib.licenses.gpl3] ++ lib.optional enableVST2 lib.licenses.unfree;
-    maintainers = with lib.maintainers; [l1npengtul];
+    maintainers = [lib.maintainers.l1npengtul];
   };
 }
