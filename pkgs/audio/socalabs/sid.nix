@@ -146,6 +146,8 @@ in
     preBuild = ''
       export HOME=$(pwd)/home
       mkdir -p $HOME
+
+      cd ../Builds/ninja-gcc
     '';
 
     installPhase = ''
