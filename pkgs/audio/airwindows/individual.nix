@@ -53,6 +53,9 @@ in
     pname = "airwindows";
     version = "0-unstable-2025-01-06";
 
+    dontStrip = true;
+    dontPatch = true;
+
     src = fetchFromGitHub {
       owner = "airwindows";
       repo = "airwindows";
@@ -76,7 +79,7 @@ in
       cd plugins/LinuxVST
     '';
 
-    cmakeBuildType = "Release";
+    cmakeBuildType = "Debug";
 
     cmakeFlags = [];
 
