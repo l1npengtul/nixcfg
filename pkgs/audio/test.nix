@@ -124,10 +124,11 @@ in
       runHook preInstall
 
       cd .. # build artifacts are placed inside the source directory for some reason
-      mkdir -p $out/{bin,lib/{clap,vst3}}
+      mkdir -p $out/bin $out/lib/clap $out/lib/lv2 $out/lib/vst3
       cp    Plugins/Standalone/plugdata      $out/bin
       cp -r Plugins/CLAP/plugdata{,-fx}.clap $out/lib/clap
       cp -r Plugins/VST3/plugdata{,-fx}.vst3 $out/lib/vst3
+      cp -r Plugins/VST3/plugdata{,-fx}.lv2  $out/lib/lv2
 
       install -Dm444 $src/Resources/Icons/plugdata_logo_linux.png $out/share/pixmaps/plugdata_logo.png
 
