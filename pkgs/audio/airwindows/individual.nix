@@ -38,6 +38,7 @@
       };
 
       installPhase = ''
+        ls
         cp -r ./VST2SDK $out
       '';
     };
