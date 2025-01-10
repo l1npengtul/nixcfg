@@ -31,10 +31,7 @@
 
       add_library(VST_SDK STATIC ''${SDKSOURCES} ''${PLUGINTERFACES})
 
-      set_property(TARGET VST_SDK PROPERTY POSITION_INDEPENDENT_CODE ON)
-
-      source_group("sdk" FILES ''${SDKSOURCES})
-      source_group("base" FILES ''${PLUGINTERFACES})
+      target_include_directories(VST_SDK PUBLIC ''${CMAKE_CURRENT_SOURCE_DIR}/pluginterfaces/vst2.x ''${CMAKE_CURRENT_SOURCE_DIR}/pluginterfaces ''${CMAKE_CURRENT_SOURCE_DIR}/)
     '';
   in
     stdenv.mkDerivation {
