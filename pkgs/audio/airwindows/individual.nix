@@ -12,14 +12,29 @@
   vst-sdk = let
     cmakelist = builtins.toFile "CMakeLists.txt" ''
       cmake_minimum_required(VERSION 3.9)
-
       project (VST_SDK)
 
-      aux_source_directory(''${CMAKE_CURRENT_SOURCE_DIR}/ SOURCE_LIB)
+      set(SDKSOURCES
+        ''${CMAKE_CURRENT_SOURCE_DIR}/aeffeditor.h
+        ''${CMAKE_CURRENT_SOURCE_DIR}/audioeffect.cpp
+        ''${CMAKE_CURRENT_SOURCE_DIR}/audioeffect.h
+        ''${CMAKE_CURRENT_SOURCE_DIR}/audioeffectx.cpp
+        ''${CMAKE_CURRENT_SOURCE_DIR}/audioeffectx.h
+        ''${CMAKE_CURRENT_SOURCE_DIR}/vstplugmain.cpp
+      )
 
-      add_library(VST_SDK STATIC ''${SOURCE_LIB})
-      target_include_directories(VST_SDK PUBLIC ''${CMAKE_CURRENT_SOURCE_DIR}/ ''${CMAKE_CURRENT_SOURCE_DIR}/pluginterfaces ''${CMAKE_CURRENT_SOURCE_DIR}/pluginterfaces/vst2.x)
+      set(PLUGINTERFACES
+        ''${CMAKE_CURRENT_SOURCE_DIR}/vst2.x/aeffect.h
+        ''${CMAKE_CURRENT_SOURCE_DIR}/vst2.x/aeffectx.h
+        ''${CMAKE_CURRENT_SOURCE_DIR}/vst2.x/vstfxstore.h
+      )
+
+      add_library(VST_SDK STATIC ''${SDKSOURCES} ''${PLUGINTERFACES})
+
       set_property(TARGET VST_SDK PROPERTY POSITION_INDEPENDENT_CODE ON)
+
+      source_group("sdk" FILES ''${SDKSOURCES})
+      source_group("base" FILES ''${PLUGINTERFACES})
     '';
   in
     stdenv.mkDerivation {
