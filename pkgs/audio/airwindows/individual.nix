@@ -38,7 +38,7 @@
       };
 
       installPhase = ''
-        cp -r . $out
+        cp -r $src/VST2SDK/* $out
       '';
     };
 in
