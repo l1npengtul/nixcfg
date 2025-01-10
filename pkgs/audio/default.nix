@@ -57,7 +57,7 @@ in {
     dxvk_2
     recstar
 
-    test
+    #test
     airwindows-ind
     sid
     sn76489
