@@ -39,7 +39,7 @@
 
       installPhase = ''
         ls
-        cp -r VST2_SDK/* $out
+        cp -r VST2_SDK $out
         ls $out
       '';
     };
