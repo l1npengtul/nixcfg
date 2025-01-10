@@ -24,9 +24,9 @@
       )
 
       set(PLUGINTERFACES
-        ''${CMAKE_CURRENT_SOURCE_DIR}/vst2.x/aeffect.h
-        ''${CMAKE_CURRENT_SOURCE_DIR}/vst2.x/aeffectx.h
-        ''${CMAKE_CURRENT_SOURCE_DIR}/vst2.x/vstfxstore.h
+        ''${CMAKE_CURRENT_SOURCE_DIR}/pluginterfaces/vst2.x/aeffect.h
+        ''${CMAKE_CURRENT_SOURCE_DIR}/pluginterfaces/vst2.x/aeffectx.h
+        ''${CMAKE_CURRENT_SOURCE_DIR}/pluginterfaces/vst2.x/vstfxstore.h
       )
 
       add_library(VST_SDK STATIC ''${SDKSOURCES} ''${PLUGINTERFACES})
