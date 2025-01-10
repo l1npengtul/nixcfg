@@ -58,7 +58,7 @@ in {
     recstar
 
     test
-
+    airwindows-ind
     sid
     sn76489
     socalabsall
