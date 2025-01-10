@@ -69,9 +69,11 @@ in
       mkdir -p plugins/LinuxVST/include
       ln -s ${vst-sdk.out} plugins/LinuxVST/include/vstsdk
       substituteInPlace plugins/LinuxVST/Helpers.cmake \
-        --replace-fail \''${VSTSDK_SOURCES} ${vst-sdk.out}/pluginterfaces/vst2.x/
+      --replace-fail \''${VSTSDK_SOURCES} ${vst-sdk.out}/pluginterfaces/vst2.x/
       substituteInPlace plugins/LinuxVST/Helpers.cmake \
       --replace-fail \''${VSTSDK_ROOT} ${vst-sdk.out}
+      substituteInPlace plugins/LinuxVST/CMakeLists.txt \
+      --replace-fail "add_compile_options(-O2 -D__cdecl=)" ""
     '';
 
     # we are building for linux, so we go to linux
