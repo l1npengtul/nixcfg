@@ -54,7 +54,7 @@ in
     version = "0-unstable-2025-01-06";
 
     dontStrip = true;
-    dontPatch = true;
+    dontPatchELF = true;
 
     src = fetchFromGitHub {
       owner = "airwindows";
