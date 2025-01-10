@@ -51,6 +51,7 @@ in {
     airwindows-lv2
     bitwig-studio
     ardour
+    reaper
     pkgs-stable.yabridgectl
     pkgs-stable.yabridge
     pkgs-stable.wineWowPackages.stagingFull
