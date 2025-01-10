@@ -9,31 +9,21 @@
   # the project expects a CMakeLists.txt to exist within the VSTSDK directory, but ours doesn't.cmakelist
   # Instead, we make our own.
   # adapted from oxefmsynth
-  vst-sdk = let
-    cmakelist = builtins.toFile "CMakeLists.txt" ''
-      cmake_minimum_required(VERSION 3.9)
-      project (VST_SDK)
-
-      set(SDKSOURCES
-        ''${CMAKE_CURRENT_SOURCE_DIR}/aeffeditor.h
-        ''${CMAKE_CURRENT_SOURCE_DIR}/audioeffect.cpp
-        ''${CMAKE_CURRENT_SOURCE_DIR}/audioeffect.h
-        ''${CMAKE_CURRENT_SOURCE_DIR}/audioeffectx.cpp
-        ''${CMAKE_CURRENT_SOURCE_DIR}/audioeffectx.h
-        ''${CMAKE_CURRENT_SOURCE_DIR}/vstplugmain.cpp
-      )
-
-      set(PLUGINTERFACES
-        ''${CMAKE_CURRENT_SOURCE_DIR}/pluginterfaces/vst2.x/aeffect.h
-        ''${CMAKE_CURRENT_SOURCE_DIR}/pluginterfaces/vst2.x/aeffectx.h
-        ''${CMAKE_CURRENT_SOURCE_DIR}/pluginterfaces/vst2.x/vstfxstore.h
-      )
-
-      add_library(VST_SDK STATIC ''${SDKSOURCES} ''${PLUGINTERFACES})
-
-      target_include_directories(VST_SDK PUBLIC ''${CMAKE_CURRENT_SOURCE_DIR}/pluginterfaces/vst2.x ''${CMAKE_CURRENT_SOURCE_DIR}/pluginterfaces ''${CMAKE_CURRENT_SOURCE_DIR}/)
-    '';
-  in
+  vst-sdk =
+    #     let
+    #       cmakelist = builtins.toFile "CMakeLists.txt" ''
+    #         cmake_minimum_required(VERSION 3.9)
+    #
+    #         project (VST_SDK)
+    #
+    #         aux_source_directory(''${CMAKE_CURRENT_SOURCE_DIR}/ SOURCE_LIB)
+    #
+    #         add_library(VST_SDK STATIC ''${SOURCE_LIB})
+    #         target_include_directories(VST_SDK PUBLIC ''${CMAKE_CURRENT_SOURCE_DIR}/ ''${CMAKE_CURRENT_SOURCE_DIR}/pluginterfaces ''${CMAKE_CURRENT_SOURCE_DIR}/pluginterfaces/vst2.x)
+    #         set_property(TARGET VST_SDK PROPERTY POSITION_INDEPENDENT_CODE ON)
+    #       '';
+    #
+    #     in
     stdenv.mkDerivation {
       name = "vstsdk3610_11_06_2018_build_37";
       src = fetchzip {
@@ -42,19 +32,13 @@
       };
 
       installPhase = ''
-        mkdir -p $out/pluginterfaces/vst2.x
-        cp VST2_SDK/pluginterfaces/vst2.x/* $out/pluginterfaces/vst2.x
-        cp VST2_SDK/public.sdk/source/vst2.x/* $out
-        cp ${cmakelist} $out/CMakeLists.txt
+        cp -r . $out
       '';
     };
 in
   stdenv.mkDerivation {
     pname = "airwindows";
-    version = "0-unstable-2025-01-06";
-
-    dontStrip = true;
-    dontPatchELF = true;
+    version = "unstable-2025-01-06";
 
     src = fetchFromGitHub {
       owner = "airwindows";
@@ -68,20 +52,18 @@ in
     prePatch = ''
       mkdir -p plugins/LinuxVST/include
       ln -s ${vst-sdk.out} plugins/LinuxVST/include/vstsdk
-      substituteInPlace plugins/LinuxVST/Helpers.cmake \
-      --replace-fail \''${VSTSDK_SOURCES} ${vst-sdk.out}/pluginterfaces/vst2.x/
-      substituteInPlace plugins/LinuxVST/Helpers.cmake \
-      --replace-fail \''${VSTSDK_ROOT} ${vst-sdk.out}
-      substituteInPlace plugins/LinuxVST/CMakeLists.txt \
-      --replace-fail "add_compile_options(-O2 -D__cdecl=)" ""
     '';
+
+    patches = [
+      ./cmakelists-and-helper.patch
+    ];
 
     # we are building for linux, so we go to linux
     preConfigure = ''
       cd plugins/LinuxVST
     '';
 
-    cmakeBuildType = "Debug";
+    cmakeBuildType = "Release";
 
     cmakeFlags = [];
 
