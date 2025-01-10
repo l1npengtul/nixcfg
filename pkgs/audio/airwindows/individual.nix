@@ -58,6 +58,8 @@ in
     prePatch = ''
       mkdir -p plugins/LinuxVST/include
       ln -s ${vst-sdk.out} plugins/LinuxVST/include/vstsdk
+      ls -l plugins/LinuxVST/include/vstsdk
+      ls -l ${vst-sdk.out}
     '';
 
     patches = [
