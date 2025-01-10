@@ -4,7 +4,7 @@
   fetchzip,
   lib,
   cmake,
-  pkg-config,
+  nix-update-script,
 }: let
   # adapted from oxefmsynth
   vst-sdk = stdenv.mkDerivation {
@@ -58,7 +58,6 @@ in
 
     nativeBuildInputs = [
       cmake
-      pkg-config
     ];
 
     buildInputs = [
@@ -70,6 +69,8 @@ in
 
       find "$PWD" -type f -name "*.so" -exec install -Dm755 {} $out/lib/vst/airwindows \;
     '';
+
+    passthru.updateScript = nix-update-script {extraArgs = ["--version=branch"];};
 
     meta = {
       description = "All Airwindows VST Plugins";
