@@ -1,8 +1,8 @@
 diff --git a/plugins/LinuxVST/CMakeLists.txt b/plugins/LinuxVST/CMakeLists.txt
-index f43ea128..b87a5c03 100755
+index f43ea128..16f57a05 100755
 --- a/plugins/LinuxVST/CMakeLists.txt
 +++ b/plugins/LinuxVST/CMakeLists.txt
-@@ -2,11 +2,24 @@ cmake_minimum_required(VERSION 3.9)
+@@ -2,11 +2,33 @@ cmake_minimum_required(VERSION 3.9)
  project(airwindows_ports)
  
  set(CMAKE_CXX_STANDARD 14)
@@ -22,10 +22,35 @@ index f43ea128..b87a5c03 100755
 +    "${VST2_SDK_PATH}/public.sdk/source/vst2.x/audioeffect.cpp"
 +    "${VST2_SDK_PATH}/public.sdk/source/vst2.x/vstplugmain.cpp"
 +)
++
++function(add_airwindows_plugin name)
++    file(GLOB plug_src
++            src/${name}/*.h
++            src/${name}/*.cpp)
++    add_library(${name} MODULE ${VSTSDK_SOURCES} ${plug_src})
++    target_include_directories(${name} PRIVATE ${VSTSDK_ROOT} ${PROJECT_SOURCE_DIR}/${name})
++    set_target_properties(${name} PROPERTIES PREFIX "")
++endfunction(add_airwindows_plugin)
++
  
- include(Helpers.cmake)
+-include(Helpers.cmake)
  
 -add_subdirectory(include/vstsdk)
  add_airwindows_plugin(Acceleration)
  add_airwindows_plugin(Acceleration2)
  add_airwindows_plugin(ADClip7)
+diff --git a/plugins/LinuxVST/Helpers.cmake b/plugins/LinuxVST/Helpers.cmake
+index 9f77401f..af024a1f 100755
+--- a/plugins/LinuxVST/Helpers.cmake
++++ b/plugins/LinuxVST/Helpers.cmake
+@@ -2,7 +2,7 @@ function(add_airwindows_plugin name)
+     file(GLOB plug_src
+             src/${name}/*.h
+             src/${name}/*.cpp)
+-    add_library(${name} MODULE ${plug_src} ${VSTSDK_SOURCES})
++    add_library(${name} MODULE ${VSTSDK_SOURCES} ${plug_src})
+     target_include_directories(${name} PRIVATE ${VSTSDK_ROOT})
+     set_target_properties(${name} PROPERTIES PREFIX "")
+-endfunction(add_airwindows_plugin)
+\ No newline at end of file
++endfunction(add_airwindows_plugin)
