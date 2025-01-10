@@ -45,8 +45,8 @@
       };
 
       installPhase = ''
-        mkdir -p $out/pluginterfaces
-        cp -r VST2_SDK/pluginterfaces $out
+        mkdir -p $out/pluginterfaces/vst2.x
+        cp -r VST2_SDK/pluginterfaces $out/vst2.x
         cp VST2_SDK/public.sdk/source/vst2.x/* $out
         cp ${cmakelist} $out/CMakeLists.txt
       '';
