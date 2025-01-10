@@ -25,6 +25,12 @@
     #
     #     in
     stdenv.mkDerivation {
+      dontConfigure = true;
+      dontPatch = true;
+      dontBuild = true;
+      dontStrip = true;
+      dontPatchELF = true;
+
       name = "vstsdk3610_11_06_2018_build_37";
       src = fetchzip {
         url = "https://web.archive.org/web/20181016150224if_/https://download.steinberg.net/sdk_downloads/vstsdk3610_11_06_2018_build_37.zip";
