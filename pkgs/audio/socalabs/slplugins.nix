@@ -55,26 +55,28 @@ in
     inherit src;
 
     desktopItems = [
-      builtins.map
-      (plugin:
-        makeDesktopItem {
-          type = "Application";
-          name = "socalabs-sid";
-          desktopName = "Socalabs ${plugin}";
-          comment = "Socalabs ${plugin} Plugin from slPlugins (Standalone)";
-          exec = "${plugin}";
-          # SFX8 (and only SFX8) contains an icon
-          # We could probably make it cleaner by checking if logo.png exists,
-          # but we can't automatically update this anyway due to a lack of tags,
-          # and I highly doubt Socalabs will create new plugins in slPlugins
-          # with new icons.
-          icon = lib.mkIf (plugin: plugin == "SFX8") "SFX8";
-          categories = [
-            "Audio"
-            "AudioVideo"
-          ];
-        })
-      plugins
+      (
+        builtins.map
+        (plugin:
+          makeDesktopItem {
+            type = "Application";
+            name = "socalabs-sid";
+            desktopName = "Socalabs ${plugin}";
+            comment = "Socalabs ${plugin} Plugin from slPlugins (Standalone)";
+            exec = "${plugin}";
+            # SFX8 (and only SFX8) contains an icon
+            # We could probably make it cleaner by checking if logo.png exists,
+            # but we can't automatically update this anyway due to a lack of tags,
+            # and I highly doubt Socalabs will create new plugins in slPlugins
+            # with new icons.
+            icon = lib.mkIf (plugin: plugin == "SFX8") "SFX8";
+            categories = [
+              "Audio"
+              "AudioVideo"
+            ];
+          })
+        plugins
+      )
     ];
 
     nativeBuildInputs = [
