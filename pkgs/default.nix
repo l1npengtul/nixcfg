@@ -5,7 +5,7 @@
     ./nix-utils.nix
     ./sysutils.nix
     ./python3.nix
-    ./rustup.nix
+    #./rustup.nix we use devshells now!
     ./kdegtk.nix
     ./audio
     ./fcitx5
