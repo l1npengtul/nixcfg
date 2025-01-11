@@ -66,8 +66,7 @@ in
               name = "socalabs-sid";
               desktopName = "Socalabs ${strPlugin}";
               comment = "Socalabs ${strPlugin} Plugin from slPlugins (Standalone)";
-              exec = "${plugin}";
-
+              exec = "${strPlugin}";
               categories = [
                 "Audio"
                 "AudioVideo"
