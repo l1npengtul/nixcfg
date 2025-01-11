@@ -143,7 +143,7 @@ stdenv.mkDerivation {
 
     install -Dm755 RP2A03_artefacts/Release/Standalone/RP2A03 $out/bin
 
-    install -Dm444 $src/plugin/Resources/icon.png $out/share/pixmaps/RP2A03.png
+    install -Dm444 $src/plugin/Resources/logo.png $out/share/pixmaps/RP2A03.png
 
     runHook postInstall
   '';
