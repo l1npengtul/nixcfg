@@ -58,13 +58,15 @@ in
       (
         builtins.map
         (
-          plugin:
+          plugin: let
+            strPlugin = builtins.toString plugin;
+          in
             makeDesktopItem {
               type = "Application";
               name = "socalabs-sid";
-              desktopName = "Socalabs ${builtins.toString plugin}";
-              comment = "Socalabs ${builtins.toString plugin} Plugin from slPlugins (Standalone)";
-              exec = "${builtins.toString plugin}";
+              desktopName = "Socalabs ${builtins.toString strPlugin}";
+              comment = "Socalabs ${builtins.toString strPlugin} Plugin from slPlugins (Standalone)";
+              exec = "${builtins.toString strPlugin}";
 
               categories = [
                 "Audio"
@@ -76,7 +78,7 @@ in
             # but we can't automatically update this anyway due to a lack of tags,
             # and I highly doubt Socalabs will create new plugins in slPlugins
             # with new icons.
-            // lib.optionalAttrs (plugin == "SFX8") {
+            // lib.optionalAttrs (strPlugin == "SFX8") {
               icon = "SFX8";
             }
         )
@@ -132,8 +134,10 @@ in
       ${
         if !enableVST2
         then
-          (lib.concatMapStringsSep "\n" (plugin: ''
-              substituteInPlace plugins/${builtins.toString plugin}/CMakeLists.txt --replace-fail "\"VST\"" ""
+          (lib.concatMapStringsSep "\n" (plugin: let
+              strPlugin = builtins.toString plugin;
+            in ''
+              substituteInPlace plugins/${strPlugin}/CMakeLists.txt --replace-fail ""VST"" ""
             '')
             plugins)
         else "" # do nothing if vst2 is enabled
@@ -168,13 +172,15 @@ in
       ${
         (
           lib.concatMapStringsSep "\n" (
-            plugin: ''
-              cp -r ${builtins.toString plugin}_artefacts/Release/LV2/${builtins.toString plugin}.lv2 $out/lib/lv2
-              cp -r ${builtins.toString plugin}_artefacts/Release/VST3/${builtins.toString plugin}.vst3 $out/lib/vst3
-              install -Dm755 ${builtins.toString plugin}_artefacts/Release/Standalone/${builtins.toString plugin} $out/bin
+            plugin: let
+              strPlugin = builtins.toString plugin;
+            in ''
+              cp -r ${strPlugin}_artefacts/Release/LV2/${strPlugin}.lv2 $out/lib/lv2
+              cp -r ${strPlugin}_artefacts/Release/VST3/${strPlugin}.vst3 $out/lib/vst3
+              install -Dm755 ${strPlugin}_artefacts/Release/Standalone/${strPlugin} $out/bin
               ${
                 lib.optionalString enableVST2 ''
-                  cp -r ${builtins.toString plugin}_artefacts/Release/VST3/lib${builtins.toString plugin}.so $out/lib/vst
+                  cp -r ${strPlugin}_artefacts/Release/VST3/lib${strPlugin}.so $out/lib/vst
                 ''
               }
             ''
