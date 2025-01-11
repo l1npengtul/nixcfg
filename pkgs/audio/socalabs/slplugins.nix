@@ -133,7 +133,7 @@ in
         if !enableVST2
         then
           (lib.concatMapStringsSep "\n" (plugin: ''
-              substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail "\"VST\"" ""
+              substituteInPlace plugins/${builtins.toString plugin}/CMakeLists.txt --replace-fail "\"VST\"" ""
             '')
             plugins)
         else "" # do nothing if vst2 is enabled
@@ -169,12 +169,12 @@ in
         (
           lib.concatMapStringsSep "\n" (
             plugin: ''
-              cp -r ${plugin}_artefacts/Release/LV2/${plugin}.lv2 $out/lib/lv2
-              cp -r ${plugin}_artefacts/Release/VST3/${plugin}.vst3 $out/lib/vst3
-              install -Dm755 ${plugin}_artefacts/Release/Standalone/${plugin} $out/bin
+              cp -r ${builtins.toString plugin}_artefacts/Release/LV2/${builtins.toString plugin}.lv2 $out/lib/lv2
+              cp -r ${builtins.toString plugin}_artefacts/Release/VST3/${builtins.toString plugin}.vst3 $out/lib/vst3
+              install -Dm755 ${builtins.toString plugin}_artefacts/Release/Standalone/${builtins.toString plugin} $out/bin
               ${
                 lib.optionalString enableVST2 ''
-                  cp -r ${plugin}_artefacts/Release/VST3/lib${plugin}.so $out/lib/vst
+                  cp -r ${builtins.toString plugin}_artefacts/Release/VST3/lib${builtins.toString plugin}.so $out/lib/vst
                 ''
               }
             ''
