@@ -38,7 +38,7 @@ stdenv.mkDerivation {
     (fetchFromGitHub {
       owner = "FigBug";
       repo = "RP2A03";
-      rev = "e7c42c7d9056f21ec5bbdcb101908969effe9db0";
+      rev = "383b677226a1a686599041fb5f5fcdb81c96db7a";
       hash = "";
       fetchSubmodules = true;
     })
