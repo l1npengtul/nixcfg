@@ -103,16 +103,10 @@ stdenv.mkDerivation {
 
   cmakeFlags = [
     (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
-    #"-DCMAKE_AR=${stdenv.cc.cc}/bin/gcc-ar"
-    #"-DCMAKE_RANLIB=${stdenv.cc.cc}/bin/gcc-ranlib"
-    #"-DCMAKE_NM=${stdenv.cc.cc}/bin/gcc-nm"
     "--preset ninja-gcc"
   ];
 
   patchPhase = ''
-    # enable LTO flags. disable at your peril! (too long didnt run - makes the linking process take 10 years)
-    #sed -i '159i juce::juce_recommended_lto_flags' CMakeLists.txt
-
     substituteInPlace CMakeLists.txt \
     --replace-fail 'FORMATS Standalone VST VST3 AU LV2' 'FORMATS Standalone ${lib.optionalString enableVST2 "VST"} VST3 LV2'
 
@@ -128,6 +122,7 @@ stdenv.mkDerivation {
   strictDeps = true;
 
   preBuild = ''
+    # build takes 10 years without this set
     HOME=(mktemp -d)
 
     cd ../Builds/ninja-gcc
@@ -165,10 +160,6 @@ stdenv.mkDerivation {
       "-lXdmcp"
     ]
   );
-
-  # enable parallel LTO
-  #NIX_CFLAGS_COMPILE = "-flto=auto";
-  #NIX_LDFLAGS_COMPILE = "-flto=auto";
 
   meta = {
     description = "Socalabs Commodore 64 SID Emulation Plugin";

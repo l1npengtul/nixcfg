@@ -62,12 +62,12 @@ in {
     airwindows-ind
     sid
     sn76489
-    socalabsall
+    papu
+    rp2a03
 
     inputs.audio.packages.${pkgs.system}.paulxstretch
     inputs.audio.packages.${pkgs.system}.grainbow
     inputs.audio.packages.${pkgs.system}.neuralnote
-    inputs.audio.packages.${pkgs.system}.papu
     inputs.audio.packages.${pkgs.system}.atlas2
   ];
 }

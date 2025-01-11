@@ -26,19 +26,20 @@
   libsoup_2_4,
   lerc,
   sqlite,
+  ninja,
   # Disable VST building by default, since NixOS doesn't have a VST license
   enableVST2 ? false,
 }:
 stdenv.mkDerivation {
-  pname = "socalabs-sid";
+  pname = "socalabs-papu";
   version = "1.1.0";
 
   src =
     (fetchFromGitHub {
       owner = "FigBug";
-      repo = "SID";
-      rev = "bb826fdea39da0804c53d81d35bea29aeff4436d";
-      hash = "sha256-6IStysItOS7EltTCqdyo9vrsnSA1YYoN4y8Bjv1fhNk=";
+      repo = "PAPU";
+      rev = "e7c42c7d9056f21ec5bbdcb101908969effe9db0";
+      hash = "";
       fetchSubmodules = true;
     })
     .overrideAttrs
@@ -51,11 +52,11 @@ stdenv.mkDerivation {
   desktopItems = [
     (makeDesktopItem {
       type = "Application";
-      name = "socalabs-sid";
-      desktopName = "Socalabs SID";
-      comment = "Socalabs Commodore 64 SID Emulation Plugin (Standalone)";
-      icon = "SID";
-      exec = "SID";
+      name = "socalabs-papu";
+      desktopName = "Socalabs PAPU";
+      comment = "Socalabs Nintendo Gameboy PAPU Emulation Plugin (Standalone)";
+      icon = "PAPU";
+      exec = "PAPU";
       categories = [
         "Audio"
         "AudioVideo"
@@ -67,6 +68,7 @@ stdenv.mkDerivation {
     cmake
     pkg-config
     copyDesktopItems
+    ninja
   ];
 
   buildInputs = [
@@ -78,6 +80,7 @@ stdenv.mkDerivation {
     xorg.libXrandr
     xorg.libXtst
     xorg.libXdmcp
+    xorg.xvfb
     libGL
     libjack2
     libsysprof-capture
@@ -100,17 +103,18 @@ stdenv.mkDerivation {
 
   cmakeFlags = [
     (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
-    "-DCMAKE_AR=${stdenv.cc.cc}/bin/gcc-ar"
-    "-DCMAKE_RANLIB=${stdenv.cc.cc}/bin/gcc-ranlib"
-    "-DCMAKE_NM=${stdenv.cc.cc}/bin/gcc-nm"
+    "--preset ninja-gcc"
   ];
 
-  # enable LTO flags. disable at your peril! (too long didnt run - makes the linking process take 10 years)
-
   patchPhase = ''
-    sed -i '159i juce::juce_recommended_lto_flags' CMakeLists.txt
     substituteInPlace CMakeLists.txt \
     --replace-fail 'FORMATS Standalone VST VST3 AU LV2' 'FORMATS Standalone ${lib.optionalString enableVST2 "VST"} VST3 LV2'
+
+    # we need to patch JUCE itself to enable jack MIDI support
+    # please https://github.com/juce-framework/JUCE/issues/952
+    # TODO: remove when juce updates :D
+    substituteInPlace modules/juce/modules/juce_audio_devices/native/juce_Midi_linux.cpp \
+    --replace-fail "port = client.createPort (portName, forInput, false);" "port = client.createPort (portName, forInput, true);"
   '';
 
   cmakeBuildType = "Release";
@@ -118,8 +122,10 @@ stdenv.mkDerivation {
   strictDeps = true;
 
   preBuild = ''
-    export HOME=$(pwd)/home
-    mkdir -p $HOME
+    # build takes 10 years without this set
+    HOME=(mktemp -d)
+
+    cd ../Builds/ninja-gcc
   '';
 
   installPhase = ''
@@ -129,15 +135,15 @@ stdenv.mkDerivation {
 
     ${lib.optionalString enableVST2 ''
       mkdir -p $out/lib/vst
-      cp -r SID_artefacts/Release/VST/libSID.so $out/lib/vst
+      cp -r PAPU_artefacts/Release/VST/libPAPU.so $out/lib/vst
     ''}
 
-    cp -r SID_artefacts/Release/LV2/SID.lv2 $out/lib/lv2
-    cp -r SID_artefacts/Release/VST3/SID.vst3 $out/lib/vst3
+    cp -r PAPU_artefacts/Release/LV2/PAPU.lv2 $out/lib/lv2
+    cp -r PAPU_artefacts/Release/VST3/PAPU.vst3 $out/lib/vst3
 
-    install -Dm755 SID_artefacts/Release/Standalone/SID $out/bin
+    install -Dm755 PAPU_artefacts/Release/Standalone/PAPU $out/bin
 
-    install -Dm444 $src/plugin/Resources/icon.png $out/share/pixmaps/SID.png
+    install -Dm444 $src/plugin/Resources/icon.png $out/share/pixmaps/PAPU.png
 
     runHook postInstall
   '';
@@ -156,11 +162,11 @@ stdenv.mkDerivation {
   );
 
   meta = {
-    description = "Socalabs Commodore 64 SID Emulation Plugin";
-    homepage = "https://socalabs.com/synths/commodore-64-sid/";
+    description = "Socalabs Nintendo Gameboy PAPU Emulation Plugin";
+    homepage = "https://socalabs.com/synths/papu/";
+    mainProgram = "PAPU";
     platforms = lib.platforms.linux;
-    mainProgram = "SID";
-    license = [lib.licenses.gpl3] ++ lib.optional enableVST2 lib.licenses.unfree;
-    maintainers = with lib.maintainers; [l1npengtul];
+    license = [lib.licenses.gpl2] ++ lib.optional enableVST2 lib.licenses.unfree;
+    maintainers = [lib.maintainers.l1npengtul];
   };
 }
