@@ -62,9 +62,9 @@ in
             makeDesktopItem {
               type = "Application";
               name = "socalabs-sid";
-              desktopName = "Socalabs ${plugin}";
-              comment = "Socalabs ${plugin} Plugin from slPlugins (Standalone)";
-              exec = "${plugin}";
+              desktopName = "Socalabs ${builtins.toString plugin}";
+              comment = "Socalabs ${builtins.toString plugin} Plugin from slPlugins (Standalone)";
+              exec = "${builtins.toString plugin}";
 
               categories = [
                 "Audio"
