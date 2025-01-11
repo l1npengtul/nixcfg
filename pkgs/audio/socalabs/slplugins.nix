@@ -29,11 +29,7 @@
   ninja,
   # Disable VST building by default, since NixOS doesn't have a VST license
   enableVST2 ? false,
-}:
-stdenv.mkDerivation {
-  pname = "socalabs-voc";
-  version = "1.1.0";
-
+}: let
   src =
     (fetchFromGitHub {
       owner = "FigBug";
@@ -48,125 +44,158 @@ stdenv.mkDerivation {
       GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
       GIT_CONFIG_VALUE_0 = "git@github.com:";
     });
+  # This repository contains multiple plugins.
+  # This is the file that contains all of them in a nice list
+  plugins = lib.split "\n" builtins.readFile "${src}/ci/pluginlist.txt";
+in
+  stdenv.mkDerivation {
+    pname = "socalabs-slplugins";
+    version = "1.1.0";
 
-  desktopItems = [
-    (makeDesktopItem {
-      type = "Application";
-      name = "socalabs-voc";
-      desktopName = "Socalabs Voc";
-      comment = "Socalabs Wacky Vocal Synth (Standalone)";
-      icon = "Voc";
-      exec = "Voc";
-      categories = [
-        "Audio"
-        "AudioVideo"
-      ];
-    })
-  ];
+    inherit src;
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    copyDesktopItems
-    ninja
-  ];
+    desktopItems = [
+      builtins.map
+      (plugin:
+        makeDesktopItem {
+          type = "Application";
+          name = "socalabs-sid";
+          desktopName = "Socalabs ${plugin}";
+          comment = "Socalabs ${plugin} Plugin from slPlugins (Standalone)";
+          exec = "${plugin}";
+          # SFX8 (and only SFX8) contains an icon
+          # We could probably make it cleaner by checking if logo.png exists,
+          # but we can't automatically update this anyway due to a lack of tags,
+          # and I highly doubt Socalabs will create new plugins in slPlugins
+          # with new icons.
+          icon = lib.mkIf (plugin: plugin == "SFX8") "SFX8";
+          categories = [
+            "Audio"
+            "AudioVideo"
+          ];
+        })
+      plugins
+    ];
 
-  buildInputs = [
-    alsa-lib
-    xorg.libX11
-    xorg.libXcomposite
-    xorg.libXcursor
-    xorg.libXinerama
-    xorg.libXrandr
-    xorg.libXtst
-    xorg.libXdmcp
-    xorg.xvfb
-    libGL
-    libjack2
-    libsysprof-capture
-    libselinux
-    libsepol
-    libthai
-    libxkbcommon
-    libdatrie
-    libepoxy
-    libsoup_2_4
-    lerc
-    freetype
-    curl
-    webkitgtk_4_0
-    pcre2
-    util-linux
-    sqlite
-    expat
-  ];
+    nativeBuildInputs = [
+      cmake
+      pkg-config
+      copyDesktopItems
+      ninja
+    ];
 
-  cmakeFlags = [
-    (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
-    "--preset ninja-gcc"
-  ];
+    buildInputs = [
+      alsa-lib
+      xorg.libX11
+      xorg.libXcomposite
+      xorg.libXcursor
+      xorg.libXinerama
+      xorg.libXrandr
+      xorg.libXtst
+      xorg.libXdmcp
+      xorg.xvfb
+      libGL
+      libjack2
+      libsysprof-capture
+      libselinux
+      libsepol
+      libthai
+      libxkbcommon
+      libdatrie
+      libepoxy
+      libsoup_2_4
+      lerc
+      freetype
+      curl
+      webkitgtk_4_0
+      pcre2
+      util-linux
+      sqlite
+      expat
+    ];
 
-  patchPhase = ''
-    substituteInPlace CMakeLists.txt \
-    --replace-fail 'FORMATS Standalone VST VST3 AU LV2' 'FORMATS Standalone ${lib.optionalString enableVST2 "VST"} VST3 LV2'
+    cmakeFlags = [
+      (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
+      "--preset ninja-gcc"
+    ];
 
-    # we need to patch JUCE itself to enable jack MIDI support
-    # please https://github.com/juce-framework/JUCE/issues/952
-    # TODO: remove when juce updates :D
-    substituteInPlace modules/juce/modules/juce_audio_devices/native/juce_Midi_linux.cpp \
-    --replace-fail "port = client.createPort (portName, forInput, false);" "port = client.createPort (portName, forInput, true);"
-  '';
+    patchPhase = ''
 
-  cmakeBuildType = "Release";
+      # This one has all the formats in an individual CMakeLists.txt
+      ${
+        if !enableVST2
+        then
+          builtins.concatMap (plugin: ''
+            substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail "\"VST\"" ""
+          '')
+          plugins
+        else "" # do nothing if vst2 is enabled
+      }
 
-  strictDeps = true;
+      # we need to patch JUCE itself to enable jack MIDI support
+      # please https://github.com/juce-framework/JUCE/issues/952
+      # TODO: remove when juce updates :D
+      substituteInPlace modules/juce/modules/juce_audio_devices/native/juce_Midi_linux.cpp \
+      --replace-fail "port = client.createPort (portName, forInput, false);" "port = client.createPort (portName, forInput, true);"
+    '';
 
-  preBuild = ''
-    # build takes 10 years without this set
-    HOME=(mktemp -d)
+    cmakeBuildType = "Release";
 
-    cd ../Builds/ninja-gcc
-  '';
+    strictDeps = true;
 
-  installPhase = ''
-    runHook preInstall
+    preBuild = ''
+      # build takes 10 years without this set
+      HOME=(mktemp -d)
 
-    mkdir -p $out/lib/vst3 $out/lib/lv2 $out/bin
+      cd ../Builds/ninja-gcc
+    '';
 
-    ${lib.optionalString enableVST2 ''
-      mkdir -p $out/lib/vst
-      cp -r Voc_artefacts/Release/VST/libVoc.so $out/lib/vst
-    ''}
+    installPhase = ''
+      runHook preInstall
 
-    cp -r Voc_artefacts/Release/LV2/Voc.lv2 $out/lib/lv2
-    cp -r Voc_artefacts/Release/VST3/Voc.vst3 $out/lib/vst3
+      mkdir -p $out/lib/vst3 $out/lib/lv2 $out/bin
+      ${lib.optionalString enableVST2 ''
+        mkdir -p $out/lib/vst
+      ''}
 
-    install -Dm755 Voc_artefacts/Release/Standalone/Voc $out/bin
+      ${
+        builtins.concatMap (
+          plugin: ''
+            cp -r ${plugin}_artefacts/Release/LV2/${plugin}.lv2 $out/lib/lv2
+            cp -r ${plugin}_artefacts/Release/VST3/${plugin}.vst3 $out/lib/vst3
+            install -Dm755 ${plugin}_artefacts/Release/Standalone/${plugin} $out/bin
+            ${
+              lib.optionalString enableVST2 ''
+                cp -r ${plugin}_artefacts/Release/VST3/lib${plugin}.so $out/lib/vst
+              ''
+            }
+          ''
+        )
+      }
 
-    install -Dm444 $src/plugin/Resources/logo.png $out/share/pixmaps/Voc.png
+      install -Dm444 $src/plugins/SFX8/Resources/logo.png $out/share/pixmaps/SFX8.png
 
-    runHook postInstall
-  '';
+      runHook postInstall
+    '';
 
-  NIX_LDFLAGS = (
-    toString [
-      "-lX11"
-      "-lXext"
-      "-lXcomposite"
-      "-lXcursor"
-      "-lXinerama"
-      "-lXrandr"
-      "-lXtst"
-      "-lXdmcp"
-    ]
-  );
+    NIX_LDFLAGS = (
+      toString [
+        "-lX11"
+        "-lXext"
+        "-lXcomposite"
+        "-lXcursor"
+        "-lXinerama"
+        "-lXrandr"
+        "-lXtst"
+        "-lXdmcp"
+      ]
+    );
 
-  meta = {
-    description = "Socalabs Wacky Vocal Synthesizer Plugin";
-    homepage = "https://socalabs.com/synths/voc-vocal-synth/";
-    mainProgram = "Voc";
-    platforms = lib.platforms.linux;
-    license = [lib.licenses.lgpl21] ++ lib.optional enableVST2 lib.licenses.unfree;
-    maintainers = [lib.maintainers.l1npengtul];
-  };
-}
+    meta = {
+      description = "Various Socalabs Plugins";
+      homepage = "https://socalabs.com";
+      platforms = lib.platforms.linux;
+      license = [lib.licenses.bsd3] ++ lib.optional enableVST2 lib.licenses.unfree;
+      maintainers = [lib.maintainers.l1npengtul];
+    };
+  }
