@@ -71,13 +71,12 @@ in
                 "AudioVideo"
               ];
             }
-            //
             # SFX8 (and only SFX8) contains an icon
             # We could probably make it cleaner by checking if logo.png exists,
             # but we can't automatically update this anyway due to a lack of tags,
             # and I highly doubt Socalabs will create new plugins in slPlugins
             # with new icons.
-            lib.optionalAttrs (plugin == "SFX8") {
+            // lib.optionalAttrs (plugin == "SFX8") {
               icon = "SFX8";
             }
         )
