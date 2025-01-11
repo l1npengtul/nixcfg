@@ -47,7 +47,7 @@
   # This repository contains multiple plugins.
   # This is the file that contains all of them in a nice list
   # filter out the newline at the end
-  plugins = builtins.trace "plugins" lib.filter (pl: pl != "") (lib.split "\n" (builtins.readFile "${src}/ci/pluginlist.txt"));
+  plugins = builtins.trace lib.filter (pl: pl != "") (lib.split "\n" (builtins.readFile "${src}/ci/pluginlist.txt")) lib.filter (pl: pl != "") (lib.split "\n" (builtins.readFile "${src}/ci/pluginlist.txt"));
 in
   stdenv.mkDerivation {
     pname = "socalabs-slplugins";
