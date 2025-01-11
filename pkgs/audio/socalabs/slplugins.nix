@@ -35,7 +35,7 @@
       owner = "FigBug";
       repo = "slPlugins";
       rev = "fcaec26cdd8391e19bcf1d9b21ab1e2c31d587ed";
-      hash = "";
+      hash = "sha256-886+Nnemph0ux5ibjEvZvZIKGvhdn90MAHRe9TWRJag=";
       fetchSubmodules = true;
     })
     .overrideAttrs
@@ -57,24 +57,30 @@ in
     desktopItems = [
       (
         builtins.map
-        (plugin:
-          makeDesktopItem {
-            type = "Application";
-            name = "socalabs-sid";
-            desktopName = "Socalabs ${plugin}";
-            comment = "Socalabs ${plugin} Plugin from slPlugins (Standalone)";
-            exec = "${plugin}";
+        (
+          plugin:
+            makeDesktopItem {
+              type = "Application";
+              name = "socalabs-sid";
+              desktopName = "Socalabs ${plugin}";
+              comment = "Socalabs ${plugin} Plugin from slPlugins (Standalone)";
+              exec = "${plugin}";
+
+              categories = [
+                "Audio"
+                "AudioVideo"
+              ];
+            }
+            //
             # SFX8 (and only SFX8) contains an icon
             # We could probably make it cleaner by checking if logo.png exists,
             # but we can't automatically update this anyway due to a lack of tags,
             # and I highly doubt Socalabs will create new plugins in slPlugins
             # with new icons.
-            icon = lib.mkIf (plugin: plugin == "SFX8") "SFX8";
-            categories = [
-              "Audio"
-              "AudioVideo"
-            ];
-          })
+            lib.optionalAttrs (plugin == "SFX8") {
+              icon = "SFX8";
+            }
+        )
         plugins
       )
     ];
