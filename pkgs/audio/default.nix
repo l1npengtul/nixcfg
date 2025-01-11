@@ -64,6 +64,7 @@ in {
     sn76489
     papu
     rp2a03
+    voc
 
     inputs.audio.packages.${pkgs.system}.paulxstretch
     inputs.audio.packages.${pkgs.system}.grainbow
