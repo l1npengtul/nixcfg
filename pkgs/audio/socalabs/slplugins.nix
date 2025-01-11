@@ -46,7 +46,7 @@
     });
   # This repository contains multiple plugins.
   # This is the file that contains all of them in a nice list
-  plugins = lib.split "\n" builtins.readFile "${src}/ci/pluginlist.txt";
+  plugins = lib.split "\n" (builtins.readFile "${src}/ci/pluginlist.txt");
 in
   stdenv.mkDerivation {
     pname = "socalabs-slplugins";
