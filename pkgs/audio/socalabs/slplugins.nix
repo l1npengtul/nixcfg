@@ -132,7 +132,7 @@ in
       ${
         if !enableVST2
         then
-          builtins.concatMap (plugin: ''
+          lib.concatMapStringsSep "\n" (plugin: ''
             substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail "\"VST\"" ""
           '')
           plugins
@@ -166,7 +166,7 @@ in
       ''}
 
       ${
-        builtins.concatMap (
+        lib.concatMapStringsSep "\n" (
           plugin: ''
             cp -r ${plugin}_artefacts/Release/LV2/${plugin}.lv2 $out/lib/lv2
             cp -r ${plugin}_artefacts/Release/VST3/${plugin}.vst3 $out/lib/vst3
