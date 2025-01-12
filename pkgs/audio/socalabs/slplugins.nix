@@ -140,8 +140,6 @@ in
     cmakeFlags = [
       (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
       (lib.cmakeBool "BUILD_EXTRAS" false)
-      "-DCMAKE_AR=${clangStdenv.cc.cc}/bin/llvm-ar"
-      "-DCMAKE_RANLIB=${clangStdenv.cc.cc}/bin/llvm-ranlib"
       "--preset ninja-clang"
     ];
 
@@ -152,7 +150,7 @@ in
       ${
         lib.concatMapStringsSep "\n" (
           plugin: ''
-            #substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail "juce::juce_recommended_lto_flags" ""
+            substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail "juce::juce_recommended_lto_flags" ""
             substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail ""AU"" ""
             ${lib.optionalString (!enableVST2) ''
               substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail ""VST"" ""
