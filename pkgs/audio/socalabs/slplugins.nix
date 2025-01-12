@@ -1,5 +1,5 @@
 {
-  stdenv,
+  clangStdenv,
   fetchFromGitHub,
   lib,
   cmake,
@@ -65,7 +65,7 @@
     "ToneGenerator"
   ];
 in
-  stdenv.mkDerivation {
+  clangStdenv.mkDerivation {
     pname = "socalabs-slplugins";
     version = "1.1.0";
 
@@ -139,7 +139,7 @@ in
 
     cmakeFlags = [
       (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
-      "--preset ninja-gcc"
+      "--preset ninja-clang"
     ];
 
     patchPhase = ''
@@ -150,6 +150,7 @@ in
         lib.concatMapStringsSep "\n" (
           plugin: ''
             substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail "juce::juce_recommended_lto_flags" ""
+            substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail ""AU"" ""
             ${lib.optionalString (!enableVST2) ''
               substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail ""VST"" ""
             ''}
@@ -173,7 +174,7 @@ in
       # build takes 10 years without this set
       HOME=(mktemp -d)
 
-      cd ../Builds/ninja-gcc
+      cd ../Builds/ninja-clang
     '';
 
     installPhase = ''
