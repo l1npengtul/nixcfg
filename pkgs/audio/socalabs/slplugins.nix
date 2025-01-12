@@ -45,9 +45,25 @@
       GIT_CONFIG_VALUE_0 = "git@github.com:";
     });
   # This repository contains multiple plugins.
-  # This is the file that contains all of them in a nice list
-  # filter out the newline at the end
-  plugins = builtins.trace lib.filter (pl: pl != "") (lib.split "\n" (builtins.readFile "${src}/ci/pluginlist.txt")) lib.filter (pl: pl != "") (lib.split "\n" (builtins.readFile "${src}/ci/pluginlist.txt"));
+  plugins = [
+    "ABTester"
+    "AddInvert"
+    "ChannelMute"
+    "CompensatedDelay"
+    "Compressor"
+    "Delay"
+    "Expander"
+    "Gate"
+    "HugeGain"
+    "Limiter"
+    "Maths"
+    "Oscilloscope"
+    "PitchTrack"
+    "SFX8"
+    "SampleDelay"
+    "SpectrumAnalyzer"
+    "ToneGenerator"
+  ];
 in
   stdenv.mkDerivation {
     pname = "socalabs-slplugins";
