@@ -9,6 +9,8 @@
   makeDesktopItem,
   xorg,
   freetype,
+  fontconfig,
+  makeFontsCache,
   expat,
   libGL,
   libjack2,
@@ -64,6 +66,9 @@
     "SpectrumAnalyzer"
     "ToneGenerator"
   ];
+  fontConf = makeFontsCache {
+    fontDirectories = [];
+  };
 in
   clangStdenv.mkDerivation {
     pname = "socalabs-slplugins";
@@ -104,6 +109,7 @@ in
       cmake
       pkg-config
       copyDesktopItems
+      fontconfig
       ninja
     ];
 
@@ -173,7 +179,8 @@ in
 
     preBuild = ''
       # build takes 10 years without this set
-      HOME=(mktemp -d)
+      export HOME=(mktemp -d)
+      export FONTCONFIG_FILE=${fontConf}
 
       cd ../Builds/ninja-clang
     '';
