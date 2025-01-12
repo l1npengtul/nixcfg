@@ -75,15 +75,13 @@ in
       (
         builtins.map
         (
-          plugin: let
-            strPlugin = builtins.toString plugin;
-          in
+          plugin:
             makeDesktopItem {
               type = "Application";
               name = "socalabs-sid";
-              desktopName = "Socalabs ${strPlugin}";
-              comment = "Socalabs ${strPlugin} Plugin from slPlugins (Standalone)";
-              exec = "${strPlugin}";
+              desktopName = "Socalabs ${plugin}";
+              comment = "Socalabs ${plugin} Plugin from slPlugins (Standalone)";
+              exec = "${plugin}";
               categories = [
                 "Audio"
                 "AudioVideo"
@@ -94,7 +92,7 @@ in
             # but we can't automatically update this anyway due to a lack of tags,
             # and I highly doubt Socalabs will create new plugins in slPlugins
             # with new icons.
-            // lib.optionalAttrs (strPlugin == "SFX8") {
+            // lib.optionalAttrs (plugin == "SFX8") {
               icon = "SFX8";
             }
         )
@@ -150,10 +148,9 @@ in
       ${
         if !enableVST2
         then
-          (lib.concatMapStringsSep "\n" (plugin: let
-              strPlugin = builtins.toString plugin;
-            in ''
-              substituteInPlace plugins/${strPlugin}/CMakeLists.txt --replace-fail ""VST"" ""
+          (lib.concatMapStringsSep "\n" (plugin: ''
+              substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail ""VST"" ""
+              substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail "juce::juce_recommended_lto_flags" ""
             '')
             plugins)
         else "" # do nothing if vst2 is enabled
@@ -188,15 +185,13 @@ in
       ${
         (
           lib.concatMapStringsSep "\n" (
-            plugin: let
-              strPlugin = builtins.toString plugin;
-            in ''
-              cp -r ${strPlugin}_artefacts/Release/LV2/${strPlugin}.lv2 $out/lib/lv2
-              cp -r ${strPlugin}_artefacts/Release/VST3/${strPlugin}.vst3 $out/lib/vst3
-              install -Dm755 ${strPlugin}_artefacts/Release/Standalone/${strPlugin} $out/bin
+            plugin: ''
+              cp -r ${plugin}_artefacts/Release/LV2/${plugin}.lv2 $out/lib/lv2
+              cp -r ${plugin}_artefacts/Release/VST3/${plugin}.vst3 $out/lib/vst3
+              install -Dm755 ${plugin}_artefacts/Release/Standalone/${plugin} $out/bin
               ${
                 lib.optionalString enableVST2 ''
-                  cp -r ${strPlugin}_artefacts/Release/VST3/lib${strPlugin}.so $out/lib/vst
+                  cp -r ${plugin}_artefacts/Release/VST3/lib${plugin}.so $out/lib/vst
                 ''
               }
             ''
