@@ -139,6 +139,9 @@ in
 
     cmakeFlags = [
       (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
+      "-DCMAKE_AR=${clangStdenv.cc.cc}/bin/llvm-ar"
+      "-DCMAKE_RANLIB=${clangStdenv.cc.cc}/bin/llvm-ranlib"
+      "-DCMAKE_NM=${clangStdenv.cc.cc}/bin/llvm-nm"
       "--preset ninja-clang"
     ];
 
