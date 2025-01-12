@@ -156,7 +156,7 @@ in
       ${
         lib.concatMapStringsSep "\n" (
           plugin: ''
-            substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail "juce::juce_recommended_lto_flags" ""
+            #substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail "juce::juce_recommended_lto_flags" ""
             substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail ""AU"" ""
             ${lib.optionalString (!enableVST2) ''
               substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail ""VST"" ""
@@ -226,6 +226,7 @@ in
         "-lXrandr"
         "-lXtst"
         "-lXdmcp"
+        "-v"
       ]
     );
 
