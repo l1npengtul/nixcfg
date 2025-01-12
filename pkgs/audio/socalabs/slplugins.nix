@@ -145,15 +145,17 @@ in
     patchPhase = ''
 
       # This one has all the formats in an individual CMakeLists.txt
+
       ${
-        if !enableVST2
-        then
-          (lib.concatMapStringsSep "\n" (plugin: ''
+        lib.concatMapStringsSep "\n" (
+          plugin: ''
+            substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail "juce::juce_recommended_lto_flags" ""
+            ${lib.optionalString (!enableVST2) ''
               substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail ""VST"" ""
-              substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail "juce::juce_recommended_lto_flags" ""
-            '')
-            plugins)
-        else "" # do nothing if vst2 is enabled
+            ''}
+          ''
+        )
+        plugins
       }
 
       # we need to patch JUCE itself to enable jack MIDI support
