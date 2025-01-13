@@ -442,6 +442,22 @@
         "type": "github"
       }
     },
+    "plugdata-pr": {
+      "locked": {
+        "lastModified": 1736472517,
+        "narHash": "sha256-9fJ7ZNsJYC+32/rE/6JDIk5kA1aziAosrXXdObJbqi8=",
+        "owner": "l1npengtul",
+        "repo": "nixpkgs",
+        "rev": "c37b2fb1b8c60e9c962bfe587555a86508f8a2e8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "l1npengtul",
+        "ref": "update-plugdata",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "alejandra": "alejandra",
@@ -459,6 +475,7 @@
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-stable": "nixpkgs-stable",
         "plasma-manager": "plasma-manager",
+        "plugdata-pr": "plugdata-pr",
         "systems": "systems_2",
         "vhs-decode-nur-packages": "vhs-decode-nur-packages"
       }

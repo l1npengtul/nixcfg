@@ -71,6 +71,6 @@ in {
     inputs.audio.packages.${pkgs.system}.neuralnote
     inputs.audio.packages.${pkgs.system}.atlas2
 
-    inputs.plugdata-pr.packages.${pkgs.system}.plugdata
+    inputs.plugdata-pr.legacyPackages.${pkgs.system}.plugdata
   ];
 }
