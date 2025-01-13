@@ -5,7 +5,6 @@
   ensureNewerSourcesForZipFilesHook,
   makeDesktopItem,
   copyDesktopItems,
-  imagemagick,
   cmake,
   pkg-config,
   alsa-lib,
@@ -31,6 +30,7 @@
   sqlite,
   expat,
   makeWrapper,
+  nix-update-script,
 }: let
   version = "0.9.1";
 in
@@ -51,7 +51,6 @@ in
       pkg-config
       ensureNewerSourcesForZipFilesHook
       copyDesktopItems
-      imagemagick
       python3
       makeWrapper
     ];
@@ -128,7 +127,7 @@ in
       cp    Plugins/Standalone/plugdata      $out/bin
       cp -r Plugins/CLAP/plugdata{,-fx}.clap $out/lib/clap
       cp -r Plugins/VST3/plugdata{,-fx}.vst3 $out/lib/vst3
-      cp -r Plugins/VST3/plugdata{,-fx}.lv2  $out/lib/lv2
+      cp -r Plugins/LV2/plugdata{,-fx}.lv2   $out/lib/lv2
 
       install -Dm444 $src/Resources/Icons/plugdata_logo_linux.png $out/share/pixmaps/plugdata_logo.png
 
@@ -145,12 +144,14 @@ in
       }'
     '';
 
-    meta = with lib; {
+    passthru.updateScript = nix-update-script {};
+
+    meta = {
       description = "Plugin wrapper around Pure Data to allow patching in a wide selection of DAWs";
       mainProgram = "plugdata";
       homepage = "https://plugdata.org/";
-      license = licenses.gpl3;
-      platforms = platforms.linux;
-      maintainers = with maintainers; [PowerUser64];
+      license = lib.licenses.gpl3;
+      platforms = lib.platforms.linux;
+      maintainers = [lib.maintainers.PowerUser64];
     };
   }
