@@ -44,7 +44,7 @@ in {
     chow-tape-model
     vcv-rack
     cardinal
-    pkgs-master.carla
+    carla
     alsa-utils
     vital
     distrho-ports
@@ -58,12 +58,12 @@ in {
     dxvk_2
     recstar
 
-    airwindows-ind
-    sid
-    sn76489
-    papu
-    rp2a03
-    voc
+    #airwindows-ind
+    #sid
+    #sn76489
+    #papu
+    #rp2a03
+    #voc
     #slplugins
 
     inputs.audio.packages.${pkgs.system}.paulxstretch
