@@ -58,7 +58,6 @@ in {
     dxvk_2
     recstar
 
-    test
     airwindows-ind
     sid
     sn76489
@@ -71,5 +70,7 @@ in {
     inputs.audio.packages.${pkgs.system}.grainbow
     inputs.audio.packages.${pkgs.system}.neuralnote
     inputs.audio.packages.${pkgs.system}.atlas2
+
+    inputs.plugdata-pr.packages.${pkgs.system}.plugdata
   ];
 }

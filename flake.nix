@@ -4,6 +4,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+
+    plugdata-pr = "github:l1npengtul/nixpkgs/update-plugdata";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     home-manager = {
@@ -76,6 +79,7 @@
     nix-matlab,
     nixpkgs-stable,
     nixpkgs-master,
+    plugdata-pr,
     ...
   }: let
     username = "l1npengtul";
