@@ -5,7 +5,7 @@
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
 
-    plugdata-pr = "github:l1npengtul/nixpkgs/update-plugdata";
+    plugdata-pr.url = "github:l1npengtul/nixpkgs/update-plugdata";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
