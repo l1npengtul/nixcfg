@@ -7,10 +7,6 @@
     ./hardware-configuration.nix
   ];
 
-  environment.variables = {
-    NIX_SWITCH_BUILD_SYSTEM_CFG_PENGPENGPENG = "peng_tokyo_server";
-  };
-
   time.timeZone = "Asia/Tokyo";
 
   users.users.pengsrv = {
@@ -63,7 +59,7 @@
 
   hardware.graphics.enable = true;
   boot.kernelPackages = pkgs-stable.linuxPackages_6_6;
-  networking.hostName = "peng_tokyo_server"; # Define your hostname.
+  networking.hostName = "abandoned_factory"; # Define your hostname.
   networking.firewall.enable = true;
 
   system.stateVersion = "24.05";

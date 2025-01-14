@@ -11,10 +11,6 @@
     auto-cpufreq
   ];
 
-  environment.variables = {
-    NIX_SWITCH_BUILD_SYSTEM_CFG_PENGPENGPENG = "thinkpad_x1c_2in1_gen9";
-  };
-
   time.timeZone = "Asia/Tokyo";
 
   users.users.l1npengtul = {

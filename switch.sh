@@ -3,13 +3,15 @@ set -e
 
 cd ~/nixcfg
 
+WHERE=$(cat /etc/hostname)
+
 alejandra .
 
 git add .
 
-git commit  --allow-empty -m "$(whoami): $(date) - $@"
+git commit  --allow-empty -m "$(whoami)@${WHERE}: $(date) - $@"
 
-sudo nixos-rebuild switch --show-trace --flake .#$NIX_SWITCH_BUILD_SYSTEM_CFG_PENGPENGPENG
+sudo nixos-rebuild switch --show-trace --flake .#$WHERE
 
 nix-env --delete-generations 7d
 

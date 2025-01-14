@@ -97,7 +97,7 @@
     inherit lib;
 
     nixosConfigurations = {
-      thinkpad_x1c_2in1_gen9 = lib.nixosSystem {
+      oldhome = lib.nixosSystem {
         inherit system;
         specialArgs = {
           inherit inputs;
@@ -137,11 +137,11 @@
           erosanix.nixosModules.protonvpn
 
           ./configuration.nix
-          ./hosts/thinkpad_x1c_2in1_gen9
+          ./hosts/oldhome
           ./pkgs
         ];
       };
-      peng_tokyo_server = lib.nixosSystem {
+      abandonedfactory = lib.nixosSystem {
         inherit system;
         specialArgs = {
           inherit inputs;
@@ -151,7 +151,7 @@
 
         modules = [
           ./configuration.nix
-          ./hosts/peng_tokyo_server
+          ./hosts/abandonedfactory
           ./pkgs/default_server.nix
 
           nixos-hardware.nixosModules.common-cpu-intel
