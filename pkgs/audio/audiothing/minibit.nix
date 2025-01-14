@@ -91,10 +91,10 @@ in
     '';
 
     postFixup = ''
+      wrapProgram --help
       find $out -type f -executable | while IFS= read -r f ; do
         wrapProgram $f \
           --run "${setup}" \
-          --suffix PATH : "${lib.makeBinPath [xdg-utils]}" \
           --suffix LD_LIBRARY_PATH : "${lib.strings.makeLibraryPath buildInputs}"
       done
     '';
