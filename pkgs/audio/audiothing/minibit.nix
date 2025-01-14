@@ -98,7 +98,7 @@ stdenv.mkDerivation rec {
         --run "$wrapMiniBit" \
         --suffix LD_LIBRARY_PATH : "${lib.strings.makeLibraryPath buildInputs}"
 
-    patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst3/audiothing/miniBit.vst3/Contents/x86_64-linux/miniBit.so
+    patchelf --set-interpreter "${stdenv.cc.bintools.dynamicLinker}" --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst3/audiothing/miniBit.vst3/Contents/x86_64-linux/miniBit.so
   '';
 
   meta = with lib; {
