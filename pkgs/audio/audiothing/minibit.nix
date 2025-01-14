@@ -25,6 +25,8 @@ stdenv.mkDerivation rec {
   dontConfigure = true;
   dontPatch = true;
   dontPatchELF = true;
+  dontStrip = true;
+  dontAutoPatchelf = true;
 
   src = fetchzip {
     url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/miniBit-${version}.tar.xz";
@@ -97,6 +99,8 @@ stdenv.mkDerivation rec {
     wrapProgram $out/bin/miniBit \
         --run "$wrapMiniBit" \
         --suffix LD_LIBRARY_PATH : "${lib.strings.makeLibraryPath buildInputs}"
+
+    autoPatchelf $out/bin
 
     patchelf --set-interpreter "${stdenv.cc.bintools.dynamicLinker}" --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst3/audiothing/miniBit.vst3/Contents/x86_64-linux/miniBit.so
   '';
