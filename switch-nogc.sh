@@ -11,4 +11,4 @@ git add .
 
 git commit  --allow-empty -m "$(whoami)@${WHERE}: $(date) - $@"
 
-sudo nixos-rebuild switch --show-trace --flake --fast --verbose --print-build-logs .#$WHERE
+sudo nixos-rebuild switch --show-trace --fast --verbose --print-build-logs --flake .#$WHERE
