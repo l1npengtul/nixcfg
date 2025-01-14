@@ -17,7 +17,7 @@
   fontconfig,
   writeScript,
 }: let
-  setup = writeScript ''
+  setup = writeScript "setup" ''
     # make our path
     ABANDON_ALL_HOPE = "$HOME/.local/share/AudioThing/Presets/miniBit"
     mkdir -p $ABANDON_ALL_HOPE
