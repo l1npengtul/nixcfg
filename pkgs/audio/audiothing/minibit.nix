@@ -13,6 +13,8 @@
   libGL,
   curlWithGnuTls,
   xdg-utils,
+  xorg,
+  fontconfig,
 }:
 stdenv.mkDerivation rec {
   pname = "audiothing-minibit";
@@ -29,9 +31,18 @@ stdenv.mkDerivation rec {
     libatomic_ops
     alsa-lib
     freetype
+    fontconfig
     libjack2
     libGL
     curlWithGnuTls
+    xorg.libX11
+    xorg.libXcursor
+    xorg.libXext
+    xorg.libXinerama
+    xorg.libXrender
+    xorg.libXrandr
+    xorg.libXdmcp
+    xorg.libXtst
   ];
 
   nativeBuildInputs = [makeWrapper wrapGAppsHook3 copyDesktopItems];
@@ -71,7 +82,8 @@ stdenv.mkDerivation rec {
       wrapProgram $f \
         "''${gappsWrapperArgs[@]}" \
         --suffix PATH : "${lib.makeBinPath [xdg-utils]}" \
-        --suffix LD_LIBRARY_PATH : "${lib.strings.makeLibraryPath buildInputs}"
+        --suffix LD_LIBRARY_PATH : "${lib.strings.makeLibraryPath buildInputs}" \
+        --run 'cd $out/opt/AudioThing'
     done
   '';
 
