@@ -23,6 +23,9 @@ stdenv.mkDerivation rec {
     "$src/Plugins/miniBit.desktop"
   ];
 
+  dontStrip = true;
+  dontPatchELF = true;
+
   installPhase = ''
 
     runHook preInstall
