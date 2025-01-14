@@ -3,6 +3,7 @@
   fetchzip,
   lib,
   autoPatchelfHook,
+  copyDesktopItems,
   pkgs,
 }:
 stdenv.mkDerivation rec {
@@ -16,7 +17,11 @@ stdenv.mkDerivation rec {
 
   buildInputs = [stdenv.cc.cc.lib pkgs.libatomic_ops pkgs.alsa-lib pkgs.freetype pkgs.libGL pkgs.curl];
 
-  nativeBuildInputs = [autoPatchelfHook];
+  nativeBuildInputs = [autoPatchelfHook copyDesktopItems];
+
+  desktopItems = [
+    "$src/Plugins/miniBit.desktop"
+  ];
 
   installPhase = ''
 
@@ -30,6 +35,10 @@ stdenv.mkDerivation rec {
 
     mkdir -p $out/lib/clap/audiothing
     cp -r "$src/Plugins/miniBit.clap" $out/lib/clap/audiothing
+
+    install -Dm755 $src/Plugins/miniBit $out/bin
+
+    install -Dm444 $src/Plugins/miniBit.png $out/share/pixmaps/miniBit.png
 
     runHook postInstall
 
