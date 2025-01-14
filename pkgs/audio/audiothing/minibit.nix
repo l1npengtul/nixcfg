@@ -94,11 +94,9 @@ in
     '';
 
     postFixup = ''
-      find $out -type f -executable | while IFS= read -r f ; do
-        wrapProgram $f \
+      wrapProgram $out/bin/miniBit \
           --run "${setup}" \
           --suffix LD_LIBRARY_PATH : "${lib.strings.makeLibraryPath buildInputs}"
-      done
     '';
 
     meta = with lib; {
