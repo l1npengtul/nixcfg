@@ -81,7 +81,7 @@ stdenv.mkDerivation rec {
         "''${gappsWrapperArgs[@]}" \
         --suffix PATH : "${lib.makeBinPath [xdg-utils]}" \
         --suffix LD_LIBRARY_PATH : "${lib.strings.makeLibraryPath buildInputs}" \
-        --run 'cd $out/opt/AudioThing'
+        --chdir "$out/opt/AudioThing"
     done
   '';
 
