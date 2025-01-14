@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
     sha256 = "130x9rlmprkvfz5b653qz8bj7b8sgibaji8cc4y92qj7sp73vzd8";
   };
 
-  buildInputs = [stdenv.cc.cc.lib pkgs.libatomic_ops pkgs.alsa-lib pkgs.freetype pkgs.libGL pkgs.curl];
+  buildInputs = [stdenv.cc.cc.lib pkgs.libatomic_ops pkgs.alsa-lib pkgs.freetype pkgs.libGL pkgs.curlWithGnuTls];
 
   nativeBuildInputs = [autoPatchelfHook copyDesktopItems];
 
