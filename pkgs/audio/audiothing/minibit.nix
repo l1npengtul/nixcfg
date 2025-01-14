@@ -19,12 +19,12 @@
 }: let
   setup = writeScript "setup" ''
     # make our path
-    ABANDON_ALL_HOPE="$HOME/.local/share/AudioThing/Presets/miniBit"
+    ABANDON_ALL_HOPE="~/.local/share/AudioThing/Presets/miniBit"
     mkdir -p $ABANDON_ALL_HOPE
 
     # copy our presets in there
     # since we want users to overwrite default presets, we use -i "no clobber"
-    cp -r -i $out/opt/AudioThing/miniBitPresets/* $ABANDON_ALL_HOPE
+    cp -r -i ${placeholder "out"}/opt/AudioThing/miniBitPresets/* $ABANDON_ALL_HOPE
   '';
 in
   stdenv.mkDerivation rec {
