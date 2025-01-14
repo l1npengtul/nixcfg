@@ -89,7 +89,7 @@ stdenv.mkDerivation rec {
 
     # copy our presets in there
     # since we want users to overwrite default presets, we use -i "no clobber"
-    cp -r -i ${placeholder "out"}/opt/AudioThing/miniBitPresets/ $ABANDON_ALL_HOPE
+    cp -r -i ${placeholder "out"}/opt/AudioThing/miniBitPresets/miniBit/ $ABANDON_ALL_HOPE
   '';
 
   postFixup = ''

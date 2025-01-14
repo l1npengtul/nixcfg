@@ -9,13 +9,13 @@
   fog = pkgs.callPackage ./fog.nix {};
 in {
   environment.systemPackages = [
-    bubbles
+    #bubbles
     minibit
-    moonecho
-    textures
-    lines
-    noises
-    speakers
-    fog
+    #moonecho
+    #textures
+    #lines
+    #noises
+    #speakers
+    #fog
   ];
 }
