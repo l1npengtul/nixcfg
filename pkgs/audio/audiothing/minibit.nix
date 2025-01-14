@@ -3,7 +3,7 @@
   fetchzip,
   lib,
   autoPatchelfHook,
-  wrapGAppsHook3,
+  #wrapGAppsHook3,
   copyDesktopItems,
   makeWrapper,
   libatomic_ops,
@@ -12,7 +12,7 @@
   libjack2,
   libGL,
   curlWithGnuTls,
-  xdg-utils,
+  #xdg-utils,
   xorg,
   fontconfig,
   writeScript,
@@ -32,6 +32,9 @@ in
     version = "1.7";
 
     dontWrapGApps = true;
+    dontBuild = true;
+    dontConfigure = true;
+    dontPatch = true;
 
     src = fetchzip {
       url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/miniBit-${version}.tar.xz";
@@ -57,7 +60,7 @@ in
       stdenv.cc.cc.lib
     ];
 
-    nativeBuildInputs = [makeWrapper autoPatchelfHook wrapGAppsHook3 copyDesktopItems];
+    nativeBuildInputs = [makeWrapper autoPatchelfHook copyDesktopItems];
 
     desktopItems = [
       "$src/Plugins/miniBit.desktop"
@@ -91,7 +94,6 @@ in
     '';
 
     postFixup = ''
-      wrapProgram --help
       find $out -type f -executable | while IFS= read -r f ; do
         wrapProgram $f \
           --run "${setup}" \
