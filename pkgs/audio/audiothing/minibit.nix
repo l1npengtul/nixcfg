@@ -77,8 +77,6 @@ stdenv.mkDerivation rec {
 
   postFixup = ''
     find $out -type f -executable | while IFS= read -r f ; do
-      patchelf --set-interpreter "${stdenv.cc.bintools.dynamicLinker}" $f
-
       wrapProgram $f \
         "''${gappsWrapperArgs[@]}" \
         --suffix PATH : "${lib.makeBinPath [xdg-utils]}" \
