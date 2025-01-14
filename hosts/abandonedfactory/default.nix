@@ -59,7 +59,7 @@
 
   hardware.graphics.enable = true;
   boot.kernelPackages = pkgs-stable.linuxPackages_6_6;
-  networking.hostName = "abandoned_factory"; # Define your hostname.
+  networking.hostName = "abandonedfactory"; # Define your hostname.
   networking.firewall.enable = true;
 
   system.stateVersion = "24.05";
