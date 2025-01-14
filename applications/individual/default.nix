@@ -27,5 +27,6 @@
     ./reaper.nix
     ./keyboard.nix
     ./irc.nix
+    ./ghidra.nix
   ];
 }
