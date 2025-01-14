@@ -76,6 +76,15 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
+  postFixup = ''
+    find $out -type f -executable | while IFS= read -r f ; do
+      wrapProgram $f \
+        "''${gappsWrapperArgs[@]}" \
+        --suffix PATH : "${lib.makeBinPath [xdg-utils]}" \
+        --chdir "$out/opt/AudioThing"
+    done
+  '';
+
   meta = with lib; {
     description = "audiothing miniBit synth plugin";
     homepage = "https://audiothing.net/";
