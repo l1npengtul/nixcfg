@@ -3,28 +3,42 @@
   fetchzip,
   lib,
   autoPatchelfHook,
+  wrapGAppsHook3,
   copyDesktopItems,
-  pkgs,
+  makeWrapper,
+  libatomic_ops,
+  alsa-lib,
+  freetype,
+  libjack2,
+  libGL,
+  curlWithGnuTls,
+  xdg-utils,
 }:
 stdenv.mkDerivation rec {
   pname = "audiothing-minibit";
   version = "1.7";
+
+  dontWrapGApps = true;
 
   src = fetchzip {
     url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/miniBit-${version}.tar.xz";
     sha256 = "130x9rlmprkvfz5b653qz8bj7b8sgibaji8cc4y92qj7sp73vzd8";
   };
 
-  buildInputs = [stdenv.cc.cc.lib pkgs.libatomic_ops pkgs.alsa-lib pkgs.freetype pkgs.libGL pkgs.curlWithGnuTls];
+  buildInputs = [
+    libatomic_ops
+    alsa-lib
+    freetype
+    libjack2
+    libGL
+    curlWithGnuTls
+  ];
 
-  nativeBuildInputs = [autoPatchelfHook copyDesktopItems];
+  nativeBuildInputs = [makeWrapper wrapGAppsHook3 copyDesktopItems];
 
   desktopItems = [
     "$src/Plugins/miniBit.desktop"
   ];
-
-  dontStrip = true;
-  dontPatchELF = true;
 
   installPhase = ''
 
@@ -48,7 +62,17 @@ stdenv.mkDerivation rec {
     ln -s $src/Plugins/miniBit.png $out/opt/AudioThing
 
     runHook postInstall
+  '';
 
+  postFixup = ''
+    find $out -type f -executable | while IFS= read -r f ; do
+      patchelf --set-interpreter "${stdenv.cc.bintools.dynamicLinker}" $f
+
+      wrapProgram $f \
+        "''${gappsWrapperArgs[@]}" \
+        --suffix PATH : "${lib.makeBinPath [xdg-utils]}" \
+        --suffix LD_LIBRARY_PATH : "${lib.strings.makeLibraryPath buildInputs}"
+    done
   '';
 
   meta = with lib; {
