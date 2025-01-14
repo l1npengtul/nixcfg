@@ -43,6 +43,7 @@ stdenv.mkDerivation rec {
     xorg.libXrandr
     xorg.libXdmcp
     xorg.libXtst
+    stdenv.cc.cc.lib
   ];
 
   nativeBuildInputs = [makeWrapper wrapGAppsHook3 copyDesktopItems];
