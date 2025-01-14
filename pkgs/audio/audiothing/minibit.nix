@@ -24,7 +24,7 @@
 
     # copy our presets in there
     # since we want users to overwrite default presets, we use -i "no clobber"
-    cp -r -i $out/opt/AudioThing/miniBit/Presets/* $ABANDON_ALL_HOPE
+    cp -r -i $out/opt/AudioThing/miniBitPresets/* $ABANDON_ALL_HOPE
   '';
 in
   stdenv.mkDerivation rec {
@@ -84,8 +84,8 @@ in
       install -Dm444 $src/Plugins/miniBit.png $out/share/pixmaps/miniBit.png
       ln -s $src/Plugins/miniBit.png $out/opt/AudioThing
 
-      mkdir -p $out/opt/AudioThing/miniBit
-      cp -r $src/Presets $out/opt/AudioThing/miniBit
+      mkdir -p $out/opt/AudioThing/miniBitPresets/
+      cp -r $src/Presets/* $out/opt/AudioThing/miniBitPresets
 
       runHook postInstall
     '';
