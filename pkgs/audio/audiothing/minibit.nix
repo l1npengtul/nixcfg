@@ -36,8 +36,10 @@ stdenv.mkDerivation rec {
     mkdir -p $out/lib/clap/audiothing
     cp -r "$src/Plugins/miniBit.clap" $out/lib/clap/audiothing
 
+    mkdir -p $out/bin
     install -Dm755 $src/Plugins/miniBit $out/bin
 
+    mkdir -p $out/share/pixmaps/
     install -Dm444 $src/Plugins/miniBit.png $out/share/pixmaps/miniBit.png
 
     runHook postInstall
