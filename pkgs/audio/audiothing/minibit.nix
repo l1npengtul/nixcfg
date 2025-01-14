@@ -46,7 +46,7 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc.lib
   ];
 
-  nativeBuildInputs = [makeWrapper wrapGAppsHook3 copyDesktopItems];
+  nativeBuildInputs = [makeWrapper autoPatchelfHook wrapGAppsHook3 copyDesktopItems];
 
   desktopItems = [
     "$src/Plugins/miniBit.desktop"
