@@ -20,10 +20,8 @@ stdenv.mkDerivation rec {
   pname = "audiothing-minibit";
   version = "1.7";
 
-  dontWrapGApps = true;
   dontBuild = true;
   dontConfigure = true;
-  dontPatch = true;
   dontPatchELF = true;
   dontStrip = true;
   dontAutoPatchelf = true;
@@ -57,6 +55,10 @@ stdenv.mkDerivation rec {
   desktopItems = [
     "$src/Plugins/miniBit.desktop"
   ];
+
+  postPatch = ''
+
+  '';
 
   installPhase = ''
 
@@ -103,6 +105,8 @@ stdenv.mkDerivation rec {
     autoPatchelf $out/bin
 
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst3/audiothing/miniBit.vst3/Contents/x86_64-linux/miniBit.so
+    patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/clap/audiothing/miniBit.clap
+    patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst/audiothing/miniBit.so
   '';
 
   meta = with lib; {
