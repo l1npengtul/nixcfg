@@ -13,6 +13,6 @@
     ./tailscale-host.nix
     ./podman.nix
     ./diskmgmt.nix
-    ./pkgs/audio/socalabs/slplugins.nix
+    ./audio/socalabs/slplugins.nix
   ];
 }
