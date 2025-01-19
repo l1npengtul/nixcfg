@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./../common/remote.nix
   ];
 
   time.timeZone = "Asia/Tokyo";
