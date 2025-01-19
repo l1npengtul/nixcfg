@@ -13,6 +13,5 @@
     ./tailscale-host.nix
     ./podman.nix
     ./diskmgmt.nix
-    ./audio/socalabs/slplugins.nix
   ];
 }
