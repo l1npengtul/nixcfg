@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./../common/use-remote.nix
     inputs.musnix.nixosModules.musnix
   ];
   environment.systemPackages = with pkgs; [
