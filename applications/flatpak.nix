@@ -5,5 +5,6 @@
   services.flatpak.uninstallUnmanaged = true;
 
   services.flatpak.packages = [
+    "at.vintagestory.VintageStory"
   ];
 }
