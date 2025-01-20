@@ -29,6 +29,8 @@
     trusted-users = root pengsrv remotebuild
   '';
 
+  nix.settings.trusted-users = ["@wheel" "pengsrv" "remotebuild"];
+
   #   boot.kernelParams = [ "security=selinux" ];
   #    boot.kernelPatches = [ {
   #         name = "selinux-config";
