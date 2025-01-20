@@ -130,10 +130,6 @@
     "flakes"
   ];
 
-  nix.extraOptions = ''
-    trusted-users = root l1npengtul
-  '';
-
   #   nixenvironment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
 
   hardware.enableAllFirmware = true;
