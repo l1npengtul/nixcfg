@@ -59,7 +59,7 @@ in {
     recstar
 
     #airwindows-ind
-    #sid
+    sid
     #sn76489
     #papu
     #rp2a03
