@@ -9,6 +9,7 @@
       sshKey = "/root/.ssh/remotebuild";
       system = pkgs.stdenv.hostPlatform.system;
       supportedFeatures = ["nixos-test" "big-parallel" "kvm"];
+      protocol = "ssh-ng";
     }
   ];
 }
