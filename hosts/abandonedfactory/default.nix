@@ -26,7 +26,7 @@
   };
 
   nix.extraOptions = ''
-    trusted-users = root pengsrv
+    trusted-users = root pengsrv remotebuild
   '';
 
   #   boot.kernelParams = [ "security=selinux" ];
