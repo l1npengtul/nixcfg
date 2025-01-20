@@ -11,7 +11,7 @@ git add .
 
 git commit  --allow-empty -m "$(whoami)@${WHERE}: $(date) - $@"
 
-sudo nixos-rebuild switch --show-trace --flake .#$WHERE
+sudo nixos-rebuild switch --show-trace --builders "" --flake .#$WHERE
 
 nix-env --delete-generations 7d
 
