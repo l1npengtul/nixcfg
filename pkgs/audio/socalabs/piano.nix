@@ -38,7 +38,7 @@ stdenv.mkDerivation {
     (fetchFromGitHub {
       owner = "FigBug";
       repo = "Piano";
-      rev = "17f884126bb76d2d3c95e12224aab8f38ef8c96d";
+      rev = "3a5229a78a8441f9331c267cc5a9ae22f0cae016";
       hash = "";
       fetchSubmodules = true;
     })
