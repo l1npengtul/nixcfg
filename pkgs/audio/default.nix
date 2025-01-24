@@ -57,6 +57,7 @@ in {
     pkgs-stable.wineWowPackages.stagingFull
     dxvk_2
     recstar
+    plugdata
 
     airwindows-ind
     sid
@@ -73,7 +74,5 @@ in {
     inputs.audio.packages.${pkgs.system}.grainbow
     inputs.audio.packages.${pkgs.system}.neuralnote
     inputs.audio.packages.${pkgs.system}.atlas2
-
-    inputs.plugdata-pr.legacyPackages.${pkgs.system}.plugdata
   ];
 }

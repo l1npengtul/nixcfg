@@ -42,7 +42,7 @@ in
         owner = "FigBug";
         repo = "Wavetable";
         tag = "${version}";
-        hash = "";
+        hash = "sha256-tLL6/ZO3rgNXDZIZNxrCMqWTC7GAYf/Txr9c1o9ej7U=";
         fetchSubmodules = true;
       })
       .overrideAttrs
