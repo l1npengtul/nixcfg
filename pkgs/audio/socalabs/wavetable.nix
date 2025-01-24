@@ -4,103 +4,171 @@
   lib,
   cmake,
   pkg-config,
-  gcc12,
   alsa-lib,
+  copyDesktopItems,
+  makeDesktopItem,
   xorg,
   freetype,
-  libGLU,
+  expat,
+  libGL,
   libjack2,
-  ninja,
-  ladspa-sdk,
   curl,
-  mesa,
-  webkitgtk,
-  juce,
+  webkitgtk_4_0,
+  libsysprof-capture,
+  pcre2,
+  util-linux,
+  libselinux,
+  libsepol,
+  libthai,
+  libxkbcommon,
+  libdatrie,
+  libepoxy,
+  libsoup_2_4,
+  lerc,
+  sqlite,
+  ninja,
+  nix-update-script,
+  # Disable VST building by default, since NixOS doesn't have a VST license
+  enableVST2 ? false,
 }: let
-  plname = "Wavetable";
+  version = "1.0.22";
 in
-  stdenv.mkDerivation rec {
+  stdenv.mkDerivation {
     pname = "socalabs-wavetable";
-    version = "1.0.22";
+    inherit version;
 
     src =
-      (fetchFromGitHub
-        {
-          owner = "FigBug";
-          repo = plname;
-          rev = "nm";
-          hash = "";
-          fetchSubmodules = true;
-        })
-      .overrideAttrs (_: {
+      (fetchFromGitHub {
+        owner = "FigBug";
+        repo = "Wavetable";
+        tag = "${version}";
+        hash = "";
+        fetchSubmodules = true;
+      })
+      .overrideAttrs
+      (_: {
         GIT_CONFIG_COUNT = 1;
         GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
         GIT_CONFIG_VALUE_0 = "git@github.com:";
       });
 
+    desktopItems = [
+      (makeDesktopItem {
+        type = "Application";
+        name = "socalabs-wavetable";
+        desktopName = "Socalabs Wavetable";
+        comment = "Socalabs 2 Oscillator Wavetable Plugin (Standalone)";
+        exec = "Wavetable";
+        categories = [
+          "Audio"
+          "AudioVideo"
+        ];
+      })
+    ];
+
     nativeBuildInputs = [
       cmake
       pkg-config
+      copyDesktopItems
       ninja
-      juce
-      gcc12
     ];
 
     buildInputs = [
-      gcc12
       alsa-lib
       xorg.libX11
       xorg.libXcomposite
       xorg.libXcursor
       xorg.libXinerama
       xorg.libXrandr
+      xorg.libXtst
+      xorg.libXdmcp
       xorg.xvfb
-      libGLU
+      libGL
       libjack2
+      libsysprof-capture
+      libselinux
+      libsepol
+      libthai
+      libxkbcommon
+      libdatrie
+      libepoxy
+      libsoup_2_4
+      lerc
       freetype
-      ladspa-sdk
       curl
-      mesa
-      webkitgtk
+      webkitgtk_4_0
+      pcre2
+      util-linux
+      sqlite
+      expat
     ];
 
     cmakeFlags = [
+      (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
       "--preset ninja-gcc"
     ];
 
+    patchPhase = ''
+      substituteInPlace CMakeLists.txt \
+      --replace-fail 'FORMATS Standalone VST VST3 AU LV2' 'FORMATS Standalone ${lib.optionalString enableVST2 "VST"} VST3 LV2'
+
+      # we need to patch JUCE itself to enable jack MIDI support
+      # please https://github.com/juce-framework/JUCE/issues/952
+      # TODO: remove when juce updates :D
+      substituteInPlace modules/juce/modules/juce_audio_devices/native/juce_Midi_linux.cpp \
+      --replace-fail "port = client.createPort (portName, forInput, false);" "port = client.createPort (portName, forInput, true);"
+    '';
+
     cmakeBuildType = "Release";
 
-    buildPhase = ''
-      cmake --build --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
+    strictDeps = true;
+
+    preBuild = ''
+      # build takes 10 years without this set
+      HOME=(mktemp -d)
+
+      cd ../Builds/ninja-gcc
     '';
 
     installPhase = ''
       runHook preInstall
 
-      mkdir -p $out/lib/vst3 $out/lib/vst $out/lib/lv2
+      mkdir -p $out/lib/vst3 $out/lib/lv2 $out/bin
 
-        cp -R Builds/ninja-gcc/${plname}_artefacts/Release/LV2/${plname}.lv2 $out/lib/lv2
-        cp -R Builds/ninja-gcc/${plname}_artefacts/Release/VST/lib${plname}.so $out/lib/vst
-        cp -R Builds/ninja-gcc/${plname}_artefacts/Release/VST3/${plname}.vst3 $out/lib/vst3
+      ${lib.optionalString enableVST2 ''
+        mkdir -p $out/lib/vst
+        cp -r Wavetable_artefacts/Release/VST/libWavetable.so $out/lib/vst
+      ''}
+
+      cp -r Wavetable_artefacts/Release/LV2/Wavetable.lv2 $out/lib/lv2
+      cp -r Wavetable_artefacts/Release/VST3/Wavetable.vst3 $out/lib/vst3
+
+      install -Dm755 Wavetable_artefacts/Release/Standalone/Wavetable $out/bin
 
       runHook postInstall
     '';
 
+    passthru.updateScript = nix-update-script {};
+
     NIX_LDFLAGS = (
       toString [
         "-lX11"
+        "-lXext"
         "-lXcomposite"
         "-lXcursor"
         "-lXinerama"
         "-lXrandr"
+        "-lXtst"
+        "-lXdmcp"
       ]
     );
 
     meta = {
-      description = "Socalabs Wavetable Plugin";
+      description = "Socalabs 2 Oscillator Flexible Wavetable Plugin";
       homepage = "https://socalabs.com/synths/wavetable/";
-      platforms = ["x86_64-linux"];
-      license = lib.licenses.bsd3;
-      maintainers = with lib.maintainers; [l1npengtul];
+      mainProgram = "Wavetable";
+      platforms = lib.platforms.linux;
+      license = [lib.licenses.bsd3] ++ lib.optional enableVST2 lib.licenses.unfree;
+      maintainers = [lib.maintainers.l1npengtul];
     };
   }

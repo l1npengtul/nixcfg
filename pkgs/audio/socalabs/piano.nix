@@ -4,103 +4,166 @@
   lib,
   cmake,
   pkg-config,
-  gcc12,
   alsa-lib,
+  copyDesktopItems,
+  makeDesktopItem,
   xorg,
   freetype,
-  libGLU,
+  expat,
+  libGL,
   libjack2,
-  ninja,
-  ladspa-sdk,
   curl,
-  mesa,
-  webkitgtk,
-  juce,
-}: let
-  plname = "Piano";
-in
-  stdenv.mkDerivation rec {
-    pname = "socalabs-piano";
-    version = "1.0.0";
+  webkitgtk_4_0,
+  libsysprof-capture,
+  pcre2,
+  util-linux,
+  libselinux,
+  libsepol,
+  libthai,
+  libxkbcommon,
+  libdatrie,
+  libepoxy,
+  libsoup_2_4,
+  lerc,
+  sqlite,
+  ninja,
+  # Disable VST building by default, since NixOS doesn't have a VST license
+  enableVST2 ? false,
+}:
+stdenv.mkDerivation {
+  pname = "socalabs-piano";
+  version = "1.0.0";
 
-    src =
-      (fetchFromGitHub
-        {
-          owner = "FigBug";
-          repo = plname;
-          rev = "3a5229a78a8441f9331c267cc5a9ae22f0cae016";
-          hash = "";
-          fetchSubmodules = true;
-        })
-      .overrideAttrs (_: {
-        GIT_CONFIG_COUNT = 1;
-        GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
-        GIT_CONFIG_VALUE_0 = "git@github.com:";
-      });
+  src =
+    (fetchFromGitHub {
+      owner = "FigBug";
+      repo = "Piano";
+      rev = "17f884126bb76d2d3c95e12224aab8f38ef8c96d";
+      hash = "";
+      fetchSubmodules = true;
+    })
+    .overrideAttrs
+    (_: {
+      GIT_CONFIG_COUNT = 1;
+      GIT_CONFIG_KEY_0 = "url.https://github.com/.insteadOf";
+      GIT_CONFIG_VALUE_0 = "git@github.com:";
+    });
 
-    nativeBuildInputs = [
-      cmake
-      pkg-config
-      ninja
-      juce
-      gcc12
-    ];
+  desktopItems = [
+    (makeDesktopItem {
+      type = "Application";
+      name = "socalabs-piano";
+      desktopName = "Socalabs Piano";
+      comment = "Socalabs Physical Modeling Piano Plugin (Standalone)";
+      exec = "Piano";
+      categories = [
+        "Audio"
+        "AudioVideo"
+      ];
+    })
+  ];
 
-    buildInputs = [
-      gcc12
-      alsa-lib
-      xorg.libX11
-      xorg.libXcomposite
-      xorg.libXcursor
-      xorg.libXinerama
-      xorg.libXrandr
-      xorg.xvfb
-      libGLU
-      libjack2
-      freetype
-      ladspa-sdk
-      curl
-      mesa
-      webkitgtk
-    ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    copyDesktopItems
+    ninja
+  ];
 
-    cmakeFlags = [
-      "--preset ninja-gcc"
-    ];
+  buildInputs = [
+    alsa-lib
+    xorg.libX11
+    xorg.libXcomposite
+    xorg.libXcursor
+    xorg.libXinerama
+    xorg.libXrandr
+    xorg.libXtst
+    xorg.libXdmcp
+    xorg.xvfb
+    libGL
+    libjack2
+    libsysprof-capture
+    libselinux
+    libsepol
+    libthai
+    libxkbcommon
+    libdatrie
+    libepoxy
+    libsoup_2_4
+    lerc
+    freetype
+    curl
+    webkitgtk_4_0
+    pcre2
+    util-linux
+    sqlite
+    expat
+  ];
 
-    cmakeBuildType = "Release";
+  cmakeFlags = [
+    (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
+    "--preset ninja-gcc"
+  ];
 
-    buildPhase = ''
-      cmake --build --preset ninja-gcc --config Release --parallel $NIX_BUILD_CORES
-    '';
+  patchPhase = ''
+    substituteInPlace CMakeLists.txt \
+    --replace-fail 'FORMATS Standalone VST VST3 AU LV2' 'FORMATS Standalone ${lib.optionalString enableVST2 "VST"} VST3 LV2'
 
-    installPhase = ''
-      runHook preInstall
+    # we need to patch JUCE itself to enable jack MIDI support
+    # please https://github.com/juce-framework/JUCE/issues/952
+    # TODO: remove when juce updates :D
+    substituteInPlace modules/juce/modules/juce_audio_devices/native/juce_Midi_linux.cpp \
+    --replace-fail "port = client.createPort (portName, forInput, false);" "port = client.createPort (portName, forInput, true);"
+  '';
 
-      mkdir -p $out/lib/vst3 $out/lib/vst $out/lib/lv2
+  cmakeBuildType = "Release";
 
-        cp -R Builds/ninja-gcc/${plname}_artefacts/Release/LV2/${plname}.lv2 $out/lib/lv2
-        cp -R Builds/ninja-gcc/${plname}_artefacts/Release/VST/lib${plname}.so $out/lib/vst
-        cp -R Builds/ninja-gcc/${plname}_artefacts/Release/VST3/${plname}.vst3 $out/lib/vst3
+  strictDeps = true;
 
-      runHook postInstall
-    '';
+  preBuild = ''
+    # build takes 10 years without this set
+    HOME=(mktemp -d)
 
-    NIX_LDFLAGS = (
-      toString [
-        "-lX11"
-        "-lXcomposite"
-        "-lXcursor"
-        "-lXinerama"
-        "-lXrandr"
-      ]
-    );
+    cd ../Builds/ninja-gcc
+  '';
 
-    meta = {
-      description = "Socalabs Digital Waveguide Piano Physical Modelling Plugin";
-      homepage = "https://socalabs.com/synths/piano/";
-      platforms = ["x86_64-linux"];
-      license = lib.licenses.gpl2;
-      maintainers = with lib.maintainers; [l1npengtul];
-    };
-  }
+  installPhase = ''
+    runHook preInstall
+
+    mkdir -p $out/lib/vst3 $out/lib/lv2 $out/bin
+
+    ${lib.optionalString enableVST2 ''
+      mkdir -p $out/lib/vst
+      cp -r Piano_artefacts/Release/VST/libPiano.so $out/lib/vst
+    ''}
+
+    cp -r Piano_artefacts/Release/LV2/Piano.lv2 $out/lib/lv2
+    cp -r Piano_artefacts/Release/VST3/Piano.vst3 $out/lib/vst3
+
+    install -Dm755 Piano_artefacts/Release/Standalone/Piano $out/bin
+
+    runHook postInstall
+  '';
+
+  NIX_LDFLAGS = (
+    toString [
+      "-lX11"
+      "-lXext"
+      "-lXcomposite"
+      "-lXcursor"
+      "-lXinerama"
+      "-lXrandr"
+      "-lXtst"
+      "-lXdmcp"
+    ]
+  );
+
+  meta = {
+    description = "Socalabs Physical Modeling Piano Plugin";
+    homepage = "https://socalabs.com/synths/piano/";
+    mainProgram = "Piano";
+    platforms = lib.platforms.linux;
+    license = [lib.licenses.lgpl21] ++ lib.optional enableVST2 lib.licenses.unfree;
+    maintainers = [lib.maintainers.l1npengtul];
+  };
+}

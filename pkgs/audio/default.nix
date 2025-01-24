@@ -64,6 +64,9 @@ in {
     papu
     rp2a03
     voc
+    organ
+    wavetable
+    piano
     #slplugins
 
     inputs.audio.packages.${pkgs.system}.paulxstretch
