@@ -48,7 +48,7 @@ in {
     distrho-ports
     airwindows-lv2
     bitwig-studio
-    ardour
+    #ardour
     reaper
     pkgs-stable.yabridgectl
     pkgs-stable.yabridge
