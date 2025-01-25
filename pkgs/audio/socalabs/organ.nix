@@ -119,8 +119,8 @@ stdenv.mkDerivation {
     --replace-fail "port = client.createPort (portName, forInput, false);" "port = client.createPort (portName, forInput, true);"
 
     # update the vendored version of setBFree in this package
-    rm -r plugin/setBfree
-    ln -s ${setbfree.src} plugin/setBfree
+    #rm -r plugin/setBfree
+    #ln -s ${setbfree.src} plugin/setBfree
   '';
 
   cmakeBuildType = "Release";
