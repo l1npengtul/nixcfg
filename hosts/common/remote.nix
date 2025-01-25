@@ -12,4 +12,6 @@
   users.groups.remotebuild = {};
 
   nix.settings.trusted-users = ["remotebuild"];
+  nix.settings.max-jobs = "auto";
+  nix.settings.cores = 0;
 }

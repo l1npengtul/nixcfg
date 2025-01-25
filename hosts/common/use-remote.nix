@@ -10,6 +10,7 @@
       system = pkgs.stdenv.hostPlatform.system;
       supportedFeatures = ["nixos-test" "big-parallel" "kvm"];
       protocol = "ssh-ng";
+      max-jobs = "auto";
     }
   ];
 }
