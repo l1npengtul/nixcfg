@@ -65,7 +65,7 @@ in {
     papu
     rp2a03
     voc
-    organ
+    #organ
     wavetable
     piano
     #slplugins
