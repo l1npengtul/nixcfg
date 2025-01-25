@@ -27,6 +27,7 @@
   lerc,
   sqlite,
   ninja,
+  setBFree,
   # Disable VST building by default, since NixOS doesn't have a VST license
   enableVST2 ? false,
 }:
@@ -38,8 +39,8 @@ stdenv.mkDerivation {
     (fetchFromGitHub {
       owner = "FigBug";
       repo = "Organ";
-      rev = "cb3bf0d6c1f885a852806b9fb928776b291af0ba";
-      hash = "sha256-MKu5wYVU3VduKnBZ5oW88HUg0d30hBNGuGfN/gnAZ/E=";
+      rev = "17f884126bb76d2d3c95e12224aab8f38ef8c96d";
+      hash = "";
       fetchSubmodules = true;
     })
     .overrideAttrs
@@ -114,6 +115,10 @@ stdenv.mkDerivation {
     # TODO: remove when juce updates :D
     substituteInPlace modules/juce/modules/juce_audio_devices/native/juce_Midi_linux.cpp \
     --replace-fail "port = client.createPort (portName, forInput, false);" "port = client.createPort (portName, forInput, true);"
+
+    # update the vendored version of setBFree in this package
+    rm -r plugin/setBFree
+    ln -s ${setBFree.src} plugin/setBFree
   '';
 
   cmakeBuildType = "Release";
