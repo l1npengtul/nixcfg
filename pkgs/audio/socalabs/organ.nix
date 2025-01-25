@@ -109,14 +109,14 @@ stdenv.mkDerivation {
   ];
 
   patchPhase = ''
-    substituteInPlace CMakeLists.txt \
-    --replace-fail 'FORMATS Standalone VST VST3 AU LV2' 'FORMATS Standalone ${lib.optionalString enableVST2 "VST"} VST3 LV2'
+    #substituteInPlace CMakeLists.txt \
+    #--replace-fail 'FORMATS Standalone VST VST3 AU LV2' 'FORMATS Standalone ${lib.optionalString enableVST2 "VST"} VST3 LV2'
 
     # we need to patch JUCE itself to enable jack MIDI support
     # please https://github.com/juce-framework/JUCE/issues/952
     # TODO: remove when juce updates :D
-    substituteInPlace modules/juce/modules/juce_audio_devices/native/juce_Midi_linux.cpp \
-    --replace-fail "port = client.createPort (portName, forInput, false);" "port = client.createPort (portName, forInput, true);"
+    #substituteInPlace modules/juce/modules/juce_audio_devices/native/juce_Midi_linux.cpp \
+    #--replace-fail "port = client.createPort (portName, forInput, false);" "port = client.createPort (portName, forInput, true);"
 
     # update the vendored version of setBFree in this package
     #rm -r plugin/setBfree
