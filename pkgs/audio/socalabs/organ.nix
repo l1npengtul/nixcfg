@@ -39,7 +39,7 @@ stdenv.mkDerivation {
       owner = "FigBug";
       repo = "Organ";
       rev = "cb3bf0d6c1f885a852806b9fb928776b291af0ba";
-      hash = "";
+      hash = "sha256-MKu5wYVU3VduKnBZ5oW88HUg0d30hBNGuGfN/gnAZ/E=";
       fetchSubmodules = true;
     })
     .overrideAttrs
