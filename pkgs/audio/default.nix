@@ -16,9 +16,7 @@
   voc = pkgs.callPackage ./socalabs/voc.nix {};
   wavetable = pkgs.callPackage ./socalabs/wavetable.nix {};
   test = pkgs.callPackage ./test.nix {};
-  airwindows = pkgs.callPackage ./airwindows {};
   airwindows-ind = pkgs.callPackage ./airwindows/individual.nix {};
-  socalabsall = pkgs.callPackage ./socalabs/all.nix {};
   #   synthv-studio-pro = pkgs.callPackage ./synthv-studio-pro {};
   recstar = pkgs.callPackage ./recstar {};
 in {
@@ -50,7 +48,7 @@ in {
     distrho-ports
     airwindows-lv2
     bitwig-studio
-    #ardour
+    ardour
     reaper
     pkgs-stable.yabridgectl
     pkgs-stable.yabridge
