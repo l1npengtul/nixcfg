@@ -32,14 +32,14 @@
 }:
 stdenv.mkDerivation {
   pname = "socalabs-organ";
-  version = "1.0.0";
+  version = "1.0.1";
 
   src =
     (fetchFromGitHub {
       owner = "FigBug";
       repo = "Organ";
-      rev = "e68789573184c92fe9b6ae1b3139864283f7b762";
-      hash = "sha256-0rFnLRPDG+YeFyTJPA6rA9xw3ZWC4GOqj8lIpax+T7w=";
+      rev = "cb3bf0d6c1f885a852806b9fb928776b291af0ba";
+      hash = "";
       fetchSubmodules = true;
     })
     .overrideAttrs

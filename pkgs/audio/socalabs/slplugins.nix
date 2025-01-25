@@ -1,5 +1,5 @@
 {
-  clangStdenv,
+  stdenv,
   fetchFromGitHub,
   lib,
   cmake,
@@ -70,7 +70,7 @@
     fontDirectories = [];
   };
 in
-  clangStdenv.mkDerivation {
+  stdenv.mkDerivation {
     pname = "socalabs-slplugins";
     version = "1.1.0";
 
@@ -144,9 +144,7 @@ in
     ];
 
     cmakeFlags = [
-      (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
-      (lib.cmakeBool "BUILD_EXTRAS" false)
-      "--preset ninja-clang"
+      "--preset ninja-gcc"
     ];
 
     patchPhase = ''
@@ -156,8 +154,6 @@ in
       ${
         lib.concatMapStringsSep "\n" (
           plugin: ''
-            #substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail "juce::juce_recommended_lto_flags" ""
-            substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail ""AU"" ""
             ${lib.optionalString (!enableVST2) ''
               substituteInPlace plugins/${plugin}/CMakeLists.txt --replace-fail ""VST"" ""
             ''}
@@ -182,7 +178,7 @@ in
       export HOME=(mktemp -d)
       export FONTCONFIG_FILE=${fontConf}
 
-      cd ../Builds/ninja-clang
+      cd ../Builds/ninja-gcc
     '';
 
     installPhase = ''
