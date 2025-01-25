@@ -27,7 +27,7 @@
   lerc,
   sqlite,
   ninja,
-  setBFree,
+  setbfree,
   # Disable VST building by default, since NixOS doesn't have a VST license
   enableVST2 ? false,
 }:
@@ -120,7 +120,7 @@ stdenv.mkDerivation {
 
     # update the vendored version of setBFree in this package
     rm -r plugin/setBFree
-    ln -s ${setBFree.src} plugin/setBFree
+    ln -s ${setbfree.src} plugin/setBFree
   '';
 
   cmakeBuildType = "Release";
