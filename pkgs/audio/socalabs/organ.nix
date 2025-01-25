@@ -38,8 +38,8 @@ stdenv.mkDerivation {
     (fetchFromGitHub {
       owner = "FigBug";
       repo = "Organ";
-      rev = "17f884126bb76d2d3c95e12224aab8f38ef8c96d";
-      hash = "sha256-gpC1+TfzLojJuE24aQUrOl3HIzC7x3CMrB4h7GWfZv0=";
+      rev = "e68789573184c92fe9b6ae1b3139864283f7b762";
+      hash = "";
       fetchSubmodules = true;
     })
     .overrideAttrs
