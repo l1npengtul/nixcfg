@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./plasma.nix
+    ./common.nix
   ];
 
   programs = {

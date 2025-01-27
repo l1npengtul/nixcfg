@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  import = [
+    ./common.nix
+  ];
+
   programs = {
     git = {
       enable = true;
