@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  environment.systemPackages = [pkgs.dpkg pkgs.binutils pkgs.upx pkgs.tmux pkgs.popsicle pkgs.hyfetch pkgs.zenith pkgs.onefetch pkgs.libxfs];
+  environment.systemPackages = [pkgs.dpkg pkgs.binutils pkgs.upx pkgs.tmux pkgs.popsicle pkgs.hyfetch pkgs.zenith pkgs.onefetch pkgs.exfat pkgs.exfatprogs pkgs.xfsprogs];
 }
