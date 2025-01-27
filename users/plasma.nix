@@ -1,4 +1,6 @@
-{...}: {
+{pkgs, ...}: {
+  home.packages = with pkgs; [kdePackages.partitionmanager kdePackages.filelight];
+
   programs.plasma = {
     enable = true;
     shortcuts = {
