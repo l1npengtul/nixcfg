@@ -13,7 +13,7 @@
     ./steam.nix
     ./libvirtd.nix
     ./protonvpn.nix
-    ./matlab.nix
+    #./matlab.nix I AM FREE!!!
     ./tailscale-client.nix
     ./input.nix
     ./diskmgmt.nix
