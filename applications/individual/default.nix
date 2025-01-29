@@ -6,7 +6,7 @@
     ./blender.nix
     ./kdeconnect.nix
     ./kdenlive.nix
-    #./kicad.nix
+    ./kicad.nix
     ./direnv.nix
     ./firefox.nix
     ./ktorrent.nix
@@ -28,5 +28,6 @@
     ./keyboard.nix
     ./irc.nix
     ./ghidra.nix
+    ./emulators.nix
   ];
 }
