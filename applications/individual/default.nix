@@ -29,5 +29,6 @@
     ./irc.nix
     ./ghidra.nix
     ./emulators.nix
+    ./ftp.nix
   ];
 }

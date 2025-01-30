@@ -1,9 +1,7 @@
 {pkgs, ...}: {
   home = {
     packages = with pkgs; [
-      retroarch-free
-      mame
-      libretro.pcsx_rearmed
+      filezilla
     ];
   };
 }
