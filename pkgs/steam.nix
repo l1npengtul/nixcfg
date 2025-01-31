@@ -14,7 +14,7 @@
 
   programs.nix-ld = {
     enable = true;
-    libraries = pkgs.steam-run.fhsenv.args.multiPkgs pkgs;
+    libraries = [pkgs.steam-run.fhsenv.args.multiPkgs pkgs];
   };
 
   environment.systemPackages = with pkgs; [protonup-qt];
