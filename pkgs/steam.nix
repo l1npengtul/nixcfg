@@ -20,7 +20,7 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [protonup-qt nix-alien];
+  environment.systemPackages = with pkgs; [protonup-qt];
 
   hardware.steam-hardware.enable = true;
 }
