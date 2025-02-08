@@ -20,7 +20,7 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [protonup-qt];
+  environment.systemPackages = with pkgs; [protonup-qt r2modman];
 
   hardware.steam-hardware.enable = true;
 }
