@@ -61,7 +61,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "gitlab:doronbehar/nix-matlab";
     };
-    inputs.flux.url = "github:IogaMaster/flux";
+    flux.url = "github:IogaMaster/flux";
   };
   outputs = inputs @ {
     nixpkgs,
