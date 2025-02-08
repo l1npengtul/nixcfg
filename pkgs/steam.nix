@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -20,7 +24,7 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [protonup-qt r2modman];
+  environment.systemPackages = with pkgs; [protonup-qt r2modman inputs.flux.packages.${pkgs.system}.flux];
 
   hardware.steam-hardware.enable = true;
 }

@@ -61,6 +61,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "gitlab:doronbehar/nix-matlab";
     };
+    inputs.flux.url = "github:IogaMaster/flux";
   };
   outputs = inputs @ {
     nixpkgs,
@@ -80,6 +81,7 @@
     nixpkgs-stable,
     nixpkgs-master,
     plugdata-pr,
+    flux,
     ...
   }: let
     username = "l1npengtul";
@@ -136,6 +138,8 @@
 
           erosanix.nixosModules.protonvpn
 
+          flux.nixosModules.default
+
           ./configuration.nix
           ./hosts/oldhome
           ./pkgs
@@ -153,6 +157,7 @@
           ./configuration.nix
           ./hosts/abandonedfactory
           ./pkgs/default_server.nix
+          flux.nixosModules.default
 
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-gpu-intel
