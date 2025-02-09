@@ -61,7 +61,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "gitlab:doronbehar/nix-matlab";
     };
-    flux.url = "github:IogaMaster/flux";
+
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    playit-nixos-module.url = "github:pedorich-n/playit-nixos-module";
   };
   outputs = inputs @ {
     nixpkgs,
@@ -81,7 +83,8 @@
     nixpkgs-stable,
     nixpkgs-master,
     plugdata-pr,
-    flux,
+    nix-minecraft,
+    playit-nixos-module,
     ...
   }: let
     username = "l1npengtul";
@@ -93,7 +96,7 @@
     commonArgs = {
       inherit system;
       inherit pkgs;
-      overlays = [flux.overlays.default];
+      overlays = [inputs.nix-minecraft.overlay];
       config.allowUnfree = true;
     };
   in {
@@ -115,8 +118,6 @@
           nixos-hardware.nixosModules.common-pc-ssd
           nixos-hardware.nixosModules.common-hidpi
           nixos-hardware.nixosModules.lenovo-thinkpad
-
-          flux.nixosModules.default
 
           home-manager.nixosModules.home-manager
           {
@@ -155,14 +156,12 @@
         };
 
         modules = [
-          ./configuration.nix
-          ./hosts/abandonedfactory
-          ./pkgs/default_server.nix
-          flux.nixosModules.default
-
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-gpu-intel
           nixos-hardware.nixosModules.common-pc-ssd
+
+          playit-nixos-module.nixosModules.default
+          nix-minecraft.nixosModules.default
 
           home-manager.nixosModules.home-manager
           {
@@ -176,6 +175,10 @@
           }
 
           nix-index-database.nixosModules.nix-index
+
+          ./configuration.nix
+          ./hosts/abandonedfactory
+          ./pkgs/default_server.nix
         ];
       };
     };
