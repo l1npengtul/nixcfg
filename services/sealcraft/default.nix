@@ -46,7 +46,7 @@
           };
           ModernFix = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/nmDcB62a/versions/ZGxQddYr/modernfix-fabric-5.20.3%2Bmc1.21.4.jar";
-            hash = "";
+            hash = "sha256-zrQ15ShzUtw1Xty1yxxO/n8xYofpaATSF9ewEeqE/d4=";
           };
           C2ME = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/VSNURh3q/versions/Qgg5mpR6/c2me-fabric-mc1.21.4-0.3.2%2Balpha.0.33.jar";
