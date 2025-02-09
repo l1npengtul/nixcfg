@@ -98,7 +98,7 @@
   flux = {
     enable = true;
     servers.server-proxy = {
-      packages = pkgs.wget;
+      package = pkgs.wget;
       proxy = {
         enable = true;
         backend = "playit";
