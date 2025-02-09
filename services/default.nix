@@ -1,5 +1,6 @@
 {...}: {
   imports = [
     ./sealcraft
+    ./cloudflared.nix
   ];
 }
