@@ -66,7 +66,7 @@
           };
           Tectonic = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/lWDHr9jE/versions/8uiKNgr3/tectonic-fabric-1.21.4-2.4.2.jar";
-            hash = "";
+            hash = "sha256-jmyDmzkgw31ofnO/XmOdSZvopnB2DnfgfWWNgjLAcFg=";
           };
           Nullscape = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/LPjGiSO4/versions/dHJAVX8s/Nullscape_1.21.x_v1.2.10.jar";
