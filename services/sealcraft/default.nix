@@ -24,7 +24,9 @@
         level-seed = "7919907699005295953";
         max-players = 20;
         white-list = true;
-        view-distance = "10";
+        view-distance = "8";
+        sync-chunk-writes = false;
+        max-chained-neighbor-updates = 10000;
         enable-rcon = true;
         "rcon.password" = "sealcraft";
       };
@@ -34,6 +36,7 @@
       # Specify the custom minecraft server package
       package = pkgs.fabricServers.fabric-1_21_4.override {
         loaderVersion = "0.16.10";
+        jre_headless = pkgs.temurin-jre-bin-23;
       }; # Specific fabric loader version
 
       symlinks = {
@@ -54,10 +57,10 @@
             url = "https://cdn.modrinth.com/data/nmDcB62a/versions/ZGxQddYr/modernfix-fabric-5.20.3%2Bmc1.21.4.jar";
             hash = "sha256-zrQ15ShzUtw1Xty1yxxO/n8xYofpaATSF9ewEeqE/d4=";
           };
-          #C2ME = pkgs.fetchurl {
-          #  url = "https://cdn.modrinth.com/data/VSNURh3q/versions/Qgg5mpR6/c2me-fabric-mc1.21.4-0.3.2%2Balpha.0.33.jar";
-          #  hash = "sha256-ejpGXyGpLY8K5N4JsjA4teH8ilbZdhKE2nm1XzfMHSc=";
-          #};
+          C2ME = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/VSNURh3q/versions/Qgg5mpR6/c2me-fabric-mc1.21.4-0.3.2%2Balpha.0.33.jar";
+            hash = "sha256-ejpGXyGpLY8K5N4JsjA4teH8ilbZdhKE2nm1XzfMHSc=";
+          };
           Noisium = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/KuNKN7d2/versions/9NHdQfkN/noisium-fabric-2.5.0%2Bmc1.21.4.jar";
             hash = "sha256-JmSbfF3IDaC1BifR8WaKFCpam6nHlBWQzVryDR6Wvto=";
@@ -85,6 +88,10 @@
           FabricKotlin = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/Ha28R6CL/versions/476dzMG5/fabric-language-kotlin-1.13.1%2Bkotlin.2.1.10.jar";
             hash = "sha256-bXmCMjWsW2TusKnLVxGkyGYcAfcOIlRt3mpNsV/llxM=";
+          };
+          ScalableLux = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/Ps1zyz6x/versions/DUpB8IQV/ScalableLux-0.1.1%2Bfabric.452731d-all.jar";
+            hash = "";
           };
           #Funny = pkgs.fetchurl {
           #  url = "https://cdn.modrinth.com/data/p1WH6sHr/versions/4VXWFsMc/From-The-Fog-1.20.3-1.20.4-v1.9.3-Forge-Fabric.jar";
