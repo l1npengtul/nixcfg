@@ -100,6 +100,7 @@
     servers.server-proxy = {
       package = pkgs.mkGenericServer {
         name = "donothingserver";
+        src = ./README.md;
       };
       proxy = {
         enable = true;
