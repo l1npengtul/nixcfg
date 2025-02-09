@@ -58,7 +58,7 @@
           };
           HeadNameFix = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/rbU0dAND/versions/OdeNSZVg/head-name-fix-1.21.4-1.3.2.jar";
-            hash = "";
+            hash = "sha256-Yt5nj+q2nddWdguVMrgz1rT1+KCtmY6NSL3GvEZozEc=";
           };
           NoChatReports = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/qQyHxfxd/versions/9xt05630/NoChatReports-FABRIC-1.21.4-v2.11.0.jar";
