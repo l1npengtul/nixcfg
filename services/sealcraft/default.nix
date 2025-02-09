@@ -94,11 +94,19 @@
       };
     };
   };
-  services.playit = {
+
+  flux = {
     enable = true;
-    user = "playit";
-    group = "playit";
-    secretPath = config.age.secrets.playit-secret.path;
+    servers.proxy = {
+      enable = true;
+      backend = "playit";
+    };
   };
+  #  services.playit = {
+  #    enable = true;
+  #    user = "playit";
+  #    group = "playit";
+  #    secretPath = config.age.secrets.playit-secret.path;
+  #  };
   environment.systemPackages = [pkgs.mcrcon];
 }

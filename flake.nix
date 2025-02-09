@@ -65,6 +65,7 @@
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     playit-nixos-module.url = "github:pedorich-n/playit-nixos-module";
+    flux.url = "github:IogaMaster/flux";
   };
   outputs = inputs @ {
     nixpkgs,
@@ -87,6 +88,7 @@
     nix-minecraft,
     playit-nixos-module,
     agenix,
+    flux,
     ...
   }: let
     username = "l1npengtul";
@@ -98,7 +100,7 @@
     commonArgs = {
       inherit system;
       inherit pkgs;
-      overlays = [inputs.nix-minecraft.overlay];
+      overlays = [inputs.nix-minecraft.overlay inputs.flux.overlay];
       config.allowUnfree = true;
     };
   in {
