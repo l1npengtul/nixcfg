@@ -58,23 +58,23 @@
           };
           HeadNameFix = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/rbU0dAND/versions/OdeNSZVg/head-name-fix-1.21.4-1.3.2.jar";
-            hash = "0iycd13brimx926qx6ddl3wgbd6n6fw3558bfrbdg7dnxa7ngpk2";
+            hash = "";
           };
           NoChatReports = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/qQyHxfxd/versions/9xt05630/NoChatReports-FABRIC-1.21.4-v2.11.0.jar";
-            hash = "sha256-00i7a1s9spcz7xibi1fmyg5676hw1k71x16ln3qg6bvh1rphjcyn";
+            hash = "";
           };
           Tectonic = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/lWDHr9jE/versions/8uiKNgr3/tectonic-fabric-1.21.4-2.4.2.jar";
-            hash = "sha256-0n3hq0r853b5gph7f3knf2kfi6s9kmimxgvkgrl7vhr076dq6v4f";
+            hash = "";
           };
           Nullscape = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/LPjGiSO4/versions/dHJAVX8s/Nullscape_1.21.x_v1.2.10.jar";
-            hash = "sha256-1knacs3lydfq6vx7fzgdrw6z5ymsxllahy0xy1fq78ryzxb7990d";
+            hash = "";
           };
           Ledger = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/LVN9ygNV/versions/a6TcvEKA/ledger-1.3.7.jar";
-            hash = "sha256-186hsnmifan5p9kq1ajzgrby8lbqq0rx0l9w0iw34ymrhs0wfrqh";
+            hash = "";
           };
           Funny = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/p1WH6sHr/versions/4VXWFsMc/From-The-Fog-1.20.3-1.20.4-v1.9.3-Forge-Fabric.jar";
