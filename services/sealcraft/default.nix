@@ -99,7 +99,7 @@
           };
           Carpet = pkgs.fetchurl {
             url = "https://github.com/gnembon/fabric-carpet/releases/download/1.4.161/fabric-carpet-1.21.4-1.4.161+v241203.jar";
-            hash = "";
+            hash = "sha256-AxFO/ZnFl6Y4ZD2OuXt9xIUxjAB3UHddil6MhmtE7XY=";
           };
           CarpetExtras = pkgs.fetchurl {
             url = "https://github.com/gnembon/carpet-extra/releases/download/1.4.161/carpet-extra-1.21.4-1.4.161.jar";
