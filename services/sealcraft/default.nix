@@ -98,6 +98,7 @@
   flux = {
     enable = true;
     servers.server-proxy = {
+      package = null;
       proxy = {
         enable = true;
         backend = "playit";
