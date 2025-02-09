@@ -84,7 +84,7 @@
           };
           FabricKotlin = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/Ha28R6CL/versions/476dzMG5/fabric-language-kotlin-1.13.1%2Bkotlin.2.1.10.jar";
-            hash = "";
+            hash = "sha256-bXmCMjWsW2TusKnLVxGkyGYcAfcOIlRt3mpNsV/llxM=";
           };
           #Funny = pkgs.fetchurl {
           #  url = "https://cdn.modrinth.com/data/p1WH6sHr/versions/4VXWFsMc/From-The-Fog-1.20.3-1.20.4-v1.9.3-Forge-Fabric.jar";
