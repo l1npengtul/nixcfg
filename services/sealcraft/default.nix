@@ -34,7 +34,7 @@
         mods = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
           Fabric-API = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/UnrycCWP/fabric-api-0.115.1%2B1.21.4.jar";
-            hash = "";
+            hash = "sha256-r7bbPrB0Qhhlv3J3kIPMne3NtOVvqzFVD6VKAN/KkuU=";
           };
           FerriteCore = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/uXXizFIs/versions/IPM0JlHd/ferritecore-7.1.1-fabric.jar";
