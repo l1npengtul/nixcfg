@@ -14,7 +14,6 @@
 
       serverProperties = {
         difficulty = "hard";
-        max-players = "20";
         motd = "gooning expllicitly FORBIDDEN.";
         gamemode = "survival";
         level-name = "world";
