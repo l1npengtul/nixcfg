@@ -175,6 +175,9 @@
             ];
           }
           agenix.nixosModules.default
+          {
+            age.secrets.playit-secret.file = ../secrets/playit-secret.age;
+          }
           nix-index-database.nixosModules.nix-index
           ./configuration.nix
           ./hosts/abandonedfactory
