@@ -180,7 +180,10 @@
           {
             age.secrets.playit-secret.file = ./secrets/playit-secret.age;
             age.secrets.cloudflared-secret-abandonedfactory.file = ./secrets/cloudflared-secret-abandonedfactory.age;
-            age.secrets.cloudflared-minecraftproxy-secret.file = ./secrets/cloudflared-minecraftproxy-secret.age;
+            age.secrets.cloudflared-minecraftproxy-secret = {
+              file = ./secrets/cloudflared-minecraftproxy-secret.age;
+              mode = "755";
+            };
           }
           nix-index-database.nixosModules.nix-index
           ./configuration.nix
