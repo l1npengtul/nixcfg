@@ -7,4 +7,5 @@ let
 in {
   "secret1.age".publicKeys = [l1npengtul];
   "secret2.age".publicKeys = users ++ systems;
+  "playit-secret.age".publicKeys = [abandonedfactory];
 }

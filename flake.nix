@@ -176,7 +176,6 @@
           }
           agenix.nixosModules.default
           nix-index-database.nixosModules.nix-index
-          ./secrets/secrets.nix
           ./configuration.nix
           ./hosts/abandonedfactory
           ./pkgs/default_server.nix
