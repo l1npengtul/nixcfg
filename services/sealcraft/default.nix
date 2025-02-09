@@ -74,7 +74,7 @@
           };
           Ledger = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/LVN9ygNV/versions/a6TcvEKA/ledger-1.3.7.jar";
-            hash = "";
+            hash = "sha256-EGfHgYa5ejJ4BDxR0DPAeFHkV35fqoBnusUqF6vV0KA=";
           };
           Funny = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/p1WH6sHr/versions/4VXWFsMc/From-The-Fog-1.20.3-1.20.4-v1.9.3-Forge-Fabric.jar";
