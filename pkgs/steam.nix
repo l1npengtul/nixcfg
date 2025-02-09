@@ -24,7 +24,7 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [protonup-qt r2modman inputs.flux.packages.${pkgs.system}.flux];
+  environment.systemPackages = [pkgs.protonup-qt pkgs.r2modman inputs.flux.packages.${pkgs.system}.flux];
 
   hardware.steam-hardware.enable = true;
 }
