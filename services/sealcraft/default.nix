@@ -101,15 +101,13 @@
             url = "https://github.com/gnembon/fabric-carpet/releases/download/1.4.161/fabric-carpet-1.21.4-1.4.161+v241203.jar";
             hash = "";
           };
-
           CarpetExtras = pkgs.fetchurl {
             url = "https://github.com/gnembon/carpet-extra/releases/download/1.4.161/carpet-extra-1.21.4-1.4.161.jar";
             hash = "";
           };
-
           Krypton = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/Acz3ttTp/krypton-0.2.8.jar";
-            hash = "";
+            hash = "sha256-lPGVgZsk5dpk7/3J2hXN2Eg2zHXo/w/QmLq2vC9J4/4=";
           };
 
           #Funny = pkgs.fetchurl {
