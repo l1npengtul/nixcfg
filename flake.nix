@@ -8,6 +8,7 @@
     plugdata-pr.url = "github:l1npengtul/nixpkgs/update-plugdata";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    agenix.url = "github:ryantm/agenix";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -172,7 +173,7 @@
               ./applications/individual/default_server.nix
             ];
           }
-
+          agenix.nixosModules.default
           nix-index-database.nixosModules.nix-index
 
           ./configuration.nix
