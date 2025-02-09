@@ -98,7 +98,7 @@
   flux = {
     enable = true;
     servers.server-proxy = {
-      package = pkgs.curl;
+      package = pkgs.tinyproxy;
       proxy = {
         enable = true;
         backend = "playit";
