@@ -10,7 +10,7 @@
     enable = true;
     tunnels = {
       "c0a14307-5aae-475e-830b-e7fcc62a567d" = {
-        credintalsFile = "${config.age.secrets.cloudflared-minecraftproxy-secret.path}";
+        credentialsFile = "${config.age.secrets.cloudflared-minecraftproxy-secret.path}";
         default = "http_status:404";
       };
     };
