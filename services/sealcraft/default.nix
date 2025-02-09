@@ -96,21 +96,22 @@
           Spark = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/l6YH9Als/versions/X2sypdTL/spark-1.10.121-fabric.jar";
             hash = "";
-            Carpet = pkgs.fetchurl {
-              url = "https://github.com/gnembon/fabric-carpet/releases/download/1.4.161/fabric-carpet-1.21.4-1.4.161+v241203.jar";
-              hash = "";
-            };
-
-            CarpetExtras = pkgs.fetchurl {
-              url = "https://github.com/gnembon/carpet-extra/releases/download/1.4.161/carpet-extra-1.21.4-1.4.161.jar";
-              hash = "";
-            };
-
-            Krypton = pkgs.fetchurl {
-              url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/Acz3ttTp/krypton-0.2.8.jar";
-              hash = "";
-            };
           };
+          Carpet = pkgs.fetchurl {
+            url = "https://github.com/gnembon/fabric-carpet/releases/download/1.4.161/fabric-carpet-1.21.4-1.4.161+v241203.jar";
+            hash = "";
+          };
+
+          CarpetExtras = pkgs.fetchurl {
+            url = "https://github.com/gnembon/carpet-extra/releases/download/1.4.161/carpet-extra-1.21.4-1.4.161.jar";
+            hash = "";
+          };
+
+          Krypton = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/Acz3ttTp/krypton-0.2.8.jar";
+            hash = "";
+          };
+
           #Funny = pkgs.fetchurl {
           #  url = "https://cdn.modrinth.com/data/p1WH6sHr/versions/4VXWFsMc/From-The-Fog-1.20.3-1.20.4-v1.9.3-Forge-Fabric.jar";
           #  hash = "sha256-HymUUVKyOZJvpsNDdlg2xMpg3X7zvK7Cnyf6tns1/L4=";
