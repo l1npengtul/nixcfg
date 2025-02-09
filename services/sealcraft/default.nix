@@ -54,7 +54,7 @@
           };
           Noisium = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/KuNKN7d2/versions/9NHdQfkN/noisium-fabric-2.5.0%2Bmc1.21.4.jar";
-            hash = "";
+            hash = "sha256-JmSbfF3IDaC1BifR8WaKFCpam6nHlBWQzVryDR6Wvto=";
           };
           HeadNameFix = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/rbU0dAND/versions/OdeNSZVg/head-name-fix-1.21.4-1.3.2.jar";
