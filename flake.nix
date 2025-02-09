@@ -100,7 +100,7 @@
     commonArgs = {
       inherit system;
       inherit pkgs;
-      overlays = [inputs.nix-minecraft.overlay inputs.flux.overlay];
+      overlays = [inputs.nix-minecraft.overlay inputs.flux.overlays.default];
       config.allowUnfree = true;
     };
   in {
