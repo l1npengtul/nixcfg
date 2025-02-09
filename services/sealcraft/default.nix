@@ -98,10 +98,6 @@
   flux = {
     enable = true;
     servers.server-proxy = {
-      package = pkgs.mkGenericServer {
-        name = "donothingserver";
-        dontUnpack = true;
-      };
       proxy = {
         enable = true;
         backend = "playit";
