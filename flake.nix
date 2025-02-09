@@ -86,6 +86,7 @@
     plugdata-pr,
     nix-minecraft,
     playit-nixos-module,
+    agenix,
     ...
   }: let
     username = "l1npengtul";
