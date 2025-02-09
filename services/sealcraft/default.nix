@@ -62,7 +62,7 @@
           };
           NoChatReports = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/qQyHxfxd/versions/9xt05630/NoChatReports-FABRIC-1.21.4-v2.11.0.jar";
-            hash = "";
+            hash = "sha256-1jMJbw5wL/PwsNSEHs4MHJpjyvPVhbhiP59dnXRQJwI=";
           };
           Tectonic = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/lWDHr9jE/versions/8uiKNgr3/tectonic-fabric-1.21.4-2.4.2.jar";
