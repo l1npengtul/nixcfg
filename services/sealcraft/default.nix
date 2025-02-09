@@ -70,7 +70,7 @@
           };
           Nullscape = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/LPjGiSO4/versions/dHJAVX8s/Nullscape_1.21.x_v1.2.10.jar";
-            hash = "";
+            hash = "sha256-DaR0Vv8+o4Nd8B14qCjtuvryDc/tfXf6Ntg1T4dmys4=";
           };
           Ledger = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/LVN9ygNV/versions/a6TcvEKA/ledger-1.3.7.jar";
