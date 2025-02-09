@@ -161,7 +161,6 @@
           nixos-hardware.nixosModules.common-pc-ssd
 
           playit-nixos-module.nixosModules.default
-          nix-minecraft.nixosModules.default
 
           home-manager.nixosModules.home-manager
           {
