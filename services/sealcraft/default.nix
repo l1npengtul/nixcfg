@@ -47,17 +47,17 @@
             hash = "sha256-DdXpIDVSAk445zoPW0aoLrZvAxiyMonGhCsmhmMnSnk=";
           };
           Lithium = pkgs.fetchurl {
-            url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/NHA11tBg/lithium-fabric-0.14.7%2Bmc1.21.1.jar";
-            hash = "sha256-tsXUINyLNjosN8rDNlU7Gg00S66LQ5edRV63Ir6BQ1k=";
+            url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/QCuodIia/lithium-fabric-0.14.7%2Bmc1.21.4.jar";
+            hash = "";
           };
           ModernFix = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/nmDcB62a/versions/ZGxQddYr/modernfix-fabric-5.20.3%2Bmc1.21.4.jar";
             hash = "sha256-zrQ15ShzUtw1Xty1yxxO/n8xYofpaATSF9ewEeqE/d4=";
           };
-          C2ME = pkgs.fetchurl {
-            url = "https://cdn.modrinth.com/data/VSNURh3q/versions/Qgg5mpR6/c2me-fabric-mc1.21.4-0.3.2%2Balpha.0.33.jar";
-            hash = "sha256-ejpGXyGpLY8K5N4JsjA4teH8ilbZdhKE2nm1XzfMHSc=";
-          };
+          #C2ME = pkgs.fetchurl {
+          #  url = "https://cdn.modrinth.com/data/VSNURh3q/versions/Qgg5mpR6/c2me-fabric-mc1.21.4-0.3.2%2Balpha.0.33.jar";
+          #  hash = "sha256-ejpGXyGpLY8K5N4JsjA4teH8ilbZdhKE2nm1XzfMHSc=";
+          #};
           Noisium = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/KuNKN7d2/versions/9NHdQfkN/noisium-fabric-2.5.0%2Bmc1.21.4.jar";
             hash = "sha256-JmSbfF3IDaC1BifR8WaKFCpam6nHlBWQzVryDR6Wvto=";
@@ -82,10 +82,14 @@
             url = "https://cdn.modrinth.com/data/LVN9ygNV/versions/a6TcvEKA/ledger-1.3.7.jar";
             hash = "sha256-EGfHgYa5ejJ4BDxR0DPAeFHkV35fqoBnusUqF6vV0KA=";
           };
-          Funny = pkgs.fetchurl {
-            url = "https://cdn.modrinth.com/data/p1WH6sHr/versions/4VXWFsMc/From-The-Fog-1.20.3-1.20.4-v1.9.3-Forge-Fabric.jar";
-            hash = "sha256-HymUUVKyOZJvpsNDdlg2xMpg3X7zvK7Cnyf6tns1/L4=";
+          FabricKotlin = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/Ha28R6CL/versions/476dzMG5/fabric-language-kotlin-1.13.1%2Bkotlin.2.1.10.jar";
+            hash = "";
           };
+          #Funny = pkgs.fetchurl {
+          #  url = "https://cdn.modrinth.com/data/p1WH6sHr/versions/4VXWFsMc/From-The-Fog-1.20.3-1.20.4-v1.9.3-Forge-Fabric.jar";
+          #  hash = "sha256-HymUUVKyOZJvpsNDdlg2xMpg3X7zvK7Cnyf6tns1/L4=";
+          #};
         });
       };
     };
