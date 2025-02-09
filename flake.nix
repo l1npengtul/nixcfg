@@ -93,6 +93,7 @@
     commonArgs = {
       inherit system;
       inherit pkgs;
+      overlays = [flux.overlays.default];
       config.allowUnfree = true;
     };
   in {
@@ -114,6 +115,8 @@
           nixos-hardware.nixosModules.common-pc-ssd
           nixos-hardware.nixosModules.common-hidpi
           nixos-hardware.nixosModules.lenovo-thinkpad
+
+          flux.nixosModules.default
 
           home-manager.nixosModules.home-manager
           {
@@ -137,8 +140,6 @@
           musnix.nixosModules.musnix
 
           erosanix.nixosModules.protonvpn
-
-          flux.nixosModules.default
 
           ./configuration.nix
           ./hosts/oldhome
