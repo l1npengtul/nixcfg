@@ -42,7 +42,7 @@
           };
           Lithium = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/NHA11tBg/lithium-fabric-0.14.7%2Bmc1.21.1.jar";
-            hash = "";
+            hash = "sha256-tsXUINyLNjosN8rDNlU7Gg00S66LQ5edRV63Ir6BQ1k=";
           };
           ModernFix = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/nmDcB62a/versions/ZGxQddYr/modernfix-fabric-5.20.3%2Bmc1.21.4.jar";
