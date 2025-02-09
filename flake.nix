@@ -163,7 +163,7 @@
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-gpu-intel
           nixos-hardware.nixosModules.common-pc-ssd
-
+          flux.nixosModules.default
           playit-nixos-module.nixosModules.default
           nix-minecraft.nixosModules.minecraft-servers
           home-manager.nixosModules.home-manager
