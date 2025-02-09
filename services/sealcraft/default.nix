@@ -91,7 +91,7 @@
           };
           ScalableLux = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/Ps1zyz6x/versions/DUpB8IQV/ScalableLux-0.1.1%2Bfabric.452731d-all.jar";
-            hash = "";
+            hash = "sha256-8uzEKFYyi9z/XiiNdgiIkpgl3OSXREHP+7Q3vVz4dM4=";
           };
           #Funny = pkgs.fetchurl {
           #  url = "https://cdn.modrinth.com/data/p1WH6sHr/versions/4VXWFsMc/From-The-Fog-1.20.3-1.20.4-v1.9.3-Forge-Fabric.jar";
