@@ -161,7 +161,7 @@
           nixos-hardware.nixosModules.common-pc-ssd
 
           playit-nixos-module.nixosModules.default
-
+          nix-minecraft.nixosModules.minecraft-servers
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
