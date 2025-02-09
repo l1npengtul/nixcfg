@@ -95,7 +95,7 @@
           };
           Spark = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/l6YH9Als/versions/X2sypdTL/spark-1.10.121-fabric.jar";
-            hash = "";
+            hash = "sha256-E1BDAk8b1YBuhdqLK98Vh4xVmL99qs5dEwI2/wCbt28=";
           };
           Carpet = pkgs.fetchurl {
             url = "https://github.com/gnembon/fabric-carpet/releases/download/1.4.161/fabric-carpet-1.21.4-1.4.161+v241203.jar";
