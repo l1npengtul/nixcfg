@@ -65,7 +65,7 @@
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     playit-nixos-module.url = "github:pedorich-n/playit-nixos-module";
-    flux.url = "github:IogaMaster/flux";
+    flux.url = "github:l1npengtul/flux";
   };
   outputs = inputs @ {
     nixpkgs,
