@@ -8,4 +8,6 @@ in {
   "secret1.age".publicKeys = [l1npengtul];
   "secret2.age".publicKeys = users ++ systems;
   "playit-secret.age".publicKeys = [abandonedfactory];
+  "cloudflared-secret-abandonedfactory.age".publicKeys = [abandonedfactory];
+  "cloudflared-minecraftproxy-secret.age".publicKeys = [abandonedfactory];
 }
