@@ -179,6 +179,7 @@
           ./configuration.nix
           ./hosts/abandonedfactory
           ./pkgs/default_server.nix
+          ./services.nix
         ];
       };
     };
