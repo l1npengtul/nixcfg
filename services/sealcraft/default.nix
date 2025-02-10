@@ -115,7 +115,7 @@
           };
           Sleep = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/3rFkoWwZ/sleep-v.3.1.1.jar";
-            hash = "";
+            hash = "sha256-UFNx33Q9Rkj7Qx8wR1AGrhH1W7TKpmJnYStWE1RFpRU=";
           };
           Geophilic = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/hl5OLM95/versions/wIVsGybb/Geophilic%20v3.2%20f15-61.jar";
