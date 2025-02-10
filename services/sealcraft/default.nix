@@ -131,7 +131,7 @@
           };
           Collective = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/e0M1UDsY/versions/F3ciVO4i/collective-1.21.4-7.89.jar";
-            hash = "";
+            hash = "sha256-iPn6vhB0rDa5EoJhNYIbpDNj5ii6XdCdSsxifSaVk2U=";
           };
 
           #Funny = pkgs.fetchurl {
