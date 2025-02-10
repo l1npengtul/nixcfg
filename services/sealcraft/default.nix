@@ -121,6 +121,10 @@
             url = "https://cdn.modrinth.com/data/hl5OLM95/versions/wIVsGybb/Geophilic%20v3.2%20f15-61.jar";
             hash = "sha256-N1aE1YbP++tM2/Bqva+hfERMpYYFY359vbmVhSiXg4w=";
           };
+          AmplifiedNether = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/wXiGiyGX/versions/rjLICnyY/Amplified_Nether_1.21.x_v1.2.7.jar";
+            hash = "";
+          };
           #Funny = pkgs.fetchurl {
           #  url = "https://cdn.modrinth.com/data/p1WH6sHr/versions/4VXWFsMc/From-The-Fog-1.20.3-1.20.4-v1.9.3-Forge-Fabric.jar";
           #  hash = "sha256-HymUUVKyOZJvpsNDdlg2xMpg3X7zvK7Cnyf6tns1/L4=";
