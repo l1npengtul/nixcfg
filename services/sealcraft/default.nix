@@ -109,6 +109,18 @@
             url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/Acz3ttTp/krypton-0.2.8.jar";
             hash = "sha256-lPGVgZsk5dpk7/3J2hXN2Eg2zHXo/w/QmLq2vC9J4/4=";
           };
+          Discord = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/rbJ7eS5V/versions/hd62ja8J/dcintegration-fabric-MC1.21.3-3.1.0.1.jar";
+            hash = "";
+          };
+          Sleep = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/3rFkoWwZ/sleep-v.3.1.1.jar";
+            hash = "";
+          };
+          Geophilic = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/hl5OLM95/versions/wIVsGybb/Geophilic%20v3.2%20f15-61.jar";
+            hash = "";
+          };
 
           #Funny = pkgs.fetchurl {
           #  url = "https://cdn.modrinth.com/data/p1WH6sHr/versions/4VXWFsMc/From-The-Fog-1.20.3-1.20.4-v1.9.3-Forge-Fabric.jar";
