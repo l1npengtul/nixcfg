@@ -123,7 +123,7 @@
           };
           AmplifiedNether = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/wXiGiyGX/versions/rjLICnyY/Amplified_Nether_1.21.x_v1.2.7.jar";
-            hash = "";
+            hash = "sha256-q6XZyPb6ResKaq1WZlfoV5qPe8Vig7gCs8QXKuBMpQo=";
           };
           #Funny = pkgs.fetchurl {
           #  url = "https://cdn.modrinth.com/data/p1WH6sHr/versions/4VXWFsMc/From-The-Fog-1.20.3-1.20.4-v1.9.3-Forge-Fabric.jar";
