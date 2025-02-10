@@ -111,7 +111,7 @@
           };
           Discord = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/rbJ7eS5V/versions/hd62ja8J/dcintegration-fabric-MC1.21.3-3.1.0.1.jar";
-            hash = "";
+            hash = "sha256-5Us8Ig8Nwv9zFLQx8X/C7cTz/O0uTDjeztYMAXBWK0Q=";
           };
           Sleep = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/WTzuSu8P/versions/3rFkoWwZ/sleep-v.3.1.1.jar";
