@@ -127,7 +127,7 @@
           };
           ShulkerDropsTwo = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/UjXIyw47/versions/utGUTSA2/shulkerdropstwo-1.21.4-3.4.jar";
-            hash = "";
+            hash = "sha256-zFXSRkg+tRslTQrg+Qfi3qnmthUnJ5YnqpjYwfAHCsc=";
           };
           Collective = pkgs.fetchurl {
             url = "https://cdn.modrinth.com/data/e0M1UDsY/versions/F3ciVO4i/collective-1.21.4-7.89.jar";
