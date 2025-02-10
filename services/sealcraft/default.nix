@@ -125,6 +125,15 @@
             url = "https://cdn.modrinth.com/data/wXiGiyGX/versions/rjLICnyY/Amplified_Nether_1.21.x_v1.2.7.jar";
             hash = "sha256-q6XZyPb6ResKaq1WZlfoV5qPe8Vig7gCs8QXKuBMpQo=";
           };
+          ShulkerDropsTwo = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/UjXIyw47/versions/utGUTSA2/shulkerdropstwo-1.21.4-3.4.jar";
+            hash = "";
+          };
+          Collective = pkgs.fetchurl {
+            url = "https://cdn.modrinth.com/data/e0M1UDsY/versions/F3ciVO4i/collective-1.21.4-7.89.jar";
+            hash = "";
+          };
+
           #Funny = pkgs.fetchurl {
           #  url = "https://cdn.modrinth.com/data/p1WH6sHr/versions/4VXWFsMc/From-The-Fog-1.20.3-1.20.4-v1.9.3-Forge-Fabric.jar";
           #  hash = "sha256-HymUUVKyOZJvpsNDdlg2xMpg3X7zvK7Cnyf6tns1/L4=";
