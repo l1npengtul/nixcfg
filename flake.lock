@@ -731,22 +731,6 @@
         "type": "github"
       }
     },
-    "plugdata-pr": {
-      "locked": {
-        "lastModified": 1736818428,
-        "narHash": "sha256-z+Vj4fseZY66fgAcQWSUfIJu6nABiX1BFhClJMASxHU=",
-        "owner": "l1npengtul",
-        "repo": "nixpkgs",
-        "rev": "490e124401eb93399653deea2ec3955b69b56f29",
-        "type": "github"
-      },
-      "original": {
-        "owner": "l1npengtul",
-        "ref": "update-plugdata",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -768,7 +752,6 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "plasma-manager": "plasma-manager",
         "playit-nixos-module": "playit-nixos-module",
-        "plugdata-pr": "plugdata-pr",
         "systems": "systems_5",
         "vhs-decode-nur-packages": "vhs-decode-nur-packages"
       }
