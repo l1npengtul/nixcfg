@@ -5,8 +5,6 @@
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
 
-    plugdata-pr.url = "github:l1npengtul/nixpkgs/update-plugdata";
-
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     agenix.url = "github:ryantm/agenix";
 
@@ -84,7 +82,6 @@
     nix-matlab,
     nixpkgs-stable,
     nixpkgs-master,
-    plugdata-pr,
     nix-minecraft,
     playit-nixos-module,
     agenix,

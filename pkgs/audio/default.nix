@@ -10,13 +10,11 @@
   papu = pkgs.callPackage ./socalabs/papu.nix {};
   piano = pkgs.callPackage ./socalabs/piano.nix {};
   rp2a03 = pkgs.callPackage ./socalabs/rp2a03.nix {};
-  sid = pkgs.callPackage ./socalabs/sid.nix {enableVST2 = true;};
   slplugins = pkgs.callPackage ./socalabs/slplugins.nix {};
   sn76489 = pkgs.callPackage ./socalabs/sn76489.nix {};
   voc = pkgs.callPackage ./socalabs/voc.nix {};
   wavetable = pkgs.callPackage ./socalabs/wavetable.nix {};
   test = pkgs.callPackage ./test.nix {};
-  airwindows-ind = pkgs.callPackage ./airwindows/individual.nix {};
   #   synthv-studio-pro = pkgs.callPackage ./synthv-studio-pro {};
   recstar = pkgs.callPackage ./recstar {};
 in {
@@ -57,13 +55,14 @@ in {
     recstar
     plugdata
 
-    airwindows-ind
-    sid
+    airwindows
+    airwin2rack
+    socalabs-sid
     sn76489
     papu
     rp2a03
     voc
-    #organ
+    organ
     wavetable
     piano
     #slplugins
