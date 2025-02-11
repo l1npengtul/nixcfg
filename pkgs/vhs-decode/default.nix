@@ -11,7 +11,7 @@ in {
     ./utils.nix
   ];
   nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = with inputs.vhs-decode-nur-packages.packages.${pkgs.system}; [ab-av1 cxadc-vhs-server misrc-extract pyhht qwt tbc-video-export vapoursynth-bwdif vapoursynth-neofft3d vapoursynth-vsrawsource vhs-decode-auto-audio-align vhs-decode cxadc];
+  environment.systemPackages = with inputs.vhs-decode-nur-packages.packages.${pkgs.system}; [ab-av1 cxadc-vhs-server misrc-extract qwt tbc-video-export vapoursynth-bwdif vapoursynth-neofft3d vapoursynth-vsrawsource vhs-decode-auto-audio-align vhs-decode cxadc];
   services.udev.extraRules = ''
     KERNEL=="cxadc*", GROUP="video"
 
