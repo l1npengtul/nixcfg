@@ -233,6 +233,7 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
               inherit pkgs-stable;
+              inherit pkgs-master;
             };
             home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
             home-manager.users."${username}".imports = [
