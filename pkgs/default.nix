@@ -18,5 +18,6 @@
     ./input.nix
     ./diskmgmt.nix
     ./podman.nix
+    ./sshd.nix
   ];
 }
