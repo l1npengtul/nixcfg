@@ -107,6 +107,48 @@
     inherit lib;
 
     nixosConfigurations = {
+      pegrose512 = lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+          inherit pkgs-stable;
+          inherit pkgs-master;
+        };
+
+        modules = [
+          nixos-hardware.nixosModules.common-cpu-amd
+          nixos-hardware.nixosModules.common-gpu-amd
+          nixos-hardware.nixosModules.common-pc-ssd
+          nixos-hardware.nixosModules.common-hidpi
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit pkgs-stable;
+            };
+            home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
+            home-manager.users."${username}".imports = [
+              nix-flatpak.homeManagerModules.nix-flatpak
+              ./users/l1npengtul.nix
+              ./applications
+            ];
+          }
+
+          nix-index-database.nixosModules.nix-index
+
+          auto-cpufreq.nixosModules.default
+
+          musnix.nixosModules.musnix
+
+          erosanix.nixosModules.protonvpn
+
+          ./configuration.nix
+          ./hosts/pegrose512
+          ./pkgs
+        ];
+      };
       oldhome = lib.nixosSystem {
         inherit system;
         specialArgs = {
@@ -118,7 +160,6 @@
         modules = [
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-gpu-intel
-          nixos-hardware.nixosModules.common-gpu-amd
           nixos-hardware.nixosModules.common-pc-ssd
           nixos-hardware.nixosModules.common-hidpi
           nixos-hardware.nixosModules.lenovo-thinkpad
