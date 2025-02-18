@@ -54,6 +54,10 @@
     "d /mnt/hdd_files 777 root root -"
   ];
 
+  users.users."pengsrv".openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHmy492dN8mCQIP/f/ecxu9DIBHbhQF5Yte28CJZ1hgf l1npengtul@protonmail.com"
+  ];
+
   fileSystems."/mnt/hdd_files" = {
     device = "/dev/disk/by-label/hdd_files";
     fsType = "auto";
