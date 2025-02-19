@@ -133,6 +133,7 @@
               nix-flatpak.homeManagerModules.nix-flatpak
               ./users/l1npengtul.nix
               ./applications
+              ./plasma/pegrose512.nix
             ];
           }
 
@@ -176,6 +177,7 @@
               nix-flatpak.homeManagerModules.nix-flatpak
               ./users/l1npengtul.nix
               ./applications
+              ./plasma/oldhome.nix
             ];
           }
 
