@@ -20,7 +20,7 @@
 in {
   home = {
     packages = [
-      krita-hidpi
+      pkgs.krita
     ];
   };
 }
