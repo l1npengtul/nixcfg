@@ -167,7 +167,6 @@
         inherit system;
         specialArgs = {
           inherit inputs;
-          inherit pkgs;
           inherit pkgs-stable;
           inherit pkgs-master;
         };
@@ -212,7 +211,6 @@
         inherit system;
         specialArgs = {
           inherit inputs;
-          inherit pkgs;
           inherit pkgs-stable;
           inherit pkgs-master;
         };
@@ -229,7 +227,6 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
-              inherit pkgs;
               inherit pkgs-stable;
               inherit pkgs-master;
             };
@@ -259,7 +256,6 @@
         inherit system;
         specialArgs = {
           inherit inputs;
-          inherit pkgs;
           inherit pkgs-stable;
         };
 
