@@ -52,10 +52,6 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [makeWrapper autoPatchelfHook copyDesktopItems];
 
-  desktopItems = [
-    "$src/Plugins/miniBit.desktop"
-  ];
-
   postPatch = ''
 
   '';
@@ -72,14 +68,6 @@ stdenv.mkDerivation rec {
 
     mkdir -p $out/lib/clap/audiothing
     cp -r "$src/Plugins/miniBit.clap" $out/lib/clap/audiothing
-
-    mkdir -p $out/bin $out/opt/AudioThing
-    install -Dm755 $src/Plugins/miniBit $out/bin
-    ln -s $out/bin/miniBit $out/opt/AudioThing
-
-    mkdir -p $out/share/pixmaps $out/opt/AudioThing
-    install -Dm444 $src/Plugins/miniBit.png $out/share/pixmaps/miniBit.png
-    ln -s $src/Plugins/miniBit.png $out/opt/AudioThing
 
     mkdir -p $out/opt/AudioThing/miniBitPresets/
     cp -r $src/Presets/miniBit $out/opt/AudioThing/miniBitPresets
@@ -98,12 +86,6 @@ stdenv.mkDerivation rec {
   '';
 
   postFixup = ''
-    wrapProgram $out/bin/miniBit \
-        --run "$wrapMiniBit" \
-        --suffix LD_LIBRARY_PATH : "${lib.strings.makeLibraryPath buildInputs}"
-
-    autoPatchelf $out/bin
-
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst3/audiothing/miniBit.vst3/Contents/x86_64-linux/miniBit.so
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/clap/audiothing/miniBit.clap
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst/audiothing/miniBit.so

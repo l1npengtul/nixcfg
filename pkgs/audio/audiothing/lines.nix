@@ -64,10 +64,6 @@ stdenv.mkDerivation rec {
     mkdir -p $out/lib/clap/audiothing
     cp -r "$src/Plugins/Lines.clap" $out/lib/clap/audiothing
 
-    mkdir -p $out/bin $out/opt/AudioThing
-    install -Dm755 $src/Plugins/Lines $out/bin
-    ln -s $out/bin/Lines $out/opt/AudioThing
-
     mkdir -p $out/opt/AudioThing/LinesPresets/
     cp -r $src/Presets/Lines $out/opt/AudioThing/LinesPresets
 
@@ -85,12 +81,6 @@ stdenv.mkDerivation rec {
   '';
 
   postFixup = ''
-    wrapProgram $out/bin/Lines \
-        --run "$wrapMiniBit" \
-        --suffix LD_LIBRARY_PATH : "${lib.strings.makeLibraryPath buildInputs}"
-
-    autoPatchelf $out/bin
-
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst3/audiothing/Lines.vst3/Contents/x86_64-linux/Lines.so
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/clap/audiothing/Lines.clap
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst/audiothing/Lines.so

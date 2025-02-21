@@ -50,11 +50,7 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc.lib
   ];
 
-  nativeBuildInputs = [makeWrapper autoPatchelfHook copyDesktopItems];
-
-  desktopItems = [
-    "$src/Plugins/Noises.desktop"
-  ];
+  nativeBuildInputs = [makeWrapper autoPatchelfHook];
 
   installPhase = ''
     runHook preInstall
@@ -67,14 +63,6 @@ stdenv.mkDerivation rec {
 
     mkdir -p $out/lib/clap/audiothing
     cp -r "$src/Plugins/Noises.clap" $out/lib/clap/audiothing
-
-    mkdir -p $out/bin $out/opt/AudioThing
-    install -Dm755 $src/Plugins/Noises $out/bin
-    ln -s $out/bin/Noises $out/opt/AudioThing
-
-    mkdir -p $out/share/pixmaps $out/opt/AudioThing
-    install -Dm444 $src/Plugins/Noises.png $out/share/pixmaps/Noises.png
-    ln -s $src/Plugins/Noises.png $out/opt/AudioThing
 
     mkdir -p $out/opt/AudioThing/NoisesPresets/
     cp -r $src/Presets/Noises $out/opt/AudioThing/NoisesPresets

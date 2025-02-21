@@ -64,10 +64,6 @@ stdenv.mkDerivation rec {
     mkdir -p $out/lib/clap/audiothing
     cp -r "$src/Plugins/ThingsBubbles.clap" $out/lib/clap/audiothing
 
-    mkdir -p $out/bin $out/opt/AudioThing
-    install -Dm755 $src/Plugins/ThingsBubbles $out/bin
-    ln -s $out/bin/ThingsBubbles $out/opt/AudioThing
-
     mkdir -p $out/opt/AudioThing/ThingsBubblesPresets/
     cp -r $src/Presets/ThingsBubbles $out/opt/AudioThing/ThingsBubblesPresets
 
@@ -85,11 +81,6 @@ stdenv.mkDerivation rec {
   '';
 
   postFixup = ''
-    wrapProgram $out/bin/ThingsBubbles \
-        --run "$wrapMiniBit" \
-        --suffix LD_LIBRARY_PATH : "${lib.strings.makeLibraryPath buildInputs}"
-
-    autoPatchelf $out/bin
 
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst3/audiothing/ThingsBubbles.vst3/Contents/x86_64-linux/ThingsBubbles.so
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/clap/audiothing/ThingsBubbles.clap

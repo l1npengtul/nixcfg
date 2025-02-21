@@ -64,14 +64,6 @@ stdenv.mkDerivation rec {
     mkdir -p $out/lib/clap/audiothing
     cp -r "$src/Plugins/MoonEcho.clap" $out/lib/clap/audiothing
 
-    mkdir -p $out/bin $out/opt/AudioThing
-    install -Dm755 $src/Plugins/MoonEcho $out/bin
-    ln -s $out/bin/MoonEcho $out/opt/AudioThing
-
-    mkdir -p $out/share/pixmaps $out/opt/AudioThing
-    install -Dm444 $src/Plugins/MoonEcho.png $out/share/pixmaps/MoonEcho.png
-    ln -s $src/Plugins/MoonEcho.png $out/opt/AudioThing
-
     mkdir -p $out/opt/AudioThing/MoonEchoPresets/
     cp -r $src/Presets/MoonEcho $out/opt/AudioThing/MoonEchoPresets
 
@@ -89,12 +81,6 @@ stdenv.mkDerivation rec {
   '';
 
   postFixup = ''
-    wrapProgram $out/bin/MoonEcho \
-        --run "$wrapMiniBit" \
-        --suffix LD_LIBRARY_PATH : "${lib.strings.makeLibraryPath buildInputs}"
-
-    autoPatchelf $out/bin
-
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst3/audiothing/MoonEcho.vst3/Contents/x86_64-linux/MoonEcho.so
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/clap/audiothing/MoonEcho.clap
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst/audiothing/MoonEcho.so

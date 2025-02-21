@@ -50,11 +50,7 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc.lib
   ];
 
-  nativeBuildInputs = [makeWrapper autoPatchelfHook copyDesktopItems];
-
-  desktopItems = [
-    "$src/Plugins/FogConvolver2.desktop"
-  ];
+  nativeBuildInputs = [makeWrapper autoPatchelfHook];
 
   installPhase = ''
     runHook preInstall
@@ -67,14 +63,6 @@ stdenv.mkDerivation rec {
 
     mkdir -p $out/lib/clap/audiothing
     cp -r "$src/Plugins/FogConvolver2.clap" $out/lib/clap/audiothing
-
-    mkdir -p $out/bin $out/opt/AudioThing
-    install -Dm755 $src/Plugins/FogConvolver2 $out/bin
-    ln -s $out/bin/FogConvolver2 $out/opt/AudioThing
-
-    mkdir -p $out/share/pixmaps $out/opt/AudioThing
-    install -Dm444 $src/Plugins/FogConvolver2.png $out/share/pixmaps/FogConvolver2.png
-    ln -s $src/Plugins/FogConvolver2.png $out/opt/AudioThing
 
     mkdir -p $out/opt/AudioThing/FogConvolver2Presets/
     cp -r $src/Presets/FogConvolver2 $out/opt/AudioThing/FogConvolver2Presets
@@ -93,12 +81,6 @@ stdenv.mkDerivation rec {
   '';
 
   postFixup = ''
-    wrapProgram $out/bin/FogConvolver2 \
-        --run "$wrapMiniBit" \
-        --suffix LD_LIBRARY_PATH : "${lib.strings.makeLibraryPath buildInputs}"
-
-    autoPatchelf $out/bin
-
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst3/audiothing/FogConvolver2.vst3/Contents/x86_64-linux/FogConvolver2.so
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/clap/audiothing/FogConvolver2.clap
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst/audiothing/FogConvolver2.so
