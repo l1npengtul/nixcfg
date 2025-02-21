@@ -166,7 +166,10 @@
           ];
         };
       pegrose512 = let
-        pkgs = import nixpkgs commonArgs;
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
         pkgs-stable = import nixpkgs-stable commonArgs;
         pkgs-master = import nixpkgs-master commonArgs;
       in
