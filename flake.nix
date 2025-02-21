@@ -89,9 +89,10 @@
       inherit system;
       config.allowUnfree = true;
     };
-    pkgs = import nixpkgs commonArgs;
-    pkgs-stable = import nixpkgs-stable commonArgs;
-    pkgs-master = import nixpkgs-master commonArgs;
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
   in {
     inherit lib commonArgs;
 
