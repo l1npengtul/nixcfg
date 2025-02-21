@@ -59,8 +59,10 @@
     playit-nixos-module.url = "github:pedorich-n/playit-nixos-module";
     flux.url = "github:l1npengtul/flux";
   };
-  outputs = inputs @ {
+  outputs = {
     nixpkgs,
+    nixpkgs-stable,
+    nixpkgs-master,
     home-manager,
     systems,
     plasma-manager,
@@ -73,30 +75,23 @@
     gradle2nix,
     nix-index-database,
     vhs-decode-nur-packages,
-    nixpkgs-stable,
-    nixpkgs-master,
     nix-minecraft,
     playit-nixos-module,
     agenix,
     flux,
     bitwig-pr,
     ...
-  }: let
+  } @ inputs: let
     username = "l1npengtul";
     system = "x86_64-linux";
     lib = nixpkgs.lib // home-manager.lib;
-    commonArgs = {
-      inherit system;
-      overlays = [inputs.nix-minecraft.overlay inputs.flux.overlays.default];
-      config.allowUnfree = true;
-    };
     pkgs = import nixpkgs {
       inherit system;
-      overlays = [inputs.nix-minecraft.overlay inputs.flux.overlays.default];
+      overlays = [nix-minecraft.overlay flux.overlays.default];
       config.allowUnfree = true;
     };
-    pkgs-stable = import nixpkgs-stable commonArgs;
-    pkgs-master = import nixpkgs-master commonArgs;
+    pkgs-stable = import nixpkgs-stable;
+    pkgs-master = import nixpkgs-master;
   in {
     inherit lib;
 
@@ -107,7 +102,6 @@
           inherit inputs;
           inherit pkgs-stable;
           inherit pkgs-master;
-          inherit commonArgs;
         };
 
         modules = [
@@ -167,57 +161,59 @@
         ];
       };
 
-      pegrose512 = lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-          inherit pkgs-stable;
-          inherit pkgs-master;
+      pegrose512 = let
+        pkgs = import nixpkgs {config.allowUnfree = true;};
+      in
+        lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
+            inherit pkgs-stable;
+            inherit pkgs-master;
+          };
+
+          modules = [
+            nixos-hardware.nixosModules.common-cpu-amd
+            nixos-hardware.nixosModules.common-gpu-amd
+            nixos-hardware.nixosModules.common-pc-ssd
+            nixos-hardware.nixosModules.common-hidpi
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit pkgs;
+                inherit pkgs-stable;
+              };
+              home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
+              home-manager.users."${username}".imports = [
+                nix-flatpak.homeManagerModules.nix-flatpak
+                ./users/l1npengtul.nix
+                ./applications
+                ./plasma/pegrose512.nix
+              ];
+            }
+
+            nix-index-database.nixosModules.nix-index
+
+            auto-cpufreq.nixosModules.default
+
+            musnix.nixosModules.musnix
+
+            erosanix.nixosModules.protonvpn
+
+            ./configuration.nix
+            ./hosts/pegrose512
+            ./pkgs
+          ];
         };
-
-        modules = [
-          nixos-hardware.nixosModules.common-cpu-amd
-          nixos-hardware.nixosModules.common-gpu-amd
-          nixos-hardware.nixosModules.common-pc-ssd
-          nixos-hardware.nixosModules.common-hidpi
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit pkgs;
-              inherit pkgs-stable;
-            };
-            home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
-            home-manager.users."${username}".imports = [
-              nix-flatpak.homeManagerModules.nix-flatpak
-              ./users/l1npengtul.nix
-              ./applications
-              ./plasma/pegrose512.nix
-            ];
-          }
-
-          nix-index-database.nixosModules.nix-index
-
-          auto-cpufreq.nixosModules.default
-
-          musnix.nixosModules.musnix
-
-          erosanix.nixosModules.protonvpn
-
-          ./configuration.nix
-          ./hosts/pegrose512
-          ./pkgs
-        ];
-      };
       oldhome = lib.nixosSystem {
         inherit system;
         specialArgs = {
           inherit inputs;
           inherit pkgs-stable;
           inherit pkgs-master;
-          inherit commonArgs;
         };
 
         modules = [
