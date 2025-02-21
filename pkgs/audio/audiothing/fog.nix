@@ -28,7 +28,7 @@ stdenv.mkDerivation rec {
 
   src = fetchzip {
     url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/39301751/FogConvolver-${version}.tar.xz";
-    sha256 = "113s0jsk6lbryndbpgby2minm2yq4220gcp7fgk7fvk6vm48hya5";
+    hash = "sha256-BjHCCvaZBMR2Gx1M8FKuNYa349eu7zGGFmTM4ZLPIB8=";
   };
 
   buildInputs = [
