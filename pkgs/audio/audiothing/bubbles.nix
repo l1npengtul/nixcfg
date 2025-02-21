@@ -50,7 +50,7 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc.lib
   ];
 
-  nativeBuildInputs = [makeWrapper autoPatchelfHook copyDesktopItems];
+  nativeBuildInputs = [makeWrapper autoPatchelfHook];
 
   desktopItems = [
     "$src/Plugins/ThingsBubbles.desktop"
@@ -71,10 +71,6 @@ stdenv.mkDerivation rec {
     mkdir -p $out/bin $out/opt/AudioThing
     install -Dm755 $src/Plugins/ThingsBubbles $out/bin
     ln -s $out/bin/ThingsBubbles $out/opt/AudioThing
-
-    mkdir -p $out/share/pixmaps $out/opt/AudioThing
-    install -Dm444 $src/Plugins/ThingsBubbles.png $out/share/pixmaps/ThingsBubbles.png
-    ln -s $src/Plugins/ThingsBubbles.png $out/opt/AudioThing
 
     mkdir -p $out/opt/AudioThing/ThingsBubblesPresets/
     cp -r $src/Presets/ThingsBubbles $out/opt/AudioThing/ThingsBubblesPresets
