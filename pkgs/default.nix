@@ -19,5 +19,6 @@
     ./diskmgmt.nix
     ./podman.nix
     ./sshd.nix
+    ./printer.nix
   ];
 }

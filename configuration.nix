@@ -40,8 +40,6 @@
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
