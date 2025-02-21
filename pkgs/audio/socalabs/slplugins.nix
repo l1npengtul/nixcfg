@@ -222,7 +222,6 @@ in
         "-lXrandr"
         "-lXtst"
         "-lXdmcp"
-        "-v"
       ]
     );
 
