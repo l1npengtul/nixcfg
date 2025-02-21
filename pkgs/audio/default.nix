@@ -45,8 +45,7 @@ in {
     vital
     distrho-ports
     airwindows-lv2
-    inputs.bitwig-pr.bitwig-studio
-    #ardour
+    inputs.bitwig-pr.legacyPackages.${pkgs.system}.bitwig-studio #ardour
     reaper
     pkgs-stable.yabridgectl
     pkgs-stable.yabridge
