@@ -94,7 +94,6 @@
     pkgs-master = import nixpkgs-master commonArgs;
   in {
     inherit lib;
-
     nixosConfigurations = {
       s-23sierpinski = lib.nixosSystem {
         inherit system;
