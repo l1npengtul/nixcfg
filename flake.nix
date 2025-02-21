@@ -104,6 +104,7 @@
           inherit inputs;
           inherit pkgs-stable;
           inherit pkgs-master;
+          inherit commonArgs;
         };
 
         modules = [
@@ -169,6 +170,7 @@
           inherit inputs;
           inherit pkgs-stable;
           inherit pkgs-master;
+          inherit commonArgs;
         };
 
         modules = [
@@ -213,6 +215,7 @@
           inherit inputs;
           inherit pkgs-stable;
           inherit pkgs-master;
+          inherit commonArgs;
         };
 
         modules = [
