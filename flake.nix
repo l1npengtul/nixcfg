@@ -87,7 +87,6 @@
     lib = nixpkgs.lib // home-manager.lib;
     commonArgs = {
       inherit system;
-      inherit pkgs;
       overlays = [inputs.nix-minecraft.overlay inputs.flux.overlays.default];
       config.allowUnfree = true;
     };
@@ -170,7 +169,6 @@
           inherit inputs;
           inherit pkgs-stable;
           inherit pkgs-master;
-          config.allowUnfree = true;
         };
 
         modules = [
