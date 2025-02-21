@@ -85,15 +85,15 @@
     username = "l1npengtul";
     system = "x86_64-linux";
     lib = nixpkgs.lib // home-manager.lib;
-    pkgs = import nixpkgs commonArgs;
-    pkgs-stable = import nixpkgs-stable commonArgs;
-    pkgs-master = import nixpkgs-master commonArgs;
     commonArgs = {
       inherit system;
       inherit pkgs;
       overlays = [inputs.nix-minecraft.overlay inputs.flux.overlays.default];
       config.allowUnfree = true;
     };
+    pkgs = import nixpkgs commonArgs;
+    pkgs-stable = import nixpkgs-stable commonArgs;
+    pkgs-master = import nixpkgs-master commonArgs;
   in {
     inherit lib;
 
@@ -167,6 +167,7 @@
         inherit system;
         specialArgs = {
           inherit inputs;
+          inherit pkgs;
           inherit pkgs-stable;
           inherit pkgs-master;
         };
@@ -182,6 +183,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
+              inherit pkgs;
               inherit pkgs-stable;
             };
             home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
@@ -210,6 +212,7 @@
         inherit system;
         specialArgs = {
           inherit inputs;
+          inherit pkgs;
           inherit pkgs-stable;
           inherit pkgs-master;
         };
@@ -226,6 +229,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
+              inherit pkgs;
               inherit pkgs-stable;
               inherit pkgs-master;
             };
