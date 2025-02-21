@@ -81,12 +81,6 @@ stdenv.mkDerivation rec {
   '';
 
   postFixup = ''
-    wrapProgram $out/bin/Noises \
-        --run "$wrapMiniBit" \
-        --suffix LD_LIBRARY_PATH : "${lib.strings.makeLibraryPath buildInputs}"
-
-    autoPatchelf $out/bin
-
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst3/audiothing/Noises.vst3/Contents/x86_64-linux/Noises.so
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/clap/audiothing/Noises.clap
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst/audiothing/Noises.so
