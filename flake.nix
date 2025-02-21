@@ -85,13 +85,13 @@
     username = "l1npengtul";
     system = "x86_64-linux";
     lib = nixpkgs.lib // home-manager.lib;
-    pkgs = import nixpkgs {
+    commonArgs = {
       inherit system;
-      overlays = [nix-minecraft.overlay flux.overlays.default];
       config.allowUnfree = true;
     };
-    pkgs-stable = import nixpkgs-stable;
-    pkgs-master = import nixpkgs-master;
+    pkgs = import nixpkgs commonArgs;
+    pkgs-stable = import nixpkgs-stable commonArgs;
+    pkgs-master = import nixpkgs-master commonArgs;
   in {
     inherit lib;
 
@@ -161,12 +161,7 @@
         ];
       };
 
-      pegrose512 = let
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
-      in
+      pegrose512 =
         lib.nixosSystem {
           inherit system;
           specialArgs = {
@@ -211,91 +206,101 @@
             ./pkgs
           ];
         };
-      oldhome = lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-          inherit pkgs-stable;
-          inherit pkgs-master;
+      oldhome =
+        lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
+            inherit pkgs-stable;
+            inherit pkgs-master;
+          };
+
+          modules = [
+            nixos-hardware.nixosModules.common-cpu-intel
+            nixos-hardware.nixosModules.common-gpu-intel
+            nixos-hardware.nixosModules.common-pc-ssd
+            nixos-hardware.nixosModules.common-hidpi
+            nixos-hardware.nixosModules.lenovo-thinkpad
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit pkgs-stable;
+              };
+              home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
+              home-manager.users."${username}".imports = [
+                nix-flatpak.homeManagerModules.nix-flatpak
+                ./users/l1npengtul.nix
+                ./applications
+                ./plasma/oldhome.nix
+              ];
+            }
+
+            nix-index-database.nixosModules.nix-index
+
+            auto-cpufreq.nixosModules.default
+
+            musnix.nixosModules.musnix
+
+            erosanix.nixosModules.protonvpn
+
+            ./configuration.nix
+            ./hosts/oldhome
+            ./pkgs
+          ];
         };
+      abandonedfactory = let
+        username = "pengsrv";
+        commonArgs =
+          commonArgs
+          // {
+            overlays = [nix-minecraft.overlay flux.overlays.default];
+          };
+        pkgs-stable = import nixpkgs-stable commonArgs;
+        pkgs = import nixpkgs-stable commonArgs;
+      in
+        lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
+            inherit pkgs-stable;
+          };
 
-        modules = [
-          nixos-hardware.nixosModules.common-cpu-intel
-          nixos-hardware.nixosModules.common-gpu-intel
-          nixos-hardware.nixosModules.common-pc-ssd
-          nixos-hardware.nixosModules.common-hidpi
-          nixos-hardware.nixosModules.lenovo-thinkpad
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit pkgs-stable;
-              inherit pkgs-master;
-            };
-            home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
-            home-manager.users."${username}".imports = [
-              nix-flatpak.homeManagerModules.nix-flatpak
-              ./users/l1npengtul.nix
-              ./applications
-              ./plasma/oldhome.nix
-            ];
-          }
-
-          nix-index-database.nixosModules.nix-index
-
-          auto-cpufreq.nixosModules.default
-
-          musnix.nixosModules.musnix
-
-          erosanix.nixosModules.protonvpn
-
-          ./configuration.nix
-          ./hosts/oldhome
-          ./pkgs
-        ];
-      };
-      abandonedfactory = lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-          inherit pkgs-stable;
+          modules = [
+            nixos-hardware.nixosModules.common-cpu-intel
+            nixos-hardware.nixosModules.common-gpu-intel
+            nixos-hardware.nixosModules.common-pc-ssd
+            flux.nixosModules.default
+            playit-nixos-module.nixosModules.default
+            nix-minecraft.nixosModules.minecraft-servers
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
+              home-manager.users."${username}".imports = [
+                ./users/pengsrv.nix
+                ./applications/individual/default_server.nix
+              ];
+            }
+            agenix.nixosModules.default
+            {
+              age.secrets.playit-secret.file = ./secrets/playit-secret.age;
+              age.secrets.cloudflared-secret-abandonedfactory.file = ./secrets/cloudflared-secret-abandonedfactory.age;
+              age.secrets.cloudflared-minecraftproxy-secret = {
+                file = ./secrets/cloudflared-minecraftproxy-secret.age;
+                mode = "755";
+              };
+            }
+            nix-index-database.nixosModules.nix-index
+            ./configuration.nix
+            ./hosts/abandonedfactory
+            ./pkgs/default_server.nix
+            ./services
+          ];
         };
-
-        modules = [
-          nixos-hardware.nixosModules.common-cpu-intel
-          nixos-hardware.nixosModules.common-gpu-intel
-          nixos-hardware.nixosModules.common-pc-ssd
-          flux.nixosModules.default
-          playit-nixos-module.nixosModules.default
-          nix-minecraft.nixosModules.minecraft-servers
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
-            home-manager.users.pengsrv.imports = [
-              ./users/pengsrv.nix
-              ./applications/individual/default_server.nix
-            ];
-          }
-          agenix.nixosModules.default
-          {
-            age.secrets.playit-secret.file = ./secrets/playit-secret.age;
-            age.secrets.cloudflared-secret-abandonedfactory.file = ./secrets/cloudflared-secret-abandonedfactory.age;
-            age.secrets.cloudflared-minecraftproxy-secret = {
-              file = ./secrets/cloudflared-minecraftproxy-secret.age;
-              mode = "755";
-            };
-          }
-          nix-index-database.nixosModules.nix-index
-          ./configuration.nix
-          ./hosts/abandonedfactory
-          ./pkgs/default_server.nix
-          ./services
-        ];
-      };
     };
   };
 }
