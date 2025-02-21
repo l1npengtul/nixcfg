@@ -1,4 +1,4 @@
 {pkgs, ...}: {
-  environment.systemPackages = [pkgs.samsung-unified-linux-driver];
   services.printing.enable = true;
+  services.printing.drivers = with pkgs; [samsung-unified-linux-driver splix gutenprint gutenprintBin];
 }
