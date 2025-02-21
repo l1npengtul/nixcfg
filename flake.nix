@@ -94,71 +94,71 @@
     pkgs-master = import nixpkgs-master commonArgs;
   in {
     inherit lib;
-    nixosConfigurations = {
-      s-23sierpinski = lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-          inherit pkgs-stable;
-          inherit pkgs-master;
+    nixosConfigurations =
+        lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
+            inherit pkgs-stable;
+            inherit pkgs-master;
+          };
+
+          modules = [
+            nixos-hardware.nixosModules.common-cpu-amd
+            nixos-hardware.nixosModules.common-gpu-amd
+            nixos-hardware.nixosModules.common-pc-ssd
+            nixos-hardware.nixosModules.common-hidpi
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit pkgs-stable;
+              };
+              home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
+              home-manager.users."${username}".imports = [
+                nix-flatpak.homeManagerModules.nix-flatpak
+                ./users/l1npengtul.nix
+                ./applications/flatpak.nix
+                ./applications/individual/blender.nix
+                ./applications/individual/krita.nix
+                ./applications/individual/kdeconnect.nix
+                ./applications/individual/vlc.nix
+                ./applications/individual/ktorrent.nix
+                ./applications/individual/direnv.nix
+                ./applications/individual/bottles.nix
+                ./applications/individual/firefox.nix
+                ./plasma/s-23sierpinski.nix
+              ];
+            }
+
+            nix-index-database.nixosModules.nix-index
+
+            auto-cpufreq.nixosModules.default
+
+            musnix.nixosModules.musnix
+
+            erosanix.nixosModules.protonvpn
+
+            ./configuration.nix
+            ./hosts/s-23sierpinski
+            ./pkgs/archives.nix
+            ./pkgs/java.nix
+            ./pkgs/nix-utils.nix
+            ./pkgs/sysutils.nix
+            ./pkgs/python3.nix
+            ./pkgs/kdegtk.nix
+            ./pkgs/fcitx5
+            ./pkgs/fonts
+            ./pkgs/libvirtd.nix
+            ./pkgs/protonvpn.nix
+            ./pkgs/tailscale-client.nix
+            ./pkgs/input.nix
+            ./pkgs/diskmgmt.nix
+            ./pkgs/sshd.nix
+          ];
         };
-
-        modules = [
-          nixos-hardware.nixosModules.common-cpu-amd
-          nixos-hardware.nixosModules.common-gpu-amd
-          nixos-hardware.nixosModules.common-pc-ssd
-          nixos-hardware.nixosModules.common-hidpi
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit pkgs-stable;
-            };
-            home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
-            home-manager.users."${username}".imports = [
-              nix-flatpak.homeManagerModules.nix-flatpak
-              ./users/l1npengtul.nix
-              ./applications/flatpak.nix
-              ./applications/individual/blender.nix
-              ./applications/individual/krita.nix
-              ./applications/individual/kdeconnect.nix
-              ./applications/individual/vlc.nix
-              ./applications/individual/ktorrent.nix
-              ./applications/individual/direnv.nix
-              ./applications/individual/bottles.nix
-              ./applications/individual/firefox.nix
-              ./plasma/s-23sierpinski.nix
-            ];
-          }
-
-          nix-index-database.nixosModules.nix-index
-
-          auto-cpufreq.nixosModules.default
-
-          musnix.nixosModules.musnix
-
-          erosanix.nixosModules.protonvpn
-
-          ./configuration.nix
-          ./hosts/s-23sierpinski
-          ./pkgs/archives.nix
-          ./pkgs/java.nix
-          ./pkgs/nix-utils.nix
-          ./pkgs/sysutils.nix
-          ./pkgs/python3.nix
-          ./pkgs/kdegtk.nix
-          ./pkgs/fcitx5
-          ./pkgs/fonts
-          ./pkgs/libvirtd.nix
-          ./pkgs/protonvpn.nix
-          ./pkgs/tailscale-client.nix
-          ./pkgs/input.nix
-          ./pkgs/diskmgmt.nix
-          ./pkgs/sshd.nix
-        ];
-      };
 
       pegrose512 =
         lib.nixosSystem {
@@ -180,7 +180,6 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
-                inherit pkgs;
                 inherit pkgs-stable;
               };
               home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
@@ -301,5 +300,4 @@
           ];
         };
     };
-  };
-}
+  }
