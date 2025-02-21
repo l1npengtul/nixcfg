@@ -50,11 +50,7 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc.lib
   ];
 
-  nativeBuildInputs = [makeWrapper autoPatchelfHook copyDesktopItems];
-
-  desktopItems = [
-    "$src/Plugins/ThingsTexture.desktop"
-  ];
+  nativeBuildInputs = [makeWrapper autoPatchelfHook];
 
   installPhase = ''
     runHook preInstall
@@ -71,10 +67,6 @@ stdenv.mkDerivation rec {
     mkdir -p $out/bin $out/opt/AudioThing
     install -Dm755 $src/Plugins/ThingsTexture $out/bin
     ln -s $out/bin/ThingsTexture $out/opt/AudioThing
-
-    mkdir -p $out/share/pixmaps $out/opt/AudioThing
-    install -Dm444 $src/Plugins/ThingsTexture.png $out/share/pixmaps/ThingsTexture.png
-    ln -s $src/Plugins/ThingsTexture.png $out/opt/AudioThing
 
     mkdir -p $out/opt/AudioThing/ThingsTexturePresets/
     cp -r $src/Presets/ThingsTexture $out/opt/AudioThing/ThingsTexturePresets

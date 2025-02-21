@@ -50,11 +50,7 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc.lib
   ];
 
-  nativeBuildInputs = [makeWrapper autoPatchelfHook copyDesktopItems];
-
-  desktopItems = [
-    "$src/Plugins/MoonEcho.desktop"
-  ];
+  nativeBuildInputs = [makeWrapper autoPatchelfHook];
 
   installPhase = ''
     runHook preInstall

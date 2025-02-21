@@ -50,11 +50,7 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc.lib
   ];
 
-  nativeBuildInputs = [makeWrapper autoPatchelfHook copyDesktopItems];
-
-  desktopItems = [
-    "$src/Plugins/Speakers.desktop"
-  ];
+  nativeBuildInputs = [makeWrapper autoPatchelfHook];
 
   installPhase = ''
     runHook preInstall
@@ -71,10 +67,6 @@ stdenv.mkDerivation rec {
     mkdir -p $out/bin $out/opt/AudioThing
     install -Dm755 $src/Plugins/Speakers $out/bin
     ln -s $out/bin/Speakers $out/opt/AudioThing
-
-    mkdir -p $out/share/pixmaps $out/opt/AudioThing
-    install -Dm444 $src/Plugins/Speakers.png $out/share/pixmaps/Speakers.png
-    ln -s $src/Plugins/Speakers.png $out/opt/AudioThing
 
     mkdir -p $out/opt/AudioThing/SpeakersPresets/
     cp -r $src/Presets/Speakers $out/opt/AudioThing/SpeakersPresets

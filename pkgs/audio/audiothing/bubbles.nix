@@ -52,10 +52,6 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [makeWrapper autoPatchelfHook];
 
-  desktopItems = [
-    "$src/Plugins/ThingsBubbles.desktop"
-  ];
-
   installPhase = ''
     runHook preInstall
 

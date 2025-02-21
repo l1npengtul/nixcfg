@@ -50,11 +50,7 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc.lib
   ];
 
-  nativeBuildInputs = [makeWrapper autoPatchelfHook copyDesktopItems];
-
-  desktopItems = [
-    "$src/Plugins/Lines.desktop"
-  ];
+  nativeBuildInputs = [makeWrapper autoPatchelfHook];
 
   installPhase = ''
     runHook preInstall
@@ -71,10 +67,6 @@ stdenv.mkDerivation rec {
     mkdir -p $out/bin $out/opt/AudioThing
     install -Dm755 $src/Plugins/Lines $out/bin
     ln -s $out/bin/Lines $out/opt/AudioThing
-
-    mkdir -p $out/share/pixmaps $out/opt/AudioThing
-    install -Dm444 $src/Plugins/Lines.png $out/share/pixmaps/Lines.png
-    ln -s $src/Plugins/Lines.png $out/opt/AudioThing
 
     mkdir -p $out/opt/AudioThing/LinesPresets/
     cp -r $src/Presets/Lines $out/opt/AudioThing/LinesPresets
