@@ -5,6 +5,8 @@
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
 
+    bitwig-pr.url = "github:l1npengtul/nixpkgs/update-bitwig";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     agenix.url = "github:ryantm/agenix";
 
@@ -52,14 +54,6 @@
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
 
     vhs-decode-nur-packages.url = "github:JuniorIsAJitterbug/nur-packages";
-    nix-matlab = {
-      # nix-matlab's Nixpkgs input follows Nixpkgs' nixos-unstable branch. However
-      # your Nixpkgs revision might not follow the same branch. You'd want to
-      # match your Nixpkgs and nix-matlab to ensure fontconfig related
-      # compatibility.
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "gitlab:doronbehar/nix-matlab";
-    };
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     playit-nixos-module.url = "github:pedorich-n/playit-nixos-module";
@@ -79,13 +73,13 @@
     gradle2nix,
     nix-index-database,
     vhs-decode-nur-packages,
-    nix-matlab,
     nixpkgs-stable,
     nixpkgs-master,
     nix-minecraft,
     playit-nixos-module,
     agenix,
     flux,
+    bitwig-pr,
     ...
   }: let
     username = "l1npengtul";
