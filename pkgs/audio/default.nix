@@ -3,7 +3,6 @@
   pkgs,
   pkgs-stable,
   pkgs-master,
-  bitwig-pr,
   ...
 }: let
   #     buildGradlePackage = inputs.gradle2nix.builders.x86_64-linux.buildGradlePackage;
@@ -46,7 +45,7 @@ in {
     vital
     distrho-ports
     airwindows-lv2
-    bitwig-pr.bitwig-studio
+    inputs.bitwig-pr.bitwig-studio5
     #ardour
     reaper
     pkgs-stable.yabridgectl
