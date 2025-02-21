@@ -166,6 +166,7 @@
 
       pegrose512 = lib.nixosSystem {
         inherit system;
+        config.allowUnfree = true;
         specialArgs = {
           inherit inputs;
           inherit pkgs-stable;
