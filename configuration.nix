@@ -128,8 +128,6 @@
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
 
-  nixpkgs.config.allowUnfree = true;
-
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
