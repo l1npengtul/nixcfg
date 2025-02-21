@@ -103,7 +103,7 @@
         pkgs-master = import nixpkgs-master commonArgs;
       in
         lib.nixosSystem {
-          inherit system;
+          inherit system pkgs;
           specialArgs = {
             inherit inputs;
             inherit pkgs-stable;
@@ -175,7 +175,7 @@
         pkgs-master = import nixpkgs-master commonArgs;
       in
         lib.nixosSystem {
-          inherit system;
+          inherit system pkgs;
           specialArgs = {
             inherit inputs pkgs-stable pkgs-master;
           };
