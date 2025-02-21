@@ -162,7 +162,10 @@
       };
 
       pegrose512 = let
-        pkgs = import nixpkgs {config.allowUnfree = true;};
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
       in
         lib.nixosSystem {
           inherit system;
