@@ -93,8 +93,14 @@
     pkgs-stable = import nixpkgs-stable commonArgs;
     pkgs-master = import nixpkgs-master commonArgs;
   in {
-    inherit lib;
-    nixosConfigurations =
+    inherit lib commonArgs;
+
+    nixosConfigurations = {
+      s-23sierpinski = let
+        pkgs = import nixpkgs commonArgs;
+        pkgs-stable = import nixpkgs-stable commonArgs;
+        pkgs-master = import nixpkgs-master commonArgs;
+      in
         lib.nixosSystem {
           inherit system;
           specialArgs = {
@@ -159,8 +165,11 @@
             ./pkgs/sshd.nix
           ];
         };
-
-      pegrose512 =
+      pegrose512 = let
+        pkgs = import nixpkgs commonArgs;
+        pkgs-stable = import nixpkgs-stable commonArgs;
+        pkgs-master = import nixpkgs-master commonArgs;
+      in
         lib.nixosSystem {
           inherit system;
           specialArgs = {
