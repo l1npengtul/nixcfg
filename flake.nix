@@ -93,6 +93,7 @@
       inherit system;
       config.allowUnfree = true;
     };
+    bitwig-latest = import bitwig-pr commonArgs;
   in {
     inherit lib commonArgs;
 
@@ -177,7 +178,7 @@
         lib.nixosSystem {
           inherit system pkgs;
           specialArgs = {
-            inherit inputs pkgs-stable pkgs-master;
+            inherit inputs pkgs-stable pkgs-master bitwig-latest;
           };
 
           modules = [
