@@ -18,7 +18,7 @@
 }:
 stdenv.mkDerivation rec {
   pname = "audiothing-fog-convolver2";
-  version = "2.2";
+  version = "2.3";
 
   dontBuild = true;
   dontConfigure = true;

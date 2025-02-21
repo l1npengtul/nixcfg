@@ -33,6 +33,7 @@ in {
     zynaddsubfx
     audacity
     musescore
+    frescobaldi
     paulstretch
     bespokesynth-with-vst2
     oxefmsynth
