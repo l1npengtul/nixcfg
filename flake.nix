@@ -90,7 +90,11 @@
       overlays = [inputs.nix-minecraft.overlay inputs.flux.overlays.default];
       config.allowUnfree = true;
     };
-    pkgs = import nixpkgs commonArgs;
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [inputs.nix-minecraft.overlay inputs.flux.overlays.default];
+      config.allowUnfree = true;
+    };
     pkgs-stable = import nixpkgs-stable commonArgs;
     pkgs-master = import nixpkgs-master commonArgs;
   in {
