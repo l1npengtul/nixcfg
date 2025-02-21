@@ -33,7 +33,6 @@ in {
     zynaddsubfx
     audacity
     musescore
-    frescobaldi
     paulstretch
     bespokesynth-with-vst2
     oxefmsynth
@@ -66,7 +65,7 @@ in {
     #organ
     wavetable
     piano
-    slplugins
+    #slplugins
 
     #inputs.audio.packages.${pkgs.system}.paulxstretch
     #inputs.audio.packages.${pkgs.system}.grainbow
