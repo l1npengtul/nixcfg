@@ -176,9 +176,7 @@
         lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit inputs;
-            inherit pkgs-stable;
-            inherit pkgs-master;
+            inherit self inputs pkgs-stable pkgs-master;
           };
 
           modules = [
