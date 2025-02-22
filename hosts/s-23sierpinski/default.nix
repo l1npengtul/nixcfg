@@ -29,7 +29,6 @@
     trusted-users = root l1npengtul
   '';
 
-  boot.kernelParams = ["mem_sleep_default=deep"];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   powerManagement = {
