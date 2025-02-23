@@ -321,8 +321,6 @@
       "kwinrc"."Tiling"."padding" = 4;
       "kwinrc"."Tiling/c26eb83f-031f-5a5a-b81c-836527e57431"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
       "kwinrc"."Wayland"."InputMethod[$e]" = "/etc/profiles/per-user/l1npengtul/share/applications/com.github.maliit.keyboard.desktop";
-      "kwinrc"."Wayland"."InputMethod\x5b$e\x5d" = "/etc/profiles/per-user/l1npengtul/share/applications/com.github.maliit.keyboard.desktop";
-      "kwinrc"."Wayland"."InputMethodx5b$ex5d" = "/etc/profiles/per-user/l1npengtul/share/applications/com.github.maliit.keyboard.desktop";
       "kwinrc"."Xwayland"."Scale" = 1;
       "kxkbrc"."Layout"."DisplayNames" = "";
       "kxkbrc"."Layout"."LayoutList" = "us";
