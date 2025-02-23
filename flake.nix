@@ -252,7 +252,7 @@
             overlays = [nix-minecraft.overlay flux.overlays.default];
           };
         pkgs-stable = import nixpkgs-stable commonArgsAF;
-        pkgs = import nixpkgs-stable commonArgsAF;
+        pkgs = import nixpkgs commonArgsAF;
       in
         lib.nixosSystem {
           inherit system pkgs;
