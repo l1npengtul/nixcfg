@@ -249,13 +249,13 @@
       };
       abandonedfactory = let
         username = "pengsrv";
-        commonArgs =
+        commonArgsAF =
           commonArgs
           // {
             overlays = [nix-minecraft.overlay flux.overlays.default];
           };
-        pkgs-stable = import nixpkgs-stable commonArgs;
-        pkgs = import nixpkgs-stable commonArgs;
+        pkgs-stable = import nixpkgs-stable commonArgsAF;
+        pkgs = import nixpkgs-stable commonArgsAF;
       in
         lib.nixosSystem {
           inherit system pkgs;
