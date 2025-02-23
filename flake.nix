@@ -89,10 +89,7 @@
       inherit system;
       config.allowUnfree = true;
     };
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
+    pkgs = import nixpkgs commonArgs;
     pkgs-stable = import nixpkgs-stable commonArgs;
     pkgs-master = import nixpkgs-master commonArgs;
     bitwig-latest = import bitwig-pr commonArgs;
