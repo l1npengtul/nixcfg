@@ -1,6 +1,6 @@
-{pkgs-master, ...}: {
+{pkgs, ...}: {
   home = {
-    packages = with pkgs-master; [
+    packages = with pkgs; [
       blender
     ];
   };
