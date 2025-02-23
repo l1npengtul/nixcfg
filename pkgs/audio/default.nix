@@ -54,6 +54,7 @@ in {
     dxvk_2
     recstar
     plugdata
+    dl-librescore
 
     airwindows
     airwin2rack
