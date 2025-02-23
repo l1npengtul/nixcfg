@@ -1,9 +1,6 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
-#     ./hardware-configuration.nix
+    #     ./hardware-configuration.nix
     ./../common/use-remote.nix
   ];
   environment.systemPackages = with pkgs; [
