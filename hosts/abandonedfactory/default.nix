@@ -9,7 +9,7 @@
   ];
 
   time.timeZone = "Asia/Tokyo";
-
+  boot.initrd.systemd.fido2.enable = false;
   users.users.pengsrv = {
     isNormalUser = true;
     createHome = true;
