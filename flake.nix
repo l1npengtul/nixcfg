@@ -211,18 +211,6 @@
         specialArgs = {
           inherit inputs pkgs-stable pkgs-master bitwig-latest;
         };
-<<<<<<< HEAD
-      oldhome =
-        lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs;
-            inherit pkgs-stable;
-            inherit pkgs-master;
-          };
-=======
->>>>>>> 63ee2ea (l1npengtul@pegrose512: Fri Feb 21 13:08:08 KST 2025 -)
-
         modules = [
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-gpu-intel
@@ -266,14 +254,6 @@
           // {
             overlays = [nix-minecraft.overlay flux.overlays.default];
           };
-<<<<<<< HEAD
-=======
-
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
->>>>>>> 63ee2ea (l1npengtul@pegrose512: Fri Feb 21 13:08:08 KST 2025 -)
         pkgs-stable = import nixpkgs-stable commonArgs;
         pkgs = import nixpkgs-stable commonArgs;
       in
@@ -317,4 +297,5 @@
           ];
         };
     };
-  }
+  };
+}
