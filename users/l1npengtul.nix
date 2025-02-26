@@ -13,4 +13,6 @@
       kdePackages.plasma-thunderbolt
     ];
   };
+
+  stateVersion = "24.05";
 }

@@ -11,4 +11,6 @@
       devenv
     ];
   };
+
+  stateVersion = "24.05";
 }
