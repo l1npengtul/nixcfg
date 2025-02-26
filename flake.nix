@@ -77,7 +77,6 @@
     playit-nixos-module,
     agenix,
     flux,
-    bitwig-pr,
     ...
   } @ inputs: let
     username = "l1npengtul";
