@@ -5,8 +5,6 @@
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
 
-    bitwig-pr.url = "github:l1npengtul/nixpkgs/update-bitwig";
-
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     agenix.url = "github:ryantm/agenix";
 
@@ -92,7 +90,6 @@
     pkgs = import nixpkgs commonArgs;
     pkgs-stable = import nixpkgs-stable commonArgs;
     pkgs-master = import nixpkgs-master commonArgs;
-    bitwig-latest = import bitwig-pr commonArgs;
   in {
     inherit lib commonArgs;
 
@@ -100,9 +97,7 @@
       s-23sierpinski = lib.nixosSystem {
         inherit system pkgs;
         specialArgs = {
-          inherit inputs;
-          inherit pkgs-stable;
-          inherit pkgs-master;
+          inherit inputs pkgs-stable;
         };
 
         modules = [
@@ -166,7 +161,7 @@
       pegrose512 = lib.nixosSystem {
         inherit system pkgs;
         specialArgs = {
-          inherit inputs pkgs-stable pkgs-master bitwig-latest;
+          inherit inputs pkgs-stable pkgs-master;
         };
 
         modules = [
@@ -207,7 +202,7 @@
       oldhome = lib.nixosSystem {
         inherit system pkgs;
         specialArgs = {
-          inherit inputs pkgs-stable pkgs-master bitwig-latest;
+          inherit inputs pkgs-stable pkgs-master;
         };
         modules = [
           nixos-hardware.nixosModules.common-cpu-intel
