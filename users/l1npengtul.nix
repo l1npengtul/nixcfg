@@ -12,7 +12,7 @@
       maliit-framework
       kdePackages.plasma-thunderbolt
     ];
-  };
 
-  stateVersion = "24.05";
+    stateVersion = "24.05";
+  };
 }

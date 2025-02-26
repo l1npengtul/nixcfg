@@ -10,7 +10,7 @@
       xdg-desktop-portal-kde
       devenv
     ];
-  };
 
-  stateVersion = "24.05";
+    stateVersion = "24.05";
+  };
 }
