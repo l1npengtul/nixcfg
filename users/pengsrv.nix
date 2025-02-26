@@ -7,7 +7,6 @@
   home = {
     packages = with pkgs; [
       cowsay
-      xdg-desktop-portal-kde
       devenv
     ];
 
