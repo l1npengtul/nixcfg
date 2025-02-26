@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home = {
     packages = with pkgs; [
-      kdenlive
+      kdePackages.kdenlive
       openshot-qt
       davinci-resolve
     ];
