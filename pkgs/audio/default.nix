@@ -33,7 +33,7 @@ in {
     audacity
     musescore
     paulstretch
-    bespokesynth-with-vst2
+    bespokesynth
     oxefmsynth
     ninjas2
     zam-plugins
