@@ -33,27 +33,21 @@ in {
     audacity
     musescore
     paulstretch
-    bespokesynth
-    oxefmsynth
-    ninjas2
     zam-plugins
     chow-tape-model
     vcv-rack
     cardinal
-    carla
     alsa-utils
     vital
     distrho-ports
-    airwindows-lv2
-    bitwig-studio #ardour
-    reaper
+    bitwig-studio
     pkgs-stable.yabridgectl
     pkgs-stable.yabridge
     pkgs-stable.wineWowPackages.stagingFull
     dxvk_2
     recstar
     plugdata
-    pkgs-master.dl-librescore
+    dl-librescore
 
     airwindows
     airwin2rack

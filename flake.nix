@@ -182,6 +182,7 @@
               ./users/l1npengtul.nix
               ./applications
               ./plasma/pegrose512.nix
+              ./applications/individual/kicad.nix
             ];
           }
 

@@ -6,7 +6,6 @@
     ./blender.nix
     ./kdeconnect.nix
     ./kdenlive.nix
-    ./kicad.nix
     ./direnv.nix
     ./firefox.nix
     ./ktorrent.nix
