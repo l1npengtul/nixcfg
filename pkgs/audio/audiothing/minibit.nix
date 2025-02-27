@@ -3,7 +3,6 @@
   fetchzip,
   lib,
   autoPatchelfHook,
-  #wrapGAppsHook3,
   copyDesktopItems,
   makeWrapper,
   libatomic_ops,
@@ -11,8 +10,7 @@
   freetype,
   libjack2,
   libGL,
-  curlWithGnuTls,
-  #xdg-utils,
+  curl,
   xorg,
   fontconfig,
 }:
@@ -38,7 +36,7 @@ stdenv.mkDerivation rec {
     fontconfig
     libjack2
     libGL
-    curlWithGnuTls
+    curl
     xorg.libX11
     xorg.libXcursor
     xorg.libXext
@@ -50,11 +48,11 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc.lib
   ];
 
+  desktopItems = [
+    "$src/Plugins/miniBit.desktop"
+  ];
+
   nativeBuildInputs = [makeWrapper autoPatchelfHook copyDesktopItems];
-
-  postPatch = ''
-
-  '';
 
   installPhase = ''
 
@@ -71,6 +69,14 @@ stdenv.mkDerivation rec {
 
     mkdir -p $out/opt/AudioThing/miniBitPresets/
     cp -r $src/Presets/miniBit $out/opt/AudioThing/miniBitPresets
+
+    mkdir -p $out/bin $out/opt/AudioThing
+    install -Dm755 $src/Plugins/miniBit $out/bin
+    ln -s $out/bin/miniBit $out/opt/AudioThing
+
+    mkdir -p $out/share/pixmaps $out/opt/AudioThing
+    install -Dm444 $src/Plugins/miniBit.png $out/share/pixmaps/miniBit.png
+    ln -s $src/Plugins/miniBit.png $out/opt/AudioThing
 
     runHook postInstall
   '';
@@ -89,6 +95,10 @@ stdenv.mkDerivation rec {
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst3/audiothing/miniBit.vst3/Contents/x86_64-linux/miniBit.so
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/clap/audiothing/miniBit.clap
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst/audiothing/miniBit.so
+
+    wrapProgram $out/bin/miniBit \
+        --run "$wrapMiniBit" \
+        --suffix LD_LIBRARY_PATH : "${lib.strings.makeLibraryPath buildInputs}"
   '';
 
   meta = with lib; {

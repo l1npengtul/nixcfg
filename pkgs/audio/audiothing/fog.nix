@@ -3,16 +3,13 @@
   fetchzip,
   lib,
   autoPatchelfHook,
-  #wrapGAppsHook3,
-  copyDesktopItems,
   makeWrapper,
   libatomic_ops,
   alsa-lib,
   freetype,
   libjack2,
   libGL,
-  curlWithGnuTls,
-  #xdg-utils,
+  curl,
   xorg,
   fontconfig,
 }:
@@ -38,7 +35,7 @@ stdenv.mkDerivation rec {
     fontconfig
     libjack2
     libGL
-    curlWithGnuTls
+    curl
     xorg.libX11
     xorg.libXcursor
     xorg.libXext
@@ -67,10 +64,13 @@ stdenv.mkDerivation rec {
     mkdir -p $out/opt/AudioThing/FogConvolver2Presets/
     cp -r $src/Presets/FogConvolver2 $out/opt/AudioThing/FogConvolver2Presets
 
+    mkdir -p $out/opt/AudioThing/FogConvolver2Samples
+    cp -r $src/Samples/FogConvolver2 $out/opt/AudioThing/FogConvolver2Samples
+
     runHook postInstall
   '';
 
-  wrapMiniBit = ''
+  postFixup = ''
     # make our path
     ABANDON_ALL_HOPE="$HOME/.local/share/AudioThing/Presets/FogConvolver2"
     mkdir -p $ABANDON_ALL_HOPE
@@ -78,9 +78,7 @@ stdenv.mkDerivation rec {
     # copy our presets in there
     # since we want users to overwrite default presets, we use -i "no clobber"
     cp -r -i --no-preserve=mode,ownership ${placeholder "out"}/opt/AudioThing/FogConvolver2Presets/FogConvolver2/ $ABANDON_ALL_HOPE
-  '';
 
-  postFixup = ''
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst3/audiothing/FogConvolver2.vst3/Contents/x86_64-linux/FogConvolver2.so
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/clap/audiothing/FogConvolver2.clap
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst/audiothing/FogConvolver2.so

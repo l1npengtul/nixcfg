@@ -3,16 +3,13 @@
   fetchzip,
   lib,
   autoPatchelfHook,
-  #wrapGAppsHook3,
-  copyDesktopItems,
   makeWrapper,
   libatomic_ops,
   alsa-lib,
   freetype,
   libjack2,
   libGL,
-  curlWithGnuTls,
-  #xdg-utils,
+  curl,
   xorg,
   fontconfig,
 }:
@@ -38,7 +35,7 @@ stdenv.mkDerivation rec {
     fontconfig
     libjack2
     libGL
-    curlWithGnuTls
+    curl
     xorg.libX11
     xorg.libXcursor
     xorg.libXext
@@ -70,17 +67,13 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  wrapMiniBit = ''
-    # make our path
+  postFixup = ''
     ABANDON_ALL_HOPE="$HOME/.local/share/AudioThing/Presets/ThingsBubbles"
     mkdir -p $ABANDON_ALL_HOPE
 
     # copy our presets in there
     # since we want users to overwrite default presets, we use -i "no clobber"
     cp -r -i --no-preserve=mode,ownership ${placeholder "out"}/opt/AudioThing/ThingsBubblesPresets/ThingsBubbles/ $ABANDON_ALL_HOPE
-  '';
-
-  postFixup = ''
 
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/vst3/audiothing/ThingsBubbles.vst3/Contents/x86_64-linux/ThingsBubbles.so
     patchelf --set-rpath "${lib.strings.makeLibraryPath buildInputs}" --force-rpath $out/lib/clap/audiothing/ThingsBubbles.clap

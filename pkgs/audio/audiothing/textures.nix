@@ -3,16 +3,13 @@
   fetchzip,
   lib,
   autoPatchelfHook,
-  #wrapGAppsHook3,
-  copyDesktopItems,
   makeWrapper,
   libatomic_ops,
   alsa-lib,
   freetype,
   libjack2,
   libGL,
-  curlWithGnuTls,
-  #xdg-utils,
+  curl,
   xorg,
   fontconfig,
 }:
@@ -38,7 +35,7 @@ stdenv.mkDerivation rec {
     fontconfig
     libjack2
     libGL
-    curlWithGnuTls
+    curl
     xorg.libX11
     xorg.libXcursor
     xorg.libXext
@@ -68,16 +65,6 @@ stdenv.mkDerivation rec {
     cp -r $src/Presets/ThingsTexture $out/opt/AudioThing/ThingsTexturePresets
 
     runHook postInstall
-  '';
-
-  wrapMiniBit = ''
-    # make our path
-    ABANDON_ALL_HOPE="$HOME/.local/share/AudioThing/Presets/ThingsTexture"
-    mkdir -p $ABANDON_ALL_HOPE
-
-    # copy our presets in there
-    # since we want users to overwrite default presets, we use -i "no clobber"
-    cp -r -i --no-preserve=mode,ownership ${placeholder "out"}/opt/AudioThing/ThingsTexturePresets/ThingsTexture/ $ABANDON_ALL_HOPE
   '';
 
   postFixup = ''
