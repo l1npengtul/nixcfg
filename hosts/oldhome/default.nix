@@ -2,7 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ./../common/use-remote.nix
-    ./../common/userl1npengtu.nix
+    ./../common/userl1npengtul.nix
     ./../common/battery_optimizations.nix
   ];
 
@@ -18,7 +18,6 @@
     enable = true;
     platform = "ipu6epmtl";
   };
-  #   boot.blacklistedKernelModules = ["intel_ipu6" "intel_ipu6_isys" "intel_ipu6_isys.isys"]; # not sure if all of them are required
   hardware.graphics = {
     # hardware.opengl in 24.05
     enable = true;
