@@ -36,7 +36,7 @@
     jack.enable = true;
     pulse.enable = true;
   };
-  #hardware.alsa.enablePersistence = true;
+  hardware.alsa.enablePersistence = true;
   security.rtkit.enable = true;
 
   services.displayManager.defaultSession = "plasma";
