@@ -43,6 +43,10 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [makeWrapper autoPatchelfHook];
 
+  preBuild = ''
+    export HOME=$(mktemp -d)
+  '';
+
   installPhase = ''
     runHook preInstall
 

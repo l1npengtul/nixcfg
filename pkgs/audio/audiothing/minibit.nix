@@ -48,6 +48,10 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [makeWrapper autoPatchelfHook copyDesktopItems];
 
+  preBuild = ''
+    export HOME=$(mktemp -d)
+  '';
+
   installPhase = ''
 
     runHook preInstall
