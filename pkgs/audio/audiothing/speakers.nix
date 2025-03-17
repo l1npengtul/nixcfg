@@ -17,12 +17,6 @@ stdenv.mkDerivation rec {
   pname = "audiothing-speakers";
   version = "1.3";
 
-  dontBuild = true;
-  dontConfigure = true;
-  dontPatchELF = true;
-  dontStrip = true;
-  dontAutoPatchelf = true;
-
   src = fetchzip {
     url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/29921240/Speakers-${version}.tar.xz";
     sha256 = "0j5qyvyl2x5i631cgjziybm47p0p0ncpzsm39vca7v883bdrajn3";

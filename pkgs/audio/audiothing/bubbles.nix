@@ -17,12 +17,6 @@ stdenv.mkDerivation rec {
   pname = "audiothing-things-bubbles";
   version = "1.1";
 
-  dontBuild = true;
-  dontConfigure = true;
-  dontPatchELF = true;
-  dontStrip = true;
-  dontAutoPatchelf = true;
-
   src = fetchzip {
     url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/ThingsBubbles-${version}.tar.xz";
     sha256 = "1xlfz92254ymzcwy9kywi3mkfzz43npq30n64jvycdykanf2kp1c";

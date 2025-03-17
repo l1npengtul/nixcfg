@@ -3,8 +3,6 @@
   fetchzip,
   lib,
   autoPatchelfHook,
-  #wrapGAppsHook3,
-  copyDesktopItems,
   makeWrapper,
   libatomic_ops,
   alsa-lib,
@@ -12,19 +10,12 @@
   libjack2,
   libGL,
   curlWithGnuTls,
-  #xdg-utils,
   xorg,
   fontconfig,
 }:
 stdenv.mkDerivation rec {
   pname = "audiothing-lines";
   version = "1.1";
-
-  dontBuild = true;
-  dontConfigure = true;
-  dontPatchELF = true;
-  dontStrip = true;
-  dontAutoPatchelf = true;
 
   src = fetchzip {
     url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/Lines-${version}.tar.xz";

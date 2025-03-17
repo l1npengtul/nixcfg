@@ -17,12 +17,6 @@ stdenv.mkDerivation rec {
   pname = "audiothing-fog-convolver2";
   version = "2.3";
 
-  dontBuild = true;
-  dontConfigure = true;
-  dontPatchELF = true;
-  dontStrip = true;
-  dontAutoPatchelf = true;
-
   src = fetchzip {
     url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/39301751/FogConvolver-${version}.tar.xz";
     hash = "sha256-BjHCCvaZBMR2Gx1M8FKuNYa349eu7zGGFmTM4ZLPIB8=";

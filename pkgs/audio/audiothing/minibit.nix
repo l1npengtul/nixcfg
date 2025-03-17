@@ -18,12 +18,6 @@ stdenv.mkDerivation rec {
   pname = "audiothing-minibit";
   version = "1.7";
 
-  dontBuild = true;
-  dontConfigure = true;
-  dontPatchELF = true;
-  dontStrip = true;
-  dontAutoPatchelf = true;
-
   src = fetchzip {
     url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/miniBit-${version}.tar.xz";
     sha256 = "130x9rlmprkvfz5b653qz8bj7b8sgibaji8cc4y92qj7sp73vzd8";

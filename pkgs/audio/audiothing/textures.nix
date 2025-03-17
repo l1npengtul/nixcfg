@@ -17,12 +17,6 @@ stdenv.mkDerivation rec {
   pname = "audiothing-things-texture";
   version = "1.1.1";
 
-  dontBuild = true;
-  dontConfigure = true;
-  dontPatchELF = true;
-  dontStrip = true;
-  dontAutoPatchelf = true;
-
   src = fetchzip {
     url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/ThingsTexture-${version}.tar.xz";
     sha256 = "0nm51yc9j6jfk5bczjq1brwg83x07jz6jkd7dpg5ypskp68y29bp";

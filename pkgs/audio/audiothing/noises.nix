@@ -17,12 +17,6 @@ stdenv.mkDerivation rec {
   pname = "audiothing-noises";
   version = "1.2.1";
 
-  dontBuild = true;
-  dontConfigure = true;
-  dontPatchELF = true;
-  dontStrip = true;
-  dontAutoPatchelf = true;
-
   src = fetchzip {
     url = "https://audiothing.nyc3.cdn.digitaloceanspaces.com/38042111/Noises-${version}.tar.xz";
     sha256 = "0hsjwdh2543743w3l7rwsyhdzzfw7sf3y2lph5qm1npf98vkgcxg";
