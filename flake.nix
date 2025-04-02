@@ -199,6 +199,49 @@
           ./pkgs
         ];
       };
+
+      clubcyberia = lib.nixosSystem {
+        inherit system pkgs;
+        specialArgs = {
+          inherit inputs pkgs-stable pkgs-master;
+        };
+
+        modules = [
+          nixos-hardware.nixosModules.common-cpu-amd
+          nixos-hardware.nixosModules.common-gpu-amd
+          nixos-hardware.nixosModules.common-pc-ssd
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit pkgs-stable;
+            };
+            home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
+            home-manager.users."${username}".imports = [
+              nix-flatpak.homeManagerModules.nix-flatpak
+              ./users/l1npengtul.nix
+              ./applications
+#               ./plasma/clubcyberia.nix
+              ./applications/individual/kicad.nix
+            ];
+          }
+
+          nix-index-database.nixosModules.nix-index
+
+          auto-cpufreq.nixosModules.default
+
+          musnix.nixosModules.musnix
+
+          erosanix.nixosModules.protonvpn
+
+          ./configuration.nix
+          ./hosts/clubcyberia
+          ./pkgs
+        ];
+      };
+
       oldhome = lib.nixosSystem {
         inherit system pkgs;
         specialArgs = {
