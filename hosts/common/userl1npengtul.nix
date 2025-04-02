@@ -2,7 +2,7 @@
   users.users.l1npengtul = {
     isNormalUser = true;
     createHome = true;
-    shell = pkgs.nushell;
+    shell = pkgs.fish;
     extraGroups = [
       "wheel"
       "audio"
