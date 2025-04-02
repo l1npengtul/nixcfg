@@ -40,6 +40,10 @@
         name = "z";
         src = pkgs.fishPlugins.z.src;
       }
+      {
+        name = "pisces";
+        src = pkgs.fishPlugins.pisces.src;
+      }
     ];
   };
 
