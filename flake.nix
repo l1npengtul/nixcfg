@@ -223,7 +223,7 @@
               nix-flatpak.homeManagerModules.nix-flatpak
               ./users/l1npengtul.nix
               ./applications
-#               ./plasma/clubcyberia.nix
+              #               ./plasma/clubcyberia.nix
               ./applications/individual/kicad.nix
             ];
           }

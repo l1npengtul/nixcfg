@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-#     ./hardware-configuration.nix
+    #     ./hardware-configuration.nix
     ./../common/userl1npengtu.nix
   ];
 
@@ -8,10 +8,10 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-#   fileSystems."/home/l1npengtul/project" = {
-#     device = "/dev/disk/by-uuid/125413e8-0b7a-464f-9d83-fa4e00f00a35";
-#     fsType = "ext4";
-#   };
+  #   fileSystems."/home/l1npengtul/project" = {
+  #     device = "/dev/disk/by-uuid/125413e8-0b7a-464f-9d83-fa4e00f00a35";
+  #     fsType = "ext4";
+  #   };
 
   hardware.graphics = {
     enable = true;
