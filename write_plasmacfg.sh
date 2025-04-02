@@ -3,7 +3,9 @@ set -e pipefail
 
 WHERE=$(cat /etc/hostname)
 
-rm plasma/$WHERE.nix
+if [ -f plasma/$WHERE.nix ]; then
+    rm plasma/$WHERE.nix
+fi
 
 nix run github:nix-community/plasma-manager >> plasma/$WHERE.nix
 
