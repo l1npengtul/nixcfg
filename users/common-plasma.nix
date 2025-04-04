@@ -21,6 +21,8 @@
     };
   };
 
+  home.packages = with pkgs; [fishPlugins.grc];
+
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
