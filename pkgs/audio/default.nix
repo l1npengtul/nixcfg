@@ -60,6 +60,7 @@ in {
     wavetable
     piano
     #slplugins
+    decent-sampler
 
     #inputs.audio.packages.${pkgs.system}.paulxstretch
     #inputs.audio.packages.${pkgs.system}.grainbow
