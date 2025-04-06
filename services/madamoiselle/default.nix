@@ -1,9 +1,9 @@
 {
   config,
-  callPackage,
+  pkgs,
   ...
 }: let
-  package = callPackage ./madamoiselle.nix {};
+  package = pkgs.callPackage ./madamoiselle.nix {};
 in {
   imports = [./service.nix];
 
