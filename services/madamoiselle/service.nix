@@ -2,11 +2,10 @@
   config,
   pkgs,
   lib,
-  callPackage,
   ...
 }: let
   cfg = config.services.madamoiselle;
-  madamoiselle = callPackage ./madamoiselle.nix {};
+  madamoiselle = pkgs.callPackage ./madamoiselle.nix {};
 in {
   options = {
     services.madamoiselle = {
