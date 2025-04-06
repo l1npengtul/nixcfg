@@ -21,7 +21,7 @@ in {
       after = ["network.target"];
       description = "enable madamoiselle discord bot";
       serviceConfig = {
-        StateDirectory = "foo";
+        StateDirectory = "/srv/madamoiselle";
         StateDirectoryMode = "0777";
         ExecStart = "${madamoiselle}/bin/madamoiselle";
       };
