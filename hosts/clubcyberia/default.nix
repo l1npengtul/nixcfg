@@ -15,6 +15,10 @@
     }
   ];
 
+  fileSystems."/home/l1npengtul/hdd_files" = {
+    option = ["rw"];
+  };
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
