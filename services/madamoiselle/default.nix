@@ -26,7 +26,6 @@ in {
         ExecStart = "${madamoiselle}/bin/madamoiselle";
       };
     };
+    environment.systemPackages = [madamoiselle-pkg];
   };
-
-  environment.systemPackages = [madamoiselle-pkg];
 }
