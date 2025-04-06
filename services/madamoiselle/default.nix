@@ -3,9 +3,10 @@
   callPackage,
   ...
 }: let
-  service = import ./service.nix {};
   package = callPackage ./madamoiselle.nix {};
 in {
+  imports = [./service.nix];
+
   environment.systemPackages = [package];
   services.madamoiselle.enable = true;
 }
