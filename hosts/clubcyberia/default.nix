@@ -38,6 +38,8 @@
     clinfo
   ];
 
+  boot.tmp.tmpfsSize = "90%";
+
   environment.variables = {
     RUSTICL_ENABLE = "radeonsi";
     ROC_ENABLE_PRE_VEGA = "1";
