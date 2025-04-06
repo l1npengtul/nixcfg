@@ -16,7 +16,7 @@
   ];
 
   fileSystems."/home/l1npengtul/hdd_files" = {
-    option = ["rw"];
+    options = ["rw"];
   };
 
   hardware.graphics = {
