@@ -29,6 +29,7 @@
       vulkan-loader
       vulkan-validation-layers
       mesa.opencl # Enables Rusticl (OpenCL) support
+      rocmPackages.clr.icd
     ];
   };
 
@@ -37,7 +38,7 @@
     vulkan-tools
     clinfo
   ];
-
+  boot.initrd.kernelModules = ["amdgpu"];
   boot.tmp.tmpfsSize = "90%";
 
   environment.variables = {
