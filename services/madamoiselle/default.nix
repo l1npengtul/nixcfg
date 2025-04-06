@@ -3,6 +3,7 @@
   pkgs,
   lib,
   callPackage,
+  ...
 }: let
   cfg = config.services.madamoiselle;
   madamoiselle = import ./madamoiselle.nix {};
