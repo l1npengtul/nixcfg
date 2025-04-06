@@ -226,7 +226,7 @@
               ./applications
               ./plasma/clubcyberia.nix
               ./applications/individual/kicad.nix
-              #./applications/individual/resolve.nix
+              ./applications/individual/resolve.nix
             ];
           }
 
