@@ -6,8 +6,7 @@
   ...
 }: let
   cfg = config.services.madamoiselle;
-  madamoiselle = import ./madamoiselle.nix {};
-  madamoiselle-pkg = callPackage ./madamoiselle.nix {};
+  madamoiselle = callPackage ./madamoiselle.nix {};
 in {
   options = {
     services.madamoiselle = {
@@ -26,6 +25,6 @@ in {
         ExecStart = "${madamoiselle}/bin/madamoiselle";
       };
     };
-    environment.systemPackages = [madamoiselle-pkg];
+    environment.systemPackages = [madamoiselle];
   };
 }
