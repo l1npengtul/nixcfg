@@ -1,8 +1,4 @@
-{
-  config,
-  callPackage,
-  ...
-}: let
+{callPackage, ...}: let
   service = import ./service.nix {};
   package = callPackage ./madamoiselle.nix {};
 in {
