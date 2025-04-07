@@ -31,6 +31,7 @@
     trusted-users = root pengsrv remotebuild
   '';
 
+  programs.fish.enable = true;
   nix.settings.trusted-users = ["@wheel" "pengsrv" "remotebuild"];
 
   #   boot.kernelParams = [ "security=selinux" ];
