@@ -49,7 +49,7 @@
   #         }
   #     ];
 
-  #   environment.systemPackages = with pkgs; [ policycoreutils ];
+  environment.systemPackages = with pkgs; [fish micro];
   #   systemd.package = pkgs.systemd.override { withSelinux = true; };
 
   systemd.tmpfiles.rules = [
