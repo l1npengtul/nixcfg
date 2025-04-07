@@ -14,7 +14,7 @@ rustPlatform.buildRustPackage rec {
   };
 
   useFetchCargoVendor = true;
-  cargoHash = "";
+  cargoHash = "sha256-sNp8dpRawsL8ER4x1FylT3BHb3vfJwcOZa3Ud8sq6q8=";
 
   # Integration tests do not run in Nix build environment due to needing to
   # create and build Cargo workspaces.
