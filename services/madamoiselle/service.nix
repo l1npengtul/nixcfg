@@ -21,6 +21,7 @@ in {
       serviceConfig = {
         StateDirectory = "/var/lib/madamoiselle";
         RuntimeDirectory = "/var/lib/madamoiselle";
+        WorkingDirectory = "/var/lib/madamoiselle";
         RuntimeDirectoryMode = "0777";
         ExecStart = "${madamoiselle}/bin/madamoiselle";
       };
