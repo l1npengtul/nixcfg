@@ -13,7 +13,7 @@
   users.users.pengsrv = {
     isNormalUser = true;
     createHome = true;
-    shell = pkgs.nushell;
+    shell = pkgs.fish;
     extraGroups = [
       "wheel"
       "networkmanager"
