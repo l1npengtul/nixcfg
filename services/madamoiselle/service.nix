@@ -19,7 +19,8 @@ in {
       after = ["network.target"];
       description = "enable madamoiselle discord bot";
       serviceConfig = {
-        RuntimeDirectory = "/srv/madamoiselle";
+        StateDirectory = "/var/lib/madamoiselle";
+        RuntimeDirectory = "/var/lib/madamoiselle";
         RuntimeDirectoryMode = "0777";
         ExecStart = "${madamoiselle}/bin/madamoiselle";
       };
