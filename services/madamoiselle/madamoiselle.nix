@@ -10,7 +10,7 @@ rustPlatform.buildRustPackage rec {
     owner = "l1npengtul";
     repo = "madamoiselle";
     tag = "${version}";
-    hash = "";
+    hash = "sha256-5hvfu33l5WkaEeVGb5ii9a325xBDhGiyev702zej1DQ=";
   };
 
   useFetchCargoVendor = true;
