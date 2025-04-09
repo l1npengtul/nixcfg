@@ -41,9 +41,9 @@ in {
     vital
     distrho-ports
     bitwig-studio
-    pkgs-stable.yabridgectl
-    pkgs-stable.yabridge
-    pkgs-stable.wineWowPackages.stagingFull
+    yabridgectl
+    yabridge
+    wineWowPackages.stagingFull
     dxvk_2
     recstar
     plugdata
