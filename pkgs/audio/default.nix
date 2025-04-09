@@ -43,7 +43,6 @@ in {
     bitwig-studio
     pkgs-stable.yabridgectl
     pkgs-stable.yabridge
-    wineWowPackages.stagingFull
     wineWow64Packages.stagingFull
     dxvk_2
     recstar
