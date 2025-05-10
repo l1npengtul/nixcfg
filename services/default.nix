@@ -1,7 +1,8 @@
 {...}: {
   imports = [
     #./sealcraft
-    #./cloudflared.nix
+    ./cloudflared.nix
     ./madamoiselle
+    ./skysealcraft
   ];
 }

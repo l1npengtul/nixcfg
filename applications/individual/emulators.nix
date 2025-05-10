@@ -4,6 +4,8 @@
       retroarch-free
       mame
       libretro.pcsx_rearmed
+      duckstation
+      pcsx2-bin
     ];
   };
 }
