@@ -5,7 +5,7 @@
       mame
       libretro.pcsx_rearmed
       duckstation
-      pcsx2-bin
+      pcsx2
     ];
   };
 }
