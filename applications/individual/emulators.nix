@@ -6,6 +6,7 @@
       libretro.pcsx_rearmed
       duckstation
       pcsx2
+      rpcs3
     ];
   };
 }
