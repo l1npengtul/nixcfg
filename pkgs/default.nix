@@ -20,5 +20,6 @@
     ./podman.nix
     ./sshd.nix
     ./printer.nix
+    ./r.nix
   ];
 }
