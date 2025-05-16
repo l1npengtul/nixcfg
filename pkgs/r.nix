@@ -1,3 +1,6 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [R rPackages.ggplot2 rPackages.dplyr rPackages.xts rstudioWrapper];
+{pkgs, ...}:
+with pkgs; let
+  customR = rstudioWrapper.override {packages = with rPackages; [ggplot2 dplyr xts rmarkdown knitr BSDA MASS stats lme4 bblme MuMIn DHARMa];};
+in {
+  environment.systemPackages = with pkgs; [customR];
 }
