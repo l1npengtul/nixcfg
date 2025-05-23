@@ -9,6 +9,8 @@
       "networkmanager"
       "libvirtd"
       "jackaudio"
+      "adbusers"
+      "kvm"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
