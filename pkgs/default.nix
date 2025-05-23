@@ -21,5 +21,6 @@
     ./sshd.nix
     ./printer.nix
     ./r.nix
+    ./adb.nix
   ];
 }
