@@ -43,7 +43,7 @@ in {
     bitwig-studio
     pkgs-stable.yabridgectl
     pkgs-stable.yabridge
-    wineWow64Packages.stagingFull
+    wineWowPackages.stagingFull
     dxvk_2
     recstar
     plugdata
