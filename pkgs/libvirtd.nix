@@ -17,5 +17,5 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [libguestfs];
+  environment.systemPackages = with pkgs; [libguestfs-with-appliance];
 }
