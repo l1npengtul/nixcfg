@@ -16,4 +16,6 @@
       vhostUserPackages = [pkgs.virtiofsd];
     };
   };
+
+  environment.systemPackages = with pkgs; [libguestfs];
 }
