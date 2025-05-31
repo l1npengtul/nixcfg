@@ -2,7 +2,7 @@
   lib,
   pkgs,
   buildPythonPackage,
-  fetchFromGitHub,
+  fetchPypi,
   # build-system
   setuptools,
   setuptools-scm,
@@ -11,22 +11,16 @@
 buildPythonPackage rec {
   pname = "lameenc";
   version = "1.8.1";
+  format = "wheel";
 
-  src = fetchFromGitHub {
-    owner = "chrisstaite";
-    repo = "lameenc";
-    tag = "v1.8.1";
-    hash = "sha256-/GV18mPcru1raFfFQGSAHgNwpmwN4oVFKcBL4JjZkC8=";
+  src = fetchPypi {
+    inherit pname version format;
+    sha256 = "";
+    dist = "py3";
+    python = "py3";
   };
 
   doCheck = false;
-
-  patchPhase = ''
-    substituteInPlace setup.py \
-    --replace-fail 'libdir = None' 'libdir = "${pkgs.lame.lib}"'
-  '';
-
-  pyproject = true;
   build-system = [
     setuptools
     wheel
