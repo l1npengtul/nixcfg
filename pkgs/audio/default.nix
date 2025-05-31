@@ -16,7 +16,7 @@
   wavetable = pkgs.callPackage ./socalabs/wavetable.nix {};
   test = pkgs.callPackage ./test.nix {};
   diffq = pkgs.python3Packages.callPackage ./demucs/diffq.nix {};
-  demucs = pkgs.python3Packages.callPackage ./demucs.nix {diffq = diffq;};
+  demucs = pkgs.python3Packages.callPackage ./demucs/demucs.nix {diffq = diffq;};
   #   synthv-studio-pro = pkgs.callPackage ./synthv-studio-pro {};
   recstar = pkgs.callPackage ./recstar {};
 in {
