@@ -15,6 +15,7 @@
   voc = pkgs.callPackage ./socalabs/voc.nix {};
   wavetable = pkgs.callPackage ./socalabs/wavetable.nix {};
   test = pkgs.callPackage ./test.nix {};
+  demucs = pkgs.callPackage ./demucs.nix {};
   #   synthv-studio-pro = pkgs.callPackage ./synthv-studio-pro {};
   recstar = pkgs.callPackage ./recstar {};
 in {
@@ -61,6 +62,8 @@ in {
     piano
     #slplugins
     decent-sampler
+
+    demucs
 
     #inputs.audio.packages.${pkgs.system}.paulxstretch
     #inputs.audio.packages.${pkgs.system}.grainbow
