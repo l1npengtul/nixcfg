@@ -2,33 +2,40 @@
   lib,
   buildPythonPackage,
   fetchPypi,
-  # build-system
   setuptools,
+  setuptools-scm,
   wheel,
-  cython,
-  # tests
-  hypothesis,
+  matplotlib,
+  pandas,
+  numpy,
+  scipy,
+  scikit-learn,
 }:
 buildPythonPackage rec {
-  pname = "diffq";
-  version = "3.3.1";
+  pname = "dora-search";
+  version = "0.1.12";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-z4Q23FnYaVNG/NOrKW3kZCXsqwDWQJbOvnn7Ueyy65M=";
+    hash = "";
   };
 
   doCheck = false;
 
-  pyproject = true;
   build-system = [
     setuptools
+    setuptools-scm
+    wheel
   ];
 
   dependencies = [
     setuptools
-    wheel
-    cython
+    setuptools-scm
+    matplotlib
+    pandas
+    numpy
+    scipy
+    scikit-learn
   ];
 
   nativeCheckInputs = [

@@ -5,23 +5,14 @@
   setuptools,
   wheel,
   dora-search,
-  diffq,
   einops,
-  flake8,
-  hydra-colorlog,
-  hydra-core,
   julius,
   lameenc,
-  museval,
-  mypy,
   openunmix,
   pyyaml,
-  submitit,
   torch,
   torchaudio,
   tqdm,
-  treetable,
-  soundfile,
 }:
 buildPythonApplication rec {
   pname = "demucs";
@@ -42,22 +33,13 @@ buildPythonApplication rec {
 
   dependencies = [
     dora-search
-    diffq
     einops
-    flake8
-    hydra-colorlog
-    hydra-core
     julius
     lameenc
-    museval
-    mypy
     openunmix
     pyyaml
-    submitit
     torch
     torchaudio
     tqdm
-    treetable
-    soundfile
   ];
 }
