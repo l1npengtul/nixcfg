@@ -16,8 +16,9 @@ buildPythonPackage rec {
   src = fetchPypi {
     inherit pname version format;
     sha256 = "";
-    dist = "py3";
-    python = "py3";
+    python = "cp313";
+    abi = "cp313t";
+    platform = "manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64";
   };
 
   doCheck = false;
