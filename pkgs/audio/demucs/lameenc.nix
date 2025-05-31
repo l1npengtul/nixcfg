@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   buildPythonPackage,
   fetchFromGitHub,
   # build-system
@@ -20,6 +21,11 @@ buildPythonPackage rec {
 
   doCheck = false;
 
+  patchPhase = ''
+    substituteInPlace CMakeLists.txt \
+    --replace-fail 'libdir = None' 'libdir = ${pkgs.lame.out}'
+  '';
+
   pyproject = true;
   build-system = [
     setuptools
@@ -33,5 +39,6 @@ buildPythonPackage rec {
   ];
 
   nativeCheckInputs = [
+    pkgs.lame
   ];
 }
