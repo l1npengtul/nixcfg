@@ -22,7 +22,7 @@ buildPythonPackage rec {
   doCheck = false;
 
   patchPhase = ''
-    substituteInPlace CMakeLists.txt \
+    substituteInPlace setup.py \
     --replace-fail 'libdir = None' 'libdir = ${pkgs.lame.out}'
   '';
 
