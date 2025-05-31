@@ -36,7 +36,7 @@ buildPythonApplication rec {
   doCheck = false;
 
   # specific to buildPythonPackage, see its reference
-  build-system = with python3Packages; [
+  build-system = [
     setuptools
   ];
 
