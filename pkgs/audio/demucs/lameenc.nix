@@ -23,7 +23,7 @@ buildPythonPackage rec {
 
   patchPhase = ''
     substituteInPlace setup.py \
-    --replace-fail 'libdir = None' 'libdir = ${pkgs.lame.out}'
+    --replace-fail 'libdir = None' 'libdir = "${pkgs.lame.out}"'
   '';
 
   pyproject = true;
