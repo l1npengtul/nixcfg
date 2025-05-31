@@ -1,11 +1,12 @@
 {
   lib,
-  buildPythonPackage,
+  pkgs,
+  buildPythonApplication,
   fetchPypi,
   setuptools,
   wheel,
 }:
-buildPythonPackage rec {
+buildPythonApplication rec {
   pname = "demucs";
   version = "4.0.1";
 
