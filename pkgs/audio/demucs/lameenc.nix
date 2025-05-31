@@ -1,7 +1,7 @@
 {
   lib,
   buildPythonPackage,
-  fetchPypi,
+  fetchFromGitHub,
   # build-system
   setuptools,
   setuptools-scm,
@@ -11,8 +11,10 @@ buildPythonPackage rec {
   pname = "lameenc";
   version = "1.8.1";
 
-  src = fetchPypi {
-    inherit pname version;
+  src = fetchFromGitHub {
+    owner = "chrisstaite";
+    repo = "lameenc";
+    tag = "v1.8.1";
     hash = "";
   };
 
