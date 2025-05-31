@@ -15,7 +15,7 @@ buildPythonPackage rec {
     owner = "chrisstaite";
     repo = "lameenc";
     tag = "v1.8.1";
-    hash = "";
+    hash = "sha256-/GV18mPcru1raFfFQGSAHgNwpmwN4oVFKcBL4JjZkC8=";
   };
 
   doCheck = false;
