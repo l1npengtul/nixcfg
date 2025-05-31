@@ -19,7 +19,7 @@ buildPythonPackage rec {
     owner = "facebookresearch";
     repo = "dora";
     tag = "v0.1.12";
-    hash = "";
+    hash = "sha256-v18FgiBdlNSGQmCnq63wCxcO8kJCPsUt0VznUlSPyoM=";
   };
 
   doCheck = false;
