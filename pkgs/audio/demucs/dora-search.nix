@@ -37,6 +37,7 @@ python3Packages.buildPythonPackage rec {
     treetable
     submitit
     torch
+    retrying
     omegaconf
   ];
 
