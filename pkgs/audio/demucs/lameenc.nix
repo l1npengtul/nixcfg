@@ -35,16 +35,17 @@ python3Packages.buildPythonPackage rec {
   nativeCheckInputs = [
   ];
 
-  preBuild = let
-    newtext = ''
-      import sys
+  preBuild = ''
+    rm setup.py
+    cat > setup.py << EOF
+    import sys
       import setuptools
       import distutils.core
       import os.path
 
       print(sys.argv)
-      libdir = ""${lame.lib}/lib""
-      incdir = ""${lame.src}/include""
+      libdir = "${lame.lib}/lib"
+      incdir = "${lame.src}/include"
 
       # Create the extension
       lameenc = distutils.core.Extension(
@@ -84,10 +85,6 @@ python3Packages.buildPythonPackage rec {
 
       # Create the package
       setuptools.setup(**configuration)
-    '';
-  in ''
-    rm setup.py
-    echo "${newtext}" >> setup.py
-    cat setup.py
+      EOF
   '';
 }
