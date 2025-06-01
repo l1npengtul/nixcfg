@@ -41,18 +41,40 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc.lib
   ];
 
-  nativeBuildInputs = [makeWrapper autoPatchelfHook];
+  nativeBuildInputs = [makeWrapper];
 
   installPhase = ''
     runHook preInstall
 
     mkdir -p $out/bin/
-    cp -r $src/NeuralNote $out/bin/NeuralNote
+    install -m 755 -D $src/NeuralNote $out/bin/NeuralNote
 
     runHook postInstall
   '';
 
-  postFixup = ''
+  preFixup = let
+    libPath = lib.makeLibraryPath [
+      libatomic_ops
+      alsa-lib
+      freetype
+      fontconfig
+      libjack2
+      libGL
+      curl
+      xorg.libX11
+      xorg.libXcursor
+      xorg.libXext
+      xorg.libXinerama
+      xorg.libXrender
+      xorg.libXrandr
+      xorg.libXdmcp
+      xorg.libXtst
+    ];
+  in ''
+    patchelf \
+        --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
+        --set-rpath "${libPath}" \
+        $out/bin/NeuralNote
   '';
 
   meta = with lib; {
