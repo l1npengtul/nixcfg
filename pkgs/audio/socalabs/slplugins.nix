@@ -38,8 +38,8 @@ stdenv.mkDerivation {
     (fetchFromGitHub {
       owner = "l1npengtul";
       repo = "slPlugins";
-      rev = "f2cdb98ce01592c767d240e2f49e6c577e4b5ba7";
-      hash = "sha256-8S9GtDARqli9aAkYzFVn2meXxlhc/Xg9UvK5GAIAqNc=";
+      rev = "95151587f14c5b204747cfd8f51eec7fe213e831";
+      hash = "";
       fetchSubmodules = true;
     })
     .overrideAttrs
