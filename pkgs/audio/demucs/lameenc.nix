@@ -4,7 +4,7 @@
   fetchFromGitHub,
   lame,
 }: let
-  newfile = builtins.toFile "setup.py" ''
+  newfile = builtins.toFile "setup" ''
     import sys
     import setuptools
     import distutils.core
