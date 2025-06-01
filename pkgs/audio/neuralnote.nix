@@ -1,0 +1,64 @@
+{
+  stdenv,
+  fetchzip,
+  lib,
+  autoPatchelfHook,
+  makeWrapper,
+  libatomic_ops,
+  alsa-lib,
+  freetype,
+  libjack2,
+  libGL,
+  curl,
+  xorg,
+  fontconfig,
+}:
+stdenv.mkDerivation rec {
+  pname = "neuralnote";
+  version = "1.1.0";
+
+  src = fetchzip {
+    url = "https://github.com/DamRsn/NeuralNote/releases/download/v1.1.0/NeuralNote_Standalone_Linux.zip";
+    sha256 = "";
+  };
+
+  buildInputs = [
+    libatomic_ops
+    alsa-lib
+    freetype
+    fontconfig
+    libjack2
+    libGL
+    curl
+    xorg.libX11
+    xorg.libXcursor
+    xorg.libXext
+    xorg.libXinerama
+    xorg.libXrender
+    xorg.libXrandr
+    xorg.libXdmcp
+    xorg.libXtst
+    stdenv.cc.cc.lib
+  ];
+
+  nativeBuildInputs = [makeWrapper autoPatchelfHook];
+
+  installPhase = ''
+    runHook preInstall
+
+    mkdir -p $out/bin/
+    cp -r $src/NeuralNote $out/bin/NeuralNote
+
+    runHook postInstall
+  '';
+
+  postFixup = ''
+  '';
+
+  meta = with lib; {
+    description = "neuralnote";
+    homepage = "https://github.com/DamRsn/NeuralNote";
+    mainProgram = "NeuralNote";
+    platforms = platforms.x86_64;
+  };
+}

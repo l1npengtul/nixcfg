@@ -28,6 +28,7 @@
   };
   #   synthv-studio-pro = pkgs.callPackage ./synthv-studio-pro {};
   recstar = pkgs.callPackage ./recstar {};
+  nn = pkgs.callPackage ./neuralnote.nix {};
 in {
   imports = [
     ./audiothing
@@ -78,7 +79,8 @@ in {
 
     inputs.audio.packages.${pkgs.system}.paulxstretch
     #inputs.audio.packages.${pkgs.system}.grainbow
-    inputs.audio.packages.${pkgs.system}.neuralnote
+    #inputs.audio.packages.${pkgs.system}.neuralnote
     inputs.audio.packages.${pkgs.system}.atlas2
+    nn
   ];
 }
