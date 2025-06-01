@@ -73,7 +73,7 @@ in {
     #demucs
 
     inputs.audio.packages.${pkgs.system}.paulxstretch
-    inputs.audio.packages.${pkgs.system}.grainbow
+    #inputs.audio.packages.${pkgs.system}.grainbow
     inputs.audio.packages.${pkgs.system}.neuralnote
     inputs.audio.packages.${pkgs.system}.atlas2
   ];
