@@ -104,7 +104,6 @@ stdenv.mkDerivation {
   cmakeFlags = [
     (lib.cmakeBool "JUCE_COPY_PLUGIN_AFTER_BUILD" false)
     (lib.cmakeBool "BUILD_EXTRAS" true)
-    (lib.cmakeBool "BUILD_TESTING" true)
     "--preset ninja-gcc"
   ];
 
