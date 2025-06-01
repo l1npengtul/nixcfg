@@ -37,6 +37,6 @@ python3Packages.buildPythonPackage rec {
 
   preBuild = ''
     substituteInPlace setup.py \
-      --replace-fail 'libdir = None' 'libdir = ${lame.lib}'
+      --replace-fail 'libdir = None' 'libdir = "${lame.lib}/lib"'
   '';
 }
