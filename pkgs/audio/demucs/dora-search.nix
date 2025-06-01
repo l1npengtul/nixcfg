@@ -1,35 +1,28 @@
 {
   lib,
-  buildPythonPackage,
-  fetchPypi,
-  setuptools,
-  setuptools-scm,
-  wheel,
-  matplotlib,
-  pandas,
-  numpy,
-  scipy,
-  scikit-learn,
+  python3Packages,
+  fetchFromGitHub,
 }:
-buildPythonPackage rec {
+python3Packages.buildPythonPackage rec {
   pname = "dora-search";
   version = "0.1.12";
-  pyproject = true;
 
-  src = fetchPypi {
-    inherit pname version;
-    hash = "";
+  src = fetchFromGitHub {
+    owner = "facebookresearch";
+    repo = "dora";
+    tag = "v0.1.12";
+    hash = "sha256-v18FgiBdlNSGQmCnq63wCxcO8kJCPsUt0VznUlSPyoM=";
   };
 
   doCheck = false;
 
-  build-system = [
+  build-system = with python3Packages; [
     setuptools
     setuptools-scm
     wheel
   ];
 
-  dependencies = [
+  dependencies = with python3Packages; [
     setuptools
     setuptools-scm
     matplotlib
