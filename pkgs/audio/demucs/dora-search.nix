@@ -1,7 +1,7 @@
 {
   lib,
   buildPythonPackage,
-  fetchFromGitHub,
+  fetchPypi,
   setuptools,
   setuptools-scm,
   wheel,
@@ -15,11 +15,9 @@ buildPythonPackage rec {
   pname = "dora-search";
   version = "0.1.12";
 
-  src = fetchFromGitHub {
-    owner = "facebookresearch";
-    repo = "dora";
-    tag = "v0.1.12";
-    hash = "sha256-v18FgiBdlNSGQmCnq63wCxcO8kJCPsUt0VznUlSPyoM=";
+  src = fetchPypi {
+    inherit pname version;
+    hash = "";
   };
 
   doCheck = false;
