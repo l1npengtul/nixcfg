@@ -16,7 +16,7 @@
   wavetable = pkgs.callPackage ./socalabs/wavetable.nix {};
   test = pkgs.callPackage ./test.nix {};
   #dora-search = pkgs.python3Packages.callPackage ./demucs/dora-search.nix {};
-  #lameenc = pkgs.python3Packages.callPackage ./demucs/lameenc.nix {};
+  lameenc = pkgs.python3Packages.callPackage ./demucs/lameenc.nix {};
   #openunmix = pkgs.python3Packages.callPackage ./demucs/openunmix.nix {};
   #demucs = pkgs.python3Packages.callPackage ./demucs/demucs.nix {
   #  openunmix = openunmix;
@@ -70,6 +70,7 @@ in {
     slplugins
     decent-sampler
 
+    lameenc
     #demucs
 
     inputs.audio.packages.${pkgs.system}.paulxstretch
