@@ -37,6 +37,7 @@ python3Packages.buildPythonPackage rec {
 
   preBuild = ''
     rm setup.py
+    echo "${lame}"
     cat > setup.py << EOF
     import sys
     import setuptools
