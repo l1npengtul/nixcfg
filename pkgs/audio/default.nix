@@ -15,14 +15,14 @@
   voc = pkgs.callPackage ./socalabs/voc.nix {};
   wavetable = pkgs.callPackage ./socalabs/wavetable.nix {};
   test = pkgs.callPackage ./test.nix {};
-  dora-search = pkgs.python3Packages.callPackage ./demucs/dora-search.nix {};
-  lameenc = pkgs.python3Packages.callPackage ./demucs/lameenc.nix {};
-  openunmix = pkgs.python3Packages.callPackage ./demucs/openunmix.nix {};
-  demucs = pkgs.python3Packages.callPackage ./demucs/demucs.nix {
-    openunmix = openunmix;
-    lameenc = lameenc;
-    dora-search = dora-search;
-  };
+  #dora-search = pkgs.python3Packages.callPackage ./demucs/dora-search.nix {};
+  #lameenc = pkgs.python3Packages.callPackage ./demucs/lameenc.nix {};
+  #openunmix = pkgs.python3Packages.callPackage ./demucs/openunmix.nix {};
+  #demucs = pkgs.python3Packages.callPackage ./demucs/demucs.nix {
+  #  openunmix = openunmix;
+  # lameenc = lameenc;
+  # dora-search = dora-search;
+  #};
   #   synthv-studio-pro = pkgs.callPackage ./synthv-studio-pro {};
   recstar = pkgs.callPackage ./recstar {};
 in {
@@ -72,9 +72,9 @@ in {
 
     demucs
 
-    #inputs.audio.packages.${pkgs.system}.paulxstretch
-    #inputs.audio.packages.${pkgs.system}.grainbow
-    #inputs.audio.packages.${pkgs.system}.neuralnote
-    #inputs.audio.packages.${pkgs.system}.atlas2
+    inputs.audio.packages.${pkgs.system}.paulxstretch
+    inputs.audio.packages.${pkgs.system}.grainbow
+    inputs.audio.packages.${pkgs.system}.neuralnote
+    inputs.audio.packages.${pkgs.system}.atlas2
   ];
 }
