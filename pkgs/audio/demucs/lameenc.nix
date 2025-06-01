@@ -88,5 +88,6 @@ python3Packages.buildPythonPackage rec {
   in ''
     rm setup.py
     echo "${newtext}" >> setup.py
+    cat setup.py
   '';
 }
