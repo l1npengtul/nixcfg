@@ -41,7 +41,7 @@ stdenv.mkDerivation rec {
     stdenv.cc.cc.lib
   ];
 
-  nativeBuildInputs = [makeWrapper];
+  nativeBuildInputs = [makeWrapper autoPatchelfHook];
 
   installPhase = ''
     runHook preInstall
@@ -52,7 +52,7 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  preFixup = let
+  postFixup = let
     libPath = lib.makeLibraryPath [
       libatomic_ops
       alsa-lib
@@ -71,10 +71,8 @@ stdenv.mkDerivation rec {
       xorg.libXtst
     ];
   in ''
-    patchelf \
-        --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-        --set-rpath "${libPath}" \
-        $out/bin/NeuralNote
+    wrapProgram $out/bin/NeuralNote \
+      --set LD_LIBRARY_PATH ${libPath}
   '';
 
   meta = with lib; {
