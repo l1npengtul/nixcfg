@@ -14,9 +14,6 @@
     print(sys.argv)
     libdir = "${lame.lib}/lib"
     incdir = "${lame.src}/include"
-    else:
-        sys.argv.remove(incdir)
-        incdir = incdir[len('--incdir='):]
 
     # Create the extension
     lameenc = distutils.core.Extension(
