@@ -53,8 +53,8 @@ python3Packages.buildPythonPackage rec {
         'lameenc',
         include_dirs=[incdir] if incdir else [],
         libraries=['libmp3lame'] if sys.platform == 'win32' else [],
-        extra_objects=
-            [] if sys.platform == 'win32' or not libdir else [os.path.join(libdir, 'libmp3lame.a')],
+        #extra_objects=
+        #    [] if sys.platform == 'win32' or not libdir else [os.path.join(libdir, 'libmp3lame.a')],
         library_dirs=[libdir] if sys.platform == 'win32' and libdir else [],
         sources=['lameenc.c']
     )
