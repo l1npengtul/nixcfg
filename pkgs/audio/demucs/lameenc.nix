@@ -15,7 +15,7 @@ buildPythonPackage rec {
 
   src = fetchPypi {
     inherit pname version format;
-    sha256 = "";
+    sha256 = "68dbacf39fc049dae22b08614d363d3293822d7255908b1bfe50d51c1a0fd6a1";
     dist = "py3";
     python = "py3";
     abi = "cp313t";
