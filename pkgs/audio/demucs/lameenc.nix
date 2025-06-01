@@ -42,7 +42,6 @@ python3Packages.buildPythonPackage rec {
       import distutils.core
       import os.path
 
-
       print(sys.argv)
       libdir = "${lame.lib}/lib"
       incdir = "${lame.src}/include"
@@ -88,6 +87,6 @@ python3Packages.buildPythonPackage rec {
     '';
   in ''
     rm setup.py
-    echo ${newtext} >> setup.py
+    echo "${newtext}" >> setup.py
   '';
 }
