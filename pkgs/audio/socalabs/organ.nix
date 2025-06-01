@@ -118,6 +118,9 @@ stdenv.mkDerivation {
     substituteInPlace modules/juce/modules/juce_audio_devices/native/juce_Midi_linux.cpp \
     --replace-fail "port = client.createPort (portName, forInput, false);" "port = client.createPort (portName, forInput, true);"
 
+    substituteInPlace plugin/setBFree/src/tonegen.c \
+    --replace-fail "#include <string.h>" "#include <strings.h>"
+
     # update the vendored version of setBFree in this package
     #rm -r plugin/setBfree
     #ln -s ${setbfree.src} plugin/setBfree
