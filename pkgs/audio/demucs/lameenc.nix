@@ -61,13 +61,7 @@ python3Packages.buildPythonPackage rec {
     configuration = dict(
         name='lameenc',
         description='LAME encoding bindings',
-        long_description='''
-    Python 3 bindings for the LAME encoding library.
-    This library makes it simple to encode PCM data into MP3 without having
-    to compile any binaries.
-
-    Provides binaries in PyPi for Python 3.8+ for Windows, macOS and Linux.
-    ''',
+        long_description=' ',
         author='Chris Staite',
         author_email='chris@yourdreamnet.co.uk',
         url='https://github.com/chrisstaite/lameenc',
