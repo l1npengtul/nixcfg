@@ -14,6 +14,7 @@
 buildPythonPackage rec {
   pname = "dora-search";
   version = "0.1.12";
+  pyproject = true;
 
   src = fetchPypi {
     inherit pname version;
