@@ -70,9 +70,6 @@ in {
     slplugins
     decent-sampler
 
-    lameenc
-    dora-search
-    openunmix
     demucs
 
     inputs.audio.packages.${pkgs.system}.paulxstretch
