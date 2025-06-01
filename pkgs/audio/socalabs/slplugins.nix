@@ -69,7 +69,7 @@
   fontConf = makeFontsCache {
     fontDirectories = [];
   };
-  replacementTextFile = builtins.toFile ''
+  replacementTextFile = builtins.toFile "CMakeLists.txt" ''
     cmake_minimum_required (VERSION 3.24.0 FATAL_ERROR)
 
     #
@@ -432,7 +432,7 @@ in
       --replace-fail "add_subdirectory(ToneGenerator)" ""
 
       rm plugins/SFX8/CMakeLists.txt
-      cp ${replacementTextFile} /plugins/SFX8/CMakeLists.txt
+      cp ${replacementTextFile} plugins/SFX8/CMakeLists.txt
 
 
       # we need to patch JUCE itself to enable jack MIDI support
