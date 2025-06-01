@@ -1,32 +1,42 @@
 {
   lib,
   python3Packages,
-  fetchurl,
+  fetchFromGitHub,
   lame,
 }:
 python3Packages.buildPythonPackage rec {
   pname = "lameenc";
   version = "1.8.1";
-  format = "wheel";
 
-  src = fetchurl {
-    url = "https://files.pythonhosted.org/packages/c6/52/f5f2d979372f3718e2792e8c3390f9eb89bc836eb484c85110c3333c9813/lameenc-1.8.1-cp313-cp313t-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl";
-    hash = "sha256-aNus85/ASdriKwhhTTY9MpOCLXJVkIsb/lDVHBoP1qE=";
+  src = fetchFromGitHub {
+    owner = "chrisstaite";
+    repo = "lameenc";
+    tag = "v1.8.1";
+    hash = "";
   };
 
   doCheck = false;
-  build-system = [
-    python3Packages.setuptools
-    python3Packages.wheel
-    python3Packages.setuptools-scm
+  pyproject = true;
+  build-system = with python3Packages; [
+    setuptools
+    wheel
+    setuptools-scm
   ];
 
-  dependencies = [
-    python3Packages.setuptools
-    python3Packages.wheel
+  nativeBuildInputs = [
+    lame
+  ];
+
+  dependencies = with python3Packages; [
+    setuptools
+    wheel
   ];
 
   nativeCheckInputs = [
-    lame
   ];
+
+  preBuild = ''
+    substituteInPlace setup.py \
+      --replace-fail 'libdir = None' 'libdir = ${lame.lib}'
+  '';
 }
