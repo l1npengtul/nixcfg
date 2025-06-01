@@ -113,7 +113,7 @@ in
 
     patchPhase = ''
       substituteInPlace CMakeLists.txt \
-      --replace-fail 'FORMATS Standalone VST VST3 AU LV2' 'FORMATS Standalone ${lib.optionalString enableVST2 "VST"} VST3 LV2'
+      --replace-fail 'FORMATS Standalone VST VST3 AU LV2' 'FORMATS Standalone ${lib.optionalString enableVST2 "VST"} VST3'
 
       # we need to patch JUCE itself to enable jack MIDI support
       # please https://github.com/juce-framework/JUCE/issues/952
