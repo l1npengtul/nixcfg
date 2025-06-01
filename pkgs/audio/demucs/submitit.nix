@@ -21,6 +21,7 @@ python3Packages.buildPythonPackage rec {
     setuptools
     setuptools-scm
     wheel
+    flit-core
   ];
 
   dependencies = with python3Packages; [
