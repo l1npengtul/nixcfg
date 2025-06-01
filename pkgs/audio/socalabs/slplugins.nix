@@ -148,7 +148,7 @@ in
 
       install -Dm755 SFX8_artefacts/Release/Standalone/SFX8 $out/bin
 
-      install -Dm444 $src/plugin/Resources/icon.png $out/share/pixmaps/SFX8.png
+      install -Dm444 $src/plugin/Resources/logo.png $out/share/pixmaps/SFX8.png
 
       runHook postInstall
     '';
