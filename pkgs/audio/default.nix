@@ -5,7 +5,6 @@
   pkgs-master,
   ...
 }: let
-  #     buildGradlePackage = inputs.gradle2nix.builders.x86_64-linux.buildGradlePackage;
   organ = pkgs.callPackage ./socalabs/organ.nix {};
   papu = pkgs.callPackage ./socalabs/papu.nix {};
   piano = pkgs.callPackage ./socalabs/piano.nix {};
@@ -14,7 +13,6 @@
   sn76489 = pkgs.callPackage ./socalabs/sn76489.nix {};
   voc = pkgs.callPackage ./socalabs/voc.nix {};
   wavetable = pkgs.callPackage ./socalabs/wavetable.nix {};
-  test = pkgs.callPackage ./test.nix {};
   treetable = pkgs.callPackage ./demucs/treetable.nix {};
   submitit = pkgs.callPackage ./demucs/submitit.nix {};
   dora-search = pkgs.callPackage ./demucs/dora-search.nix {
@@ -61,6 +59,7 @@ in {
     recstar
     plugdata
     dl-librescore
+    carla
 
     airwindows
     airwin2rack
