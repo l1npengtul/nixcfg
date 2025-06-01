@@ -4,13 +4,13 @@
   fetchFromGitHub,
 }:
 python3Packages.buildPythonPackage rec {
-  pname = "dora-search";
+  pname = "submitit";
   version = "1.2.0";
 
   src = fetchFromGitHub {
     owner = "facebookresearch";
     repo = "submitit";
-    tag = "1.2.0";
+    tag = "1.5.3";
     hash = "";
   };
 
