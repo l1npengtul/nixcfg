@@ -91,7 +91,7 @@ in
     ];
 
     preBuild = ''
-      substituteInPlace setup.py \
-        --replace-fail 'libdir = None' 'libdir = "${lame.lib}/lib"'
+      rm setup.py
+      cp ${newfile} setup.py
     '';
   }
