@@ -2,21 +2,19 @@
   lib,
   python3Packages,
   fetchFromGitHub,
-  treetable,
 }:
 python3Packages.buildPythonPackage rec {
   pname = "dora-search";
-  version = "0.1.12";
+  version = "1.2.0";
 
   src = fetchFromGitHub {
     owner = "facebookresearch";
-    repo = "dora";
-    tag = "v0.1.12";
-    hash = "sha256-v18FgiBdlNSGQmCnq63wCxcO8kJCPsUt0VznUlSPyoM=";
+    repo = "submitit";
+    tag = "1.2.0";
+    hash = "";
   };
 
   doCheck = false;
-
   pyproject = true;
 
   build-system = with python3Packages; [
@@ -28,13 +26,8 @@ python3Packages.buildPythonPackage rec {
   dependencies = with python3Packages; [
     setuptools
     setuptools-scm
-    matplotlib
-    pandas
-    numpy
-    scipy
-    scikit-learn
-    treetable
-    omegaconf
+    cloudpickle
+    typing_extensions
   ];
 
   nativeCheckInputs = [
