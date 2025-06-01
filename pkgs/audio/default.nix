@@ -70,7 +70,7 @@ in {
     #slplugins
     decent-sampler
 
-    demucs
+    #demucs
 
     inputs.audio.packages.${pkgs.system}.paulxstretch
     inputs.audio.packages.${pkgs.system}.grainbow
