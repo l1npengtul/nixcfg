@@ -162,6 +162,39 @@ in
         plugins
       }
 
+      substituteInPlace plugins/CMakeLists.txt \
+      --replace-fail "add_subdirectory(ABTester)" ""
+      substituteInPlace plugins/CMakeLists.txt \
+      --replace-fail "add_subdirectory(AddInvert)" ""
+      substituteInPlace plugins/CMakeLists.txt \
+      --replace-fail "add_subdirectory(ChannelMute)" ""
+      substituteInPlace plugins/CMakeLists.txt \
+      --replace-fail "add_subdirectory(CompensatedDelay)" ""
+      substituteInPlace plugins/CMakeLists.txt \
+      --replace-fail "add_subdirectory(Compressor)" ""
+      substituteInPlace plugins/CMakeLists.txt \
+      --replace-fail "add_subdirectory(Delay)" ""
+      substituteInPlace plugins/CMakeLists.txt \
+      --replace-fail "add_subdirectory(Expander)" ""
+      substituteInPlace plugins/CMakeLists.txt \
+      --replace-fail "add_subdirectory(Gate)" ""
+      substituteInPlace plugins/CMakeLists.txt \
+      --replace-fail "add_subdirectory(HugeGain)" ""
+      substituteInPlace plugins/CMakeLists.txt \
+      --replace-fail "add_subdirectory(Limiter)" ""
+      substituteInPlace plugins/CMakeLists.txt \
+      --replace-fail "add_subdirectory(Maths)" ""
+      substituteInPlace plugins/CMakeLists.txt \
+      --replace-fail "add_subdirectory(Oscilloscope)" ""
+      substituteInPlace plugins/CMakeLists.txt \
+      --replace-fail "add_subdirectory(PitchTrack)" ""
+      substituteInPlace plugins/CMakeLists.txt \
+      --replace-fail "add_subdirectory(SampleDelay)" ""
+       substituteInPlace plugins/CMakeLists.txt \
+      --replace-fail "add_subdirectory(SpectrumAnalyzer)" ""
+       substituteInPlace plugins/CMakeLists.txt \
+      --replace-fail "add_subdirectory(ToneGenerator)" ""
+
       # we need to patch JUCE itself to enable jack MIDI support
       # please https://github.com/juce-framework/JUCE/issues/952
       # TODO: remove when juce updates :D
