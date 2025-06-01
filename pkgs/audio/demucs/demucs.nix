@@ -14,7 +14,7 @@ python3Packages.buildPythonApplication rec {
     owner = "adefossez";
     repo = "demucs";
     rev = "b9ab48cad45976ba42b2ff17b229c071f0df9390";
-    hash = "";
+    hash = "sha256-FkN7wIiO6xSYoAQBQHdxY92fV+1q3dvUPQu//oqhRhc=";
   };
 
   # do not run tests
