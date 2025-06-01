@@ -5,13 +5,13 @@
 }:
 python3Packages.buildPythonPackage rec {
   pname = "submitit";
-  version = "1.2.0";
+  version = "1.5.3";
 
   src = fetchFromGitHub {
     owner = "facebookincubator";
     repo = "submitit";
     tag = "1.5.3";
-    hash = "";
+    hash = "sha256-uBlKbg1oKeUPcWzM9WxisGtpBu69eZyTetaANYpTG5E=";
   };
 
   doCheck = false;
