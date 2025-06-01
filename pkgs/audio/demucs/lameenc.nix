@@ -1,14 +1,10 @@
 {
   lib,
-  pkgs,
-  buildPythonPackage,
+  python3Packages,
   fetchUrl,
-  # build-system
-  setuptools,
-  setuptools-scm,
-  wheel,
+  lame,
 }:
-buildPythonPackage rec {
+python3Packages.buildPythonPackage rec {
   pname = "lameenc";
   version = "1.8.1";
   format = "wheel";
@@ -20,17 +16,17 @@ buildPythonPackage rec {
 
   doCheck = false;
   build-system = [
-    setuptools
-    wheel
-    setuptools-scm
+    python3Packages.setuptools
+    python3Packages.wheel
+    python3Packages.setuptools-scm
   ];
 
   dependencies = [
-    setuptools
-    wheel
+    python3Packages.setuptools
+    python3Packages.wheel
   ];
 
   nativeCheckInputs = [
-    pkgs.lame
+    lame
   ];
 }
