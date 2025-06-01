@@ -18,11 +18,11 @@
   dora-search = pkgs.callPackage ./demucs/dora-search.nix {};
   lameenc = pkgs.callPackage ./demucs/lameenc.nix {};
   openunmix = pkgs.python3Packages.callPackage ./demucs/openunmix.nix {};
-  #demucs = pkgs.python3Packages.callPackage ./demucs/demucs.nix {
-  #  openunmix = openunmix;
-  # lameenc = lameenc;
-  # dora-search = dora-search;
-  #};
+  demucs = pkgs.callPackage ./demucs/demucs.nix {
+    openunmix = openunmix;
+    lameenc = lameenc;
+    dora-search = dora-search;
+  };
   #   synthv-studio-pro = pkgs.callPackage ./synthv-studio-pro {};
   recstar = pkgs.callPackage ./recstar {};
 in {
@@ -73,7 +73,7 @@ in {
     lameenc
     dora-search
     openunmix
-    #demucs
+    demucs
 
     inputs.audio.packages.${pkgs.system}.paulxstretch
     #inputs.audio.packages.${pkgs.system}.grainbow

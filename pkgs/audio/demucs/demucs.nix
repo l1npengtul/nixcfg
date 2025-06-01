@@ -1,37 +1,31 @@
 {
   lib,
-  buildPythonApplication,
-  fetchPypi,
-  setuptools,
-  wheel,
+  python3Packages,
+  fetchFromGitHub,
   dora-search,
-  einops,
-  julius,
   lameenc,
   openunmix,
-  pyyaml,
-  torch,
-  torchaudio,
-  tqdm,
 }:
-buildPythonApplication rec {
+python3Packages.buildPythonApplication rec {
   pname = "demucs";
   version = "4.0.1";
 
-  src = fetchPypi {
-    inherit pname version;
-    hash = "sha256-5FpaeIuueXZ8N7v25pquA4Yt3MoFVQ+3m5JjRqF31xM=";
+  src = fetchFromGitHub {
+    owner = "facebookresearch";
+    repo = "dora";
+    tag = "v0.1.12";
+    hash = "sha256-v18FgiBdlNSGQmCnq63wCxcO8kJCPsUt0VznUlSPyoM=";
   };
 
   # do not run tests
   doCheck = false;
 
   # specific to buildPythonPackage, see its reference
-  build-system = [
+  build-system = with python3Packages; [
     setuptools
   ];
 
-  dependencies = [
+  dependencies = with python3Packages; [
     dora-search
     einops
     julius
