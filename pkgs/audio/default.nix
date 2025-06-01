@@ -67,7 +67,7 @@ in {
     #organ
     wavetable
     piano
-    #slplugins
+    slplugins
     decent-sampler
 
     #demucs
