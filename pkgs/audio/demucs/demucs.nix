@@ -11,10 +11,10 @@ python3Packages.buildPythonApplication rec {
   version = "4.0.1";
 
   src = fetchFromGitHub {
-    owner = "facebookresearch";
-    repo = "dora";
-    tag = "v0.1.12";
-    hash = "sha256-v18FgiBdlNSGQmCnq63wCxcO8kJCPsUt0VznUlSPyoM=";
+    owner = "adefossez";
+    repo = "demucs";
+    rev = "b9ab48cad45976ba42b2ff17b229c071f0df9390";
+    hash = "";
   };
 
   # do not run tests
