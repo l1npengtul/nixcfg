@@ -27,7 +27,7 @@ python3Packages.buildPythonPackage rec {
     setuptools
     setuptools-scm
     cloudpickle
-    typing_extensions
+    typing-extensions
   ];
 
   nativeCheckInputs = [
