@@ -11,7 +11,7 @@ python3Packages.buildPythonPackage rec {
     owner = "adefossez";
     repo = "treetable";
     rev = "8ea894b7488d751cd597aff03c1fe60c5eb1c7ff";
-    hash = "";
+    hash = "sha256-HT5jimbYfzpfV3idoOF8Twr9AuJRgDcNV7vx0ZNg6PE=";
   };
 
   doCheck = false;
