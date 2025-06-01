@@ -16,7 +16,7 @@
   wavetable = pkgs.callPackage ./socalabs/wavetable.nix {};
   test = pkgs.callPackage ./test.nix {};
   treetable = pkgs.callPackage ./demucs/treetable.nix {};
-  submitit = pkgs.callPackage ./demucs/treetable.nix {};
+  submitit = pkgs.callPackage ./demucs/submitit.nix {};
   dora-search = pkgs.callPackage ./demucs/dora-search.nix {
     treetable = treetable;
     submitit = submitit;
