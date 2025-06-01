@@ -137,14 +137,13 @@ in
     installPhase = ''
       runHook preInstall
 
-      mkdir -p $out/lib/vst3 $out/lib/lv2 $out/bin
+      mkdir -p $out/lib/vst3 $out/bin
 
       ${lib.optionalString enableVST2 ''
         mkdir -p $out/lib/vst
         cp -r SFX8_artefacts/Release/VST/libSFX8.so $out/lib/vst
       ''}
 
-      cp -r SFX8_artefacts/Release/LV2/SFX8.lv2 $out/lib/lv2
       cp -r SFX8_artefacts/Release/VST3/SFX8.vst3 $out/lib/vst3
 
       install -Dm755 SFX8_artefacts/Release/Standalone/SFX8 $out/bin
