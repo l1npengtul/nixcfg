@@ -15,7 +15,8 @@
   voc = pkgs.callPackage ./socalabs/voc.nix {};
   wavetable = pkgs.callPackage ./socalabs/wavetable.nix {};
   test = pkgs.callPackage ./test.nix {};
-  dora-search = pkgs.callPackage ./demucs/dora-search.nix {};
+  treetable = pkgs.callPackage ./demucs/treetable.nix {};
+  dora-search = pkgs.callPackage ./demucs/dora-search.nix {treetable = treetable;};
   lameenc = pkgs.callPackage ./demucs/lameenc.nix {};
   openunmix = pkgs.python3Packages.callPackage ./demucs/openunmix.nix {};
   demucs = pkgs.callPackage ./demucs/demucs.nix {
