@@ -3,6 +3,7 @@
   python3Packages,
   fetchFromGitHub,
   treetable,
+  submitit,
 }:
 python3Packages.buildPythonPackage rec {
   pname = "dora-search";
@@ -34,6 +35,8 @@ python3Packages.buildPythonPackage rec {
     scipy
     scikit-learn
     treetable
+    submitit
+    torch
     omegaconf
   ];
 
