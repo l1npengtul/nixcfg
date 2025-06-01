@@ -141,7 +141,7 @@
     set (JUCE_BUILD_EXTRAS OFF)
     set (JUCE_BUILD_EXAMPLES OFF)
 
-    add_subdirectory (modules/juce)
+    add_subdirectory (../../modules/juce)
 
     set_property (DIRECTORY "''${CMAKE_CURRENT_LIST_DIR}/modules/juce" APPEND PROPERTY LABELS JUCE)
 
