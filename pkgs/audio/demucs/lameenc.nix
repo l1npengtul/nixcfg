@@ -44,8 +44,8 @@ python3Packages.buildPythonPackage rec {
       import os.path
 
       print(sys.argv)
-      libdir = "${lame.lib}/lib"
-      incdir = "${lame.src}/include"
+      libdir = '${lame.lib}/lib'
+      incdir = '${lame.src}/include'
 
       # Create the extension
       lameenc = distutils.core.Extension(
