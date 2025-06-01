@@ -8,7 +8,7 @@ python3Packages.buildPythonPackage rec {
   version = "1.2.0";
 
   src = fetchFromGitHub {
-    owner = "facebookresearch";
+    owner = "facebookincubator";
     repo = "submitit";
     tag = "1.5.3";
     hash = "";
