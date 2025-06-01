@@ -39,7 +39,7 @@ stdenv.mkDerivation {
       owner = "l1npengtul";
       repo = "slPlugins";
       rev = "f2cdb98ce01592c767d240e2f49e6c577e4b5ba7";
-      hash = "";
+      hash = "sha256-8S9GtDARqli9aAkYzFVn2meXxlhc/Xg9UvK5GAIAqNc=";
       fetchSubmodules = true;
     })
     .overrideAttrs
