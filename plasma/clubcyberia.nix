@@ -332,7 +332,6 @@
       "kwinrc"."Tiling/4cfec3a8-f8e7-5de3-b1b8-412c187bd7bf"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":x5b{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}x5d}";
       "kwinrc"."Tiling/6b131951-9adf-5b78-9d2d-25ac7797701c"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":x5b{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}x5d}";
       "kwinrc"."Wayland"."InputMethod[$e]" = "/run/current-system/sw/share/applications/fcitx5-wayland-launcher.desktop";
-      "kwinrc"."Wayland"."InputMethod\x5b$e\x5d" = "/run/current-system/sw/share/applications/fcitx5-wayland-launcher.desktop";
       "kwinrc"."Wayland"."InputMethodx5b$ex5d" = "/run/current-system/sw/share/applications/fcitx5-wayland-launcher.desktop";
       "kwinrc"."Wayland"."VirtualKeyboardEnabled" = true;
       "kwinrc"."Windows"."FocusPolicy" = "FocusFollowsMouse";
