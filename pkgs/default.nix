@@ -22,5 +22,6 @@
     ./printer.nix
     ./r.nix
     ./adb.nix
+    ./email.nix
   ];
 }

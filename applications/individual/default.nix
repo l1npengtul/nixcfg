@@ -19,7 +19,7 @@
     ./krita.nix
     ./bottles.nix
     ./minecraft.nix
-    ./protonmail.nix
+    #./protonmail.nix
     ./vscode.nix
     ./ytdlp.nix
     ./okteta.nix
