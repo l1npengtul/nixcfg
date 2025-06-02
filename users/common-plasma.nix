@@ -21,7 +21,7 @@
     };
   };
 
-  home.packages = with pkgs; [fishPlugins.grc grc];
+  home.packages = with pkgs; [fzf grc];
 
   programs.fish = {
     enable = true;
