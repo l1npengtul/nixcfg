@@ -15,7 +15,7 @@
     ./rustrover.nix
     ./vlc.nix
     ./gimp.nix
-    ./dorion.nix
+    ./discord.nix
     ./krita.nix
     ./bottles.nix
     ./minecraft.nix
@@ -29,5 +29,6 @@
     ./ghidra.nix
     ./emulators.nix
     ./ftp.nix
+    ./logseq.nix
   ];
 }
