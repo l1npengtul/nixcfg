@@ -1,8 +1,4 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    auto-cpufreq
-  ];
-
+{...}: {
   powerManagement = {
     powertop.enable = true;
   };
@@ -10,8 +6,8 @@
   services.power-profiles-daemon.enable = false;
   services.tlp.enable = false;
   services.thermald.enable = true;
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
+  programs.auto-cpufreq.enable = true;
+  programs.auto-cpufreq.settings = {
     thresholds = {
       enable = true;
       start = 50;
