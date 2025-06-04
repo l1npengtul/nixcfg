@@ -30,5 +30,6 @@
     ./emulators.nix
     ./ftp.nix
     ./logseq.nix
+    ./randomkde.nix
   ];
 }
