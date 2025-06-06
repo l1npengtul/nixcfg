@@ -15,7 +15,7 @@
     INTEL_GPU_BOOST_FREQ_ON_AC = 0;
     INTEL_GPU_BOOST_FREQ_ON_BAT = 0;
 
-    PCIE_ASPM_ON_AC = "performance";
+    PCIE_ASPM_ON_AC = "powersave";
     PCIE_ASPM_ON_BAT = "powersupersave";
 
     START_CHARGE_THRESH_BAT0 = 65;
@@ -25,11 +25,11 @@
   programs.auto-cpufreq.enable = true;
   programs.auto-cpufreq.settings = {
     battery = {
-      governor = "powersave";
+      governor = "power";
       turbo = "never";
     };
     charger = {
-      governor = "performance";
+      governor = "balance_power";
       turbo = "auto";
     };
   };
