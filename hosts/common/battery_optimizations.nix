@@ -25,11 +25,13 @@
   programs.auto-cpufreq.enable = true;
   programs.auto-cpufreq.settings = {
     battery = {
-      governor = "power";
+      governor = "powersave";
+      energy_performance_preference = "power";
       turbo = "never";
     };
     charger = {
-      governor = "balance_power";
+      governor = "powersave";
+      energy_performance_preference = "balance_power";
       turbo = "auto";
     };
   };
