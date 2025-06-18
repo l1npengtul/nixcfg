@@ -11,7 +11,6 @@
 
   xdg.configFile.REAPER = {
     enable = true;
-    force = true;
     source = pkgs.symlinkJoin {
       name = "reaper-userplugins";
       paths = with pkgs; [
