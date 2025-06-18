@@ -21,7 +21,7 @@
 
   home.file.sws-script2 = {
     source = "${pkgs.reaper-sws-extension}/Scripts/sws_python64.py";
-    target = "${homedir}/.config/REAPER/Scripts/sws_python64.py";
+    target = ".config/REAPER/Scripts/sws_python64.py";
   };
 
   home.file.reapack = {
