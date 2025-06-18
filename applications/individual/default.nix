@@ -30,5 +30,6 @@
     ./ftp.nix
     ./logseq.nix
     ./randomkde.nix
+    ./reaper.nix
   ];
 }
