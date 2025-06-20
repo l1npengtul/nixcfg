@@ -20,7 +20,7 @@
     ./bottles.nix
     ./minecraft.nix
     #./protonmail.nix
-    ./vscode.nix
+    #./vscode.nix
     ./ytdlp.nix
     ./okteta.nix
     ./irc.nix
