@@ -23,7 +23,6 @@
     ./vscode.nix
     ./ytdlp.nix
     ./okteta.nix
-    ./keyboard.nix
     ./irc.nix
     ./ghidra.nix
     ./emulators.nix

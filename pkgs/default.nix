@@ -23,5 +23,6 @@
     ./r.nix
     ./adb.nix
     ./email.nix
+    ./keyboard.nix
   ];
 }
