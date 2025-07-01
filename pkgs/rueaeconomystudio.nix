@@ -26,6 +26,8 @@ in
 
     prePatch = ''
       echo '${upgrades}' > assets/upgrades.json
+
+      rm -r tml
     '';
 
     patches = [
@@ -33,15 +35,15 @@ in
       ./remove_debug_menu.patch
     ];
 
-    subPackages = [
-      "app"
-      "assets"
-      "eruntime"
-      "event_editor"
-      "fonts"
-      "parser"
-      "typedef"
-    ];
+    #     subPackages = [
+    #       "app"
+    #       "assets"
+    #       "eruntime"
+    #       "event_editor"
+    #       "fonts"
+    #       "parser"
+    #       "typedef"
+    #     ];
 
     vendorHash = "sha256-8NvLOwv2z/+1QR7UIFmRIItG/t1IgBLHTfNAlYG4vdI=";
 
