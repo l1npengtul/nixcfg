@@ -1,4 +1,4 @@
-{pkgs}: let
+{pkgs, ...}: let
   ruea = pkgs.callPackage ./rueaeconomystudio.nix {};
 in {
   imports = [
