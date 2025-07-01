@@ -34,6 +34,7 @@ in
       xorg.libXcursor
       xorg.libXext
       xorg.libXinerama
+      xorg.xinput
       glfw
     ];
 
