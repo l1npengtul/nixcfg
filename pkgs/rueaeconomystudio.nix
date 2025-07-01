@@ -33,6 +33,7 @@ in
       xorg.libXrandr
       xorg.libXcursor
       xorg.libXext
+      xorg.libXinerama
       glfw
     ];
 
