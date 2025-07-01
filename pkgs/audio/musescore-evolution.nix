@@ -30,10 +30,6 @@ in
       hash = "sha256-t99y9wy2dlaRPrW3GBD0LrHaNqUhZgORYtc8981A1yE=";
     };
 
-    patches = [
-      ./remove_qtwebengine_install_hack.patch
-    ];
-
     cmakeFlags = [
       "-DMUSESCORE_BUILD_CONFIG=release"
       "-DUSE_SYSTEM_FREETYPE=ON"
