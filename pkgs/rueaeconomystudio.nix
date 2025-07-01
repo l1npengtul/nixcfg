@@ -25,6 +25,8 @@ in
 
       substituteInPlace tml/tml.go \
       --replace-fail "type ResultInterface insterface {" "type ResultInterface interface {"
+
+      rm -r tml
     '';
 
     patches = [
