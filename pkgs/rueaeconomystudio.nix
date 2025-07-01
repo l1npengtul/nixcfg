@@ -77,9 +77,12 @@ in
 
     doCheck = false;
 
+    postBuild = ''
+      mkdir -p $out/bin
+      mv $GOPATH/bin/etools $out/bin
+    '';
+
     postInstall = ''
-      ls -al
-      ls -al $out
       wrapProgram $out/bin/etools \
         --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [glfw glfw2]}
     '';
