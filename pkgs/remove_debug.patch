@@ -1,44 +1,44 @@
 --- a/app/app.go
 +++ b/app/app.go
-@@ -423,7 +423,6 @@ type State struct {
-        sessionManager    *SessionManager
-        inputManager      *InputManager
-        keyEventCh        <-chan KeyEvent    // Channel to receive key events
--       debugModule       *DebugModule       // Example module that listens to key events
-        settingsModule    *SettingsModule    // Another example module
-        gameplayModule    *GameplayModule    // Gameplay module
-        fileSystemManager *FileSystemManager // File system operations and dialogues
-@@ -493,9 +492,6 @@ eventsDone:
-                s.sessionManager.Update()
-        case StateSession:
-                // Update debug module only in game mode if active
--               if s.debugModule.IsActive() {
--                       s.debugModule.Update()
--               }
-                // Update settings module only if active
-                if s.settingsModule.IsActive() {
-                        s.settingsModule.Update()
-@@ -555,7 +551,6 @@ func (s *State) handleKeyEvent(event KeyEvent) {
-                        }
-                case ebiten.KeyF12:
-                        // Toggle debug module
--                       s.debugModule.SetActive(!s.debugModule.IsActive())
-                case ebiten.KeyF10:
-                        // Toggle settings module
-                        s.settingsModule.SetActive(!s.settingsModule.IsActive())
-@@ -619,7 +614,6 @@ type Game struct {
+@@ -423,7 +423,6 @@
+ 	sessionManager    *SessionManager
+ 	inputManager      *InputManager
+ 	keyEventCh        <-chan KeyEvent    // Channel to receive key events
+-	debugModule       *DebugModule       // Example module that listens to key events
+ 	settingsModule    *SettingsModule    // Another example module
+ 	gameplayModule    *GameplayModule    // Gameplay module
+ 	fileSystemManager *FileSystemManager // File system operations and dialogues
+@@ -493,9 +492,6 @@
+ 		s.sessionManager.Update()
+ 	case StateSession:
+ 		// Update debug module only in game mode if active
+-		if s.debugModule.IsActive() {
+-			s.debugModule.Update()
+-		}
+ 		// Update settings module only if active
+ 		if s.settingsModule.IsActive() {
+ 			s.settingsModule.Update()
+@@ -555,7 +551,6 @@
+ 			}
+ 		case ebiten.KeyF12:
+ 			// Toggle debug module
+-			s.debugModule.SetActive(!s.debugModule.IsActive())
+ 		case ebiten.KeyF10:
+ 			// Toggle settings module
+ 			s.settingsModule.SetActive(!s.settingsModule.IsActive())
+@@ -619,7 +614,6 @@
  func New() *Game {
-        inputManager := NewInputManager()
-        keyEventCh := inputManager.Subscribe()
--       debugModule := NewDebugModule(inputManager)
-        settingsModule := NewSettingsModule(inputManager)
-        gameplayModule := NewGameplayModule(inputManager)
-        fileSystemManager := NewFileSystemManager(inputManager)
-@@ -632,7 +626,6 @@ func New() *Game {
-                        gameState:         StateMenu,
-                        inputManager:      inputManager,
-                        keyEventCh:        keyEventCh,
--                       debugModule:       debugModule,
-                        settingsModule:    settingsModule,
-                        gameplayModule:    gameplayModule,
-                        fileSystemManager: fileSystemManager,
+ 	inputManager := NewInputManager()
+ 	keyEventCh := inputManager.Subscribe()
+-	debugModule := NewDebugModule(inputManager)
+ 	settingsModule := NewSettingsModule(inputManager)
+ 	gameplayModule := NewGameplayModule(inputManager)
+ 	fileSystemManager := NewFileSystemManager(inputManager)
+@@ -632,7 +626,6 @@
+ 			gameState:         StateMenu,
+ 			inputManager:      inputManager,
+ 			keyEventCh:        keyEventCh,
+-			debugModule:       debugModule,
+ 			settingsModule:    settingsModule,
+ 			gameplayModule:    gameplayModule,
+ 			fileSystemManager: fileSystemManager,
