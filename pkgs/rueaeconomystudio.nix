@@ -26,8 +26,6 @@ in
 
     subPackages = ["."];
 
-    doCheck = false;
-
     vendorHash = "sha256-8NvLOwv2z/+1QR7UIFmRIItG/t1IgBLHTfNAlYG4vdI=";
 
     buildInputs = [
