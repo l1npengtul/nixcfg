@@ -59,27 +59,25 @@ in
       glfw2
     ];
 
-    desktopItems = [
-      (makeDesktopItem {
-        type = "Application";
-        name = "ruea-economy-studio";
-        desktopName = "Ruea Economy Studio";
-        comment = "Wynncraft Economy Simulator";
-        exec = "etools";
-        categories = [
-          "Audio"
-          "AudioVideo"
-        ];
-      })
-    ];
+    #     desktopItems = [
+    #       (makeDesktopItem {
+    #         type = "Application";
+    #         name = "ruea-economy-studio";
+    #         desktopName = "Ruea Economy Studio";
+    #         comment = "Wynncraft Economy Simulator";
+    #         exec = "etools";
+    #         categories = [
+    #           "Audio"
+    #           "AudioVideo"
+    #         ];
+    #       })
+    #     ];
 
-    nativeBuildInputs = [copyDesktopItems makeWrapper];
+    nativeBuildInputs = [makeWrapper];
 
     doCheck = false;
 
     postInstall = ''
-      ls $out
-      ls $out/bin
       wrapProgram $out/bin/etools \
         --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [glfw glfw2]}
     '';
