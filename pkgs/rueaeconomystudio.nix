@@ -3,6 +3,7 @@
   fetchFromGitHub,
   lib,
   xorg,
+  glfw,
 }: let
   version = "0.1.2-beta";
   upgrades = ''
@@ -32,6 +33,7 @@ in
       xorg.libXrandr
       xorg.libXcursor
       xorg.libXext
+      glfw
     ];
 
     meta = with lib; {
