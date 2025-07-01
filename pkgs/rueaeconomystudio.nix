@@ -2,6 +2,7 @@
   buildGoModule,
   fetchFromGitHub,
   lib,
+  xorg,
 }: let
   version = "0.1.2-beta";
   upgrades = ''
@@ -24,6 +25,10 @@ in
     '';
 
     vendorHash = "sha256-8NvLOwv2z/+1QR7UIFmRIItG/t1IgBLHTfNAlYG4vdI=";
+
+    buildInputs = [
+      xorg.libX11
+    ];
 
     meta = with lib; {
       description = "Wynncraft Economy Simulator";
