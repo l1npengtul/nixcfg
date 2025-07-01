@@ -77,8 +77,8 @@ in
 
     doCheck = false;
 
-    postInstall = ''
-      wrapProgram $out/bin/ruea-economy-studio \
+    postFixup = ''
+      wrapProgram $out/bin/etools \
         --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [glfw glfw2]}
     '';
 
