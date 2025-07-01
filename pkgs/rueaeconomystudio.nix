@@ -79,6 +79,8 @@ in
 
     postBuild = ''
       mkdir -p $out/bin
+      ls $GOPATH
+      ls $GOPATH/bin
       mv $GOPATH/bin/etools $out/bin
     '';
 
