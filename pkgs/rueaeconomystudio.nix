@@ -16,7 +16,7 @@ in
       hash = "sha256-1bgBUq3h/er5pszVtJfDrqf9QQ7UmJyvMC6Hf7fjk2I=";
     };
 
-    vendorHash = "";
+    vendorHash = "sha256-8NvLOwv2z/+1QR7UIFmRIItG/t1IgBLHTfNAlYG4vdI=";
 
     meta = with lib; {
       description = "Wynncraft Economy Simulator";
