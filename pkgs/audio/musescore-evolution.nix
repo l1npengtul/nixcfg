@@ -14,15 +14,7 @@
   libvorbis,
   portaudio,
   portmidi,
-  qtbase,
-  qtdeclarative,
-  qtgraphicaleffects,
-  qtquickcontrols2,
-  qtscript,
-  qtsvg,
-  qttools,
-  qtwebengine,
-  qtxmlpatterns,
+  libsForQt5,
   nixosTests,
 }: let
   version = "3.7.0-unstable";
@@ -57,7 +49,7 @@ in
 
     nativeBuildInputs = [cmake pkg-config];
 
-    buildInputs = [
+    buildInputs = with libsForQt5.qt5; [
       alsa-lib
       libjack2
       freetype
