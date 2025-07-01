@@ -20,6 +20,8 @@ in
       hash = "sha256-FeiO+Ug5C4MZc0mL/IJUC7DZYJcnffOItJicz+xU5t4=";
     };
 
+    allowGoReference = true;
+
     prePatch = ''
       echo '${upgrades}' > assets/upgrades.json
     '';
