@@ -40,6 +40,7 @@ in
       xorg.libXinerama
       xorg.xinput
       xorg.libXi
+      xorg.libXxf86vm
       glfw
     ];
 
