@@ -28,6 +28,10 @@ in
 
     buildInputs = [
       xorg.libX11
+      xorg.libXrender
+      xorg.libXrandr
+      xorg.libXcursor
+      xorg.libXext
     ];
 
     meta = with lib; {
