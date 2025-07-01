@@ -13,7 +13,7 @@ in
       owner = "Erwqs";
       repo = "RueaEconomyStudio";
       tag = "v${version}";
-      hash = "";
+      hash = "sha256-1bgBUq3h/er5pszVtJfDrqf9QQ7UmJyvMC6Hf7fjk2I=";
     };
 
     vendorHash = "";
