@@ -26,7 +26,7 @@ in
     src = fetchFromGitHub {
       owner = "Jojo-Schmitz";
       repo = "MuseScore";
-      rev = "v${version}";
+      rev = "1bce742e5d3f7ce3ed6fc036892bb046cbce1a68";
       sha256 = "";
     };
 
