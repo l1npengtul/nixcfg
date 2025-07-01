@@ -5,6 +5,7 @@
   xorg,
   glfw,
   glfw2,
+  libGL,
   copyDesktopItems,
   makeDesktopItem,
   makeWrapper,
@@ -88,7 +89,7 @@ in
 
     postFixup = ''
       wrapProgram $out/bin/etools \
-        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [glfw glfw2]}
+        --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [glfw glfw2 libGL]}
     '';
 
     meta = with lib; {
