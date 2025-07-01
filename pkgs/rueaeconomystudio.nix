@@ -23,9 +23,6 @@ in
     prePatch = ''
       echo '${upgrades}' > assets/upgrades.json
 
-      substituteInPlace tml/tml.go \
-      --replace-fail "type ResultInterface insterface {" "type ResultInterface interface {"
-
       rm -r tml
     '';
 
