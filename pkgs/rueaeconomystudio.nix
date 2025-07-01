@@ -77,6 +77,8 @@ in
 
     doCheck = false;
 
+    allowGoReference = true;
+
     postFixup = ''
       wrapProgram $out/bin/etools \
         --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [glfw glfw2]}
