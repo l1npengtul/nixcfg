@@ -24,7 +24,10 @@ in
       echo '${upgrades}' > assets/upgrades.json
     '';
 
-    subPackages = ["app"];
+    patches = [
+      ./remove_debug.patch
+      ./remove_debug_menu.patch
+    ];
 
     vendorHash = "sha256-8NvLOwv2z/+1QR7UIFmRIItG/t1IgBLHTfNAlYG4vdI=";
 

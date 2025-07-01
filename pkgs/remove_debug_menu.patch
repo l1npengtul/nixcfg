@@ -1,0 +1,13 @@
+--- a/app/menu.go
++++ b/app/menu.go
+@@ -32,10 +32,6 @@ func (g *Game) createMenu() *Menu {
+                // TODO: Implement credits screen
+        })
+ 
+-       menu.AddOption("Toggle Debug Mode", func() {
+-               g.state.debugModule.SetActive(!g.state.debugModule.IsActive())
+-       })
+-
+        menu.AddOption("Exit", func() {
+                fmt.Println("Exit selected - close the window to quit")
+                os.Exit(0)
