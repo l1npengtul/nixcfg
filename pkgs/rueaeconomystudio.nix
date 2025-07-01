@@ -79,7 +79,7 @@ in
 
     installPhase = ''
       runHook preInstall
-      install -Dm555 $"GOPATH"/bin/main $out/bin/etools
+      install -Dm555 "$GOPATH"/bin/etools $out/bin/etools
       runHook postInstall
     '';
 
