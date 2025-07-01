@@ -47,7 +47,7 @@ in
       "--set-default QT_QPA_PLATFORM xcb"
     ];
 
-    nativeBuildInputs = [cmake pkg-config];
+    nativeBuildInputs = [cmake pkg-config libsForQt5.qt5.wrapQtAppsHook];
 
     buildInputs = with libsForQt5.qt5; [
       alsa-lib
