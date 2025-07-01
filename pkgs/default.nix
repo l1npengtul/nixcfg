@@ -1,4 +1,6 @@
-{
+{pkgs}: let
+  ruea = pkgs.callPackage ./rueaeconomystudio.nix {};
+in {
   imports = [
     ./archives.nix
     ./java.nix
@@ -25,4 +27,6 @@
     ./email.nix
     ./keyboard.nix
   ];
+
+  environment.systemPackages = [ruea];
 }
