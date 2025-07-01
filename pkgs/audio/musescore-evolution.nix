@@ -15,6 +15,8 @@
   portaudio,
   portmidi,
   libsForQt5,
+  makeDesktopItem,
+  copyDesktopItems,
   nixosTests,
 }: let
   version = "3.7.0-unstable";
@@ -29,6 +31,20 @@ in
       rev = "1bce742e5d3f7ce3ed6fc036892bb046cbce1a68";
       hash = "sha256-t99y9wy2dlaRPrW3GBD0LrHaNqUhZgORYtc8981A1yE=";
     };
+
+    desktopItems = [
+      (makeDesktopItem {
+        type = "Application";
+        name = "musescore-evolution";
+        desktopName = "Musescore Evolution";
+        comment = "Continuous Development of the 3.x branch of MuseScore";
+        exec = "musescore";
+        categories = [
+          "Audio"
+          "AudioVideo"
+        ];
+      })
+    ];
 
     patches = [
       ./remove_qtwebengine_install_hack.patch
@@ -47,7 +63,7 @@ in
       "--set-default QT_QPA_PLATFORM xcb"
     ];
 
-    nativeBuildInputs = [cmake pkg-config libsForQt5.qt5.wrapQtAppsHook];
+    nativeBuildInputs = [cmake pkg-config libsForQt5.qt5.wrapQtAppsHook copyDesktopItems];
 
     buildInputs = with libsForQt5.qt5; [
       alsa-lib
