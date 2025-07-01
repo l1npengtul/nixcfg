@@ -77,7 +77,11 @@ in
 
     doCheck = false;
 
-    allowGoReference = true;
+    installPhase = ''
+      runHook preInstall
+      install -Dm555 $"GOPATH"/bin/main $out/bin/etools
+      runHook postInstall
+    '';
 
     postFixup = ''
       wrapProgram $out/bin/etools \
