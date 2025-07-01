@@ -17,7 +17,7 @@ in
       owner = "Erwqs";
       repo = "RueaEconomyStudio";
       rev = "ae1cbde396122b862c6917a0d8a7989b7db9bdc3";
-      hash = "";
+      hash = "sha256-FeiO+Ug5C4MZc0mL/IJUC7DZYJcnffOItJicz+xU5t4=";
     };
 
     prePatch = ''
