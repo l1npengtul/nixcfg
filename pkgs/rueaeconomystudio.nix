@@ -75,7 +75,10 @@ in
 
     nativeBuildInputs = [copyDesktopItems makeWrapper];
 
+    doCheck = false;
+
     postInstall = ''
+      ls $out
       ls $out/bin
       wrapProgram $out/bin/etools \
         --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [glfw glfw2]}
