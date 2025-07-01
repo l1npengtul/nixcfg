@@ -27,7 +27,7 @@ in
       owner = "Jojo-Schmitz";
       repo = "MuseScore";
       rev = "1bce742e5d3f7ce3ed6fc036892bb046cbce1a68";
-      sha256 = "";
+      hash = "sha256-t99y9wy2dlaRPrW3GBD0LrHaNqUhZgORYtc8981A1yE=";
     };
 
     patches = [
