@@ -78,6 +78,8 @@ in
     doCheck = false;
 
     postInstall = ''
+      ls -al
+      ls -al $out
       wrapProgram $out/bin/etools \
         --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [glfw glfw2]}
     '';
