@@ -1,88 +1,5 @@
 {pkgs, ...}: {
-  programs = {
-    git = {
-      enable = true;
-      userEmail = "l1npengtul@protonmail.com";
-      userName = "l1npengtul";
-    };
-
-    carapace.enable = true;
-    carapace.enableNushellIntegration = true;
-
-    starship = {
-      enable = true;
-      settings = {
-        add_newline = true;
-        character = {
-          success_symbol = "[➜](bold green)";
-          error_symbol = "[➜](bold red)";
-        };
-      };
-    };
-  };
-
-  home.packages = with pkgs; [fzf grc];
-
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''
-      echo "\
-      ⠂⠀⢂⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣴⡦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⢀⠀⠸⢻⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣞⡿⠚⠉⠀⢸⣄⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⣀⡀⢰⣼⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡴⣾⣿⠿⠛⢁⣀⡀⠀⠀⠸⡤⠞⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⣫⣢⣽⣿⣿⣾⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⢀⣴⢎⣽⡶⠟⠁⠀⢰⣿⣿⡟⡆⠀⠀⠀⠀⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⡿⠿⣟⣿⣿⣿⢿⣿⣿⣿⣿⠀⠀⠀⠀⢀⣴⣟⣟⣿⠏⠁⠀⠀⠀⠀⠙⠛⠋⠀⠀⠀⠀⠀⣿⡗⠤⣀⠀⠀⠀⠀⠀⠀⠀⢀⢆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⡧⣃⣻⣿⣿⣿⣞⣿⣿⣿⣿⠀⠀⢀⣼⣿⢇⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠹⡀⠈⠳⣄⠀⠀⠀⠀⢠⡾⡆⠱⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⣼⢳⣽⣿⣿⣿⣿⣿⣿⣿⣿⡄⣠⡿⡿⢿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⠀⣇⠀⠀⢈⣷⣄⣀⣠⠎⠀⢸⣀⠱⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⣟⠛⣩⣿⣿⣿⣿⣷⣾⣿⡿⢶⣿⡟⢚⣪⠏⢦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣧⢴⠛⠀⠀⠀⠀⠀⠀⠛⢄⠀⠀⢇⢱⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⡟⡨⣺⣿⣹⣿⣹⣿⣿⣡⣽⣿⡿⣗⣾⠏⠀⠈⠳⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡶⠁⠀⠀⠀⠀⠀⡆⠀⡄⠈⢧⠀⡸⠀⠳⣧⠀⠀⠀⠀⠀⠀⠀⠀
-      ⣷⣞⣿⣿⣿⣿⣿⣿⣽⣿⣿⣿⣿⣷⡿⢠⣄⣀⣄⡈⠳⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣖⠆⠀⠀⠀⢀⣤⢿⣇⣱⠀⠘⡞⠃⠀⠀⡇⢧⠀⠀⠀⠀⠀⠀⠀
-      ⣿⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⣿⠱⡯⢛⡟⠀⠈⢹⠛⠳⣄⠀⠀⠀⠀⣀⣠⡤⠤⢺⣽⣟⠒⠒⠒⠓⠛⣫⣼⡞⣿⠣⡀⡇⠀⠀⠈⠀⠘⡄⠀⠀⠀⠀⠀⠀
-      ⣇⣿⣿⣿⣿⣽⣿⣿⣿⣿⣿⠏⣵⠏⠀⠺⡿⠀⠀⠀⠸⠀⠀⠈⠻⣿⡟⠉⠀⠀⠀⠀⣿⣰⣿⣧⠀⠀⠀⢨⣿⣿⣿⣿⠀⠀⡇⠀⠀⠀⡀⠀⡇⠀⠀⠀⠀⠀⠀
-      ⣿⣻⣾⣿⣿⣿⣿⣿⣿⣿⣿⢸⡿⠀⠀⠀⠳⣄⠀⠀⠀⠀⠀⠀⠀⠘⢷⢦⡀⠀⠀⣼⠃⠯⡿⠋⠀⠀⠀⣿⢿⣯⠆⣽⡀⢠⡇⠀⡆⠀⠈⢀⠇⠀⠀⠀⠀⠀⠀
-      ⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣾⠃⠀⠀⠀⠀⠈⢳⡄⠀⠀⠀⠀⠀⠀⠈⠳⡈⠑⢴⣿⠀⠀⠁⠀⠀⠀⠀⠈⠉⠁⢨⡿⠁⢸⠀⢰⣸⡴⠀⣸⠀⠀⠀⠀⠀⠀⠀
-      ⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠀⠈⢳⣿⣆⠀⠀⠀⠀⠀⠀⠀⠙⣄⠀⠉⠳⣄⢠⡟⡄⠀⠀⠀⢀⣠⣾⡇⢠⡟⠀⠈⣧⢳⠃⡟⠀⠀⠀⠀⠀⠀⠀
-      ⣿⣿⣿⣿⣿⣿⣿⢻⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⣸⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠈⠃⠀⠀⠀⠙⠫⣅⣀⣀⣀⣀⣠⡿⢁⡞⡀⠀⠀⢻⢮⢷⡇⠀⠀⠀⠀⠀⠀⠀
-      ⣽⣿⣿⣿⣿⣿⣿⣾⣿⣿⣿⠀⠀⠀⠀⠀⠀⢰⣿⣿⣿⠟⣹⠳⣴⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣍⠛⡿⠿⣿⣃⣾⠁⡇⠀⠀⠈⠈⢿⣧⡀⠀⠀⠀⠀⠀⠀
-      ⣿⣿⣿⣿⣿⣾⣿⣱⢿⣿⡇⠀⠀⠀⠀⠀⠀⠘⠛⠋⠁⢰⠇⠀⠈⢻⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢣⡇⠀⠀⠉⠙⢳⣇⠰⠀⠀⠀⢸⠉⠻⢦⣀⣀⣀⠀⠀
-      ⣿⣿⣿⣿⣿⣿⣿⢿⢾⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠇⠀⠀⢠⠞⠈⢳⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⡇⠀⠀⠀⠀⢼⣿⡇⠀⠀⠀⣾⠀⠀⠀⠀⠀⠀⠀⠀
-      ⡷⢽⣿⣿⣿⣿⣿⣿⢿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠏⠀⠀⡰⠋⠀⠀⠀⠙⢦⡀⠀⠀⠀⠀⠀⠀⠀⢠⠇⠀⠀⠀⠀⠀⣻⣵⠂⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀
-      ⠿⠿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⢠⠏⠀⢀⡼⠁⠀⠀⠀⠀⢠⠈⠳⢄⡀⠀⠀⠀⠀⢀⡞⠀⠀⠀⠀⠀⠀⢉⢻⣇⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀
-      ⠀⠀⢰⡂⢸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⢠⠏⠀⣰⠎⠱⢤⡀⠀⠀⠀⣾⣶⡦⣶⡟⣦⡀⠀⠀⡜⠀⠀⠀⠀⠀⠀⠀⢸⢠⡟⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀
-      ⠀⠀⢨⣭⣿⣿⢿⣿⣷⡇⠀⠀⠀⠀⠀⠀⣠⠏⢀⣼⡇⠀⠀⠀⠱⣄⢀⣼⣭⣻⣷⡟⣿⣿⣿⢦⠞⠁⠀⠀⠀⠀⠀⠀⠀⠈⣾⡀⠀⠀⢹⠀⠀⠀⠀⠀⠀⠀⠀
-      ⠀⠀⠸⣟⢹⣏⣼⣿⣿⠀⠀⠀⠀⠀⠀⣰⠃⣴⣿⣿⡇⠀⠀⠀⠀⠘⢿⣾⣤⣤⣼⣶⡖⠒⠒⠶⢧⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡇⠀⠀⠸⠀⠀⠀⠀⠀⠀⠀⠀
-      ⣀⣀⣰⣼⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⢰⢣⣾⠇⢸⡿⠀⠀⠀⠀⠀⠀⢸⠏⠳⠿⢯⣿⣭⣤⠤⠤⠾⢷⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⡇⠀⢠⠀⠀⠀⠀⠀⠀⠀⠀
-      ⡭⠶⠚⡛⢻⣟⢻⢻⣿⡆⠀⠀⠀⢠⣿⡿⠁⠀⢠⡇⠀⠀⠀⠀⠀⠀⡜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⢣⡀⠀⠀⠀⠀⠀⠀⢸⠀⡇⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀
-      ⠤⠀⠞⠛⠼⠿⠿⠷⣿⣇⠀⠀⢀⣿⠏⠁⠀⠀⢸⡇⠀⠀⠀⠀⠀⢀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣰⠇⠀⠀⡇⠀⠀⢠⢤⡀⠀⠀
-      ⠁⠀⠀⠀⠀⠙⠛⠒⣺⣿⠀⢀⣾⡏⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⢸⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⣿⠀⠀⡝⡇⠀⠀⣾⠀⠈⢣⠀
-      ⠀⠀⠀⠀⠀⠀⠀⣴⢿⣿⠀⣾⣿⡇⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⣸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡏⠀⠀⡇⡇⠀⠀⢿⠀⠀⠀⣇
-      ⠀⠀⠀⠀⠀⠀⣼⣿⣺⡿⣴⣿⣿⣿⡀⠀⠀⠀⢸⠃⠀⠀⠀⠀⠀⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⡁⠀⢠⣇⠁⠀⠀⠘⡄⠀⠀⢹
-      ⠀⠀⠀⠀⠀⣰⣿⠟⠋⠀⠀⣿⣿⣿⡇⠀⠀⠀⢸⠀⠀⠀⠀⠀⢠⣧⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⢀⣠⣿⣿⡇⠀⣼⣿⡄⠀⠀⠀⡗⠀⠀⢸
-      ⠀⠀⠀⠀⢰⡿⠃⠀⠀⠀⢠⣿⣿⡟⡿⠀⠀⠀⢸⠀⠀⠀⠀⠀⢸⠉⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⡫⠊⢈⡇⢠⢻⡟⠀⠀⠀⠀⡷⠀⠀⠸
-      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣯⡇⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⡘⠀⢸⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⢫⡟⠀⠀⠀⠀⢀⠇⠀⠀⠀"
-         echo "SAKANA!!!!"
-           starship init fish | source
-    '';
-    plugins = [
-      # Enable a plugin (here grc for colorized command output) from nixpkgs
-      {
-        name = "grc";
-        src = pkgs.fishPlugins.grc.src;
-      }
-      {
-        name = "fzf";
-        src = pkgs.fishPlugins.fzf.src;
-      }
-      {
-        name = "z";
-        src = pkgs.fishPlugins.z.src;
-      }
-      {
-        name = "pisces";
-        src = pkgs.fishPlugins.pisces.src;
-      }
-    ];
-  };
+  home.packages = with pkgs; [kdePackages.polkit-kde-agent-1 kdePackages.partitionmanager kdePackages.filelight kdePackages.kpmcore];
 
   xdg.enable = true;
   xdg.portal.enable = true;
@@ -93,6 +10,24 @@
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = ["qemu:///system"];
       uris = ["qemu:///system"];
+    };
+  };
+
+  systemd.user.services.polkit-kde-authentication-agent-1 = {
+    Unit = {
+      Description = "polkit-kde-authentication-agent-1";
+      Wants = ["graphical-session.target"];
+      After = ["graphical-session.target"];
+    };
+    Install = {
+      WantedBy = ["graphical-session.target"];
+    };
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
     };
   };
 }

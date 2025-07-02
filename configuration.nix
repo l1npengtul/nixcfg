@@ -45,6 +45,8 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
+  security.polkit.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
   programs.dconf.enable = true;
