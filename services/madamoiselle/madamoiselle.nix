@@ -3,7 +3,7 @@
   fetchFromGitHub,
   sqlx-cli,
 }: let
-  version = "0.2.1";
+  version = "0.2.2";
 in
   rustPlatform.buildRustPackage {
     pname = "madamoiselle";
@@ -22,7 +22,7 @@ in
     nativeBuildInputs = [sqlx-cli];
 
     configurePhase = ''
-      export DATABASE_URL=sqlite://database.sqlite
+      export DATABASE_URL=sqlite:database.sqlite
       ls
       sqlx database create
       sqlx database setup
