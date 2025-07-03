@@ -32,7 +32,7 @@
   #   synthv-studio-pro = pkgs.callPackage ./synthv-studio-pro {};
   recstar = pkgs.callPackage ./recstar {};
   nn = pkgs.callPackage ./neuralnote.nix {};
-  musescore-evolution = pkgs.callPackage ./musescore-evolution.nix {};
+  #musescore-evolution = pkgs.callPackage ./musescore-evolution.nix {};
 in {
   imports = [
     ./audiothing
@@ -48,7 +48,7 @@ in {
     zynaddsubfx
     audacity
     musescore
-    musescore-evolution
+    #musescore-evolution
     paulstretch
     zam-plugins
     chow-tape-model
