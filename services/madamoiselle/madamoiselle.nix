@@ -22,6 +22,7 @@ in
     nativeBuildInputs = [sqlx-cli];
 
     configurePhase = ''
+      export DATABASE_URL=sqlite://database.sqlite
       ls
       sqlx database create
       sqlx database prepare
