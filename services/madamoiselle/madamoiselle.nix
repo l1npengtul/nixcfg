@@ -3,7 +3,7 @@
   fetchFromGitHub,
   sqlx-cli,
 }: let
-  version = "0.2.3";
+  version = "0.2.4";
 in
   rustPlatform.buildRustPackage {
     pname = "madamoiselle";
@@ -13,11 +13,11 @@ in
       owner = "l1npengtul";
       repo = "madamoiselle";
       tag = "${version}";
-      hash = "sha256-rtC2QB1HzYFvFCJCmxf4UF/7E3qkp2+r8/2MYZGW9Jo=";
+      hash = "";
     };
 
     useFetchCargoVendor = true;
-    cargoHash = "sha256-UMCP77d+Q5aH185UiQL7HyjT2FlkP8MYTg+rJeZq3k8=";
+    cargoHash = "";
 
     nativeBuildInputs = [sqlx-cli];
 
