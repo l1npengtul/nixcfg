@@ -25,7 +25,7 @@ in
       export DATABASE_URL=sqlite://database.sqlite
       ls
       sqlx database create
-      sqlx database prepare
+      sqlx database setup
       cargo sqlx prepare
     '';
   }
