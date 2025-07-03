@@ -26,6 +26,9 @@
     lameenc = lameenc;
     dora-search = dora-search;
   };
+  paulxstretch = pkgs.callPackage ./paulxstretch.nix {};
+  ripplerx = pkgs.callPackage ./ripplerx.nix {};
+  grainbow = pkgs.callPackage ./grainbow {};
   #   synthv-studio-pro = pkgs.callPackage ./synthv-studio-pro {};
   recstar = pkgs.callPackage ./recstar {};
   nn = pkgs.callPackage ./neuralnote.nix {};
@@ -82,9 +85,9 @@ in {
     sfizz
     linuxsampler
 
-    inputs.audio.packages.${pkgs.system}.paulxstretch
-    #inputs.audio.packages.${pkgs.system}.grainbow
-    #inputs.audio.packages.${pkgs.system}.neuralnote
+    paulxstretch
+    ripplerx
+    grainbow
     inputs.audio.packages.${pkgs.system}.atlas2
     nn
   ];
