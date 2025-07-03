@@ -23,7 +23,7 @@ in {
         RuntimeDirectory = "/var/lib/madamoiselle";
         WorkingDirectory = "/var/lib/madamoiselle";
         RuntimeDirectoryMode = "0777";
-        ExecStart = "${madamoiselle}/bin/madamoiselle";
+        ExecStart = "RUST_LOG=INFO ${madamoiselle}/bin/madamoiselle";
       };
     };
     environment.systemPackages = [madamoiselle];
