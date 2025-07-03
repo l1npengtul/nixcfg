@@ -1,6 +1,7 @@
 {
   rustPlatform,
   fetchFromGitHub,
+  sqlx-cli,
 }:
 rustPlatform.buildRustPackage rec {
   pname = "madamoiselle";
@@ -15,6 +16,8 @@ rustPlatform.buildRustPackage rec {
 
   useFetchCargoVendor = true;
   cargoHash = "sha256-GRKZ9Mysdl/BJtnp7YA9XyzrEyCVxPbG4gYruT9JUII=";
+
+  nativeBuildInputs = [sqlx-cli];
 
   preBuild = ''
     cargo sqlx prepare
