@@ -13,7 +13,7 @@ in
       owner = "l1npengtul";
       repo = "madamoiselle";
       tag = "${version}";
-      hash = "sha256-5R2ZjsgEM4tqEYK7Q32rQSqI7jJh15nOriNKwxJvl0w=";
+      hash = "";
     };
 
     useFetchCargoVendor = true;
@@ -23,7 +23,6 @@ in
 
     configurePhase = ''
       export DATABASE_URL=sqlite:database.sqlite
-      ls
       sqlx database create
       sqlx database setup
       cargo sqlx prepare
