@@ -13,7 +13,7 @@ in
       owner = "l1npengtul";
       repo = "madamoiselle";
       tag = "${version}";
-      hash = "";
+      hash = "sha256-rtC2QB1HzYFvFCJCmxf4UF/7E3qkp2+r8/2MYZGW9Jo=";
     };
 
     useFetchCargoVendor = true;
