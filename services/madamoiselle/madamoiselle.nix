@@ -23,6 +23,8 @@ in
 
     configurePhase = ''
       ls
+      sqlx database create
+      sqlx database prepare
       cargo sqlx prepare
     '';
   }
