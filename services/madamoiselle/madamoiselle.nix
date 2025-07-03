@@ -21,10 +21,6 @@ in
 
     nativeBuildInputs = [sqlx-cli];
 
-    preCheck = ''
-      cargo sqlx prepare
-    '';
-
     configurePhase = ''
       ls
       cargo sqlx prepare
