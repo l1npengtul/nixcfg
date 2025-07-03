@@ -16,6 +16,10 @@ rustPlatform.buildRustPackage rec {
   useFetchCargoVendor = true;
   cargoHash = "sha256-GRKZ9Mysdl/BJtnp7YA9XyzrEyCVxPbG4gYruT9JUII=";
 
+  preBuild = ''
+    cargo sqlx prepare
+  '';
+
   # Integration tests do not run in Nix build environment due to needing to
   # create and build Cargo workspaces.
   doCheck = false;
