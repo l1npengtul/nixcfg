@@ -23,7 +23,8 @@ in {
         RuntimeDirectory = "/var/lib/madamoiselle";
         WorkingDirectory = "/var/lib/madamoiselle";
         RuntimeDirectoryMode = "0777";
-        Environment = "RUST_LOG=INFO";
+        Environment = "RUST_LOG=info";
+        SyslogLevel = "info";
         ExecStart = "${madamoiselle}/bin/madamoiselle";
       };
     };
