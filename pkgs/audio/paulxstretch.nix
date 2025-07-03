@@ -42,7 +42,7 @@ in
     buildInputs = [
       freetype
       alsa-lib
-      webkitgtk
+      webkitgtk_6_0
       curl
       fftwFloat
       jack2

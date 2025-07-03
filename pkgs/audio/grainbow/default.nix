@@ -46,7 +46,7 @@ in
     buildInputs = [
       freetype
       alsa-lib
-      webkitgtk
+      webkitgtk_6_0
       curl
       gtk3
       xorg.libX11
