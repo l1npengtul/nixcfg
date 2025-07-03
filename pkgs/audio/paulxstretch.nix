@@ -49,7 +49,7 @@ in
       xorg.libX11
       xorg.libXext
       xorg.libXinerama
-      xorg.xrandr
+      xorg.libXrandr
       xorg.libXcursor
       xorg.libXfixes
       xorg.libXrender
