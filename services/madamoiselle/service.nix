@@ -20,6 +20,7 @@ in {
       description = "enable madamoiselle discord bot";
       serviceConfig = {
         StateDirectory = "madamoiselle";
+        RuntimeDirectory = "/var/lib/madamoiselle";
         RuntimeDirectoryMode = "0777";
         Environment = "RUST_LOG=info";
         SyslogLevel = "info";
