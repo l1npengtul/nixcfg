@@ -22,6 +22,7 @@ in {
         StateDirectory = "madamoiselle";
         RuntimeDirectory = "madamoiselle";
         RuntimeDirectoryMode = "0777";
+        StateDirectoryMode = "777";
         Environment = "RUST_LOG=info";
         SyslogLevel = "info";
         ExecStart = "${madamoiselle}/bin/madamoiselle";
