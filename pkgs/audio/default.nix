@@ -28,7 +28,7 @@
   };
   paulxstretch = pkgs.callPackage ./paulxstretch.nix {};
   ripplerx = pkgs.callPackage ./ripplerx.nix {};
-  grainbow = pkgs.callPackage ./grainbow {};
+  #grainbow = pkgs.callPackage ./grainbow {};
   #   synthv-studio-pro = pkgs.callPackage ./synthv-studio-pro {};
   recstar = pkgs.callPackage ./recstar {};
   nn = pkgs.callPackage ./neuralnote.nix {};
@@ -87,7 +87,7 @@ in {
 
     paulxstretch
     ripplerx
-    grainbow
+    #grainbow
     inputs.audio.packages.${pkgs.system}.atlas2
     nn
   ];
