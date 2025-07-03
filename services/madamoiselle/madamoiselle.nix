@@ -19,8 +19,9 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [sqlx-cli];
 
-  preBuild = ''
+  buildPhase = ''
     cargo sqlx prepare
+    cargo build --release
   '';
 
   # Integration tests do not run in Nix build environment due to needing to
