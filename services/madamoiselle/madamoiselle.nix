@@ -22,8 +22,4 @@ rustPlatform.buildRustPackage rec {
   preCheck = ''
     cargo sqlx prepare
   '';
-
-  # Integration tests do not run in Nix build environment due to needing to
-  # create and build Cargo workspaces.
-  doCheck = false;
 }
