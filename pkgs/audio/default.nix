@@ -62,7 +62,7 @@ in {
     recstar
     plugdata
     dl-librescore
-    carla
+    #carla
 
     airwindows
     airwin2rack
