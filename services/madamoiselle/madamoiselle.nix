@@ -17,7 +17,7 @@ in
     };
 
     useFetchCargoVendor = true;
-    cargoHash = "sha256-GRKZ9Mysdl/BJtnp7YA9XyzrEyCVxPbG4gYruT9JUII=";
+    cargoHash = "";
 
     nativeBuildInputs = [sqlx-cli];
 
