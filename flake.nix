@@ -126,7 +126,6 @@
               ./applications/individual/direnv.nix
               ./applications/individual/bottles.nix
               ./applications/individual/firefox.nix
-              ./applications/individual/keyboard.nix
               ./plasma/s-23sierpinski.nix
             ];
           }
@@ -155,6 +154,7 @@
           ./pkgs/input.nix
           ./pkgs/diskmgmt.nix
           ./pkgs/sshd.nix
+          ./pkgs/keyboard.nix
         ];
       };
 
