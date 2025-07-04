@@ -22,6 +22,8 @@
 
   services.flatpak.enable = true;
 
+  boot.kernelModules = ["sg"];
+
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
