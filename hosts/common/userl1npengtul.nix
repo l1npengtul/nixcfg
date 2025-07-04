@@ -11,6 +11,8 @@
       "jackaudio"
       "adbusers"
       "kvm"
+      "scanner"
+      "lp"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
