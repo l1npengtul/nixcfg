@@ -2,8 +2,8 @@
   libbluray = pkgs.libbluray.override {
     withBDplus = true;
     withAACS = true;
-    withJava = true;
   };
+  vlc = pkgs.vlc.override {inherit libbluray;};
 in {
-  environment.systemPackages = with pkgs; [mpv vlc libdvdcss libaacs vobcopy makemkv handbrake] ++ [libbluray];
+  environment.systemPackages = with pkgs; [mpv libdvdcss libaacs vobcopy makemkv handbrake] ++ [libbluray vlc];
 }
