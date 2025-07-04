@@ -126,6 +126,7 @@
               ./applications/individual/direnv.nix
               ./applications/individual/bottles.nix
               ./applications/individual/firefox.nix
+              ./applications/individual/keyboard.nix
               ./plasma/s-23sierpinski.nix
             ];
           }
