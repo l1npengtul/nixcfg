@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  libbluray = pkgs.libbluray {
+  libbluray = pkgs.libbluray.override {
     withBDplus = true;
     withAACS = true;
     withJava = true;
