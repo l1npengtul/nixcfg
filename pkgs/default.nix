@@ -26,6 +26,7 @@ in {
     ./adb.nix
     ./email.nix
     ./keyboard.nix
+    ./scanner.nix
   ];
 
   environment.systemPackages = [ruea];
