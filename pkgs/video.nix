@@ -1,4 +1,4 @@
 {pkgs, ...}: let
 in {
-  environment.systemPackages = with pkgs; [mpv vlc libdvdcss];
+  environment.systemPackages = with pkgs; [mpv vlc libdvdcss libaacs libbluray];
 }
