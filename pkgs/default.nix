@@ -27,6 +27,7 @@ in {
     ./email.nix
     ./keyboard.nix
     ./scanner.nix
+    ./video.nix
   ];
 
   environment.systemPackages = [ruea];

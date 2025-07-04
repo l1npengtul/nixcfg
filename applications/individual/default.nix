@@ -13,7 +13,6 @@
     ./obs.nix
     ./openutau.nix
     ./rustrover.nix
-    ./vlc.nix
     ./gimp.nix
     ./discord.nix
     ./krita.nix
