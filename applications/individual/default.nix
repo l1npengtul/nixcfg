@@ -29,5 +29,6 @@
     ./logseq.nix
     ./randomkde.nix
     ./reaper.nix
+    ./darktable.nix
   ];
 }
