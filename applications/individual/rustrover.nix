@@ -5,6 +5,7 @@
       pkgs.jetbrains.idea-community
       pkgs.jetbrains.clion
       pkgs.jetbrains.gateway
+      pkgs.jetbrains-toolbox
     ];
   };
 }
