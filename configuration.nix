@@ -89,6 +89,7 @@
     "/share/systemd"
     "/share/thumbnailers"
     "/share/xdg-desktop-portal"
+    "/share/qemu"
     "/sys"
   ];
 
