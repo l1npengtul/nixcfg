@@ -7,5 +7,6 @@
   services.flatpak.packages = [
     "at.vintagestory.VintageStory"
     "org.frescobaldi.Frescobaldi"
+    "com.kristianduske.TrenchBroom"
   ];
 }
