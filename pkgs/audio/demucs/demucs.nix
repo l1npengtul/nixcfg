@@ -24,6 +24,7 @@ python3Packages.buildPythonApplication rec {
   build-system = with python3Packages; [
     setuptools
   ];
+  pyproject = true;
 
   dependencies = with python3Packages; [
     dora-search
