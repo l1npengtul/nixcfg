@@ -21,6 +21,7 @@ python3Packages.buildPythonPackage rec {
     setuptools-scm
     wheel
   ];
+  pyproject = true;
 
   dependencies = with python3Packages; [
     setuptools
