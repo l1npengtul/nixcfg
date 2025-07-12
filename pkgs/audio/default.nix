@@ -80,7 +80,7 @@ in {
     slplugins
     decent-sampler
 
-    demucs
+    #demucs
 
     sfizz
     linuxsampler
