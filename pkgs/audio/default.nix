@@ -85,6 +85,8 @@ in {
     sfizz
     linuxsampler
 
+    sonic-visualiser
+
     paulxstretch
     ripplerx
     #grainbow
