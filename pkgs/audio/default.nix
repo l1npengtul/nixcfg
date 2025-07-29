@@ -46,7 +46,7 @@ in {
     dexed
     setbfree
     zynaddsubfx
-    audacity
+    #audacity
     musescore
     #musescore-evolution
     paulstretch
