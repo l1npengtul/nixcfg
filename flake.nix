@@ -85,6 +85,9 @@
     commonArgs = {
       inherit system;
       config.allowUnfree = true;
+      config.permittedInsecurePackages = [
+        "libsoup-2.74.3"
+      ];
     };
     pkgs = import nixpkgs commonArgs;
     pkgs-stable = import nixpkgs-stable commonArgs;
