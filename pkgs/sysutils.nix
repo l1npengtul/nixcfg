@@ -19,5 +19,7 @@
     pkgs.zgrviewer
     pkgs.fd
     pkgs.dmg2img
+    pkgs.ipmicfg
+    pkgs.ipmiview
   ];
 }
