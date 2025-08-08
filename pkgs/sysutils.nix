@@ -27,5 +27,7 @@
     age
     sops
     openssl
-  ];
+    woeusb-ng
+    minicom
+ ];
 }
