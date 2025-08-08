@@ -79,6 +79,7 @@ in {
     piano
     slplugins
     decent-sampler
+    friture
 
     #demucs
 
