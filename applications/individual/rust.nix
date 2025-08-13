@@ -41,7 +41,7 @@
 
       -- or, changing the font size and color scheme.
       config.font_size = 12
-      config.font = wezterm.font("Comic Sans Mono")
+      config.font = wezterm.font("ComicShannsMono")
       config.color_scheme = 'Sakura (base16)'
 
       -- Finally, return the configuration to wezterm:
