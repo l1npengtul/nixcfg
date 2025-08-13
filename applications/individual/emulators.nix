@@ -4,7 +4,7 @@
       retroarch-free
       mame
       libretro.pcsx_rearmed
-      duckstation
+      #duckstation
       pcsx2
       rpcs3
     ];
