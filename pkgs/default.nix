@@ -7,7 +7,7 @@ in {
     ./nix-utils.nix
     ./sysutils.nix
     ./python3.nix
-    ./rustup.nix
+    ./rust.nix
     ./kdegtk.nix
     ./audio
     ./fcitx5
