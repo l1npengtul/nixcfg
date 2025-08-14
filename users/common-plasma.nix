@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [kdePackages.polkit-kde-agent-1 kdePackages.partitionmanager kdePackages.filelight kdePackages.kpmcore];
+  home.packages = with pkgs; [kdePackages.polkit-kde-agent-1 kdePackages.partitionmanager kdePackages.filelight kdePackages.kpmcore kdePackages.karousel];
 
   xdg.enable = true;
   xdg.portal.enable = true;
