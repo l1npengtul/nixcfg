@@ -272,7 +272,7 @@
               nix-flatpak.homeManagerModules.nix-flatpak
               ./users/l1npengtul.nix
               ./applications
-              #./plasma/oldhome.nix
+              ./plasma/oldhome.nix
             ];
           }
 
