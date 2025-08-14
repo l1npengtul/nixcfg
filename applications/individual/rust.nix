@@ -81,8 +81,6 @@
           "'<' = '>'"
           '''"' = '"' ''
         ];
-
-        auto-format = true;
         formatter.command = "cargo fmt";
       }
     ];
