@@ -53,7 +53,7 @@
     };
     languages = {
       language-server.rust-analyzer = {
-        command = "${pkgs.rust-analyzer}/bin/rust-analyzer";
+        command = "rust-analyzer";
         config = {
           inlayHints.bindingModeHints.enable = false;
           inlayHints.closingBraceHints.minLines = 10;
