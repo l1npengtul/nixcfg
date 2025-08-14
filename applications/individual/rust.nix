@@ -41,6 +41,18 @@
         };
       };
 
+      language-server.rust-analyzer = {
+        command = "rust-analyzer";
+        config = {
+          inlayHints.bindingModeHints.enable = false;
+          inlayHints.closingBraceHints.minLines = 10;
+          inlayHints.closureReturnTypeHints.enable = "with_block";
+          inlayHints.discriminantHints.enable = "fieldless";
+          inlayHints.lifetimeElisionHints.enable = "skip_trivial";
+          inlayHints.typeHints.hideClosureInitialization = false;
+        };
+      };
+
       keys.normal = {
         C-s = ":w"; # Maps Ctrl-s to the typable command :w which is an alias for :write (save file)
         C-o = ":open ~/.config/helix/config.toml"; # Maps Ctrl-o to opening of the helix config file
@@ -49,17 +61,6 @@
         "C-S-esc" = "extend_line"; # Maps Ctrl-Shift-Escape to extend_line
         g = {a = "code_action";}; # Maps `ga` to show possible code actions
         "ret" = ["open_below" "normal_mode"]; # Maps the enter key to open_below then re-enter normal mode
-      };
-    };
-    language-server.rust-analyzer = {
-      command = "rust-analyzer";
-      config = {
-        inlayHints.bindingModeHints.enable = false;
-        inlayHints.closingBraceHints.minLines = 10;
-        inlayHints.closureReturnTypeHints.enable = "with_block";
-        inlayHints.discriminantHints.enable = "fieldless";
-        inlayHints.lifetimeElisionHints.enable = "skip_trivial";
-        inlayHints.typeHints.hideClosureInitialization = false;
       };
     };
     languages.language = [
