@@ -638,7 +638,6 @@
       "kwinrc"."TouchEdges"."Bottom" = "ApplicationLauncher";
       "kwinrc"."TouchEdges"."Top" = "KRunner";
       "kwinrc"."Wayland"."InputMethod[$e]" = "/run/current-system/sw/share/applications/fcitx5-wayland-launcher.desktop";
-      "kwinrc"."Wayland"."InputMethod\x5b$e\x5d" = "/run/current-system/sw/share/applications/fcitx5-wayland-launcher.desktop";
       "kwinrc"."Wayland"."InputMethodx5b$ex5d" = "/run/current-system/sw/share/applications/fcitx5-wayland-launcher.desktop";
       "kwinrc"."Wayland"."VirtualKeyboardEnabled" = true;
       "kwinrc"."Windows"."FocusPolicy" = "FocusFollowsMouse";
