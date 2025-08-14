@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
-    ./../common/use-remote.nix
     ./../common/userl1npengtul.nix
     ./../common/battery_optimizations.nix
   ];
