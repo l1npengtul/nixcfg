@@ -41,18 +41,6 @@
         };
       };
 
-      language-server.rust-analyzer = {
-        command = "rust-analyzer";
-        config = {
-          inlayHints.bindingModeHints.enable = false;
-          inlayHints.closingBraceHints.minLines = 10;
-          inlayHints.closureReturnTypeHints.enable = "with_block";
-          inlayHints.discriminantHints.enable = "fieldless";
-          inlayHints.lifetimeElisionHints.enable = "skip_trivial";
-          inlayHints.typeHints.hideClosureInitialization = false;
-        };
-      };
-
       keys.normal = {
         C-s = ":w"; # Maps Ctrl-s to the typable command :w which is an alias for :write (save file)
         C-o = ":open ~/.config/helix/config.toml"; # Maps Ctrl-o to opening of the helix config file
@@ -63,28 +51,40 @@
         "ret" = ["open_below" "normal_mode"]; # Maps the enter key to open_below then re-enter normal mode
       };
     };
-    languages.language = [
-      {
-        name = "nix";
-        auto-format = true;
-        formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
-      }
-      {
-        name = "rust";
-        auto-format = true;
+    languages = {
+      language-server.rust-analyzer = {
+        command = "${pkgs.rust-analyzer}/bin/rust-analyzer";
+        config = {
+          inlayHints.bindingModeHints.enable = false;
+          inlayHints.closingBraceHints.minLines = 10;
+          inlayHints.closureReturnTypeHints.enable = "with_block";
+          inlayHints.discriminantHints.enable = "fieldless";
+          inlayHints.lifetimeElisionHints.enable = "skip_trivial";
+          inlayHints.typeHints.hideClosureInitialization = false;
+        };
+      };
 
-        roots = ["Cargo.toml" "Cargo.lock"];
+      language = [
+        {
+          name = "nix";
+          auto-format = true;
+          formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+        }
+        {
+          name = "rust";
 
-        auto-pairs = [
-          "'(' = ')'"
-          "'{' = '}'"
-          "'[' = ']'"
-          "'<' = '>'"
-          '''"' = '"' ''
-        ];
-        formatter.command = "cargo fmt";
-      }
-    ];
+          roots = ["Cargo.toml" "Cargo.lock"];
+
+          auto-pairs = [
+            "'(' = ')'"
+            "'{' = '}'"
+            "'[' = ']'"
+            "'<' = '>'"
+            '''"' = '"' ''
+          ];
+        }
+      ];
+    };
   };
   programs.wezterm = {
     enable = true;
