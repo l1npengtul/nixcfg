@@ -263,8 +263,8 @@
       "kwin"."karousel-column-move-to-desktop-8" = ",none,Karousel: Move column to desktop 8";
       "kwin"."karousel-column-move-to-desktop-9" = ",none,Karousel: Move column to desktop 9";
       "kwin"."karousel-column-toggle-stacked" = ",none,Karousel: Toggle stacked layout for focused column";
-      "kwin"."karousel-column-width-decrease" = "Meta+Ctrl+-,none,Karousel: Decrease column width";
-      "kwin"."karousel-column-width-increase" = "Meta+Ctrl+=,none,Karousel: Increase column width";
+      "kwin"."karousel-column-width-decrease" = "Meta+Ctrl+-";
+      "kwin"."karousel-column-width-increase" = "Meta+Ctrl+=";
       "kwin"."karousel-columns-squeeze-left" = ",none,Karousel: Squeeze left column onto the screen";
       "kwin"."karousel-columns-squeeze-right" = ",none,Karousel: Squeeze right column onto the screen";
       "kwin"."karousel-columns-width-equalize" = ",none,Karousel: Equalize widths of visible columns";
@@ -284,10 +284,10 @@
       "kwin"."karousel-focus-9" = ",none,Karousel: Move focus to column 9";
       "kwin"."karousel-focus-down" = ",none,Karousel: Move focus down";
       "kwin"."karousel-focus-end" = ",none,Karousel: Move focus to end";
-      "kwin"."karousel-focus-left" = "Ctrl+Alt+Left,none,Karousel: Move focus left";
+      "kwin"."karousel-focus-left" = "Ctrl+Alt+Left";
       "kwin"."karousel-focus-next" = ",none,Karousel: Move focus to the next window in grid";
       "kwin"."karousel-focus-previous" = ",none,Karousel: Move focus to the previous window in grid";
-      "kwin"."karousel-focus-right" = "Ctrl+Alt+Right,none,Karousel: Move focus right";
+      "kwin"."karousel-focus-right" = "Ctrl+Alt+Right";
       "kwin"."karousel-focus-start" = ",none,Karousel: Move focus to start";
       "kwin"."karousel-focus-up" = ",none,Karousel: Move focus up";
       "kwin"."karousel-grid-scroll-end" = ",none,Karousel: Scroll to end";
@@ -313,8 +313,8 @@
       "kwin"."karousel-window-move-down" = ",none,Karousel: Move window down";
       "kwin"."karousel-window-move-end" = ",none,Karousel: Move window to end";
       "kwin"."karousel-window-move-left" = ",none,Karousel: Move window left";
-      "kwin"."karousel-window-move-next" = ",none,Karousel: Move window to the next position in grid";
-      "kwin"."karousel-window-move-previous" = ",none,Karousel: Move window to the previous position in grid";
+      "kwin"."karousel-window-move-next" = "Meta+Right";
+      "kwin"."karousel-window-move-previous" = "Meta+Left";
       "kwin"."karousel-window-move-right" = ",none,Karousel: Move window right";
       "kwin"."karousel-window-move-start" = ",none,Karousel: Move window to start";
       "kwin"."karousel-window-move-to-column-1" = ",none,Karousel: Move window to column 1";
@@ -330,7 +330,7 @@
       "kwin"."karousel-window-move-to-column-8" = ",none,Karousel: Move window to column 8";
       "kwin"."karousel-window-move-to-column-9" = ",none,Karousel: Move window to column 9";
       "kwin"."karousel-window-move-up" = ",none,Karousel: Move window up";
-      "kwin"."karousel-window-toggle-floating" = ",none,Karousel: Toggle floating";
+      "kwin"."karousel-window-toggle-floating" = "Meta+F";
       "kwin"."view_actual_size" = "Meta+0";
       "kwin"."view_zoom_in" = ["Meta++" "" "Meta+=\\, Zoom In,Meta++" "Meta+=,Zoom In"];
       "kwin"."view_zoom_out" = "Meta+-";
