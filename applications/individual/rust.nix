@@ -19,6 +19,7 @@
           auto-signature-help = true;
           display-messages = true;
           display-inlay-hints = true;
+          display-signature-help-docs = true;
         };
 
         file-picker = {
@@ -62,12 +63,16 @@
     };
     languages = {
       language-server.rust-analyzer.config = {
-        cargo = {all-features = true;};
+        cargo = {
+          all-features = true;
+          buildScripts.enable = true;
+        };
         procMacro = {enable = true;};
         imports = {
           granularity.group = "item";
           prefix = "by_crate";
         };
+        check.command = "clippy";
         inlayHints = {
           bindingModeHints.enable = false;
           closingBraceHints.minLines = 10;
@@ -75,14 +80,6 @@
           discriminantHints.enable = "fieldless";
           lifetimeElisionHints.enable = "skip_trivial";
           typeHints.hideClosureInitialization = false;
-        };
-        check = {
-          command = "cargo";
-          args = ["clippy"];
-        };
-        formatter = {
-          command = "cargo";
-          args = ["fmt"];
         };
       };
 
@@ -95,6 +92,10 @@
         {
           name = "rust";
           auto-format = true;
+          formatter = {
+            command = "cargo";
+            args = ["fmt"];
+          };
           rulers = [100];
         }
         {
