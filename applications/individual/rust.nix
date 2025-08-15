@@ -107,7 +107,7 @@
       config.window_background_opacity = 0.8
       config.text_background_opacity = 0.8
       config.leader = { key = 'a', mods = 'CTRL' }
-      config.font = wezterm.font 'ComicShannsMono Nerd Font Regular'
+      config.font = wezterm.font 'ComicShannsMono Nerd Font'
       config.keys = {
         {
           key = 'LeftArrow',
