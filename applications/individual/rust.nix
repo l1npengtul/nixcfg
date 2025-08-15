@@ -5,13 +5,8 @@
       theme = "rose_pine_dawn";
       editor = {
         line-number = "relative";
-        scroll-lines = 7;
         mouse = true;
         clipboard-provider = "wayland";
-
-        completion-timeout = 5;
-        completion-replace = true;
-
         bufferline = "always";
 
         lsp = {
@@ -54,8 +49,6 @@
       keys.normal = {
         C-s = ":w"; # Maps Ctrl-s to the typable command :w which is an alias for :write (save file)
         C-o = ":open ~/.config/helix/config.toml"; # Maps Ctrl-o to opening of the helix config file
-        a = "move_char_left"; # Maps the 'a' key to the move_char_left command
-        w = "move_line_up"; # Maps the 'w' key move_line_up
         "C-S-esc" = "extend_line"; # Maps Ctrl-Shift-Escape to extend_line
         g = {a = "code_action";}; # Maps `ga` to show possible code actions
         "ret" = ["open_below" "normal_mode"]; # Maps the enter key to open_below then re-enter normal mode
