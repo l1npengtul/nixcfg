@@ -18,6 +18,7 @@
           enable = true;
           auto-signature-help = true;
           display-messages = true;
+          display-inlay-hints = true;
         };
 
         file-picker = {
