@@ -76,7 +76,14 @@
           lifetimeElisionHints.enable = "skip_trivial";
           typeHints.hideClosureInitialization = false;
         };
-        check.command = "clippy";
+        check = {
+          command = "cargo";
+          args = ["clippy"];
+        };
+        formatter = {
+          command = "cargo";
+          args = ["fmt"];
+        };
       };
 
       language = [
