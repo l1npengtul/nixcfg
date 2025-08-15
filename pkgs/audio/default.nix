@@ -35,7 +35,6 @@
   #musescore-evolution = pkgs.callPackage ./musescore-evolution.nix {};
 in {
   imports = [
-    ./audiothing
   ];
 
   environment.systemPackages = with pkgs; [
