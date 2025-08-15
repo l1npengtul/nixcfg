@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
-    ./../common/userl1npengtu.nix
+    ./../common/userl1npengtul.nix
   ];
 
   time.timeZone = "Asia/Seoul";
