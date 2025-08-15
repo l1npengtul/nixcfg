@@ -43,11 +43,6 @@
           after-delay.timeout = 500;
         };
 
-        inline-diagnostics = {
-          cursor-line = "hint";
-          other-lines = "hint";
-        };
-
         cursor-shape = {
           normal = "block";
           insert = "bar";
@@ -92,22 +87,8 @@
         }
         {
           name = "rust";
-
-          roots = ["Cargo.toml" "Cargo.lock"];
           auto-format = true;
           rulers = [100];
-          scope = "source.rust";
-          injection-regex = "rs|rust";
-          file-types = ["rs"];
-          shebangs = ["rust-script" "cargo"];
-
-          language-servers = ["rust-analyzer"];
-          formatter = {command = "rustfmt";};
-          indent = {
-            tab-width = 4;
-            unit = "    ";
-          };
-          persistent-diagnostic-sources = ["rustc" "clippy"];
         }
         {
           name = "markdown";
