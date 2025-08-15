@@ -32,6 +32,9 @@
           left = ["mode" "spinner" "file-name" "file-modification-indicator" "read-only-indicator"];
           center = ["version-control"];
           right = ["diagnostics" "workspace-diagnostics" "selections" "register" "position" "total-line-numbers" "file-encoding"];
+          mode.normal = "NORMAL";
+          mode.insert = "INSERT";
+          mode.select = "VISUAL";
         };
 
         auto-save = {
@@ -69,6 +72,15 @@
           granularity.group = "item";
           prefix = "by_crate";
         };
+        inlayHints = {
+          bindingModeHints.enable = false;
+          closingBraceHints.minLines = 10;
+          closureReturnTypeHints.enable = "with_block";
+          discriminantHints.enable = "fieldless";
+          lifetimeElisionHints.enable = "skip_trivial";
+          typeHints.hideClosureInitialization = false;
+        };
+        check.command = "clippy";
       };
 
       language = [
@@ -83,6 +95,18 @@
           roots = ["Cargo.toml" "Cargo.lock"];
           auto-format = true;
           rulers = [100];
+          scope = "source.rust";
+          injection-regex = "rs|rust";
+          file-types = ["rs"];
+          shebangs = ["rust-script" "cargo"];
+
+          language-servers = ["rust-analyzer"];
+          formatter = {command = "rustfmt";};
+          indent = {
+            tab-width = 4;
+            unit = "    ";
+          };
+          persistent-diagnostic-sources = ["rustc" "clippy"];
         }
         {
           name = "markdown";
