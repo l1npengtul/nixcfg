@@ -5,14 +5,14 @@
       theme = "rose_pine_dawn";
       editor = {
         line-number = "relative";
-        auto-save = true;
-        auto-format = true;
-        auto-completion = true;
-        text-width = 110;
-        gutters = ["diff" "diagnostics" "line-numbers" "spacer"];
-        soft-wrap.enable = true;
-        soft-wrap.max-indent-retain = 80;
+        scroll-lines = 7;
         mouse = true;
+        clipboard-provider = "wayland";
+
+        completion-timeout = 5;
+        completion-replace = true;
+
+        bufferline = "always";
 
         lsp = {
           enable = true;
@@ -24,14 +24,24 @@
           hidden = false;
         };
 
+        soft-wrap = {
+          enable = true;
+        };
+
         statusline = {
-          left = ["mode" "spinner" "file-modification-indicator" "read-only-indicator"];
-          center = ["file-name"];
-          right = ["diagnostics" "register" "selections" "position" "file-encoding" "file-line-ending" "file-type"];
-          separator = "│";
-          mode.normal = "LOCKED";
-          mode.insert = "WORKING";
-          mode.select = "VISUAL SEL";
+          left = ["mode" "spinner" "file-name" "file-modification-indicator" "read-only-indicator"];
+          center = ["version-control"];
+          right = ["diagnostics" "workspace-diagnostics" "selections" "register" "position" "total-line-numbers" "file-encoding"];
+        };
+
+        auto-save = {
+          after-delay.enable = true;
+          after-delay.timeout = 500;
+        };
+
+        inline-diagnostics = {
+          cursor-line = "hint";
+          other-lines = "hint";
         };
 
         cursor-shape = {
@@ -52,15 +62,12 @@
       };
     };
     languages = {
-      language-server.rust-analyzer = {
-        command = "rust-analyzer";
-        config = {
-          inlayHints.bindingModeHints.enable = false;
-          inlayHints.closingBraceHints.minLines = 10;
-          inlayHints.closureReturnTypeHints.enable = "with_block";
-          inlayHints.discriminantHints.enable = "fieldless";
-          inlayHints.lifetimeElisionHints.enable = "skip_trivial";
-          inlayHints.typeHints.hideClosureInitialization = false;
+      language-server.rust-analyzer.config = {
+        cargo = {all-features = true;};
+        procMacro = {enable = true;};
+        imports = {
+          granularity.group = "item";
+          prefix = "by_crate";
         };
       };
 
@@ -74,6 +81,12 @@
           name = "rust";
 
           roots = ["Cargo.toml" "Cargo.lock"];
+          auto-format = "true";
+          rulers = [100];
+        }
+        {
+          name = "markdown";
+          rulers = [80];
         }
       ];
     };
@@ -81,25 +94,113 @@
   programs.wezterm = {
     enable = true;
     extraConfig = ''
-      -- Pull in the wezterm API
-      local wezterm = require 'wezterm'
+      local wezterm = require 'wezterm';
+      local config = {}
 
-      -- This will hold the configuration.
-      local config = wezterm.config_builder()
+      config.window_frame = {
+        font = wezterm.font { family = 'rainyhearts' },
+        font_size = 16.0,
+      }
 
-      -- This is where you actually apply your config choices.
+      config.window_decorations = 'RESIZE'
+      config.color_scheme = 'Rosé Pine Dawn (base16)'
+      config.window_background_opacity = 0.8
+      config.text_background_opacity = 0.8
+      config.leader = { key = 'a', mods = 'CTRL' }
+      config.font = wezterm.font 'ComicShannsMono Nerd Font Regular'
+      config.keys = {
+        {
+          key = 'LeftArrow',
+          mods = 'CTRL',
+          action = wezterm.action.ActivateTabRelative(-1),
+        },
+        {
+          key = 'RightArrow',
+          mods = 'CTRL',
+          action = wezterm.action.ActivateTabRelative(1),
+        },
+        {
+          key = 'm',
+          mods = 'CTRL|SHIFT',
+          action = wezterm.action.SplitVertical {domain = "CurrentPaneDomain"},
+        },
+        {
+          key = 'n',
+          mods = 'CTRL|SHIFT',
+          action = wezterm.action.SplitHorizontal {domain = "CurrentPaneDomain"},
+        },
+        {
+          key = 'LeftArrow',
+          mods = 'CTRL|SHIFT',
+          action = wezterm.action.AdjustPaneSize {'Left', 2},
+        },
+        {
+          key = 'UpArrow',
+          mods = 'CTRL|SHIFT',
+          action = wezterm.action.AdjustPaneSize {'Down', 2},
+        },
+        {
+          key = 'DownArrow',
+          mods = 'CTRL|SHIFT',
+          action = wezterm.action.AdjustPaneSize {'Up', 2},
+        },
+        {
+          key = 'RightArrow',
+          mods = 'CTRL|SHIFT',
+          action = wezterm.action.AdjustPaneSize {'Right', 2},
+        },
+        {
+          key = 'h',
+          mods = 'CTRL|SHIFT',
+          action = wezterm.action.ActivatePaneDirection 'Left',
+        },
+        {
+          key = 'j',
+          mods = 'CTRL|SHIFT',
+          action = wezterm.action.ActivatePaneDirection 'Down',
+        },
+        {
+          key = 'k',
+          mods = 'CTRL|SHIFT',
+          action = wezterm.action.ActivatePaneDirection 'Up',
+        },
+        {
+          key = 'l',
+          mods = 'CTRL|SHIFT',
+          action = wezterm.action.ActivatePaneDirection 'Right',
+        },
+        {
+          key = 'l',
+          mods = 'LEADER',
+          action = wezterm.action.ShowDebugOverlay,
+        },
+        {
+          key = 'q',
+          mods = 'CTRL',
+          action = wezterm.action.CloseCurrentPane {confirm = true},
+        },
+        {
+          key = 'q',
+          mods = 'CTRL|SHIFT',
+          action = wezterm.action.CloseCurrentPane {confirm = false},
+        },
+        {
+          key = '`',
+          mods = 'CTRL',
+          action = wezterm.action.SendString('fg\n'),
+        }
+      }
 
-      -- For example, changing the initial geometry for new windows:
-      config.initial_cols = 120
-      config.initial_rows = 28
+      for i = 1, 9 do
+        table.insert(config.keys, {
+          key = tostring(i),
+          mods = 'CTRL',
+          action = wezterm.action.ActivateTab(i - 1),
+        })
+      end
 
-      -- or, changing the font size and color scheme.
-      config.font_size = 12
-      config.font = wezterm.font("ComicShannsMono Nerd Font", {weight="Regular", stretch="Normal", style="Normal"})
-      config.color_scheme = 'Sakura (base16)'
-
-      -- Finally, return the configuration to wezterm:
       return config
+
     '';
   };
 }
