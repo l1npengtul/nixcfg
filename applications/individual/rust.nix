@@ -81,7 +81,7 @@
           name = "rust";
 
           roots = ["Cargo.toml" "Cargo.lock"];
-          auto-format = "true";
+          auto-format = true;
           rulers = [100];
         }
         {
@@ -99,13 +99,10 @@
 
       config.window_frame = {
         font = wezterm.font { family = 'rainyhearts' },
-        font_size = 16.0,
+        font_size = 12.0,
       }
 
-      config.window_decorations = 'RESIZE'
       config.color_scheme = 'Rosé Pine Dawn (base16)'
-      config.window_background_opacity = 0.8
-      config.text_background_opacity = 0.8
       config.leader = { key = 'a', mods = 'CTRL' }
       config.font = wezterm.font 'ComicShannsMono Nerd Font'
       config.keys = {
@@ -175,12 +172,12 @@
           action = wezterm.action.ShowDebugOverlay,
         },
         {
-          key = 'q',
+          key = 'w',
           mods = 'CTRL',
           action = wezterm.action.CloseCurrentPane {confirm = true},
         },
         {
-          key = 'q',
+          key = 'w',
           mods = 'CTRL|SHIFT',
           action = wezterm.action.CloseCurrentPane {confirm = false},
         },
