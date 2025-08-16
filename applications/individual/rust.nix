@@ -76,6 +76,7 @@
     languages = {
       language-server.rust-analyzer.config = {
         cargo = {
+          allFeatures = true;
           buildScripts.enable = true;
         };
         procMacro = {
