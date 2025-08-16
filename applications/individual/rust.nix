@@ -26,9 +26,23 @@
         };
 
         statusline = {
-          left = ["mode" "spinner" "file-name" "file-modification-indicator" "read-only-indicator"];
+          left = [
+            "mode"
+            "spinner"
+            "file-name"
+            "file-modification-indicator"
+            "read-only-indicator"
+          ];
           center = ["version-control"];
-          right = ["diagnostics" "workspace-diagnostics" "selections" "register" "position" "total-line-numbers" "file-encoding"];
+          right = [
+            "diagnostics"
+            "workspace-diagnostics"
+            "selections"
+            "register"
+            "position"
+            "total-line-numbers"
+            "file-encoding"
+          ];
           mode.normal = "NORMAL";
           mode.insert = "INSERT";
           mode.select = "VISUAL";
@@ -50,17 +64,23 @@
         C-s = ":w"; # Maps Ctrl-s to the typable command :w which is an alias for :write (save file)
         C-o = ":open ~/.config/helix/config.toml"; # Maps Ctrl-o to opening of the helix config file
         "C-S-esc" = "extend_line"; # Maps Ctrl-Shift-Escape to extend_line
-        g = {a = "code_action";}; # Maps `ga` to show possible code actions
-        "ret" = ["open_below" "normal_mode"]; # Maps the enter key to open_below then re-enter normal mode
+        g = {
+          a = "code_action";
+        }; # Maps `ga` to show possible code actions
+        "ret" = [
+          "open_below"
+          "normal_mode"
+        ]; # Maps the enter key to open_below then re-enter normal mode
       };
     };
     languages = {
       language-server.rust-analyzer.config = {
         cargo = {
-          all-features = true;
           buildScripts.enable = true;
         };
-        procMacro = {enable = true;};
+        procMacro = {
+          enable = true;
+        };
         imports = {
           granularity.group = "item";
           prefix = "by_crate";
