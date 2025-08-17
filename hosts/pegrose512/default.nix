@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ./../common/userl1npengtul.nix
+    ./../common/cpugpu.nix
   ];
 
   time.timeZone = "Asia/Seoul";

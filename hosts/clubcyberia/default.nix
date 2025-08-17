@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ./../common/userl1npengtul.nix
+    ./../common/cpugpu.nix
   ];
 
   time.timeZone = "Asia/Tokyo";
@@ -18,38 +19,7 @@
   fileSystems."/home/l1npengtul/hdd_files" = {
     options = ["rw"];
   };
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [
-      mesa
-      libva
-      libvdpau-va-gl
-      vulkan-loader
-      vulkan-validation-layers
-      mesa.opencl # Enables Rusticl (OpenCL) support
-      rocmPackages.clr.icd
-    ];
-  };
-
-  environment.systemPackages = with pkgs; [
-    mesa-demos
-    vulkan-tools
-    clinfo
-  ];
-  boot.initrd.kernelModules = ["amdgpu"];
-  boot.tmp.tmpfsSize = "90%";
-
-  environment.variables = {
-    RUSTICL_ENABLE = "radeonsi";
-    ROC_ENABLE_PRE_VEGA = "1";
-  };
-
   networking.hostName = "clubcyberia";
-
-  musnix.enable = true;
-  musnix.rtcqs.enable = true;
 
   system.stateVersion = "24.11";
 }

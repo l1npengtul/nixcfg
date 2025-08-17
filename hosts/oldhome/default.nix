@@ -11,8 +11,6 @@
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/MAGPIE_SIGNAL";
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  services.hardware.bolt.enable = true;
-
   hardware.ipu6 = {
     enable = false;
     platform = "ipu6epmtl";
@@ -28,9 +26,6 @@
   };
 
   networking.hostName = "oldhome"; # Define your hostname.
-
-  musnix.enable = true;
-  musnix.rtcqs.enable = true;
 
   system.stateVersion = "24.05";
 }
