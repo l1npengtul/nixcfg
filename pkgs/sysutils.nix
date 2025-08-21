@@ -1,29 +1,30 @@
 {pkgs, ...}: {
-  environment.systemPackages = [
-    pkgs.dpkg
-    pkgs.binutils
-    pkgs.upx
-    pkgs.tmux
-    pkgs.popsicle
-    pkgs.hyfetch
-    pkgs.zenith
-    pkgs.onefetch
-    pkgs.exfat
-    pkgs.exfatprogs
-    pkgs.xfsprogs
-    pkgs.f3
-    pkgs.mesa-demos
-    pkgs.freshfetch
-    pkgs.micro-full
-    pkgs.fishPlugins.grc
-    pkgs.zgrviewer
-    pkgs.fd
-    pkgs.dmg2img
-    pkgs.ipmicfg
-    pkgs.ipmiview
-    pkgs.adoptopenjdk-icedtea-web
-    pkgs.ssh-to-pgp
-    pkgs.ssh-to-age
-    pkgs.age
+  environment.systemPackages = with pkgs; [
+    dpkg
+    binutils
+    upx
+    tmux
+    popsicle
+    hyfetch
+    zenith
+    onefetch
+    exfat
+    exfatprogs
+    xfsprogs
+    f3
+    mesa-demos
+    freshfetch
+    micro-full
+    fishPlugins.grc
+    zgrviewer
+    fd
+    dmg2img
+    ipmicfg
+    ipmiview
+    adoptopenjdk-icedtea-web
+    ssh-to-pgp
+    ssh-to-age
+    age
+    sops
   ];
 }
