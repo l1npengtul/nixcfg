@@ -22,5 +22,7 @@
     pkgs.ipmicfg
     pkgs.ipmiview
     pkgs.adoptopenjdk-icedtea-web
+    pkgs.ssh-to-pgp
+    pkgs.ssh-to-age
   ];
 }
