@@ -24,5 +24,6 @@
     pkgs.adoptopenjdk-icedtea-web
     pkgs.ssh-to-pgp
     pkgs.ssh-to-age
+    pkgs.age
   ];
 }
