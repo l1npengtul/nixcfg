@@ -21,5 +21,6 @@
     pkgs.dmg2img
     pkgs.ipmicfg
     pkgs.ipmiview
+    pkgs.adoptopenjdk-icedtea-web
   ];
 }
