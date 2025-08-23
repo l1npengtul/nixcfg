@@ -26,5 +26,6 @@
     ssh-to-age
     age
     sops
+    openssl
   ];
 }
