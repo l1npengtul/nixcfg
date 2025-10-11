@@ -66,19 +66,19 @@ in {
     dl-librescore
     #carla
 
-    #airwindows
-    #airwin2rack
-    #socalabs-sid
-    #sn76489
-    #papu
-    #rp2a03
-    #voc
-    #organ
-    #wavetable
+    airwindows
+    airwin2rack
+    socalabs-sid
+    sn76489
+    papu
+    rp2a03
+    voc
+    organ
+    wavetable
     piano
-    #slplugins
+    slplugins
     decent-sampler
-    #friture
+    friture
 
     #demucs
 
