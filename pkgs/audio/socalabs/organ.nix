@@ -13,7 +13,7 @@
   libGL,
   libjack2,
   curl,
-  webkitgtk_4_0,
+  webkitgtk_6_0,
   libsysprof-capture,
   pcre2,
   util-linux,
@@ -23,7 +23,7 @@
   libxkbcommon,
   libdatrie,
   libepoxy,
-  libsoup_2_4,
+  libsoup_3,
   lerc,
   sqlite,
   ninja,
@@ -90,11 +90,11 @@ stdenv.mkDerivation {
     libxkbcommon
     libdatrie
     libepoxy
-    libsoup_2_4
+    libsoup_3
     lerc
     freetype
     curl
-    webkitgtk_4_0
+    webkitgtk_6_0
     pcre2
     util-linux
     sqlite
