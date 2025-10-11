@@ -75,7 +75,7 @@ in {
     #voc
     #organ
     #wavetable
-    #piano
+    piano
     #slplugins
     decent-sampler
     #friture
