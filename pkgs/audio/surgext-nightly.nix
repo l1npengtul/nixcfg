@@ -14,6 +14,7 @@
   libXinerama,
   libXrandr,
   libGL,
+  fontconfig,
 }:
 stdenv.mkDerivation rec {
   pname = "surge-XT";
@@ -43,6 +44,7 @@ stdenv.mkDerivation rec {
     libXinerama
     libXrandr
     libGL
+    fontconfig
   ];
 
   enableParallelBuilding = true;
