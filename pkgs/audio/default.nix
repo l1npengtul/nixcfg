@@ -39,7 +39,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     odin2
-    #surge-XT
+    surge-XT
     lsp-plugins
     qpwgraph
     dexed
