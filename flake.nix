@@ -87,6 +87,7 @@
       config.allowUnfree = true;
       config.permittedInsecurePackages = [
         "libsoup-2.74.3"
+        "qtwebengine-5.15.19"
       ];
     };
     pkgs = import nixpkgs commonArgs;
