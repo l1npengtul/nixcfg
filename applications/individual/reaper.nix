@@ -5,7 +5,7 @@
 }: {
   home.packages = with pkgs; [
     reaper
-    #    reaper-reapack-extension
+    reaper-reapack-extension
     #    reaper-sws-extension
   ];
 
