@@ -43,14 +43,14 @@ in {
     lsp-plugins
     qpwgraph
     dexed
-    setbfree
+    #setbfree
     #zynaddsubfx
     #audacity
     musescore
     #musescore-evolution
-    paulstretch
-    zam-plugins
-    chow-tape-model
+    #paulstretch
+    #zam-plugins
+    #chow-tape-model
     vcv-rack
     cardinal
     alsa-utils
@@ -66,19 +66,19 @@ in {
     dl-librescore
     #carla
 
-    airwindows
-    airwin2rack
-    socalabs-sid
-    sn76489
-    papu
-    rp2a03
-    voc
-    organ
-    wavetable
-    piano
-    slplugins
+    #airwindows
+    #airwin2rack
+    #socalabs-sid
+    #sn76489
+    #papu
+    #rp2a03
+    #voc
+    #organ
+    #wavetable
+    #piano
+    #slplugins
     decent-sampler
-    friture
+    #friture
 
     #demucs
 
