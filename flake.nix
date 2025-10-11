@@ -116,7 +116,7 @@
             home-manager.extraSpecialArgs = {
               inherit pkgs-stable;
             };
-            home-manager.sharedModules = [inputs.plasma-manager.homeManagerModules.plasma-manager];
+            home-manager.sharedModules = [inputs.plasma-manager.homeModules.plasma-manager];
             home-manager.users."${username}".imports = [
               nix-flatpak.homeManagerModules.nix-flatpak
               ./users/l1npengtul.nix
