@@ -15,6 +15,7 @@
   libXrandr,
   libGL,
   fontconfig,
+  luajit,
 }:
 stdenv.mkDerivation rec {
   pname = "surge-XT";
@@ -30,6 +31,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     cmake
+    luajit
     pkg-config
   ];
 
@@ -45,6 +47,7 @@ stdenv.mkDerivation rec {
     libXrandr
     libGL
     fontconfig
+    luajit
   ];
 
   enableParallelBuilding = true;
