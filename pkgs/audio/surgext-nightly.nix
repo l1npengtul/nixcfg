@@ -13,6 +13,7 @@
   libXext,
   libXinerama,
   libXrandr,
+  libGL,
 }:
 stdenv.mkDerivation rec {
   pname = "surge-XT";
@@ -41,6 +42,7 @@ stdenv.mkDerivation rec {
     libXext
     libXinerama
     libXrandr
+    libGL
   ];
 
   enableParallelBuilding = true;
