@@ -30,5 +30,5 @@
     woeusb-ng
     minicom
     ntfs3g
- ];
+  ];
 }
