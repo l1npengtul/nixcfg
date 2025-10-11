@@ -44,7 +44,7 @@ in {
     qpwgraph
     dexed
     setbfree
-    zynaddsubfx
+    #zynaddsubfx
     #audacity
     musescore
     #musescore-evolution
