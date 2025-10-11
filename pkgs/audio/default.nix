@@ -33,6 +33,7 @@
   recstar = pkgs.callPackage ./recstar {};
   nn = pkgs.callPackage ./neuralnote.nix {};
   #musescore-evolution = pkgs.callPackage ./musescore-evolution.nix {};
+  surgext = pkgs.callPackage ./surgext-nightly.nix {};
 in {
   imports = [
   ];
