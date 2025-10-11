@@ -23,7 +23,7 @@ stdenv.mkDerivation rec {
     repo = "surge";
     rev = "60e34f80d1d7b26c3fc4dbc251598a522bd20510";
     fetchSubmodules = true;
-    hash = "";
+    hash = "sha256-Ffa9ZlEclRY7PLiPY8I8rzURFUd/G+RAZ276rqrqzhY=";
   };
 
   nativeBuildInputs = [
