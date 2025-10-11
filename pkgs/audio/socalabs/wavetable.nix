@@ -92,11 +92,11 @@ in
       libxkbcommon
       libdatrie
       libepoxy
-      libsoup_2_4
+      libsoup_3
       lerc
       freetype
       curl
-      webkitgtk_4_0
+      webkitgtk_6_0
       pcre2
       util-linux
       sqlite
