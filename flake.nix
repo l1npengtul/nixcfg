@@ -58,6 +58,9 @@
     flux.url = "github:l1npengtul/flux";
 
     nixpkgs-reaper-sws.url = "github:l1npengtul/nixpkgs/update-reaper-sws-extensions";
+
+    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
+    aagl.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = {
     nixpkgs,
@@ -80,6 +83,7 @@
     playit-nixos-module,
     agenix,
     flux,
+    aagl,
     ...
   } @ inputs: let
     username = "l1npengtul";
@@ -153,6 +157,8 @@
           musnix.nixosModules.musnix
 
           erosanix.nixosModules.protonvpn
+
+          aagl.nixosModules.default
 
           ./configuration.nix
           ./hosts/s-23sierpinski
