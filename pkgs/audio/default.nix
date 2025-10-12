@@ -67,8 +67,8 @@ in {
     dl-librescore
     carla
     reaper
-    reaper-sws-extensions
-    reaper-reapack-extensions
+    reaper-sws-extension
+    reaper-reapack-extension
 
     airwindows
     airwin2rack
