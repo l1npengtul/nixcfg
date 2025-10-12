@@ -28,6 +28,7 @@ in {
     ./keyboard.nix
     ./scanner.nix
     ./video.nix
+    ./aagl.nix
   ];
 
   environment.systemPackages = [ruea];
