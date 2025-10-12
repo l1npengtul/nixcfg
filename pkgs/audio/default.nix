@@ -44,12 +44,12 @@ in {
     lsp-plugins
     qpwgraph
     dexed
-    #setbfree
+    setbfree
     #zynaddsubfx
     #audacity
     musescore
     #musescore-evolution
-    #paulstretch
+    paulstretch
     zam-plugins
     #chow-tape-model
     vcv-rack
@@ -58,14 +58,14 @@ in {
     vital
     distrho-ports
     bitwig-studio
-    pkgs-stable.yabridgectl
-    pkgs-stable.yabridge
+    yabridgectl
+    yabridge
     wineWowPackages.stagingFull
     dxvk_2
     recstar
     plugdata
     dl-librescore
-    #carla
+    carla
 
     airwindows
     airwin2rack
