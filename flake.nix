@@ -56,11 +56,14 @@
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     playit-nixos-module.url = "github:pedorich-n/playit-nixos-module";
     flux.url = "github:l1npengtul/flux";
+
+    nixpkgs-reaper-sws.url = "github:l1npengtul/nixpkgs/update-reaper-sws-extensions";
   };
   outputs = {
     nixpkgs,
     nixpkgs-stable,
     nixpkgs-master,
+    nixpkgs-reaper-sws,
     home-manager,
     systems,
     plasma-manager,
@@ -82,6 +85,14 @@
     username = "l1npengtul";
     system = "x86_64-linux";
     lib = nixpkgs.lib // home-manager.lib;
+
+    reapersws-overlay = final: prev: {
+      inherit
+        (nixpkgs-reaper-sws.legacyPackages.${prev.system})
+        reaper-sws-extensions
+        ;
+    };
+
     commonArgs = {
       inherit system;
       config.allowUnfree = true;
@@ -89,6 +100,7 @@
         "libsoup-2.74.3"
         "qtwebengine-5.15.19"
       ];
+      overlays = [reapersws-overlay];
     };
     pkgs = import nixpkgs commonArgs;
     pkgs-stable = import nixpkgs-stable commonArgs;
