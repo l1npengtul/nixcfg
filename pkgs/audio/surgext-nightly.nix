@@ -50,6 +50,11 @@ stdenv.mkDerivation rec {
     luajit
   ];
 
+  preConfigure = ''
+    cp ${luajit}/lib/libluajit-5.1.a build/libs/luajitlib/include
+    mv build/libs/luajitlib/include/libluajit-5.1.a build/libs/luajitlib/include/libluajit.a
+  '';
+
   enableParallelBuilding = true;
 
   cmakeFlags = [
