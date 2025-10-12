@@ -56,6 +56,7 @@ stdenv.mkDerivation rec {
     mkdir -p libs/luajitlib/bin
      cp ${luajit}/lib/libluajit-5.1.a libs/luajitlib/bin/libluajit.a
      ln -s ${luajit}/include libs/luajitlib/include
+     ls libs/luajitlib/include
   '';
 
   enableParallelBuilding = true;
