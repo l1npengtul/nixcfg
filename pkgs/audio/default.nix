@@ -50,7 +50,7 @@ in {
     musescore
     #musescore-evolution
     #paulstretch
-    #zam-plugins
+    zam-plugins
     #chow-tape-model
     vcv-rack
     cardinal
