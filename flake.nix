@@ -89,7 +89,7 @@
     reapersws-overlay = final: prev: {
       inherit
         (nixpkgs-reaper-sws.legacyPackages.${prev.system})
-        reaper-sws-extensions
+        reaper-sws-extension
         ;
     };
 
