@@ -51,8 +51,10 @@ stdenv.mkDerivation rec {
   ];
 
   preConfigure = ''
-    cp ${luajit}/lib/libluajit-5.1.a build/libs/luajitlib/include
-    mv build/libs/luajitlib/include/libluajit-5.1.a build/libs/luajitlib/include/libluajit.a
+    ls
+     cp ${luajit}/lib/libluajit-5.1.a libs/luajitlib/bin
+     mv libs/luajitlib/bin/libluajit-5.1.a libs/luajitlib/bin/libluajit.a
+     ln -s ${luajit}/include libs/luajitlib/include
   '';
 
   enableParallelBuilding = true;
