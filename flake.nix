@@ -158,8 +158,6 @@
 
           erosanix.nixosModules.protonvpn
 
-          aagl.nixosModules.default
-
           ./configuration.nix
           ./hosts/s-23sierpinski
           ./pkgs/archives.nix
@@ -260,6 +258,9 @@
           musnix.nixosModules.musnix
 
           erosanix.nixosModules.protonvpn
+
+          aagl.nixosModules.default
+          ./pkgs/aagl.nix
 
           ./configuration.nix
           ./hosts/clubcyberia
