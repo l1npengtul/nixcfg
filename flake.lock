@@ -509,6 +509,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-reaper-sws": {
+      "locked": {
+        "lastModified": 1760237356,
+        "narHash": "sha256-w283fq08IhFLBIqNX2DSW+uICRwJQjj9mAsrJ9rXE1g=",
+        "owner": "l1npengtul",
+        "repo": "nixpkgs",
+        "rev": "0600159c754b8f5394a4803afcd55e69939170dc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "l1npengtul",
+        "ref": "update-reaper-sws-extensions",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1751274312,
@@ -714,6 +730,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_6",
         "nixpkgs-master": "nixpkgs-master",
+        "nixpkgs-reaper-sws": "nixpkgs-reaper-sws",
         "nixpkgs-stable": "nixpkgs-stable",
         "plasma-manager": "plasma-manager",
         "playit-nixos-module": "playit-nixos-module",

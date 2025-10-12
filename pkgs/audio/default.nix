@@ -66,6 +66,9 @@ in {
     plugdata
     dl-librescore
     carla
+    reaper
+    reaper-sws-extensions
+    reaper-reapack-extensions
 
     airwindows
     airwin2rack
