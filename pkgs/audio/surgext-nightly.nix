@@ -62,6 +62,7 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = [
     "-DSURGE_BUILD_LV2=TRUE"
+    "-DSURGE_SKIP_LUA=TRUE"
   ];
 
   CXXFLAGS = [
