@@ -52,10 +52,9 @@ stdenv.mkDerivation rec {
 
   preConfigure = ''
     ls
-    mkdir -p libs/luajitlib/include
     mkdir -p libs/luajitlib/bin
      cp ${luajit}/lib/libluajit-5.1.a libs/luajitlib/bin/libluajit.a
-     ln -s ${luajit}/include libs/luajitlib/include
+     ln -s ${luajit}/include libs/luajitlib
      ls libs/luajitlib/include
   '';
 
